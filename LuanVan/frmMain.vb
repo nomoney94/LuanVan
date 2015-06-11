@@ -40,8 +40,8 @@ Public Class frmMain
     Private Sub ConnectSQLServer_InitializeDataSet()
         Try
             Dim strCon As String
-            'strCon = ""
-            strCon = "Data Source=(local)\SQLEXPRESS;Initial Catalog=QLHDTD;Integrated Security=True"
+            strCon = "Data Source=3P1MT9VVKDZGJZR\SQLEXPRESS;Initial Catalog=QLHDTD;Integrated Security=True"
+            'strCon = "Data Source=(local)\SQLEXPRESS;Initial Catalog=QLHDTD;Integrated Security=True"
             con = New SqlConnection(strCon)
             con.Open()
             con.Close()
