@@ -59,8 +59,8 @@ Partial Class frmTKKhachHang
         'TableLayoutPanel2
         '
         Me.TableLayoutPanel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel2.AutoSize = True
         Me.TableLayoutPanel2.ColumnCount = 3
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102.0!))
@@ -152,12 +152,15 @@ Partial Class frmTKKhachHang
         '
         'lvwKH
         '
+        Me.lvwKH.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lvwKH.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5})
         Me.lvwKH.FullRowSelect = True
         Me.lvwKH.GridLines = True
         Me.lvwKH.Location = New System.Drawing.Point(3, 90)
         Me.lvwKH.Name = "lvwKH"
-        Me.lvwKH.Size = New System.Drawing.Size(528, 261)
+        Me.lvwKH.Size = New System.Drawing.Size(528, 264)
         Me.lvwKH.TabIndex = 1
         Me.lvwKH.UseCompatibleStateImageBehavior = False
         Me.lvwKH.View = System.Windows.Forms.View.Details

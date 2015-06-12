@@ -4,14 +4,8 @@ Public Class frmTKHoaDon
     Private aTimKiem() As String = {"Mã hóa đơn", "Mã khách hàng"}
 
     Private Sub frmTKHoaDon_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        loadComboBox()
+        cboTimKiem.Items.AddRange(aTimKiem)
         cboTimKiem.SelectedIndex = 0
-    End Sub
-
-    Private Sub loadComboBox()
-        For Each s As String In aTimKiem
-            cboTimKiem.Items.Add(s)
-        Next
     End Sub
 
     Private Sub btnTim_Click(sender As Object, e As EventArgs) Handles btnTim.Click

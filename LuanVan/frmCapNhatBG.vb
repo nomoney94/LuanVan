@@ -5,38 +5,205 @@ Public Class frmCapNhatBG
     Private dtBG3 As DataTable
     Private dtBG6 As DataTable
     Private dtBG As DataTable
+    Private change As Boolean = False
 
     Private Sub frmCapNhatBG_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        LoadComboBox()
+        cboLoai.Items.AddRange(aLoai)
         cboLoai.SelectedIndex = 0
         dtBG3 = frmMain.ds.Tables("Gia3")
         dtBG6 = frmMain.ds.Tables("Gia6")
-        dgvBG3.DataSource = dtBG3
-        dgvBG6.DataSource = dtBG6
-        EditColumnHeaderTextBG3()
+        LoadData_lsvBG3()
+        LoadData_lsvBG6()
     End Sub
 
-    Private Sub LoadComboBox()
-        For Each s As String In aLoai
-            cboLoai.Items.Add(s)
-        Next
+    Private Sub frmCapNhatBG_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        If change Then
+            Dim d As DialogResult = MsgBox("Bạn có muốn lưu không?", MsgBoxStyle.YesNoCancel, "Thông báo")
+            If d = DialogResult.Yes Then
+                btnLuu.PerformClick()
+            ElseIf d = DialogResult.Cancel Then
+                e.Cancel = True
+            End If
+        End If
     End Sub
 
-    Private Sub EditColumnHeaderTextBG3()
-        dgvBG3.Columns(0).HeaderText = "Mã loại" & vbCrLf & "dịch vụ"
+    Private Sub LoadData_lsvBG3()
+        Dim read As DataTableReader = dtBG3.CreateDataReader
+        Dim index As Integer
+        lsvBG3.Items.Clear()
+        While (read.Read)
+            index = lsvBG3.Items.Count
+            lsvBG3.Items.Add(read("MaLoaiDV"))
+            lsvBG3.Items(index).SubItems.Add(read("MaBangGia"))
+            lsvBG3.Items(index).SubItems.Add(read("TenLoai"))
+            lsvBG3.Items(index).SubItems.Add(read("GiaBT"))
+            lsvBG3.Items(index).SubItems.Add(read("GiaCD"))
+            lsvBG3.Items(index).SubItems.Add(read("GiaTD"))
+        End While
     End Sub
 
-    Private Sub EditColumnHeaderTextBG6()
-
+    Private Sub LoadData_lsvBG6()
+        Dim read As DataTableReader = dtBG6.CreateDataReader
+        Dim index As Integer
+        lsvBG6.Items.Clear()
+        While (read.Read)
+            index = lsvBG6.Items.Count
+            lsvBG6.Items.Add(read("MaLoaiDV"))
+            lsvBG6.Items(index).SubItems.Add(read("MaBangGia"))
+            lsvBG6.Items(index).SubItems.Add(read("DinhMuc"))
+            lsvBG6.Items(index).SubItems.Add(read("Gia"))
+            lsvBG6.Items(index).SubItems.Add(read("MoTa"))
+        End While
     End Sub
 
-    Private Sub LoadComboBoxDataGridView()
+#Region "Kiểm tra dữ liệu"
+    Private Sub txtMaDV_Validating()
+        If txtMaDV.Text = "" Then
+            errLoi.SetError(txtMaDV, "Không được để trống")
+        Else
+            errLoi.SetError(txtMaDV, "")
+        End If
+    End Sub
 
+    Private Sub txtGiaCD_Validating()
+        If txtGiaCD.Text = "" Then
+            errLoi.SetError(txtGiaCD, "Không được để trống")
+        Else
+            If IsNumeric(txtGiaCD.Text) Then
+                If CInt(txtGiaCD.Text) >= 0 Then
+                    errLoi.SetError(txtGiaCD, "")
+                Else
+                    errLoi.SetError(txtGiaCD, "Xin nhập số dương")
+                End If
+            Else
+                errLoi.SetError(txtGiaCD, "Chỉ được nhập số")
+            End If
+        End If
+    End Sub
+
+    Private Sub txtGiaTD_Validating()
+        If txtGiaTD.Text = "" Then
+            errLoi.SetError(txtGiaTD, "Không được để trống")
+        Else
+            If IsNumeric(txtGiaTD.Text) Then
+                If CInt(txtGiaTD.Text) >= 0 Then
+                    errLoi.SetError(txtGiaTD, "")
+                Else
+                    errLoi.SetError(txtGiaTD, "Xin nhập số dương")
+                End If
+            Else
+                errLoi.SetError(txtGiaTD, "Chỉ được nhập số")
+            End If
+        End If
+    End Sub
+
+    Private Sub txtGiaBT_Validating()
+        If txtGiaBT.Text = "" Then
+            errLoi.SetError(txtGiaBT, "Không được để trống")
+        Else
+            If IsNumeric(txtGiaBT.Text) Then
+                If CInt(txtGiaBT.Text) >= 0 Then
+                    errLoi.SetError(txtGiaBT, "")
+                Else
+                    errLoi.SetError(txtGiaBT, "Xin nhập số dương")
+                End If
+            Else
+                errLoi.SetError(txtGiaBT, "Chỉ được nhập số")
+            End If
+        End If
+    End Sub
+
+    Private Sub txtTenLoai_Validating()
+        If txtTenLoai.Text = "" Then
+            errLoi.SetError(txtTenLoai, "Không được để trống")
+        Else
+            errLoi.SetError(txtTenLoai, "")
+        End If
+    End Sub
+
+    Private Sub txtDinhMuc_Validating()
+        If txtDinhMuc.Text = "" Then
+            errLoi.SetError(txtDinhMuc, "Không được để trống")
+        Else
+            If IsNumeric(txtDinhMuc.Text) Then
+                If CInt(txtDinhMuc.Text) >= 0 Then
+                    errLoi.SetError(txtDinhMuc, "")
+                Else
+                    errLoi.SetError(txtDinhMuc, "Xin nhập số dương")
+                End If
+            Else
+                errLoi.SetError(txtDinhMuc, "Chỉ được nhập số")
+            End If
+        End If
+    End Sub
+
+    Private Sub txtGia_Validating()
+        If txtGia.Text = "" Then
+            errLoi.SetError(txtGia, "Không được để trống")
+        Else
+            If IsNumeric(txtGia.Text) Then
+                If CInt(txtGia.Text) >= 0 Then
+                    errLoi.SetError(txtGia, "")
+                Else
+                    errLoi.SetError(txtGia, "Xin nhập số dương")
+                End If
+            Else
+                errLoi.SetError(txtGia, "Chỉ được nhập số")
+            End If
+        End If
+    End Sub
+
+    Private Sub txtMoTa_Validating()
+        If txtMoTa.Text = "" Then
+            errLoi.SetError(txtMoTa, "Không được để trống")
+        Else
+            errLoi.SetError(txtMoTa, "")
+        End If
+    End Sub
+
+    Private Function InputValidating() As Boolean
+        Dim flag As Boolean = False
+
+        txtMaDV_Validating()
+
+        If cboLoai.SelectedIndex = 0 Then
+            txtGiaCD_Validating()
+            txtGiaTD_Validating()
+            txtGiaBT_Validating()
+            txtTenLoai_Validating()
+            If errLoi.GetError(txtGiaCD) = "" AndAlso errLoi.GetError(txtGiaTD) = "" AndAlso errLoi.GetError(txtTenLoai) = "" AndAlso errLoi.GetError(txtGiaBT) = "" AndAlso errLoi.GetError(txtMaDV) = "" Then
+                flag = True
+            Else
+                flag = False
+            End If
+        Else
+            txtDinhMuc_Validating()
+            txtGia_Validating()
+            txtMoTa_Validating()
+            If errLoi.GetError(txtDinhMuc) = "" AndAlso errLoi.GetError(txtGia) = "" AndAlso errLoi.GetError(txtMoTa) = "" AndAlso errLoi.GetError(txtMaDV) = "" Then
+                flag = True
+            Else
+                flag = False
+            End If
+        End If
+
+        Return flag
+    End Function
+#End Region
+
+    Private Sub ClearError()
+        errLoi.SetError(txtMaDV, "")
+        errLoi.SetError(cboMaBG, "")
+        errLoi.SetError(txtTenLoai, "")
+        errLoi.SetError(txtGiaBT, "")
+        errLoi.SetError(txtGiaCD, "")
+        errLoi.SetError(txtGiaTD, "")
+        errLoi.SetError(txtDinhMuc, "")
+        errLoi.SetError(txtGia, "")
+        errLoi.SetError(txtMoTa, "")
     End Sub
 
     Private Sub btnLuu_Click(sender As Object, e As EventArgs) Handles btnLuu.Click
-        dtBG3 = dgvBG3.DataSource
-        dtBG6 = dgvBG6.DataSource
         Try
             Dim comG3 As New SqlCommandBuilder(frmMain.daGia3)
             Dim comG6 As New SqlCommandBuilder(frmMain.daGia6)
@@ -45,94 +212,179 @@ Public Class frmCapNhatBG
             comG6.DataAdapter.Update(dtBG6)
             frmMain.con.Close()
         Catch ex As Exception
-            MessageBox.Show("Không thể cập nhật CSDL!", "Thông báo")
+            MessageBox.Show("Không thể cập nhật CSDL!", "Thông báo!")
         End Try
+    End Sub
 
+    Private Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
+        txtMaDV.Clear()
+        txtTenLoai.Clear()
+        txtGiaBT.Clear()
+        txtGiaCD.Clear()
+        txtGiaTD.Clear()
+        txtDinhMuc.Clear()
+        txtGia.Clear()
+        txtMoTa.Clear()
+    End Sub
+
+    Private Sub btnSua_Click(sender As Object, e As EventArgs) Handles btnSua.Click
+        If InputValidating() Then
+            If cboLoai.SelectedIndex = 0 Then
+                If lsvBG3.SelectedItems(0).SubItems(0).Text.Trim = txtMaDV.Text.Trim Then
+                    Dim strFind As String = "MaLoaiDV='" & txtMaDV.Text & "'"
+                    Dim dr As DataRow
+                    For Each dr In dtBG3.Select(strFind)
+                        dr("MaBangGia") = cboMaBG.Text
+                        dr("TenLoai") = txtTenLoai.Text
+                        dr("GiaBT") = txtGiaBT.Text
+                        dr("GiaCD") = txtGiaCD.Text
+                        dr("GiaTD") = txtGiaTD.Text
+                        change = True
+                    Next
+                    LoadData_lsvBG3()
+                    btnReset.PerformClick()
+                Else
+                    MsgBox("Mã loại dịch vụ không được thay đổi", MsgBoxStyle.OkOnly, "Thông báo!")
+                End If
+            Else
+                If lsvBG6.SelectedItems(0).SubItems(0).Text.Trim = txtMaDV.Text.Trim Then
+                    Dim strFind As String = "MaLoaiDV='" & txtMaDV.Text & "'"
+                    Dim dr As DataRow
+                    For Each dr In dtBG6.Select(strFind)
+                        dr("MaBangGia") = cboMaBG.Text
+                        dr("DinhMuc") = txtDinhMuc.Text
+                        dr("Gia") = txtGia.Text
+                        dr("MoTa") = txtMoTa.Text
+                        change = True
+                    Next
+                    LoadData_lsvBG6()
+                    btnReset.PerformClick()
+                Else
+                    MsgBox("Mã loại dịch vụ không được thay đổi", MsgBoxStyle.OkOnly, "Thông báo!")
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub btnThem_Click(sender As Object, e As EventArgs) Handles btnThem.Click
+        If InputValidating() Then
+            If cboLoai.SelectedIndex = 0 Then
+                Dim strFind As String = "MaLoaiDV='" & txtMaDV.Text & "'"
+                If dtBG3.Select(strFind).Length <= 0 Then
+                    Dim dr As DataRow = dtBG3.NewRow
+                    dr("MaLoaiDV") = txtMaDV.Text
+                    dr("MaBangGia") = cboMaBG.Text
+                    dr("TenLoai") = txtTenLoai.Text
+                    dr("GiaBT") = txtGiaBT.Text
+                    dr("GiaCD") = txtGiaCD.Text
+                    dr("GiaTD") = txtGiaTD.Text
+                    dtBG3.Rows.Add(dr)
+                    change = True
+                    LoadData_lsvBG3()
+                Else
+                    MsgBox("Mã loại dịch vụ đã có trong CSDL", MsgBoxStyle.OkOnly, "Thông báo!")
+                End If
+            Else
+                Dim strFind As String = "MaLoaiDV='" & txtMaDV.Text & "'"
+                If dtBG6.Select(strFind).Length <= 0 Then
+                    Dim dr As DataRow = dtBG6.NewRow
+                    dr("MaLoaiDV") = txtMaDV.Text
+                    dr("MaBangGia") = cboMaBG.Text
+                    dr("DinhMuc") = txtDinhMuc.Text
+                    dr("Gia") = txtGia.Text
+                    dr("MoTa") = txtMoTa.Text
+                    dtBG6.Rows.Add(dr)
+                    change = True
+                    LoadData_lsvBG6()
+                Else
+                    MsgBox("Mã loại dịch vụ đã có trong CSDL", MsgBoxStyle.OkOnly, "Thông báo!")
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub btnXoa_Click(sender As Object, e As EventArgs) Handles btnXoa.Click
+        If cboLoai.SelectedIndex = 0 Then
+            If (lsvBG3.SelectedItems.Count <= 0) Then
+                MessageBox.Show("Bạn chưa chọn mẫu tin cần xóa!")
+                Exit Sub
+            End If
+            Dim i As Integer
+            For i = 0 To lsvBG3.SelectedItems.Count - 1
+                Dim s As String = lsvBG3.SelectedItems(i).Text
+                Dim strFind As String = "MaLoaiDV='" + s + "'"
+                Dim dr As DataRow
+                For Each dr In dtBG3.Select(strFind)
+                    dr.Delete()
+                    change = True
+                Next
+                LoadData_lsvBG3()
+                btnReset.PerformClick()
+            Next
+        Else
+            If (lsvBG6.SelectedItems.Count <= 0) Then
+                MessageBox.Show("Bạn chưa chọn mẫu tin cần xóa!")
+                Exit Sub
+            End If
+            Dim i As Integer
+            For i = 0 To lsvBG6.SelectedItems.Count - 1
+                Dim s As String = lsvBG6.SelectedItems(i).Text
+                Dim strFind As String = "MaLoaiDV='" + s + "'"
+                Dim dr As DataRow
+                For Each dr In dtBG6.Select(strFind)
+                    dr.Delete()
+                    change = True
+                Next
+                LoadData_lsvBG6()
+                btnReset.PerformClick()
+            Next
+        End If
     End Sub
 
     Private Sub cboLoai_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboLoai.SelectedIndexChanged
+        btnReset.PerformClick()
+        ClearError()
         If cboLoai.SelectedIndex = 0 Then
-            dgvBG3.Visible = True
-            dgvBG6.Visible = False
+            txtTenLoai.Enabled = True
+            txtGiaBT.Enabled = True
+            txtGiaCD.Enabled = True
+            txtGiaTD.Enabled = True
+            txtDinhMuc.Enabled = False
+            txtGia.Enabled = False
+            txtMoTa.Enabled = False
+            lsvBG3.Visible = True
+            lsvBG6.Visible = False
         Else
-            dgvBG3.Visible = False
-            dgvBG6.Visible = True
+            txtTenLoai.Enabled = False
+            txtGiaBT.Enabled = False
+            txtGiaCD.Enabled = False
+            txtGiaTD.Enabled = False
+            txtDinhMuc.Enabled = True
+            txtGia.Enabled = True
+            txtMoTa.Enabled = True
+            lsvBG3.Visible = False
+            lsvBG6.Visible = True
         End If
     End Sub
 
-    'The CellValidating event handler is where you determine whether the value of a cell in the
-    'CompanyName column is empty. If the cell value fails validation, set the Cancel property 
-    'of the System.Windows.Forms.DataGridViewCellValidatingEventArgs class to true. This causes
-    'the DataGridView control to prevent the cursor from leaving the cell. Set the ErrorText
-    'property on the row to an explanatory string. This displays an error icon with a 'ToolTip'
-    'that contains the error text. In the CellEndEdit event handler, set the 'ErrorText'
-    'property on the row to the empty string. The CellEndEdit event occurs only when the cell
-    'exits edit mode, which it cannot do if it fails validation.
-
-    'https://msdn.microsoft.com/en-us/library/ykdxa0bc%28v=vs.90%29.aspx
-
-    Private Sub dgvBG6_CellValidating(sender As Object, e As DataGridViewCellValidatingEventArgs) Handles dgvBG6.CellValidating
-        Dim headerText As String = dgvBG6.Columns(e.ColumnIndex).HeaderText
-        If Not headerText.Equals("MaLoaiDV") Then Return
-        If (String.IsNullOrEmpty(e.FormattedValue.ToString())) Then
-            dgvBG6.Rows(e.RowIndex).ErrorText = "MaLoaiDV không được để trống"
-            e.Cancel = True
+    Private Sub lsvBG3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lsvBG3.SelectedIndexChanged
+        If lsvBG3.SelectedItems.Count > 0 Then
+            txtMaDV.Text = lsvBG3.SelectedItems(0).SubItems(0).Text
+            cboMaBG.Text = lsvBG3.SelectedItems(0).SubItems(1).Text
+            txtTenLoai.Text = lsvBG3.SelectedItems(0).SubItems(2).Text
+            txtGiaBT.Text = lsvBG3.SelectedItems(0).SubItems(3).Text
+            txtGiaCD.Text = lsvBG3.SelectedItems(0).SubItems(4).Text
+            txtGiaTD.Text = lsvBG3.SelectedItems(0).SubItems(5).Text
         End If
     End Sub
 
-    Private Sub dgvBG6_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgvBG6.CellEndEdit
-        dgvBG6.Rows(e.RowIndex).ErrorText = String.Empty
-    End Sub
-
-    'Private Sub dgvBG6_CellLeave(sender As Object, e As DataGridViewCellEventArgs) Handles dgvBG6.CellLeave
-    '    If e.ColumnIndex = 1 Then
-    '        Dim value As Object = dgvBG6.Rows(e.RowIndex).Cells(e.ColumnIndex).Value
-    '        Dim TextBoxCell As New DataGridViewTextBoxCell
-    '        Me.BeginInvoke(New MethodInvoker(Sub()
-    '                                             dgvBG6.Item(e.ColumnIndex, e.RowIndex) = TextBoxCell
-    '                                             dgvBG6.Item(e.ColumnIndex, e.RowIndex).Value = value
-    '                                         End Sub
-    '        ))
-    '    End If
-    'End Sub
-
-    'Private Sub dgvBG6_CellEnter(sender As Object, e As DataGridViewCellEventArgs) Handles dgvBG6.CellEnter
-    '    If e.ColumnIndex = 1 Then
-    '        Dim value As Object = dgvBG6.Rows(e.RowIndex).Cells(e.ColumnIndex).Value
-    '        Dim ComboBoxCell As New DataGridViewComboBoxCell
-    '        ComboBoxCell.Items.AddRange(value)
-    '        Me.BeginInvoke(New MethodInvoker(Sub()
-    '                                             dgvBG6.Item(e.ColumnIndex, e.RowIndex) = ComboBoxCell
-    '                                             dgvBG6.Item(e.ColumnIndex, e.RowIndex).Value = ComboBoxCell.Items(0)
-    '                                         End Sub
-    '        ))
-    '    End If
-    'End Sub
-
-    Private Sub dgvBG6_Enter(sender As Object, e As EventArgs) Handles dgvBG6.Enter
-        For Each row As DataGridViewRow In dgvBG6.Rows
-            If row.Index <> dgvBG6.Rows.Count - 1 Then
-                Dim value As Object = row.Cells(1).Value
-                Dim ComboBoxCell As New DataGridViewComboBoxCell
-                ComboBoxCell.Items.AddRange(value)
-                dgvBG6.Item(1, row.Index) = ComboBoxCell
-                dgvBG6.Item(1, row.Index).Value = ComboBoxCell.Items(0)
-            Else
-                Exit For
-            End If
-        Next
-    End Sub
-
-    Private Sub dgvBG6_Leave(sender As Object, e As EventArgs) Handles dgvBG6.Leave
-        For Each row As DataGridViewRow In dgvBG6.Rows
-            If row.Index <> dgvBG6.Rows.Count - 1 Then
-                Dim value As Object = row.Cells(1).Value
-                Dim TextBoxCell As New DataGridViewTextBoxCell
-                dgvBG6.Item(1, row.Index) = TextBoxCell
-                dgvBG6.Item(1, row.Index).Value = TextBoxCell.Value
-            Else
-                Exit For
-            End If
-        Next
+    Private Sub lsvBG6_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lsvBG6.SelectedIndexChanged
+        If lsvBG6.SelectedItems.Count > 0 Then
+            txtMaDV.Text = lsvBG6.SelectedItems(0).SubItems(0).Text
+            cboMaBG.Text = lsvBG6.SelectedItems(0).SubItems(1).Text
+            txtDinhMuc.Text = lsvBG6.SelectedItems(0).SubItems(2).Text
+            txtGia.Text = lsvBG6.SelectedItems(0).SubItems(3).Text
+            txtMoTa.Text = lsvBG6.SelectedItems(0).SubItems(4).Text
+        End If
     End Sub
 End Class

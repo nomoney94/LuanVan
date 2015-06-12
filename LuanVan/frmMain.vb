@@ -29,14 +29,6 @@ Public Class frmMain
         ConnectSQLServer_InitializeDataSet()
     End Sub
 
-    'Hotkey for menu
-    Private Sub frmMain_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
-        If e.KeyCode = Keys.F1 Then
-            tsbTTDonVi.PerformClick()
-            'Write your code!
-        End If
-    End Sub
-
     Private Sub ConnectSQLServer_InitializeDataSet()
         Try
             Dim strCon As String
@@ -96,7 +88,7 @@ Public Class frmMain
         daTram.Fill(ds, "Tram")
     End Sub
 
-    Private Sub tsbTTDonVi_Click(sender As Object, e As EventArgs) Handles tsbTTDonVi.Click
+        Private Sub tsmiTTDonVi_Click(sender As Object, e As EventArgs) Handles tsmiTTDonVi.Click
         If frmTTDV Is Nothing OrElse frmTTDV.IsDisposed Then
             frmTTDV = New frmTTDonVi
             frmTTDV.MdiParent = Me
@@ -152,7 +144,7 @@ Public Class frmMain
         'End If
     End Sub
 
-    Private Sub tsbTinhTien_Click(sender As Object, e As EventArgs) Handles tsbTinhTien.Click
+    Private Sub tsmiTinhTien_Click(sender As Object, e As EventArgs) Handles tsmiTinhTien.Click
         If frmTTD Is Nothing OrElse frmTTD.IsDisposed Then
             frmTTD = New frmTinhTien
             frmTTD.MdiParent = Me
@@ -160,7 +152,7 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub tsbCapNhatBangGia_Click(sender As Object, e As EventArgs) Handles tsbCapNhatBangGia.Click
+    Private Sub tsmiCapNhatBG_Click(sender As Object, e As EventArgs) Handles tsmiCapNhatBG.Click
         If frmCNBG Is Nothing OrElse frmCNBG.IsDisposed Then
             frmCNBG = New frmCapNhatBG
             frmCNBG.MdiParent = Me
@@ -176,7 +168,7 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub tsbThoat_Click(sender As Object, e As EventArgs) Handles tsbThoat.Click
+    Private Sub tsmiThoat_Click(sender As Object, e As EventArgs) Handles tsmiThoat.Click
         Close()
     End Sub
 End Class
