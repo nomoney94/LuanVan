@@ -43,6 +43,7 @@ Partial Class frmTKHoaDon
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.btnBocatdien = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.SuspendLayout()
@@ -85,6 +86,7 @@ Partial Class frmTKHoaDon
         Me.TableLayoutPanel2.Controls.Add(Me.btnTim, 2, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.btnInhoadon, 2, 1)
         Me.TableLayoutPanel2.Controls.Add(Me.btnNhacnho, 3, 0)
+        Me.TableLayoutPanel2.Controls.Add(Me.btnBocatdien, 2, 2)
         Me.TableLayoutPanel2.Location = New System.Drawing.Point(3, 3)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 4
@@ -92,13 +94,13 @@ Partial Class frmTKHoaDon
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(578, 110)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(578, 113)
         Me.TableLayoutPanel2.TabIndex = 0
         '
         'txtMaHD
         '
         Me.txtMaHD.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.txtMaHD.Location = New System.Drawing.Point(105, 87)
+        Me.txtMaHD.Location = New System.Drawing.Point(105, 90)
         Me.txtMaHD.Name = "txtMaHD"
         Me.txtMaHD.Size = New System.Drawing.Size(121, 20)
         Me.txtMaHD.TabIndex = 5
@@ -107,7 +109,7 @@ Partial Class frmTKHoaDon
         '
         Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(3, 90)
+        Me.Label3.Location = New System.Drawing.Point(3, 93)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(68, 13)
         Me.Label3.TabIndex = 4
@@ -136,7 +138,7 @@ Partial Class frmTKHoaDon
         '
         Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(3, 64)
+        Me.Label2.Location = New System.Drawing.Point(3, 66)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(85, 13)
         Me.Label2.TabIndex = 2
@@ -145,7 +147,7 @@ Partial Class frmTKHoaDon
         'txtMaKH
         '
         Me.txtMaKH.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.txtMaKH.Location = New System.Drawing.Point(105, 61)
+        Me.txtMaKH.Location = New System.Drawing.Point(105, 62)
         Me.txtMaKH.Name = "txtMaKH"
         Me.txtMaKH.Size = New System.Drawing.Size(121, 20)
         Me.txtMaKH.TabIndex = 3
@@ -202,7 +204,7 @@ Partial Class frmTKHoaDon
         Me.lvwHoadon.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7})
         Me.lvwHoadon.FullRowSelect = True
         Me.lvwHoadon.GridLines = True
-        Me.lvwHoadon.Location = New System.Drawing.Point(3, 119)
+        Me.lvwHoadon.Location = New System.Drawing.Point(3, 122)
         Me.lvwHoadon.Name = "lvwHoadon"
         Me.lvwHoadon.Size = New System.Drawing.Size(528, 241)
         Me.lvwHoadon.TabIndex = 1
@@ -244,6 +246,16 @@ Partial Class frmTKHoaDon
         Me.ColumnHeader7.Text = "Tình Trạng TT"
         Me.ColumnHeader7.Width = 73
         '
+        'btnBocatdien
+        '
+        Me.btnBocatdien.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.btnBocatdien.Location = New System.Drawing.Point(247, 61)
+        Me.btnBocatdien.Name = "btnBocatdien"
+        Me.btnBocatdien.Size = New System.Drawing.Size(81, 23)
+        Me.btnBocatdien.TabIndex = 11
+        Me.btnBocatdien.Text = "Bỏ cắt điện"
+        Me.btnBocatdien.UseVisualStyleBackColor = True
+        '
         'frmTKHoaDon
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -282,4 +294,5 @@ Partial Class frmTKHoaDon
     Friend WithEvents ColumnHeader6 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader7 As System.Windows.Forms.ColumnHeader
     Friend WithEvents btnNhacnho As System.Windows.Forms.Button
+    Friend WithEvents btnBocatdien As System.Windows.Forms.Button
 End Class

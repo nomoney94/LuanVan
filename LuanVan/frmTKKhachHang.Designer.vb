@@ -31,13 +31,13 @@ Partial Class frmTKKhachHang
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtMaKH = New System.Windows.Forms.TextBox()
         Me.btnTim = New System.Windows.Forms.Button()
+        Me.btnXemhoadon = New System.Windows.Forms.Button()
         Me.lvwKH = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.btnXemhoadon = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.SuspendLayout()
@@ -153,6 +153,16 @@ Partial Class frmTKKhachHang
         Me.btnTim.Text = "Tìm"
         Me.btnTim.UseVisualStyleBackColor = True
         '
+        'btnXemhoadon
+        '
+        Me.btnXemhoadon.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.btnXemhoadon.Location = New System.Drawing.Point(319, 3)
+        Me.btnXemhoadon.Name = "btnXemhoadon"
+        Me.btnXemhoadon.Size = New System.Drawing.Size(87, 23)
+        Me.btnXemhoadon.TabIndex = 7
+        Me.btnXemhoadon.Text = "Xem hóa đơn"
+        Me.btnXemhoadon.UseVisualStyleBackColor = True
+        '
         'lvwKH
         '
         Me.lvwKH.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -171,7 +181,7 @@ Partial Class frmTKKhachHang
         'ColumnHeader1
         '
         Me.ColumnHeader1.Text = "Mã KH"
-        Me.ColumnHeader1.Width = 63
+        Me.ColumnHeader1.Width = 94
         '
         'ColumnHeader2
         '
@@ -186,22 +196,12 @@ Partial Class frmTKKhachHang
         'ColumnHeader4
         '
         Me.ColumnHeader4.Text = "Tên KH"
-        Me.ColumnHeader4.Width = 163
+        Me.ColumnHeader4.Width = 143
         '
         'ColumnHeader5
         '
         Me.ColumnHeader5.Text = "Địa chỉ"
-        Me.ColumnHeader5.Width = 167
-        '
-        'btnXemhoadon
-        '
-        Me.btnXemhoadon.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.btnXemhoadon.Location = New System.Drawing.Point(319, 3)
-        Me.btnXemhoadon.Name = "btnXemhoadon"
-        Me.btnXemhoadon.Size = New System.Drawing.Size(87, 23)
-        Me.btnXemhoadon.TabIndex = 7
-        Me.btnXemhoadon.Text = "Xem hóa đơn"
-        Me.btnXemhoadon.UseVisualStyleBackColor = True
+        Me.ColumnHeader5.Width = 169
         '
         'frmTKKhachHang
         '

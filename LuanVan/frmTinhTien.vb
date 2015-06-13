@@ -21,9 +21,14 @@ Public Class frmTinhTien
     End Sub
 
     Private Sub btnTinhTien_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnTinhTien.Click
+        If txtMaCT.Text = "" Then
+            MessageBox.Show("Nhập mã công tơ")
+            Exit Sub
+        End If
         Dim dr, dr1, dr2, row, row1 As DataRow
         Dim strfind As String
         Dim chiso, chisoCD, chisoTD, chisoHD, chisoCT1, chisoCT2, chisoCT3 As Integer
+        Dim flagCT As Integer = 0
         Dim flag As Integer = 1
         Dim thanhtien As Integer = 0
         Dim ma As Integer = 0
@@ -39,6 +44,7 @@ Public Class frmTinhTien
             txtChisoTD.Text = 0
         End If
         For Each dr In dtCSCT.Select("MaCT='" + txtMaCT.Text.Trim + "' AND Ky='" + Convert.ToString(CInt(Month(dtpThang.Text)) - 1) + "-" + Convert.ToString(Year(dtpThang.Text)) + "'")
+            flagCT = 1
             If CInt(txtChiso.Text) < dr("ChiSo") Or CInt(txtChisoCD.Text) < dr("ChiSoCD") Or CInt(txtChisoTD.Text) < dr("ChiSoTD") Then
                 MessageBox.Show("Chỉ số nhập sai")
                 Exit Sub
@@ -57,6 +63,10 @@ Public Class frmTinhTien
             chisoCT2 = txtChisoCD.Text
             chisoCT3 = txtChisoTD.Text
         Next
+        If flagCT = 0 Then
+            MessageBox.Show("Mã công tơ sai")
+            Exit Sub
+        End If
         For Each dr In dtKH.Select("MaCT='" + txtMaCT.Text + "'")
             lvwHoadon.Items.Add("Tên KH")
             lvwHoadon.Items(i).SubItems.Add(dr("TenKH"))

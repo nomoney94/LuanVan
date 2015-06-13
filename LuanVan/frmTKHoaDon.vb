@@ -86,7 +86,7 @@ Public Class frmTKHoaDon
                     lvwHoadon.Items(i).SubItems.Add(dr("TinhTrangThanhToan"))
                 Next
             Next
-        ElseIf cboTimKiem.Text = "Mã Khách Hàng" Then
+        ElseIf cboTimKiem.Text = "Mã khách hàng" Then
             If txtMaKH.Text = "" Then
                 MessageBox.Show("Nhập mã khách hàng")
                 Exit Sub
@@ -199,5 +199,16 @@ Public Class frmTKHoaDon
         Catch ex As Exception
             MessageBox.Show("Không thể cập nhật CSDL", "Thông báo")
         End Try
+    End Sub
+
+    Private Sub btnBocatdien_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBocatdien.Click
+        If txtMaKH.Text = "" Then
+            MessageBox.Show("Nhập mã khách hàng")
+            Exit Sub
+        End If
+        Dim dr As DataRow
+        For Each dr In dtKH.Select("MaKH='" + txtMaKH.Text + "'")
+            dr("TinhTrangSuDung") = "Hoạt động"
+        Next
     End Sub
 End Class
