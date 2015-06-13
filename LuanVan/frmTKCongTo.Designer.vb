@@ -24,17 +24,21 @@ Partial Class frmTKCongTo
     Private Sub InitializeComponent()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.cboTimKiem = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtMaCT = New System.Windows.Forms.TextBox()
         Me.btnTim = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.cboCapDA = New System.Windows.Forms.ComboBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.lvwCongto = New System.Windows.Forms.ListView()
+        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -43,7 +47,7 @@ Partial Class frmTKCongTo
         Me.TableLayoutPanel1.ColumnCount = 1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel2, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.DataGridView1, 0, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.lvwCongto, 0, 1)
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(12, 12)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 2
@@ -56,8 +60,8 @@ Partial Class frmTKCongTo
         'TableLayoutPanel2
         '
         Me.TableLayoutPanel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel2.AutoSize = True
         Me.TableLayoutPanel2.ColumnCount = 3
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102.0!))
@@ -78,16 +82,6 @@ Partial Class frmTKCongTo
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.Size = New System.Drawing.Size(528, 82)
         Me.TableLayoutPanel2.TabIndex = 0
-        '
-        'Label3
-        '
-        Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(3, 62)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(68, 13)
-        Me.Label3.TabIndex = 4
-        Me.Label3.Text = "Cấp điện áp:"
         '
         'cboTimKiem
         '
@@ -135,6 +129,16 @@ Partial Class frmTKCongTo
         Me.btnTim.Text = "Tìm"
         Me.btnTim.UseVisualStyleBackColor = True
         '
+        'Label3
+        '
+        Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(3, 62)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(68, 13)
+        Me.Label3.TabIndex = 4
+        Me.Label3.Text = "Cấp điện áp:"
+        '
         'cboCapDA
         '
         Me.cboCapDA.FormattingEnabled = True
@@ -143,17 +147,42 @@ Partial Class frmTKCongTo
         Me.cboCapDA.Size = New System.Drawing.Size(121, 21)
         Me.cboCapDA.TabIndex = 7
         '
-        'DataGridView1
+        'lvwCongto
         '
-        Me.DataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(3, 91)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(528, 264)
-        Me.DataGridView1.TabIndex = 1
+        Me.lvwCongto.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5})
+        Me.lvwCongto.FullRowSelect = True
+        Me.lvwCongto.GridLines = True
+        Me.lvwCongto.Location = New System.Drawing.Point(3, 91)
+        Me.lvwCongto.Name = "lvwCongto"
+        Me.lvwCongto.Size = New System.Drawing.Size(527, 261)
+        Me.lvwCongto.TabIndex = 1
+        Me.lvwCongto.UseCompatibleStateImageBehavior = False
+        Me.lvwCongto.View = System.Windows.Forms.View.Details
+        '
+        'ColumnHeader1
+        '
+        Me.ColumnHeader1.Text = "Mã công tơ"
+        Me.ColumnHeader1.Width = 90
+        '
+        'ColumnHeader2
+        '
+        Me.ColumnHeader2.Text = "Kỳ"
+        Me.ColumnHeader2.Width = 81
+        '
+        'ColumnHeader3
+        '
+        Me.ColumnHeader3.Text = "Chỉ số bình thường"
+        Me.ColumnHeader3.Width = 115
+        '
+        'ColumnHeader4
+        '
+        Me.ColumnHeader4.Text = "Chỉ số cao điểm"
+        Me.ColumnHeader4.Width = 112
+        '
+        'ColumnHeader5
+        '
+        Me.ColumnHeader5.Text = "Chỉ số thấp điểm"
+        Me.ColumnHeader5.Width = 116
         '
         'frmTKCongTo
         '
@@ -168,19 +197,23 @@ Partial Class frmTKCongTo
         Me.TableLayoutPanel1.PerformLayout()
         Me.TableLayoutPanel2.ResumeLayout(False)
         Me.TableLayoutPanel2.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents TableLayoutPanel2 As System.Windows.Forms.TableLayoutPanel
-    Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents cboTimKiem As System.Windows.Forms.ComboBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents txtMaCT As System.Windows.Forms.TextBox
     Friend WithEvents btnTim As System.Windows.Forms.Button
+    Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents cboCapDA As System.Windows.Forms.ComboBox
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents lvwCongto As System.Windows.Forms.ListView
+    Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader5 As System.Windows.Forms.ColumnHeader
 End Class

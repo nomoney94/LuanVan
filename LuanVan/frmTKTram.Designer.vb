@@ -27,10 +27,11 @@ Partial Class frmTKTram
         Me.btnTim = New System.Windows.Forms.Button()
         Me.txtMaTram = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.lvwTram = New System.Windows.Forms.ListView()
+        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -39,25 +40,25 @@ Partial Class frmTKTram
         Me.TableLayoutPanel1.ColumnCount = 1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel2, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.DataGridView1, 0, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.lvwTram, 0, 1)
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(12, 12)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 2
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(534, 307)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(417, 307)
         Me.TableLayoutPanel1.TabIndex = 2
         '
         'TableLayoutPanel2
         '
         Me.TableLayoutPanel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel2.AutoSize = True
         Me.TableLayoutPanel2.ColumnCount = 3
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142.0!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100.0!))
         Me.TableLayoutPanel2.Controls.Add(Me.btnTim, 2, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.txtMaTram, 1, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.Label2, 0, 0)
@@ -65,7 +66,7 @@ Partial Class frmTKTram
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 1
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(528, 29)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(411, 29)
         Me.TableLayoutPanel2.TabIndex = 0
         '
         'btnTim
@@ -95,24 +96,34 @@ Partial Class frmTKTram
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Mã trạm:"
         '
-        'DataGridView1
+        'lvwTram
         '
-        Me.DataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(3, 38)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(528, 266)
-        Me.DataGridView1.TabIndex = 1
+        Me.lvwTram.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2})
+        Me.lvwTram.FullRowSelect = True
+        Me.lvwTram.GridLines = True
+        Me.lvwTram.Location = New System.Drawing.Point(3, 38)
+        Me.lvwTram.Name = "lvwTram"
+        Me.lvwTram.Size = New System.Drawing.Size(411, 264)
+        Me.lvwTram.TabIndex = 1
+        Me.lvwTram.UseCompatibleStateImageBehavior = False
+        Me.lvwTram.View = System.Windows.Forms.View.Details
+        '
+        'ColumnHeader1
+        '
+        Me.ColumnHeader1.Text = "Mã trạm"
+        Me.ColumnHeader1.Width = 93
+        '
+        'ColumnHeader2
+        '
+        Me.ColumnHeader2.Text = "Tên trạm"
+        Me.ColumnHeader2.Width = 130
         '
         'frmTKTram
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(554, 324)
+        Me.ClientSize = New System.Drawing.Size(438, 324)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Name = "frmTKTram"
         Me.Text = "frmTKTram"
@@ -120,7 +131,6 @@ Partial Class frmTKTram
         Me.TableLayoutPanel1.PerformLayout()
         Me.TableLayoutPanel2.ResumeLayout(False)
         Me.TableLayoutPanel2.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -130,5 +140,7 @@ Partial Class frmTKTram
     Friend WithEvents btnTim As System.Windows.Forms.Button
     Friend WithEvents txtMaTram As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents lvwTram As System.Windows.Forms.ListView
+    Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
 End Class

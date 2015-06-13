@@ -23,7 +23,7 @@ Public Class frmTinhTien
     Private Sub btnTinhTien_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnTinhTien.Click
         Dim dr, dr1, dr2, row, row1 As DataRow
         Dim strfind As String
-        Dim chiso, chisoCD, chisoTD, chisoluu As Integer
+        Dim chiso, chisoCD, chisoTD, chisoHD, chisoCT1, chisoCT2, chisoCT3 As Integer
         Dim flag As Integer = 1
         Dim thanhtien As Integer = 0
         Dim ma As Integer = 0
@@ -52,7 +52,10 @@ Public Class frmTinhTien
             chiso = CInt(txtChiso.Text) - dr("ChiSo")
             chisoCD = CInt(txtChisoCD.Text) - dr("ChisoCD")
             chisoTD = CInt(txtChisoTD.Text) - dr("ChisoTD")
-            chisoluu = chiso + chisoCD + chisoTD
+            chisoHD = chiso + chisoCD + chisoTD
+            chisoCT1 = txtChiso.Text
+            chisoCT2 = txtChisoCD.Text
+            chisoCT3 = txtChisoTD.Text
         Next
         For Each dr In dtKH.Select("MaCT='" + txtMaCT.Text + "'")
             lvwHoadon.Items.Add("Tên KH")
@@ -82,7 +85,7 @@ Public Class frmTinhTien
                     lvwHoadon.Items.RemoveAt(i - 1)
                     lvwHoadon.Items.RemoveAt(i - 2)
                     i -= 2
-                    chisoluu = chiso
+                    chisoHD = chiso
                     chisoCD = 0
                     chisoTD = 0
                 ElseIf dr("MaDT") = "DT41" Or dr("MaDT") = "DT51" Or dr("MaDT") = "DT71" Then
@@ -90,7 +93,7 @@ Public Class frmTinhTien
                     lvwHoadon.Items.RemoveAt(i - 1)
                     lvwHoadon.Items.RemoveAt(i - 2)
                     i -= 2
-                    chisoluu = chiso
+                    chisoHD = chiso
                     chisoCD = 0
                     chisoTD = 0
                 ElseIf dr("MaDT") = "DT6111" Or dr("MaDT") = "DT6211" Then
@@ -98,7 +101,7 @@ Public Class frmTinhTien
                     lvwHoadon.Items.RemoveAt(i - 1)
                     lvwHoadon.Items.RemoveAt(i - 2)
                     i -= 2
-                    chisoluu = chiso
+                    chisoHD = chiso
                     chisoCD = 0
                     chisoTD = 0
                 ElseIf dr("MaDT") = "DT6112" Or dr("MaDT") = "DT6212" Then
@@ -106,7 +109,7 @@ Public Class frmTinhTien
                     lvwHoadon.Items.RemoveAt(i - 1)
                     lvwHoadon.Items.RemoveAt(i - 2)
                     i -= 2
-                    chisoluu = chiso
+                    chisoHD = chiso
                     chisoCD = 0
                     chisoTD = 0
                 ElseIf dr("MaDT") = "DT11" Then
@@ -122,7 +125,7 @@ Public Class frmTinhTien
                     lvwHoadon.Items.RemoveAt(i - 1)
                     lvwHoadon.Items.RemoveAt(i - 2)
                     i -= 2
-                    chisoluu = chiso
+                    chisoHD = chiso
                     chisoCD = 0
                     chisoTD = 0
                 ElseIf dr("MaDT") = "DT212" Then
@@ -130,7 +133,7 @@ Public Class frmTinhTien
                     lvwHoadon.Items.RemoveAt(i - 1)
                     lvwHoadon.Items.RemoveAt(i - 2)
                     i -= 2
-                    chisoluu = chiso
+                    chisoHD = chiso
                     chisoCD = 0
                     chisoTD = 0
                 ElseIf dr("MaDT") = "DT221" Then
@@ -138,7 +141,7 @@ Public Class frmTinhTien
                     lvwHoadon.Items.RemoveAt(i - 1)
                     lvwHoadon.Items.RemoveAt(i - 2)
                     i -= 2
-                    chisoluu = chiso
+                    chisoHD = chiso
                     chisoCD = 0
                     chisoTD = 0
                 ElseIf dr("MaDT") = "DT222" Then
@@ -146,7 +149,7 @@ Public Class frmTinhTien
                     lvwHoadon.Items.RemoveAt(i - 1)
                     lvwHoadon.Items.RemoveAt(i - 2)
                     i -= 2
-                    chisoluu = chiso
+                    chisoHD = chiso
                     chisoCD = 0
                     chisoTD = 0
                 ElseIf dr("MaDT") = "DT31" Then
@@ -196,16 +199,16 @@ Public Class frmTinhTien
         row = dtCSCT.NewRow
         row("MaCT") = txtMaCT.Text
         row("Ky") = dtpThang.Text
-        row("ChiSo") = chisoluu
-        row("ChisoCD") = chisoCD
-        row("ChisoTD") = chisoTD
+        row("ChiSo") = chisoCT1
+        row("ChisoCD") = chisoCT2
+        row("ChisoTD") = chisoCT3
         row("NgayDauKy") = Convert.ToString(CInt(Month(dtpThang.Text)) - 1) + "-" + Convert.ToString(Year(dtpThang.Text))
         row("NgayCuoiKy") = dtpThang.Text
         dtCSCT.Rows.Add(row)
         row1 = dtHD.NewRow
         row1("MaHD") = ma + 1
         row1("MaKH") = lvwHoadon.Items(2).SubItems(1).Text
-        row1("DienNangTieuThu") = chisoluu
+        row1("DienNangTieuThu") = chisoHD
         row1("ThanhTien") = thanhtien
         row1("TinhTrangThanhToan") = "Chưa"
         row1("Ky") = dtpThang.Text

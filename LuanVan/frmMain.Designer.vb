@@ -28,6 +28,7 @@ Partial Class frmMain
         Me.tsmiExcel = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiTTDonVi = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiCapNhatBG = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmiTinhTien = New System.Windows.Forms.ToolStripMenuItem()
         Me.TìmKiếmToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiTKKhachHang = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiTKCongTo = New System.Windows.Forms.ToolStripMenuItem()
@@ -37,7 +38,6 @@ Partial Class frmMain
         Me.tsmiTKeLDTT = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiTKeDoanhThu = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiThoat = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tsmiTinhTien = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -90,6 +90,15 @@ Partial Class frmMain
         Me.tsmiCapNhatBG.Text = "Cập nhật bảng giá"
         Me.tsmiCapNhatBG.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
+        'tsmiTinhTien
+        '
+        Me.tsmiTinhTien.Image = Global.LuanVan.My.Resources.Resources.Cash_icon
+        Me.tsmiTinhTien.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.tsmiTinhTien.Name = "tsmiTinhTien"
+        Me.tsmiTinhTien.Size = New System.Drawing.Size(66, 67)
+        Me.tsmiTinhTien.Text = "Tính tiền"
+        Me.tsmiTinhTien.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
         'TìmKiếmToolStripMenuItem
         '
         Me.TìmKiếmToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmiTKKhachHang, Me.tsmiTKCongTo, Me.tsmiTKTram, Me.tsmiTKHoaDon})
@@ -103,25 +112,25 @@ Partial Class frmMain
         'tsmiTKKhachHang
         '
         Me.tsmiTKKhachHang.Name = "tsmiTKKhachHang"
-        Me.tsmiTKKhachHang.Size = New System.Drawing.Size(152, 22)
+        Me.tsmiTKKhachHang.Size = New System.Drawing.Size(137, 22)
         Me.tsmiTKKhachHang.Text = "Khách hàng"
         '
         'tsmiTKCongTo
         '
         Me.tsmiTKCongTo.Name = "tsmiTKCongTo"
-        Me.tsmiTKCongTo.Size = New System.Drawing.Size(152, 22)
+        Me.tsmiTKCongTo.Size = New System.Drawing.Size(137, 22)
         Me.tsmiTKCongTo.Text = "Công tơ"
         '
         'tsmiTKTram
         '
         Me.tsmiTKTram.Name = "tsmiTKTram"
-        Me.tsmiTKTram.Size = New System.Drawing.Size(152, 22)
+        Me.tsmiTKTram.Size = New System.Drawing.Size(137, 22)
         Me.tsmiTKTram.Text = "Trạm"
         '
         'tsmiTKHoaDon
         '
         Me.tsmiTKHoaDon.Name = "tsmiTKHoaDon"
-        Me.tsmiTKHoaDon.Size = New System.Drawing.Size(152, 22)
+        Me.tsmiTKHoaDon.Size = New System.Drawing.Size(137, 22)
         Me.tsmiTKHoaDon.Text = "Hóa đơn"
         '
         'ThốngKêToolStripMenuItem
@@ -154,15 +163,6 @@ Partial Class frmMain
         Me.tsmiThoat.Size = New System.Drawing.Size(60, 67)
         Me.tsmiThoat.Text = "Thoát"
         Me.tsmiThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        '
-        'tsmiTinhTien
-        '
-        Me.tsmiTinhTien.Image = Global.LuanVan.My.Resources.Resources.Cash_icon
-        Me.tsmiTinhTien.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.tsmiTinhTien.Name = "tsmiTinhTien"
-        Me.tsmiTinhTien.Size = New System.Drawing.Size(66, 67)
-        Me.tsmiTinhTien.Text = "Tính tiền"
-        Me.tsmiTinhTien.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
         'frmMain
         '

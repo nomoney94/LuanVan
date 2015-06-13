@@ -37,6 +37,7 @@ Partial Class frmTKKhachHang
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.btnXemhoadon = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.SuspendLayout()
@@ -53,18 +54,19 @@ Partial Class frmTKKhachHang
         Me.TableLayoutPanel1.RowCount = 2
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(534, 357)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(606, 357)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'TableLayoutPanel2
         '
         Me.TableLayoutPanel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel2.AutoSize = True
-        Me.TableLayoutPanel2.ColumnCount = 3
+        Me.TableLayoutPanel2.ColumnCount = 4
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 284.0!))
         Me.TableLayoutPanel2.Controls.Add(Me.txtTenKH, 1, 2)
         Me.TableLayoutPanel2.Controls.Add(Me.Label3, 0, 2)
@@ -73,13 +75,14 @@ Partial Class frmTKKhachHang
         Me.TableLayoutPanel2.Controls.Add(Me.Label2, 0, 1)
         Me.TableLayoutPanel2.Controls.Add(Me.txtMaKH, 1, 1)
         Me.TableLayoutPanel2.Controls.Add(Me.btnTim, 2, 0)
+        Me.TableLayoutPanel2.Controls.Add(Me.btnXemhoadon, 3, 0)
         Me.TableLayoutPanel2.Location = New System.Drawing.Point(3, 3)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 3
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(528, 81)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(600, 81)
         Me.TableLayoutPanel2.TabIndex = 0
         '
         'txtTenKH
@@ -153,14 +156,14 @@ Partial Class frmTKKhachHang
         'lvwKH
         '
         Me.lvwKH.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lvwKH.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5})
         Me.lvwKH.FullRowSelect = True
         Me.lvwKH.GridLines = True
         Me.lvwKH.Location = New System.Drawing.Point(3, 90)
         Me.lvwKH.Name = "lvwKH"
-        Me.lvwKH.Size = New System.Drawing.Size(528, 264)
+        Me.lvwKH.Size = New System.Drawing.Size(600, 264)
         Me.lvwKH.TabIndex = 1
         Me.lvwKH.UseCompatibleStateImageBehavior = False
         Me.lvwKH.View = System.Windows.Forms.View.Details
@@ -189,6 +192,16 @@ Partial Class frmTKKhachHang
         '
         Me.ColumnHeader5.Text = "Địa chỉ"
         Me.ColumnHeader5.Width = 167
+        '
+        'btnXemhoadon
+        '
+        Me.btnXemhoadon.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.btnXemhoadon.Location = New System.Drawing.Point(319, 3)
+        Me.btnXemhoadon.Name = "btnXemhoadon"
+        Me.btnXemhoadon.Size = New System.Drawing.Size(87, 23)
+        Me.btnXemhoadon.TabIndex = 7
+        Me.btnXemhoadon.Text = "Xem hóa đơn"
+        Me.btnXemhoadon.UseVisualStyleBackColor = True
         '
         'frmTKKhachHang
         '
@@ -222,4 +235,5 @@ Partial Class frmTKKhachHang
     Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader5 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents btnXemhoadon As System.Windows.Forms.Button
 End Class

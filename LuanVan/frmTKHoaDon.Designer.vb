@@ -30,11 +30,21 @@ Partial Class frmTKHoaDon
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtMaKH = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.dtpKy = New System.Windows.Forms.DateTimePicker()
         Me.btnTim = New System.Windows.Forms.Button()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.btnInhoadon = New System.Windows.Forms.Button()
+        Me.btnNhacnho = New System.Windows.Forms.Button()
+        Me.lvwHoadon = New System.Windows.Forms.ListView()
+        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -43,46 +53,52 @@ Partial Class frmTKHoaDon
         Me.TableLayoutPanel1.ColumnCount = 1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel2, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.DataGridView1, 0, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.lvwHoadon, 0, 1)
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(12, 12)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 2
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(534, 357)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(584, 383)
         Me.TableLayoutPanel1.TabIndex = 1
         '
         'TableLayoutPanel2
         '
         Me.TableLayoutPanel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel2.AutoSize = True
-        Me.TableLayoutPanel2.ColumnCount = 3
+        Me.TableLayoutPanel2.ColumnCount = 4
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142.0!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 284.0!))
-        Me.TableLayoutPanel2.Controls.Add(Me.txtMaHD, 1, 2)
-        Me.TableLayoutPanel2.Controls.Add(Me.Label3, 0, 2)
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
+        Me.TableLayoutPanel2.Controls.Add(Me.txtMaHD, 1, 3)
+        Me.TableLayoutPanel2.Controls.Add(Me.Label3, 0, 3)
         Me.TableLayoutPanel2.Controls.Add(Me.cboTimKiem, 1, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.Label1, 0, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.Label2, 0, 1)
-        Me.TableLayoutPanel2.Controls.Add(Me.txtMaKH, 1, 1)
+        Me.TableLayoutPanel2.Controls.Add(Me.Label2, 0, 2)
+        Me.TableLayoutPanel2.Controls.Add(Me.txtMaKH, 1, 2)
+        Me.TableLayoutPanel2.Controls.Add(Me.Label4, 0, 1)
+        Me.TableLayoutPanel2.Controls.Add(Me.dtpKy, 1, 1)
         Me.TableLayoutPanel2.Controls.Add(Me.btnTim, 2, 0)
+        Me.TableLayoutPanel2.Controls.Add(Me.btnInhoadon, 2, 1)
+        Me.TableLayoutPanel2.Controls.Add(Me.btnNhacnho, 3, 0)
         Me.TableLayoutPanel2.Location = New System.Drawing.Point(3, 3)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
-        Me.TableLayoutPanel2.RowCount = 3
+        Me.TableLayoutPanel2.RowCount = 4
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(528, 81)
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(578, 110)
         Me.TableLayoutPanel2.TabIndex = 0
         '
         'txtMaHD
         '
         Me.txtMaHD.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.txtMaHD.Location = New System.Drawing.Point(105, 58)
+        Me.txtMaHD.Location = New System.Drawing.Point(105, 87)
         Me.txtMaHD.Name = "txtMaHD"
         Me.txtMaHD.Size = New System.Drawing.Size(121, 20)
         Me.txtMaHD.TabIndex = 5
@@ -91,7 +107,7 @@ Partial Class frmTKHoaDon
         '
         Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(3, 61)
+        Me.Label3.Location = New System.Drawing.Point(3, 90)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(68, 13)
         Me.Label3.TabIndex = 4
@@ -120,7 +136,7 @@ Partial Class frmTKHoaDon
         '
         Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(3, 35)
+        Me.Label2.Location = New System.Drawing.Point(3, 64)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(85, 13)
         Me.Label2.TabIndex = 2
@@ -129,31 +145,104 @@ Partial Class frmTKHoaDon
         'txtMaKH
         '
         Me.txtMaKH.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.txtMaKH.Location = New System.Drawing.Point(105, 32)
+        Me.txtMaKH.Location = New System.Drawing.Point(105, 61)
         Me.txtMaKH.Name = "txtMaKH"
         Me.txtMaKH.Size = New System.Drawing.Size(121, 20)
         Me.txtMaKH.TabIndex = 3
+        '
+        'Label4
+        '
+        Me.Label4.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(3, 37)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(19, 13)
+        Me.Label4.TabIndex = 7
+        Me.Label4.Text = "Kỳ"
+        '
+        'dtpKy
+        '
+        Me.dtpKy.CustomFormat = "MM/yyyy"
+        Me.dtpKy.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dtpKy.Location = New System.Drawing.Point(105, 32)
+        Me.dtpKy.Name = "dtpKy"
+        Me.dtpKy.Size = New System.Drawing.Size(121, 20)
+        Me.dtpKy.TabIndex = 0
         '
         'btnTim
         '
         Me.btnTim.Location = New System.Drawing.Point(247, 3)
         Me.btnTim.Name = "btnTim"
-        Me.btnTim.Size = New System.Drawing.Size(66, 23)
+        Me.btnTim.Size = New System.Drawing.Size(81, 23)
         Me.btnTim.TabIndex = 6
         Me.btnTim.Text = "Tìm"
         Me.btnTim.UseVisualStyleBackColor = True
         '
-        'DataGridView1
+        'btnInhoadon
         '
-        Me.DataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(3, 90)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(528, 264)
-        Me.DataGridView1.TabIndex = 1
+        Me.btnInhoadon.Location = New System.Drawing.Point(247, 32)
+        Me.btnInhoadon.Name = "btnInhoadon"
+        Me.btnInhoadon.Size = New System.Drawing.Size(81, 23)
+        Me.btnInhoadon.TabIndex = 8
+        Me.btnInhoadon.Text = "In hóa đơn"
+        Me.btnInhoadon.UseVisualStyleBackColor = True
+        '
+        'btnNhacnho
+        '
+        Me.btnNhacnho.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.btnNhacnho.Location = New System.Drawing.Point(334, 3)
+        Me.btnNhacnho.Name = "btnNhacnho"
+        Me.btnNhacnho.Size = New System.Drawing.Size(75, 23)
+        Me.btnNhacnho.TabIndex = 10
+        Me.btnNhacnho.Text = "Nhắc nhở"
+        Me.btnNhacnho.UseVisualStyleBackColor = True
+        '
+        'lvwHoadon
+        '
+        Me.lvwHoadon.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7})
+        Me.lvwHoadon.FullRowSelect = True
+        Me.lvwHoadon.GridLines = True
+        Me.lvwHoadon.Location = New System.Drawing.Point(3, 119)
+        Me.lvwHoadon.Name = "lvwHoadon"
+        Me.lvwHoadon.Size = New System.Drawing.Size(528, 241)
+        Me.lvwHoadon.TabIndex = 1
+        Me.lvwHoadon.UseCompatibleStateImageBehavior = False
+        Me.lvwHoadon.View = System.Windows.Forms.View.Details
+        '
+        'ColumnHeader1
+        '
+        Me.ColumnHeader1.Text = "Tên Khách Hàng"
+        Me.ColumnHeader1.Width = 134
+        '
+        'ColumnHeader2
+        '
+        Me.ColumnHeader2.Text = "Địa chỉ"
+        Me.ColumnHeader2.Width = 79
+        '
+        'ColumnHeader3
+        '
+        Me.ColumnHeader3.Text = "Mã KH"
+        Me.ColumnHeader3.Width = 52
+        '
+        'ColumnHeader4
+        '
+        Me.ColumnHeader4.Text = "Kỳ"
+        Me.ColumnHeader4.Width = 72
+        '
+        'ColumnHeader5
+        '
+        Me.ColumnHeader5.Text = "ĐNTT"
+        Me.ColumnHeader5.Width = 46
+        '
+        'ColumnHeader6
+        '
+        Me.ColumnHeader6.Text = "Thành Tiền"
+        Me.ColumnHeader6.Width = 68
+        '
+        'ColumnHeader7
+        '
+        Me.ColumnHeader7.Text = "Tình Trạng TT"
+        Me.ColumnHeader7.Width = 73
         '
         'frmTKHoaDon
         '
@@ -168,7 +257,6 @@ Partial Class frmTKHoaDon
         Me.TableLayoutPanel1.PerformLayout()
         Me.TableLayoutPanel2.ResumeLayout(False)
         Me.TableLayoutPanel2.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -182,5 +270,16 @@ Partial Class frmTKHoaDon
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents txtMaKH As System.Windows.Forms.TextBox
     Friend WithEvents btnTim As System.Windows.Forms.Button
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents dtpKy As System.Windows.Forms.DateTimePicker
+    Friend WithEvents btnInhoadon As System.Windows.Forms.Button
+    Friend WithEvents lvwHoadon As System.Windows.Forms.ListView
+    Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader5 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader6 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader7 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents btnNhacnho As System.Windows.Forms.Button
 End Class
