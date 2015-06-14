@@ -52,13 +52,13 @@ Partial Class frmTKTram
         'TableLayoutPanel2
         '
         Me.TableLayoutPanel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel2.AutoSize = True
         Me.TableLayoutPanel2.ColumnCount = 3
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142.0!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 167.0!))
         Me.TableLayoutPanel2.Controls.Add(Me.btnTim, 2, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.txtMaTram, 1, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.Label2, 0, 0)
@@ -98,12 +98,15 @@ Partial Class frmTKTram
         '
         'lvwTram
         '
+        Me.lvwTram.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lvwTram.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2})
         Me.lvwTram.FullRowSelect = True
         Me.lvwTram.GridLines = True
         Me.lvwTram.Location = New System.Drawing.Point(3, 38)
         Me.lvwTram.Name = "lvwTram"
-        Me.lvwTram.Size = New System.Drawing.Size(411, 264)
+        Me.lvwTram.Size = New System.Drawing.Size(411, 266)
         Me.lvwTram.TabIndex = 1
         Me.lvwTram.UseCompatibleStateImageBehavior = False
         Me.lvwTram.View = System.Windows.Forms.View.Details

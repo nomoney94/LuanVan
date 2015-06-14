@@ -35,6 +35,7 @@ Partial Class frmTKHoaDon
         Me.btnTim = New System.Windows.Forms.Button()
         Me.btnInhoadon = New System.Windows.Forms.Button()
         Me.btnNhacnho = New System.Windows.Forms.Button()
+        Me.btnBocatdien = New System.Windows.Forms.Button()
         Me.lvwHoadon = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -43,7 +44,6 @@ Partial Class frmTKHoaDon
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.btnBocatdien = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.SuspendLayout()
@@ -67,14 +67,15 @@ Partial Class frmTKHoaDon
         'TableLayoutPanel2
         '
         Me.TableLayoutPanel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel2.AutoSize = True
-        Me.TableLayoutPanel2.ColumnCount = 4
+        Me.TableLayoutPanel2.ColumnCount = 5
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TableLayoutPanel2.Controls.Add(Me.txtMaHD, 1, 3)
         Me.TableLayoutPanel2.Controls.Add(Me.Label3, 0, 3)
         Me.TableLayoutPanel2.Controls.Add(Me.cboTimKiem, 1, 0)
@@ -86,7 +87,7 @@ Partial Class frmTKHoaDon
         Me.TableLayoutPanel2.Controls.Add(Me.btnTim, 2, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.btnInhoadon, 2, 1)
         Me.TableLayoutPanel2.Controls.Add(Me.btnNhacnho, 3, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.btnBocatdien, 2, 2)
+        Me.TableLayoutPanel2.Controls.Add(Me.btnBocatdien, 4, 0)
         Me.TableLayoutPanel2.Location = New System.Drawing.Point(3, 3)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 4
@@ -94,13 +95,13 @@ Partial Class frmTKHoaDon
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(578, 113)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(578, 110)
         Me.TableLayoutPanel2.TabIndex = 0
         '
         'txtMaHD
         '
         Me.txtMaHD.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.txtMaHD.Location = New System.Drawing.Point(105, 90)
+        Me.txtMaHD.Location = New System.Drawing.Point(105, 87)
         Me.txtMaHD.Name = "txtMaHD"
         Me.txtMaHD.Size = New System.Drawing.Size(121, 20)
         Me.txtMaHD.TabIndex = 5
@@ -109,7 +110,7 @@ Partial Class frmTKHoaDon
         '
         Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(3, 93)
+        Me.Label3.Location = New System.Drawing.Point(3, 90)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(68, 13)
         Me.Label3.TabIndex = 4
@@ -118,6 +119,7 @@ Partial Class frmTKHoaDon
         'cboTimKiem
         '
         Me.cboTimKiem.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.cboTimKiem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboTimKiem.FormattingEnabled = True
         Me.cboTimKiem.Location = New System.Drawing.Point(105, 4)
         Me.cboTimKiem.Name = "cboTimKiem"
@@ -138,7 +140,7 @@ Partial Class frmTKHoaDon
         '
         Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(3, 66)
+        Me.Label2.Location = New System.Drawing.Point(3, 64)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(85, 13)
         Me.Label2.TabIndex = 2
@@ -147,7 +149,7 @@ Partial Class frmTKHoaDon
         'txtMaKH
         '
         Me.txtMaKH.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.txtMaKH.Location = New System.Drawing.Point(105, 62)
+        Me.txtMaKH.Location = New System.Drawing.Point(105, 61)
         Me.txtMaKH.Name = "txtMaKH"
         Me.txtMaKH.Size = New System.Drawing.Size(121, 20)
         Me.txtMaKH.TabIndex = 3
@@ -199,14 +201,27 @@ Partial Class frmTKHoaDon
         Me.btnNhacnho.Text = "Nhắc nhở"
         Me.btnNhacnho.UseVisualStyleBackColor = True
         '
+        'btnBocatdien
+        '
+        Me.btnBocatdien.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.btnBocatdien.Location = New System.Drawing.Point(415, 3)
+        Me.btnBocatdien.Name = "btnBocatdien"
+        Me.btnBocatdien.Size = New System.Drawing.Size(75, 23)
+        Me.btnBocatdien.TabIndex = 11
+        Me.btnBocatdien.Text = "Bỏ cắt điện"
+        Me.btnBocatdien.UseVisualStyleBackColor = True
+        '
         'lvwHoadon
         '
+        Me.lvwHoadon.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lvwHoadon.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7})
         Me.lvwHoadon.FullRowSelect = True
         Me.lvwHoadon.GridLines = True
-        Me.lvwHoadon.Location = New System.Drawing.Point(3, 122)
+        Me.lvwHoadon.Location = New System.Drawing.Point(3, 119)
         Me.lvwHoadon.Name = "lvwHoadon"
-        Me.lvwHoadon.Size = New System.Drawing.Size(528, 241)
+        Me.lvwHoadon.Size = New System.Drawing.Size(578, 261)
         Me.lvwHoadon.TabIndex = 1
         Me.lvwHoadon.UseCompatibleStateImageBehavior = False
         Me.lvwHoadon.View = System.Windows.Forms.View.Details
@@ -246,22 +261,12 @@ Partial Class frmTKHoaDon
         Me.ColumnHeader7.Text = "Tình Trạng TT"
         Me.ColumnHeader7.Width = 73
         '
-        'btnBocatdien
-        '
-        Me.btnBocatdien.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.btnBocatdien.Location = New System.Drawing.Point(247, 61)
-        Me.btnBocatdien.Name = "btnBocatdien"
-        Me.btnBocatdien.Size = New System.Drawing.Size(81, 23)
-        Me.btnBocatdien.TabIndex = 11
-        Me.btnBocatdien.Text = "Bỏ cắt điện"
-        Me.btnBocatdien.UseVisualStyleBackColor = True
-        '
         'frmTKHoaDon
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(555, 377)
+        Me.ClientSize = New System.Drawing.Size(620, 409)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Name = "frmTKHoaDon"
         Me.Text = "frmTKHoaDon"

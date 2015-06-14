@@ -60,8 +60,8 @@ Partial Class frmTinhTien
         'TableLayoutPanel2
         '
         Me.TableLayoutPanel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel2.ColumnCount = 6
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125.0!))
@@ -204,12 +204,15 @@ Partial Class frmTinhTien
         '
         'lvwHoadon
         '
+        Me.lvwHoadon.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lvwHoadon.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2})
         Me.lvwHoadon.FullRowSelect = True
         Me.lvwHoadon.GridLines = True
         Me.lvwHoadon.Location = New System.Drawing.Point(3, 69)
         Me.lvwHoadon.Name = "lvwHoadon"
-        Me.lvwHoadon.Size = New System.Drawing.Size(498, 286)
+        Me.lvwHoadon.Size = New System.Drawing.Size(498, 288)
         Me.lvwHoadon.TabIndex = 1
         Me.lvwHoadon.UseCompatibleStateImageBehavior = False
         Me.lvwHoadon.View = System.Windows.Forms.View.Details

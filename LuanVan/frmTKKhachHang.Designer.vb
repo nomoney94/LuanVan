@@ -60,8 +60,8 @@ Partial Class frmTKKhachHang
         'TableLayoutPanel2
         '
         Me.TableLayoutPanel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel2.AutoSize = True
         Me.TableLayoutPanel2.ColumnCount = 4
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102.0!))
@@ -108,6 +108,7 @@ Partial Class frmTKKhachHang
         'cboTimKiem
         '
         Me.cboTimKiem.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.cboTimKiem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboTimKiem.FormattingEnabled = True
         Me.cboTimKiem.Location = New System.Drawing.Point(105, 4)
         Me.cboTimKiem.Name = "cboTimKiem"
@@ -166,8 +167,8 @@ Partial Class frmTKKhachHang
         'lvwKH
         '
         Me.lvwKH.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lvwKH.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5})
         Me.lvwKH.FullRowSelect = True
         Me.lvwKH.GridLines = True
@@ -208,7 +209,7 @@ Partial Class frmTKKhachHang
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(555, 375)
+        Me.ClientSize = New System.Drawing.Size(628, 375)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Name = "frmTKKhachHang"
         Me.Text = "frmTKKhachHang"

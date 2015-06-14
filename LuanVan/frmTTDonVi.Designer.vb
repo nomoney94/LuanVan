@@ -22,7 +22,6 @@ Partial Class frmTTDonVi
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.txtMSThue = New System.Windows.Forms.TextBox()
         Me.txtDTSC = New System.Windows.Forms.TextBox()
         Me.txtDT = New System.Windows.Forms.TextBox()
@@ -33,79 +32,46 @@ Partial Class frmTTDonVi
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtTenDV = New System.Windows.Forms.TextBox()
-        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.btnLuu = New System.Windows.Forms.Button()
-        Me.TableLayoutPanel2.SuspendLayout()
-        Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'TableLayoutPanel2
-        '
-        Me.TableLayoutPanel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TableLayoutPanel2.ColumnCount = 2
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.TableLayoutPanel2.Controls.Add(Me.txtMSThue, 1, 4)
-        Me.TableLayoutPanel2.Controls.Add(Me.txtDTSC, 1, 3)
-        Me.TableLayoutPanel2.Controls.Add(Me.txtDT, 1, 2)
-        Me.TableLayoutPanel2.Controls.Add(Me.txtDiaChi, 1, 1)
-        Me.TableLayoutPanel2.Controls.Add(Me.Label3, 0, 2)
-        Me.TableLayoutPanel2.Controls.Add(Me.Label1, 0, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.Label2, 0, 1)
-        Me.TableLayoutPanel2.Controls.Add(Me.Label4, 0, 3)
-        Me.TableLayoutPanel2.Controls.Add(Me.Label5, 0, 4)
-        Me.TableLayoutPanel2.Controls.Add(Me.txtTenDV, 1, 0)
-        Me.TableLayoutPanel2.Location = New System.Drawing.Point(3, 3)
-        Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
-        Me.TableLayoutPanel2.RowCount = 5
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(350, 135)
-        Me.TableLayoutPanel2.TabIndex = 5
         '
         'txtMSThue
         '
-        Me.txtMSThue.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.txtMSThue.Location = New System.Drawing.Point(163, 109)
+        Me.txtMSThue.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtMSThue.Location = New System.Drawing.Point(204, 143)
         Me.txtMSThue.Name = "txtMSThue"
-        Me.txtMSThue.Size = New System.Drawing.Size(158, 20)
+        Me.txtMSThue.Size = New System.Drawing.Size(158, 26)
         Me.txtMSThue.TabIndex = 9
         '
         'txtDTSC
         '
-        Me.txtDTSC.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.txtDTSC.Location = New System.Drawing.Point(163, 81)
+        Me.txtDTSC.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDTSC.Location = New System.Drawing.Point(204, 111)
         Me.txtDTSC.Name = "txtDTSC"
-        Me.txtDTSC.Size = New System.Drawing.Size(158, 20)
+        Me.txtDTSC.Size = New System.Drawing.Size(158, 26)
         Me.txtDTSC.TabIndex = 8
         '
         'txtDT
         '
-        Me.txtDT.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.txtDT.Location = New System.Drawing.Point(163, 55)
+        Me.txtDT.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDT.Location = New System.Drawing.Point(204, 79)
         Me.txtDT.Name = "txtDT"
-        Me.txtDT.Size = New System.Drawing.Size(158, 20)
+        Me.txtDT.Size = New System.Drawing.Size(158, 26)
         Me.txtDT.TabIndex = 7
         '
         'txtDiaChi
         '
-        Me.txtDiaChi.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.txtDiaChi.Location = New System.Drawing.Point(163, 29)
+        Me.txtDiaChi.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDiaChi.Location = New System.Drawing.Point(204, 47)
         Me.txtDiaChi.Name = "txtDiaChi"
-        Me.txtDiaChi.Size = New System.Drawing.Size(158, 20)
+        Me.txtDiaChi.Size = New System.Drawing.Size(158, 26)
         Me.txtDiaChi.TabIndex = 6
         '
         'Label3
         '
-        Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(3, 55)
+        Me.Label3.Location = New System.Drawing.Point(22, 82)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(85, 20)
         Me.Label3.TabIndex = 2
@@ -113,10 +79,9 @@ Partial Class frmTTDonVi
         '
         'Label1
         '
-        Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(3, 3)
+        Me.Label1.Location = New System.Drawing.Point(22, 18)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(85, 20)
         Me.Label1.TabIndex = 0
@@ -124,10 +89,9 @@ Partial Class frmTTDonVi
         '
         'Label2
         '
-        Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(3, 29)
+        Me.Label2.Location = New System.Drawing.Point(22, 50)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(61, 20)
         Me.Label2.TabIndex = 1
@@ -135,10 +99,9 @@ Partial Class frmTTDonVi
         '
         'Label4
         '
-        Me.Label4.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(3, 81)
+        Me.Label4.Location = New System.Drawing.Point(22, 114)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(154, 20)
         Me.Label4.TabIndex = 3
@@ -146,10 +109,9 @@ Partial Class frmTTDonVi
         '
         'Label5
         '
-        Me.Label5.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(3, 109)
+        Me.Label5.Location = New System.Drawing.Point(22, 146)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(92, 20)
         Me.Label5.TabIndex = 4
@@ -157,52 +119,44 @@ Partial Class frmTTDonVi
         '
         'txtTenDV
         '
-        Me.txtTenDV.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.txtTenDV.Location = New System.Drawing.Point(163, 3)
+        Me.txtTenDV.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTenDV.Location = New System.Drawing.Point(204, 15)
         Me.txtTenDV.Name = "txtTenDV"
-        Me.txtTenDV.Size = New System.Drawing.Size(158, 20)
+        Me.txtTenDV.Size = New System.Drawing.Size(158, 26)
         Me.txtTenDV.TabIndex = 5
-        '
-        'TableLayoutPanel1
-        '
-        Me.TableLayoutPanel1.ColumnCount = 1
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.TableLayoutPanel1.Controls.Add(Me.btnLuu, 0, 1)
-        Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel2, 0, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(12, 12)
-        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 2
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(356, 190)
-        Me.TableLayoutPanel1.TabIndex = 6
         '
         'btnLuu
         '
-        Me.btnLuu.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.btnLuu.Location = New System.Drawing.Point(149, 149)
+        Me.btnLuu.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnLuu.Location = New System.Drawing.Point(150, 185)
         Me.btnLuu.Name = "btnLuu"
-        Me.btnLuu.Size = New System.Drawing.Size(58, 33)
+        Me.btnLuu.Size = New System.Drawing.Size(80, 33)
         Me.btnLuu.TabIndex = 6
         Me.btnLuu.Text = "Lưu"
         Me.btnLuu.UseVisualStyleBackColor = True
         '
         'frmTTDonVi
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(382, 205)
-        Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.ClientSize = New System.Drawing.Size(388, 230)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.txtMSThue)
+        Me.Controls.Add(Me.btnLuu)
+        Me.Controls.Add(Me.txtDTSC)
+        Me.Controls.Add(Me.txtDT)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.txtDiaChi)
+        Me.Controls.Add(Me.txtTenDV)
+        Me.Controls.Add(Me.Label2)
         Me.Name = "frmTTDonVi"
         Me.Text = "Thông tin đơn vị"
-        Me.TableLayoutPanel2.ResumeLayout(False)
-        Me.TableLayoutPanel2.PerformLayout()
-        Me.TableLayoutPanel1.ResumeLayout(False)
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
-    Friend WithEvents TableLayoutPanel2 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents txtMSThue As System.Windows.Forms.TextBox
     Friend WithEvents txtDTSC As System.Windows.Forms.TextBox
     Friend WithEvents txtDT As System.Windows.Forms.TextBox
@@ -213,6 +167,5 @@ Partial Class frmTTDonVi
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents txtTenDV As System.Windows.Forms.TextBox
-    Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents btnLuu As System.Windows.Forms.Button
 End Class

@@ -24,12 +24,12 @@ Partial Class frmTKCongTo
     Private Sub InitializeComponent()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.cboTimKiem = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtMaCT = New System.Windows.Forms.TextBox()
         Me.btnTim = New System.Windows.Forms.Button()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.cboCapDA = New System.Windows.Forms.ComboBox()
         Me.lvwCongto = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -60,8 +60,8 @@ Partial Class frmTKCongTo
         'TableLayoutPanel2
         '
         Me.TableLayoutPanel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel2.AutoSize = True
         Me.TableLayoutPanel2.ColumnCount = 3
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102.0!))
@@ -83,9 +83,20 @@ Partial Class frmTKCongTo
         Me.TableLayoutPanel2.Size = New System.Drawing.Size(528, 82)
         Me.TableLayoutPanel2.TabIndex = 0
         '
+        'Label3
+        '
+        Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(3, 62)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(68, 13)
+        Me.Label3.TabIndex = 4
+        Me.Label3.Text = "Cấp điện áp:"
+        '
         'cboTimKiem
         '
         Me.cboTimKiem.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.cboTimKiem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboTimKiem.FormattingEnabled = True
         Me.cboTimKiem.Location = New System.Drawing.Point(105, 4)
         Me.cboTimKiem.Name = "cboTimKiem"
@@ -129,18 +140,9 @@ Partial Class frmTKCongTo
         Me.btnTim.Text = "Tìm"
         Me.btnTim.UseVisualStyleBackColor = True
         '
-        'Label3
-        '
-        Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(3, 62)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(68, 13)
-        Me.Label3.TabIndex = 4
-        Me.Label3.Text = "Cấp điện áp:"
-        '
         'cboCapDA
         '
+        Me.cboCapDA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboCapDA.FormattingEnabled = True
         Me.cboCapDA.Location = New System.Drawing.Point(105, 58)
         Me.cboCapDA.Name = "cboCapDA"
