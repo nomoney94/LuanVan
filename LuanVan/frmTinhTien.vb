@@ -27,7 +27,7 @@ Public Class frmTinhTien
         End If
         Dim dr, dr1, dr2, row, row1 As DataRow
         Dim strfind As String
-        Dim chiso, chisoCD, chisoTD, chisoHD, chisoCT1, chisoCT2, chisoCT3 As Integer
+        Dim chiso, chisoCD, chisoTD, chisoHD, chisoCT1, chisoCT2, chisoCT3, chisocu, chisoCDcu, chisoTDcu As Integer
         Dim flagCT As Integer = 0
         Dim flag As Integer = 1
         Dim thanhtien As Integer = 0
@@ -55,6 +55,9 @@ Public Class frmTinhTien
                     Exit Sub
                 End If
             Next
+            chisocu = dr("ChiSo")
+            chisoCDcu = dr("ChisoCD")
+            chisoTDcu = dr("ChisoTD")
             chiso = CInt(txtChiso.Text) - dr("ChiSo")
             chisoCD = CInt(txtChisoCD.Text) - dr("ChisoCD")
             chisoTD = CInt(txtChisoTD.Text) - dr("ChisoTD")
@@ -80,11 +83,29 @@ Public Class frmTinhTien
             lvwHoadon.Items.Add("Tháng/Năm")
             lvwHoadon.Items(i).SubItems.Add(dtpThang.Text)
             i += 1
+            lvwHoadon.Items.Add("Chỉ số bình thường cũ")
+            lvwHoadon.Items(i).SubItems.Add(chisocu)
+            i += 1
+            lvwHoadon.Items.Add("Chỉ số bình thường mới")
+            lvwHoadon.Items(i).SubItems.Add(chisoCT1)
+            i += 1
             lvwHoadon.Items.Add("Chỉ số tiêu thụ bình thường")
             lvwHoadon.Items(i).SubItems.Add(chiso)
             i += 1
+            lvwHoadon.Items.Add("Chỉ số cao điểm cũ")
+            lvwHoadon.Items(i).SubItems.Add(chisoCDcu)
+            i += 1
+            lvwHoadon.Items.Add("Chỉ số cao điểm mới")
+            lvwHoadon.Items(i).SubItems.Add(chisoCT2)
+            i += 1
             lvwHoadon.Items.Add("Chỉ số tiêu thụ giờ cao điểm")
             lvwHoadon.Items(i).SubItems.Add(chisoCD)
+            i += 1
+            lvwHoadon.Items.Add("Chỉ số thấp điểm cũ")
+            lvwHoadon.Items(i).SubItems.Add(chisoTDcu)
+            i += 1
+            lvwHoadon.Items.Add("Chỉ số thấp điểm mới")
+            lvwHoadon.Items(i).SubItems.Add(chisoCT3)
             i += 1
             lvwHoadon.Items.Add("Chỉ số tiêu thụ giờ thấp điểm")
             lvwHoadon.Items(i).SubItems.Add(chisoTD)
@@ -94,7 +115,11 @@ Public Class frmTinhTien
                     strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV='" + dr1("MaBangGia") + "0'"
                     lvwHoadon.Items.RemoveAt(i - 1)
                     lvwHoadon.Items.RemoveAt(i - 2)
-                    i -= 2
+                    lvwHoadon.Items.RemoveAt(i - 3)
+                    lvwHoadon.Items.RemoveAt(i - 4)
+                    lvwHoadon.Items.RemoveAt(i - 5)
+                    lvwHoadon.Items.RemoveAt(i - 6)
+                    i -= 6
                     chisoHD = chiso
                     chisoCD = 0
                     chisoTD = 0
@@ -102,7 +127,11 @@ Public Class frmTinhTien
                     strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV<>'" + dr1("MaBangGia") + "0'"
                     lvwHoadon.Items.RemoveAt(i - 1)
                     lvwHoadon.Items.RemoveAt(i - 2)
-                    i -= 2
+                    lvwHoadon.Items.RemoveAt(i - 3)
+                    lvwHoadon.Items.RemoveAt(i - 4)
+                    lvwHoadon.Items.RemoveAt(i - 5)
+                    lvwHoadon.Items.RemoveAt(i - 6)
+                    i -= 6
                     chisoHD = chiso
                     chisoCD = 0
                     chisoTD = 0
@@ -110,7 +139,11 @@ Public Class frmTinhTien
                     strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV like '" + dr1("MaBangGia") + "1%'"
                     lvwHoadon.Items.RemoveAt(i - 1)
                     lvwHoadon.Items.RemoveAt(i - 2)
-                    i -= 2
+                    lvwHoadon.Items.RemoveAt(i - 3)
+                    lvwHoadon.Items.RemoveAt(i - 4)
+                    lvwHoadon.Items.RemoveAt(i - 5)
+                    lvwHoadon.Items.RemoveAt(i - 6)
+                    i -= 6
                     chisoHD = chiso
                     chisoCD = 0
                     chisoTD = 0
@@ -118,7 +151,11 @@ Public Class frmTinhTien
                     strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV like '" + dr1("MaBangGia") + "2%'"
                     lvwHoadon.Items.RemoveAt(i - 1)
                     lvwHoadon.Items.RemoveAt(i - 2)
-                    i -= 2
+                    lvwHoadon.Items.RemoveAt(i - 3)
+                    lvwHoadon.Items.RemoveAt(i - 4)
+                    lvwHoadon.Items.RemoveAt(i - 5)
+                    lvwHoadon.Items.RemoveAt(i - 6)
+                    i -= 6
                     chisoHD = chiso
                     chisoCD = 0
                     chisoTD = 0
@@ -134,7 +171,11 @@ Public Class frmTinhTien
                     strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV='HC11'"
                     lvwHoadon.Items.RemoveAt(i - 1)
                     lvwHoadon.Items.RemoveAt(i - 2)
-                    i -= 2
+                    lvwHoadon.Items.RemoveAt(i - 3)
+                    lvwHoadon.Items.RemoveAt(i - 4)
+                    lvwHoadon.Items.RemoveAt(i - 5)
+                    lvwHoadon.Items.RemoveAt(i - 6)
+                    i -= 6
                     chisoHD = chiso
                     chisoCD = 0
                     chisoTD = 0
@@ -142,7 +183,11 @@ Public Class frmTinhTien
                     strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV='HC12'"
                     lvwHoadon.Items.RemoveAt(i - 1)
                     lvwHoadon.Items.RemoveAt(i - 2)
-                    i -= 2
+                    lvwHoadon.Items.RemoveAt(i - 3)
+                    lvwHoadon.Items.RemoveAt(i - 4)
+                    lvwHoadon.Items.RemoveAt(i - 5)
+                    lvwHoadon.Items.RemoveAt(i - 6)
+                    i -= 6
                     chisoHD = chiso
                     chisoCD = 0
                     chisoTD = 0
@@ -150,7 +195,11 @@ Public Class frmTinhTien
                     strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV='HC21'"
                     lvwHoadon.Items.RemoveAt(i - 1)
                     lvwHoadon.Items.RemoveAt(i - 2)
-                    i -= 2
+                    lvwHoadon.Items.RemoveAt(i - 3)
+                    lvwHoadon.Items.RemoveAt(i - 4)
+                    lvwHoadon.Items.RemoveAt(i - 5)
+                    lvwHoadon.Items.RemoveAt(i - 6)
+                    i -= 6
                     chisoHD = chiso
                     chisoCD = 0
                     chisoTD = 0
@@ -158,7 +207,11 @@ Public Class frmTinhTien
                     strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV='HC22'"
                     lvwHoadon.Items.RemoveAt(i - 1)
                     lvwHoadon.Items.RemoveAt(i - 2)
-                    i -= 2
+                    lvwHoadon.Items.RemoveAt(i - 3)
+                    lvwHoadon.Items.RemoveAt(i - 4)
+                    lvwHoadon.Items.RemoveAt(i - 5)
+                    lvwHoadon.Items.RemoveAt(i - 6)
+                    i -= 6
                     chisoHD = chiso
                     chisoCD = 0
                     chisoTD = 0
