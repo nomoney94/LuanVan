@@ -21,6 +21,7 @@ Public Class frmMain
     Public daHoaDon As SqlDataAdapter
     Public daKhachHang As SqlDataAdapter
     Public daTram As SqlDataAdapter
+    Public daChiTietThanhTien As SqlDataAdapter
 
     Public ds As DataSet
     Public con As SqlConnection
@@ -86,6 +87,10 @@ Public Class frmMain
         com = New SqlCommand("Select * From Tram", con)
         daTram = New SqlDataAdapter(com)
         daTram.Fill(ds, "Tram")
+
+        com = New SqlCommand("Select * From ChiTietThanhTien", con)
+        daChiTietThanhTien = New SqlDataAdapter(com)
+        daChiTietThanhTien.Fill(ds, "ChiTietThanhTien")
     End Sub
 
         Private Sub tsmiTTDonVi_Click(sender As Object, e As EventArgs) Handles tsmiTTDonVi.Click
