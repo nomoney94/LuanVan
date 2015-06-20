@@ -9,6 +9,7 @@ Public Class frmTinhTien
     Private dtHD As DataTable
     Private dtG3 As DataTable
     Private dtCTTT As DataTable
+    Private gia As String
 
     Private Sub frmTinhTien_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         dtCT = frmMain.ds.Tables("CongTo")
@@ -125,9 +126,6 @@ Public Class frmTinhTien
                     lvwHoadon.Items.RemoveAt(i - 5)
                     lvwHoadon.Items.RemoveAt(i - 6)
                     i -= 6
-                    chisoHD = chiso
-                    chisoCD = 0
-                    chisoTD = 0
                 ElseIf dr("MaDT") = "DT41" Or dr("MaDT") = "DT51" Or dr("MaDT") = "DT71" Then
                     strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV<>'" + dr1("MaBangGia") + "0'"
                     lvwHoadon.Items.RemoveAt(i - 1)
@@ -137,9 +135,6 @@ Public Class frmTinhTien
                     lvwHoadon.Items.RemoveAt(i - 5)
                     lvwHoadon.Items.RemoveAt(i - 6)
                     i -= 6
-                    chisoHD = chiso
-                    chisoCD = 0
-                    chisoTD = 0
                 ElseIf dr("MaDT") = "DT6111" Or dr("MaDT") = "DT6211" Then
                     strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV like '" + dr1("MaBangGia") + "1%'"
                     lvwHoadon.Items.RemoveAt(i - 1)
@@ -149,9 +144,6 @@ Public Class frmTinhTien
                     lvwHoadon.Items.RemoveAt(i - 5)
                     lvwHoadon.Items.RemoveAt(i - 6)
                     i -= 6
-                    chisoHD = chiso
-                    chisoCD = 0
-                    chisoTD = 0
                 ElseIf dr("MaDT") = "DT6112" Or dr("MaDT") = "DT6212" Then
                     strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV like '" + dr1("MaBangGia") + "2%'"
                     lvwHoadon.Items.RemoveAt(i - 1)
@@ -161,9 +153,6 @@ Public Class frmTinhTien
                     lvwHoadon.Items.RemoveAt(i - 5)
                     lvwHoadon.Items.RemoveAt(i - 6)
                     i -= 6
-                    chisoHD = chiso
-                    chisoCD = 0
-                    chisoTD = 0
                 ElseIf dr("MaDT") = "DT11" Then
                     strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV='SX1'"
                 ElseIf dr("MaDT") = "DT12" Then
@@ -181,9 +170,6 @@ Public Class frmTinhTien
                     lvwHoadon.Items.RemoveAt(i - 5)
                     lvwHoadon.Items.RemoveAt(i - 6)
                     i -= 6
-                    chisoHD = chiso
-                    chisoCD = 0
-                    chisoTD = 0
                 ElseIf dr("MaDT") = "DT212" Then
                     strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV='HC12'"
                     lvwHoadon.Items.RemoveAt(i - 1)
@@ -193,9 +179,6 @@ Public Class frmTinhTien
                     lvwHoadon.Items.RemoveAt(i - 5)
                     lvwHoadon.Items.RemoveAt(i - 6)
                     i -= 6
-                    chisoHD = chiso
-                    chisoCD = 0
-                    chisoTD = 0
                 ElseIf dr("MaDT") = "DT221" Then
                     strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV='HC21'"
                     lvwHoadon.Items.RemoveAt(i - 1)
@@ -205,9 +188,6 @@ Public Class frmTinhTien
                     lvwHoadon.Items.RemoveAt(i - 5)
                     lvwHoadon.Items.RemoveAt(i - 6)
                     i -= 6
-                    chisoHD = chiso
-                    chisoCD = 0
-                    chisoTD = 0
                 ElseIf dr("MaDT") = "DT222" Then
                     strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV='HC22'"
                     lvwHoadon.Items.RemoveAt(i - 1)
@@ -217,9 +197,6 @@ Public Class frmTinhTien
                     lvwHoadon.Items.RemoveAt(i - 5)
                     lvwHoadon.Items.RemoveAt(i - 6)
                     i -= 6
-                    chisoHD = chiso
-                    chisoCD = 0
-                    chisoTD = 0
                 ElseIf dr("MaDT") = "DT31" Then
                     strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV='KD1'"
                 ElseIf dr("MaDT") = "DT32" Then
@@ -338,5 +315,22 @@ Public Class frmTinhTien
         Catch ex As Exception
             MessageBox.Show("Không thể cập nhật CSDL", "Thông báo")
         End Try
+    End Sub
+
+    Private Sub txtMaCT_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtMaCT.Leave
+        Dim dr, dr1 As DataRow
+        For Each dr In dtKH.Select("MaCT='" + txtMaCT.Text + "'")
+            For Each dr1 In dtDT.Select("MaDT='" + dr("MaDT") + "'")
+                If dr1("MaBangGia") = "SH" Or dr1("MaBangGia") = "NT" Or dr1("MaBangGia") = "CDCTP" Or dr1("MaBangGia") = "CDCTT" Or dr1("MaBangGia") = "TM" Then
+                    gia = "Gia6"
+                    txtChisoCD.Enabled = False
+                    txtChisoTD.Enabled = False
+                Else
+                    gia = "Gia3"
+                    txtChisoCD.Enabled = True
+                    txtChisoTD.Enabled = True
+                End If
+            Next
+        Next
     End Sub
 End Class
