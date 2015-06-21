@@ -31,7 +31,7 @@ Public Class frmTKHoaDon
                 Next
             Next
         ElseIf cboTimKiem.Text = "Hóa đơn chưa thanh toán theo kỳ" Then
-            For Each dr In dtHD.Select("Ky='" + dtpKy.Text + "' AND TinhTrangThanhToan='Chưa'")
+            For Each dr In dtHD.Select("Ky='" + dtpKy.Text + "' AND (TinhTrangThanhToan='Chưa' OR TinhTrangThanhToan='Lần 1' OR TinhTrangThanhToan='Lần 2')")
                 For Each dr1 In dtKH.Select("MaKH='" + dr("MaKH") + "'")
                     i = lvwHoadon.Items.Count
                     lvwHoadon.Items.Add(dr1("TenKH"))
@@ -108,6 +108,7 @@ Public Class frmTKHoaDon
 
     Private Sub cboTimKiem_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboTimKiem.SelectedIndexChanged
         If cboTimKiem.SelectedIndex = 0 Then
+            lblTieuDe.Text = "Tìm theo kỳ/In hóa đơn theo kỳ"
             Label2.Visible = False
             Label3.Visible = False
             Label4.Visible = True
@@ -116,7 +117,9 @@ Public Class frmTKHoaDon
             dtpKy.Visible = True
             btnInhoadon.Visible = True
             btnNhacnho.Visible = False
+            btnDathanhtoan.Visible = False
         ElseIf cboTimKiem.SelectedIndex = 1 Then
+            lblTieuDe.Text = "Tìm hóa đơn chưa thanh toán/Nhắc nhở"
             Label2.Visible = False
             Label3.Visible = False
             Label4.Visible = True
@@ -125,7 +128,9 @@ Public Class frmTKHoaDon
             dtpKy.Visible = True
             btnInhoadon.Visible = False
             btnNhacnho.Visible = True
+            btnDathanhtoan.Visible = True
         ElseIf cboTimKiem.SelectedIndex = 2 Or cboTimKiem.SelectedIndex = 3 Then
+            lblTieuDe.Text = "Tìm hóa đơn đã nhắc nhở/Nhắc nhở hoặc cắt điện"
             Label2.Visible = False
             Label3.Visible = False
             Label4.Visible = False
@@ -134,7 +139,9 @@ Public Class frmTKHoaDon
             dtpKy.Visible = False
             btnInhoadon.Visible = False
             btnNhacnho.Visible = True
+            btnDathanhtoan.Visible = True
         ElseIf cboTimKiem.SelectedIndex = 4 Then
+            lblTieuDe.Text = "Tìm theo mã hóa đơn/Đánh dấu chưa thanh toán"
             Label2.Visible = False
             Label3.Visible = True
             Label4.Visible = False
@@ -143,7 +150,9 @@ Public Class frmTKHoaDon
             dtpKy.Visible = False
             btnInhoadon.Visible = False
             btnNhacnho.Visible = True
+            btnDathanhtoan.Visible = False
         ElseIf cboTimKiem.SelectedIndex = 5 Then
+            lblTieuDe.Text = "Tìm theo mã khách hàng"
             Label2.Visible = True
             Label3.Visible = False
             Label4.Visible = False
@@ -152,6 +161,7 @@ Public Class frmTKHoaDon
             dtpKy.Visible = False
             btnInhoadon.Visible = False
             btnNhacnho.Visible = False
+            btnDathanhtoan.Visible = False
         End If
     End Sub
 
@@ -201,14 +211,29 @@ Public Class frmTKHoaDon
         End Try
     End Sub
 
-    Private Sub btnBocatdien_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBocatdien.Click
-        If txtMaKH.Text = "" Then
-            MessageBox.Show("Nhập mã khách hàng")
+    Private Sub btnDathanhtoan_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDathanhtoan.Click
+        If lvwHoadon.SelectedItems.Count = 0 Then
+            MessageBox.Show("Chọn hóa đơn")
             Exit Sub
         End If
         Dim dr As DataRow
-        For Each dr In dtKH.Select("MaKH='" + txtMaKH.Text + "'")
-            dr("TinhTrangSuDung") = "Hoạt động"
+        For Each dr In dtHD.Select("MaKH='" + lvwHoadon.SelectedItems(0).SubItems(2).Text + "' AND Ky='" + lvwHoadon.SelectedItems(0).SubItems(3).Text + "'")
+            dr("TinhTrangThanhToan") = "Rồi"
+            For Each dr1 In dtKH.Select("MaKH='" + dr("MaKH") + "'")
+                If dr1("TinhTrangSuDung") = "Cắt điện" Then
+                    dr1("TinhTrangSuDung") = "Hoạt động"
+                End If
+            Next
         Next
+        Try
+            Dim comHD As New SqlCommandBuilder(frmMain.daHoaDon)
+            Dim comKH As New SqlCommandBuilder(frmMain.daKhachHang)
+            frmMain.con.Open()
+            comKH.DataAdapter.Update(dtKH)
+            comHD.DataAdapter.Update(dtHD)
+            frmMain.con.Close()
+        Catch ex As Exception
+            MessageBox.Show("Không thể cập nhật CSDL", "Thông báo")
+        End Try
     End Sub
 End Class
