@@ -1,16 +1,43 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class frmTKHoaDon
-    Private aTimKiem() As String = {"Kỳ", "Hóa đơn chưa thanh toán theo kỳ", "Hóa đơn nhắc nhở lần 1", "Hóa đơn nhắc nhở lần 2", "Mã hóa đơn", "Mã khách hàng"}
+    Private aTimKiem() As String = {"Kỳ", "Hóa đơn chưa thanh toán", "Hóa đơn nhắc nhở lần 1", "Hóa đơn nhắc nhở lần 2", "Mã hóa đơn", "Mã khách hàng"}
     Private dtHD As DataTable
     Private dtKH As DataTable
     Private MaKH As String
 
     Private Sub frmTKHoaDon_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim dr As DataRow
+        Dim ky As Date
+        Dim countCTT, countL1, countL2, flag As Integer
         cboTimKiem.Items.AddRange(aTimKiem)
         cboTimKiem.SelectedIndex = 0
         dtHD = frmMain.ds.Tables("HoaDon")
         dtKH = frmMain.ds.Tables("KhachHang")
+        For Each dr In dtHD.Select("Ky=Max(Ky)")
+            ky = dr("Ky")
+            If dr("TinhTrangThanhToan") = "Rồi" Then
+                flag = 1
+                Exit For
+            End If
+        Next
+        If flag = 1 Then
+            MessageBox.Show("Kỳ ghi điện mới nhất là: " & dr("Ky") & " (Đã in hóa đơn)", "Thông báo")
+        Else
+            MessageBox.Show("Kỳ ghi điện mới nhất là: " & Month(ky) & "/" & Year(ky) & " (Bắt đầu in hóa đơn)", "Thong báo")
+            dtpKy.Text = ky
+            inhoadon()
+        End If
+        For Each dr In dtHD.Select()
+            If dr("TinhTrangThanhToan") = "Chưa" Then
+                countCTT += 1
+            ElseIf dr("TinhTrangThanhToan") = "Lần 1" Then
+                countL1 += 1
+            ElseIf dr("TinhTrangThanhToan") = "Lần 2" Then
+                countL2 += 1
+            End If
+        Next
+        MessageBox.Show("Hóa đơn chưa thanh toán: " & countCTT & " | Hóa đơn nhắc nhở lần 1: " & countL1 & " | Hóa đơn nhắc nhở lần 2: " & countL2, "Thông báo")
     End Sub
 
     Private Sub btnTim_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnTim.Click
@@ -30,8 +57,8 @@ Public Class frmTKHoaDon
                     lvwHoadon.Items(i).SubItems.Add(dr("TinhTrangThanhToan"))
                 Next
             Next
-        ElseIf cboTimKiem.Text = "Hóa đơn chưa thanh toán theo kỳ" Then
-            For Each dr In dtHD.Select("Ky='" + dtpKy.Text + "' AND (TinhTrangThanhToan='Chưa' OR TinhTrangThanhToan='Lần 1' OR TinhTrangThanhToan='Lần 2')")
+        ElseIf cboTimKiem.Text = "Hóa đơn chưa thanh toán" Then
+            For Each dr In dtHD.Select("TinhTrangThanhToan='Chưa' OR TinhTrangThanhToan='Lần 1' OR TinhTrangThanhToan='Lần 2'")
                 For Each dr1 In dtKH.Select("MaKH='" + dr("MaKH") + "'")
                     i = lvwHoadon.Items.Count
                     lvwHoadon.Items.Add(dr1("TenKH"))
@@ -108,14 +135,13 @@ Public Class frmTKHoaDon
 
     Private Sub cboTimKiem_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboTimKiem.SelectedIndexChanged
         If cboTimKiem.SelectedIndex = 0 Then
-            lblTieuDe.Text = "Tìm theo kỳ/In hóa đơn theo kỳ"
+            lblTieuDe.Text = "Tìm theo kỳ"
             Label2.Visible = False
             Label3.Visible = False
             Label4.Visible = True
             txtMaHD.Visible = False
             txtMaKH.Visible = False
             dtpKy.Visible = True
-            btnInhoadon.Visible = True
             btnNhacnho.Visible = False
             btnDathanhtoan.Visible = False
         ElseIf cboTimKiem.SelectedIndex = 1 Then
@@ -125,8 +151,7 @@ Public Class frmTKHoaDon
             Label4.Visible = True
             txtMaHD.Visible = False
             txtMaKH.Visible = False
-            dtpKy.Visible = True
-            btnInhoadon.Visible = False
+            dtpKy.Visible = False
             btnNhacnho.Visible = True
             btnDathanhtoan.Visible = True
         ElseIf cboTimKiem.SelectedIndex = 2 Or cboTimKiem.SelectedIndex = 3 Then
@@ -137,7 +162,6 @@ Public Class frmTKHoaDon
             txtMaHD.Visible = False
             txtMaKH.Visible = False
             dtpKy.Visible = False
-            btnInhoadon.Visible = False
             btnNhacnho.Visible = True
             btnDathanhtoan.Visible = True
         ElseIf cboTimKiem.SelectedIndex = 4 Then
@@ -148,7 +172,6 @@ Public Class frmTKHoaDon
             txtMaHD.Visible = True
             txtMaKH.Visible = False
             dtpKy.Visible = False
-            btnInhoadon.Visible = False
             btnNhacnho.Visible = True
             btnDathanhtoan.Visible = False
         ElseIf cboTimKiem.SelectedIndex = 5 Then
@@ -159,7 +182,6 @@ Public Class frmTKHoaDon
             txtMaHD.Visible = False
             txtMaKH.Visible = True
             dtpKy.Visible = False
-            btnInhoadon.Visible = False
             btnNhacnho.Visible = False
             btnDathanhtoan.Visible = False
         End If
@@ -194,9 +216,10 @@ Public Class frmTKHoaDon
         Catch ex As Exception
             MessageBox.Show("Không thể cập nhật CSDL", "Thông báo")
         End Try
+        btnTim.PerformClick()
     End Sub
 
-    Private Sub btnInhoadon_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnInhoadon.Click
+    Private Sub inhoadon()
         Dim dr As DataRow
         For Each dr In dtHD.Select("Ky='" + dtpKy.Text + "'")
             dr("TinhTrangThanhToan") = "Rồi"
@@ -235,5 +258,6 @@ Public Class frmTKHoaDon
         Catch ex As Exception
             MessageBox.Show("Không thể cập nhật CSDL", "Thông báo")
         End Try
+        btnTim.PerformClick()
     End Sub
 End Class

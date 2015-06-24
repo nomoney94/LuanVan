@@ -125,14 +125,6 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub tsmiTKHoaDon_Click(sender As Object, e As EventArgs) Handles tsmiTKHoaDon.Click
-        If frmTKHD Is Nothing OrElse frmTKHD.IsDisposed Then
-            frmTKHD = New frmTKHoaDon
-            frmTKHD.MdiParent = Me
-            frmTKHD.Show()
-        End If
-    End Sub
-
     Private Sub tsmiTKeLDTT_Click(sender As Object, e As EventArgs) Handles tsmiTKeLDTT.Click
         If frmTKLDTT Is Nothing OrElse frmTKLDTT.IsDisposed Then
             frmTKLDTT = New frmTKeLDTT
@@ -149,11 +141,11 @@ Public Class frmMain
         'End If
     End Sub
 
-    Private Sub tsmiTinhTien_Click(sender As Object, e As EventArgs) Handles tsmiTinhTien.Click
-        If frmTTD Is Nothing OrElse frmTTD.IsDisposed Then
-            frmTTD = New frmTinhTien
-            frmTTD.MdiParent = Me
-            frmTTD.Show()
+    Private Sub tsmiHoaDon_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tsmiHoaDon.Click
+        If frmTKHD Is Nothing OrElse frmTKHD.IsDisposed Then
+            frmTKHD = New frmTKHoaDon
+            frmTKHD.MdiParent = Me
+            frmTKHD.Show()
         End If
     End Sub
 
@@ -175,5 +167,13 @@ Public Class frmMain
 
     Private Sub tsmiThoat_Click(sender As Object, e As EventArgs) Handles tsmiThoat.Click
         Close()
+    End Sub
+
+    Private Sub tsmiTinhTien_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsmiTinhTien.Click
+        If frmTTD Is Nothing OrElse frmTTD.IsDisposed Then
+            frmTTD = New frmTinhTien
+            frmTTD.MdiParent = Me
+            frmTTD.Show()
+        End If
     End Sub
 End Class
