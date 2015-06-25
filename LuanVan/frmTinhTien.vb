@@ -30,12 +30,8 @@ Public Class frmTinhTien
         End If
         Dim dr, dr1, dr2, row, row1, row2 As DataRow
         Dim strfind As String
-        Dim chiso, chisoCD, chisoTD, chisoHD, chisoCT1, chisoCT2, chisoCT3, chisocu, chisoCDcu, chisoTDcu As Integer
-        Dim flagCT As Integer = 0
+        Dim chiso, chisoCD, chisoTD, chisoHD, chisoCT1, chisoCT2, chisoCT3, chisocu, chisoCDcu, chisoTDcu, thanhtien, thanhtientam, flagCT, ma, i As Integer
         Dim flag As Integer = 1
-        Dim thanhtien As Integer = 0
-        Dim ma As Integer = 0
-        Dim i As Integer = 0
         lvwHoadon.Items.Clear()
         If txtChiso.Text = "" Then
             txtChiso.Text = 0
@@ -116,175 +112,98 @@ Public Class frmTinhTien
             lvwHoadon.Items.Add("Chỉ số tiêu thụ giờ thấp điểm")
             lvwHoadon.Items(i).SubItems.Add(chisoTD)
             i += 1
-            For Each dr1 In dtDT.Select("MaDT='" + dr("MaDT") + "'")
-                If dr("MaDT") = "DT42" Or dr("MaDT") = "DT52" Or dr("MaDT") = "DT612" Or dr("MaDT") = "DT622" Then
-                    strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV='" + dr1("MaBangGia") + "0'"
-                    lvwHoadon.Items.RemoveAt(i - 1)
-                    lvwHoadon.Items.RemoveAt(i - 2)
-                    lvwHoadon.Items.RemoveAt(i - 3)
-                    lvwHoadon.Items.RemoveAt(i - 4)
-                    lvwHoadon.Items.RemoveAt(i - 5)
-                    lvwHoadon.Items.RemoveAt(i - 6)
-                    i -= 6
-                ElseIf dr("MaDT") = "DT41" Or dr("MaDT") = "DT51" Or dr("MaDT") = "DT71" Then
-                    strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV<>'" + dr1("MaBangGia") + "0'"
-                    lvwHoadon.Items.RemoveAt(i - 1)
-                    lvwHoadon.Items.RemoveAt(i - 2)
-                    lvwHoadon.Items.RemoveAt(i - 3)
-                    lvwHoadon.Items.RemoveAt(i - 4)
-                    lvwHoadon.Items.RemoveAt(i - 5)
-                    lvwHoadon.Items.RemoveAt(i - 6)
-                    i -= 6
-                ElseIf dr("MaDT") = "DT6111" Or dr("MaDT") = "DT6211" Then
-                    strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV like '" + dr1("MaBangGia") + "1%'"
-                    lvwHoadon.Items.RemoveAt(i - 1)
-                    lvwHoadon.Items.RemoveAt(i - 2)
-                    lvwHoadon.Items.RemoveAt(i - 3)
-                    lvwHoadon.Items.RemoveAt(i - 4)
-                    lvwHoadon.Items.RemoveAt(i - 5)
-                    lvwHoadon.Items.RemoveAt(i - 6)
-                    i -= 6
-                ElseIf dr("MaDT") = "DT6112" Or dr("MaDT") = "DT6212" Then
-                    strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV like '" + dr1("MaBangGia") + "2%'"
-                    lvwHoadon.Items.RemoveAt(i - 1)
-                    lvwHoadon.Items.RemoveAt(i - 2)
-                    lvwHoadon.Items.RemoveAt(i - 3)
-                    lvwHoadon.Items.RemoveAt(i - 4)
-                    lvwHoadon.Items.RemoveAt(i - 5)
-                    lvwHoadon.Items.RemoveAt(i - 6)
-                    i -= 6
-                ElseIf dr("MaDT") = "DT11" Then
-                    strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV='SX1'"
-                ElseIf dr("MaDT") = "DT12" Then
-                    strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV='SX2'"
-                ElseIf dr("MaDT") = "DT13" Then
-                    strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV='SX3'"
-                ElseIf dr("MaDT") = "DT14" Then
-                    strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV='SX4'"
-                ElseIf dr("MaDT") = "DT211" Then
-                    strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV='HC11'"
-                    lvwHoadon.Items.RemoveAt(i - 1)
-                    lvwHoadon.Items.RemoveAt(i - 2)
-                    lvwHoadon.Items.RemoveAt(i - 3)
-                    lvwHoadon.Items.RemoveAt(i - 4)
-                    lvwHoadon.Items.RemoveAt(i - 5)
-                    lvwHoadon.Items.RemoveAt(i - 6)
-                    i -= 6
-                ElseIf dr("MaDT") = "DT212" Then
-                    strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV='HC12'"
-                    lvwHoadon.Items.RemoveAt(i - 1)
-                    lvwHoadon.Items.RemoveAt(i - 2)
-                    lvwHoadon.Items.RemoveAt(i - 3)
-                    lvwHoadon.Items.RemoveAt(i - 4)
-                    lvwHoadon.Items.RemoveAt(i - 5)
-                    lvwHoadon.Items.RemoveAt(i - 6)
-                    i -= 6
-                ElseIf dr("MaDT") = "DT221" Then
-                    strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV='HC21'"
-                    lvwHoadon.Items.RemoveAt(i - 1)
-                    lvwHoadon.Items.RemoveAt(i - 2)
-                    lvwHoadon.Items.RemoveAt(i - 3)
-                    lvwHoadon.Items.RemoveAt(i - 4)
-                    lvwHoadon.Items.RemoveAt(i - 5)
-                    lvwHoadon.Items.RemoveAt(i - 6)
-                    i -= 6
-                ElseIf dr("MaDT") = "DT222" Then
-                    strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV='HC22'"
-                    lvwHoadon.Items.RemoveAt(i - 1)
-                    lvwHoadon.Items.RemoveAt(i - 2)
-                    lvwHoadon.Items.RemoveAt(i - 3)
-                    lvwHoadon.Items.RemoveAt(i - 4)
-                    lvwHoadon.Items.RemoveAt(i - 5)
-                    lvwHoadon.Items.RemoveAt(i - 6)
-                    i -= 6
-                ElseIf dr("MaDT") = "DT31" Then
-                    strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV='KD1'"
-                ElseIf dr("MaDT") = "DT32" Then
-                    strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV='KD2'"
-                Else
-                    strfind = "MaBangGia='" + dr1("MaBangGia") + "' and MaLoaiDV='KD3'"
-                End If
-                If dr1("MaBangGia") = "SH" Or dr1("MaBangGia") = "NT" Or dr1("MaBangGia") = "CDCTP" Or dr1("MaBangGia") = "CDCTT" Or dr1("MaBangGia") = "TM" Then
-                    For Each dr2 In dtG6.Select(strfind)
-                        row2 = dtCTTT.NewRow
-                        If dr1("MaDT") = "DT42" Or dr1("MaDT") = "DT52" Or dr1("MaDT") = "DT612" Or dr1("MaDT") = "DT622" Then
-                            thanhtien += chiso * dr2("Gia")
-                            row2("MaHD") = ma + 1
-                            row2("ChiSo") = chisoHD
-                            row2("Gia") = dr2("Gia")
-                            row2("ThanhTien") = thanhtien
-                            dtCTTT.Rows.Add(row2)
-                            lvwHoadon.Items.Add("Thành tiền")
-                            lvwHoadon.Items(i).SubItems.Add(thanhtien)
-                            Exit For
-                        End If
-                        If chiso - dr2("DinhMuc") > 0 Then
-                            If flag <> 6 Then
-                                thanhtien += dr2("DinhMuc") * dr2("Gia")
-                                row2("MaHD") = ma + 1
-                                row2("ChiSo") = dr2("DinhMuc")
-                                row2("Gia") = dr2("Gia")
-                                row2("ThanhTien") = thanhtien
-                                dtCTTT.Rows.Add(row2)
-                                chiso -= dr2("DinhMuc")
-                                flag += 1
-                            Else
-                                thanhtien += chiso * dr2("Gia")
-                                row2("MaHD") = ma + 1
-                                row2("ChiSo") = chiso
-                                row2("Gia") = dr2("Gia")
-                                row2("ThanhTien") = thanhtien
-                                dtCTTT.Rows.Add(row2)
-                                lvwHoadon.Items.Add("Thành tiền")
-                                lvwHoadon.Items(i).SubItems.Add(thanhtien)
-                            End If
-                        Else
-                            thanhtien += chiso * dr2("Gia")
-                            row2("MaHD") = ma + 1
-                            row2("ChiSo") = chiso
-                            row2("Gia") = dr2("Gia")
-                            row2("ThanhTien") = thanhtien
-                            dtCTTT.Rows.Add(row2)
-                            lvwHoadon.Items.Add("Thành tiền")
-                            lvwHoadon.Items(i).SubItems.Add(thanhtien)
-                            Exit For
-                        End If
-                    Next
-                Else
-                    For Each dr3 In dtG3.Select(strfind)
-                        thanhtien += chiso * dr3("GiaBT") + chisoCD * dr3("GiaCD") + chisoTD * dr3("GiaTD")
-                        If dr1("MaDT") = "DT211" Or dr1("MaDT") = "DT212" Or dr1("MaDT") = "DT221" Or dr1("MaDT") = "DT222" Then
-                            row2 = dtCTTT.NewRow
-                            row2("MaHD") = ma + 1
-                            row2("ChiSo") = chiso
-                            row2("Gia") = dr3("GiaBT")
-                            row2("ThanhTien") = chiso * dr3("GiaBT")
-                            dtCTTT.Rows.Add(row2)
-                        Else
-                            row2 = dtCTTT.NewRow
-                            row2("MaHD") = ma + 1
-                            row2("ChiSo") = chiso
-                            row2("Gia") = dr3("GiaBT")
-                            row2("ThanhTien") = chiso * dr3("GiaBT")
-                            dtCTTT.Rows.Add(row2)
-                            row2 = dtCTTT.NewRow
-                            row2("MaHD") = ma + 1
-                            row2("ChiSo") = chisoCD
-                            row2("Gia") = dr3("GiaCD")
-                            row2("ThanhTien") = chisoCD * dr3("GiaCD")
-                            dtCTTT.Rows.Add(row2)
-                            row2 = dtCTTT.NewRow
-                            row2("MaHD") = ma + 1
-                            row2("ChiSo") = chisoTD
-                            row2("Gia") = dr3("GiaTD")
-                            row2("ThanhTien") = chisoTD * dr3("GiaTD")
-                            dtCTTT.Rows.Add(row2)
-                        End If
+            strfind = "MaDT='" + dr("MaDT") + "'"
+            If dr("MaDT") = "CDCTPK" Or dr("MaDT") = "CDCTPB" Or dr("MaDT") = "CDCTPM" Or dr("MaDT") = "CDCTTK" Or dr("MaDT") = "CDCTTB" Or dr("MaDT") = "CDCTTM" Or dr("MaDT") = "NTK" Or dr("MaDT") = "SHNT" Or dr("MaDT") = "SHBTTT" Or dr("MaDT") = "SHBT" Or dr("MaDT") = "TMSH" Or dr("MaDT") = "BVT_T6" Or dr("MaDT") = "BVT_D6" Or dr("MaDT") = "CSHC_T6" Or dr("MaDT") = "CSHC_D6" Then
+                lvwHoadon.Items.RemoveAt(i - 1)
+                lvwHoadon.Items.RemoveAt(i - 2)
+                lvwHoadon.Items.RemoveAt(i - 3)
+                lvwHoadon.Items.RemoveAt(i - 4)
+                lvwHoadon.Items.RemoveAt(i - 5)
+                lvwHoadon.Items.RemoveAt(i - 6)
+                i -= 6
+            End If
+            If dr("MaDT") = "CDCTPK" Or dr("MaDT") = "CDCTPB" Or dr("MaDT") = "CDCTPM" Or dr("MaDT") = "CDCTTK" Or dr("MaDT") = "CDCTTB" Or dr("MaDT") = "CDCTTM" Or dr("MaDT") = "NTK" Or dr("MaDT") = "SHNT" Or dr("MaDT") = "SHBTTT" Or dr("MaDT") = "SHBT" Or dr("MaDT") = "TMSH" Then
+                For Each dr2 In dtG6.Select(strfind)
+                    row2 = dtCTTT.NewRow
+                    If dr("MaDT") = "CDCTPK" Or dr("MaDT") = "CDCTTK" Or dr("MaDT") = "NTK" Or dr("MaDT") = "SHBTTT" Then
+                        thanhtien += chiso * dr2("Gia")
+                        row2("MaHD") = ma + 1
+                        row2("ChiSo") = chisoHD
+                        row2("Gia") = dr2("Gia")
+                        row2("ThanhTien") = thanhtien
+                        dtCTTT.Rows.Add(row2)
                         lvwHoadon.Items.Add("Thành tiền")
                         lvwHoadon.Items(i).SubItems.Add(thanhtien)
-                    Next
-                End If
-            Next
+                        Exit For
+                    End If
+                    If chiso - dr2("DinhMuc") > 0 Then
+                        If flag <> 6 Then
+                            thanhtien += dr2("DinhMuc") * dr2("Gia")
+                            thanhtientam = dr2("DinhMuc") * dr2("Gia")
+                            row2("MaHD") = ma + 1
+                            row2("ChiSo") = dr2("DinhMuc")
+                            row2("Gia") = dr2("Gia")
+                            row2("ThanhTien") = thanhtientam
+                            dtCTTT.Rows.Add(row2)
+                            chiso -= dr2("DinhMuc")
+                            flag += 1
+                        Else
+                            thanhtien += chiso * dr2("Gia")
+                            row2("MaHD") = ma + 1
+                            row2("ChiSo") = chiso
+                            row2("Gia") = dr2("Gia")
+                            row2("ThanhTien") = thanhtientam
+                            dtCTTT.Rows.Add(row2)
+                            lvwHoadon.Items.Add("Thành tiền")
+                            lvwHoadon.Items(i).SubItems.Add(thanhtien)
+                        End If
+                    Else
+                        thanhtien += chiso * dr2("Gia")
+                        thanhtientam = chiso * dr2("Gia")
+                        row2("MaHD") = ma + 1
+                        row2("ChiSo") = chiso
+                        row2("Gia") = dr2("Gia")
+                        row2("ThanhTien") = thanhtientam
+                        dtCTTT.Rows.Add(row2)
+                        lvwHoadon.Items.Add("Thành tiền")
+                        lvwHoadon.Items(i).SubItems.Add(thanhtien)
+                        Exit For
+                    End If
+                Next
+            Else
+                For Each dr3 In dtG3.Select(strfind)
+                    thanhtien += chiso * dr3("GiaBT") + chisoCD * dr3("GiaCD") + chisoTD * dr3("GiaTD")
+                    If dr("MaDT") = "BVT_T6" Or dr("MaDT") = "BVT_D6" Or dr("MaDT") = "CSHC_T6" Or dr("MaDT") = "CSHC_D6" Then
+                        row2 = dtCTTT.NewRow
+                        row2("MaHD") = ma + 1
+                        row2("ChiSo") = chiso
+                        row2("Gia") = dr3("GiaBT")
+                        row2("ThanhTien") = chiso * dr3("GiaBT")
+                        dtCTTT.Rows.Add(row2)
+                    Else
+                        row2 = dtCTTT.NewRow
+                        row2("MaHD") = ma + 1
+                        row2("ChiSo") = chiso
+                        row2("Gia") = dr3("GiaBT")
+                        row2("ThanhTien") = chiso * dr3("GiaBT")
+                        dtCTTT.Rows.Add(row2)
+                        row2 = dtCTTT.NewRow
+                        row2("MaHD") = ma + 1
+                        row2("ChiSo") = chisoCD
+                        row2("Gia") = dr3("GiaCD")
+                        row2("ThanhTien") = chisoCD * dr3("GiaCD")
+                        dtCTTT.Rows.Add(row2)
+                        row2 = dtCTTT.NewRow
+                        row2("MaHD") = ma + 1
+                        row2("ChiSo") = chisoTD
+                        row2("Gia") = dr3("GiaTD")
+                        row2("ThanhTien") = chisoTD * dr3("GiaTD")
+                        dtCTTT.Rows.Add(row2)
+                    End If
+                    lvwHoadon.Items.Add("Thành tiền")
+                    lvwHoadon.Items(i).SubItems.Add(thanhtien)
+                Next
+            End If
         Next
         row = dtCSCT.NewRow
         row("MaCT") = txtMaCT.Text
@@ -321,14 +240,23 @@ Public Class frmTinhTien
         Dim dr, dr1 As DataRow
         For Each dr In dtKH.Select("MaCT='" + txtMaCT.Text + "'")
             For Each dr1 In dtDT.Select("MaDT='" + dr("MaDT") + "'")
-                If dr1("MaBangGia") = "SH" Or dr1("MaBangGia") = "NT" Or dr1("MaBangGia") = "CDCTP" Or dr1("MaBangGia") = "CDCTT" Or dr1("MaBangGia") = "TM" Then
+                If dr("MaDT") = "CDCTPK" Or dr("MaDT") = "CDCTPB" Or dr("MaDT") = "CDCTPM" Or dr("MaDT") = "CDCTTK" Or dr("MaDT") = "CDCTTB" Or dr("MaDT") = "CDCTTM" Or dr("MaDT") = "NTK" Or dr("MaDT") = "SHNT" Or dr("MaDT") = "SHBTTT" Or dr("MaDT") = "SHBT" Or dr("MaDT") = "TMSH" Then
                     gia = "Gia6"
+                    txtChisoCD.Text = 0
+                    txtChisoTD.Text = 0
                     txtChisoCD.Enabled = False
                     txtChisoTD.Enabled = False
                 Else
                     gia = "Gia3"
-                    txtChisoCD.Enabled = True
-                    txtChisoTD.Enabled = True
+                    If dr("MaDT") = "BVT_T6" Or dr("MaDT") = "BVT_D6" Or dr("MaDT") = "CSHC_T6" Or dr("MaDT") = "CSHC_D6" Then
+                        txtChisoCD.Text = 0
+                        txtChisoTD.Text = 0
+                        txtChisoCD.Enabled = False
+                        txtChisoTD.Enabled = False
+                    Else
+                        txtChisoCD.Enabled = True
+                        txtChisoTD.Enabled = True
+                    End If
                 End If
             Next
         Next
