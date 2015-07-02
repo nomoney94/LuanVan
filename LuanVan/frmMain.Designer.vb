@@ -28,25 +28,27 @@ Partial Class frmMain
         Me.tsmiExcel = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiTTDonVi = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiCapNhatBG = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tsmiHoaDon = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmiTinhTien = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmiTKHoaDon = New System.Windows.Forms.ToolStripMenuItem()
         Me.TìmKiếmToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiTKKhachHang = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiTKCongTo = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiTKTram = New System.Windows.Forms.ToolStripMenuItem()
         Me.ThốngKêToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tsmiTKeLDTT = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmiTKeDNTT = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiTKeDoanhThu = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiThoat = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tsmiTinhTien = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmiTest = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmiTest2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip
         '
-        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NạpDữLiệuToolStripMenuItem, Me.tsmiTTDonVi, Me.tsmiCapNhatBG, Me.tsmiHoaDon, Me.TìmKiếmToolStripMenuItem, Me.ThốngKêToolStripMenuItem, Me.tsmiThoat, Me.tsmiTinhTien})
+        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NạpDữLiệuToolStripMenuItem, Me.tsmiTTDonVi, Me.tsmiCapNhatBG, Me.tsmiTinhTien, Me.tsmiTKHoaDon, Me.TìmKiếmToolStripMenuItem, Me.ThốngKêToolStripMenuItem, Me.tsmiThoat, Me.tsmiTest, Me.tsmiTest2})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
-        Me.MenuStrip.Size = New System.Drawing.Size(793, 71)
+        Me.MenuStrip.Size = New System.Drawing.Size(866, 71)
         Me.MenuStrip.TabIndex = 2
         Me.MenuStrip.Text = "MenuStrip1"
         '
@@ -90,13 +92,23 @@ Partial Class frmMain
         Me.tsmiCapNhatBG.Text = "Cập nhật bảng giá"
         Me.tsmiCapNhatBG.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
-        'tsmiHoaDon
+        'tsmiTinhTien
         '
-        Me.tsmiHoaDon.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.tsmiHoaDon.Name = "tsmiHoaDon"
-        Me.tsmiHoaDon.Size = New System.Drawing.Size(65, 67)
-        Me.tsmiHoaDon.Text = "Hóa đơn"
-        Me.tsmiHoaDon.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.tsmiTinhTien.Image = Global.LuanVan.My.Resources.Resources.Cash_icon
+        Me.tsmiTinhTien.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.tsmiTinhTien.Name = "tsmiTinhTien"
+        Me.tsmiTinhTien.Size = New System.Drawing.Size(66, 67)
+        Me.tsmiTinhTien.Text = "Tính tiền"
+        Me.tsmiTinhTien.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
+        'tsmiTKHoaDon
+        '
+        Me.tsmiTKHoaDon.Image = Global.LuanVan.My.Resources.Resources.Invoice_icon
+        Me.tsmiTKHoaDon.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.tsmiTKHoaDon.Name = "tsmiTKHoaDon"
+        Me.tsmiTKHoaDon.Size = New System.Drawing.Size(65, 67)
+        Me.tsmiTKHoaDon.Text = "Hóa đơn"
+        Me.tsmiTKHoaDon.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
         'TìmKiếmToolStripMenuItem
         '
@@ -111,24 +123,24 @@ Partial Class frmMain
         'tsmiTKKhachHang
         '
         Me.tsmiTKKhachHang.Name = "tsmiTKKhachHang"
-        Me.tsmiTKKhachHang.Size = New System.Drawing.Size(152, 22)
+        Me.tsmiTKKhachHang.Size = New System.Drawing.Size(137, 22)
         Me.tsmiTKKhachHang.Text = "Khách hàng"
         '
         'tsmiTKCongTo
         '
         Me.tsmiTKCongTo.Name = "tsmiTKCongTo"
-        Me.tsmiTKCongTo.Size = New System.Drawing.Size(152, 22)
+        Me.tsmiTKCongTo.Size = New System.Drawing.Size(137, 22)
         Me.tsmiTKCongTo.Text = "Công tơ"
         '
         'tsmiTKTram
         '
         Me.tsmiTKTram.Name = "tsmiTKTram"
-        Me.tsmiTKTram.Size = New System.Drawing.Size(152, 22)
+        Me.tsmiTKTram.Size = New System.Drawing.Size(137, 22)
         Me.tsmiTKTram.Text = "Trạm"
         '
         'ThốngKêToolStripMenuItem
         '
-        Me.ThốngKêToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmiTKeLDTT, Me.tsmiTKeDoanhThu})
+        Me.ThốngKêToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmiTKeDNTT, Me.tsmiTKeDoanhThu})
         Me.ThốngKêToolStripMenuItem.Image = Global.LuanVan.My.Resources.Resources.Chart_icon
         Me.ThốngKêToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ThốngKêToolStripMenuItem.Name = "ThốngKêToolStripMenuItem"
@@ -136,16 +148,16 @@ Partial Class frmMain
         Me.ThốngKêToolStripMenuItem.Text = "Thống kê"
         Me.ThốngKêToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
-        'tsmiTKeLDTT
+        'tsmiTKeDNTT
         '
-        Me.tsmiTKeLDTT.Name = "tsmiTKeLDTT"
-        Me.tsmiTKeLDTT.Size = New System.Drawing.Size(178, 22)
-        Me.tsmiTKeLDTT.Text = "Lượng điện tiêu thụ"
+        Me.tsmiTKeDNTT.Name = "tsmiTKeDNTT"
+        Me.tsmiTKeDNTT.Size = New System.Drawing.Size(172, 22)
+        Me.tsmiTKeDNTT.Text = "Điện năng tiêu thụ"
         '
         'tsmiTKeDoanhThu
         '
         Me.tsmiTKeDoanhThu.Name = "tsmiTKeDoanhThu"
-        Me.tsmiTKeDoanhThu.Size = New System.Drawing.Size(178, 22)
+        Me.tsmiTKeDoanhThu.Size = New System.Drawing.Size(172, 22)
         Me.tsmiTKeDoanhThu.Text = "Doanh thu"
         '
         'tsmiThoat
@@ -157,21 +169,24 @@ Partial Class frmMain
         Me.tsmiThoat.Text = "Thoát"
         Me.tsmiThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
-        'tsmiTinhTien
+        'tsmiTest
         '
-        Me.tsmiTinhTien.Image = Global.LuanVan.My.Resources.Resources.Cash_icon
-        Me.tsmiTinhTien.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.tsmiTinhTien.Name = "tsmiTinhTien"
-        Me.tsmiTinhTien.Size = New System.Drawing.Size(66, 67)
-        Me.tsmiTinhTien.Text = "Tính tiền"
-        Me.tsmiTinhTien.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.tsmiTest.Name = "tsmiTest"
+        Me.tsmiTest.Size = New System.Drawing.Size(87, 67)
+        Me.tsmiTest.Text = "test Hóa đơn"
+        '
+        'tsmiTest2
+        '
+        Me.tsmiTest2.Name = "tsmiTest2"
+        Me.tsmiTest2.Size = New System.Drawing.Size(86, 67)
+        Me.tsmiTest2.Text = "test giấy báo"
         '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(793, 437)
+        Me.ClientSize = New System.Drawing.Size(866, 477)
         Me.Controls.Add(Me.MenuStrip)
         Me.IsMdiContainer = True
         Me.KeyPreview = True
@@ -192,15 +207,17 @@ Partial Class frmMain
     Friend WithEvents tsmiExcel As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmiTTDonVi As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmiCapNhatBG As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents tsmiHoaDon As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmiTinhTien As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TìmKiếmToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmiTKKhachHang As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmiTKCongTo As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmiTKTram As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ThốngKêToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents tsmiTKeLDTT As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmiTKeDNTT As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmiTKeDoanhThu As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmiThoat As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents tsmiTinhTien As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmiTest As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmiTKHoaDon As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsmiTest2 As System.Windows.Forms.ToolStripMenuItem
 
 End Class

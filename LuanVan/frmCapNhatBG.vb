@@ -2,9 +2,11 @@
 
 Public Class frmCapNhatBG
     Private aLoai() As String = {"SX-KD-HC", "SH-NT-CDC-TM"}
+    Private aDTG3() As String = {"CDCTPK", "CDCTPB", "CDCTPM", "CDCTTK", "CDCTTB", "CDCTTM", "NTK", "SHNT", "SHBTTT", "SHBT", "TMSH"}
+    Private aDTG6() As String = {"BVT_T6", "BVT_D6", "CSHC_T6", "CSHC_D6", "KD_T22", "KD_T6", "KD_D6", "SX_T110", "SX_T22", "SX_T6", "SX_D6"}
     Private dtBG3 As DataTable
     Private dtBG6 As DataTable
-    Private dtBG As DataTable
+    'Private dtDT As DataTable
     Private change As Boolean = False
 
     Private Sub frmCapNhatBG_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -12,6 +14,7 @@ Public Class frmCapNhatBG
         cboLoai.SelectedIndex = 0
         dtBG3 = frmMain.ds.Tables("Gia3")
         dtBG6 = frmMain.ds.Tables("Gia6")
+        'dtDT = frmMain.ds.Tables("DoiTuongKH")
         LoadData_lsvBG3()
         LoadData_lsvBG6()
     End Sub
@@ -27,6 +30,16 @@ Public Class frmCapNhatBG
         End If
     End Sub
 
+    Private Sub LoadData_cboMaDT()
+        If cboLoai.SelectedIndex = 0 Then
+            cboMaDT.Items.Clear()
+            cboMaDT.Items.AddRange(aDTG6)
+        Else
+            cboMaDT.Items.Clear()
+            cboMaDT.Items.AddRange(aDTG3)
+        End If
+    End Sub
+
     Private Sub LoadData_lsvBG3()
         Dim read As DataTableReader = dtBG3.CreateDataReader
         Dim index As Integer
@@ -34,7 +47,7 @@ Public Class frmCapNhatBG
         While (read.Read)
             index = lsvBG3.Items.Count
             lsvBG3.Items.Add(read("MaLoaiDV"))
-            lsvBG3.Items(index).SubItems.Add(read("MaBangGia"))
+            lsvBG3.Items(index).SubItems.Add(read("MaDT"))
             lsvBG3.Items(index).SubItems.Add(read("TenLoai"))
             lsvBG3.Items(index).SubItems.Add(read("GiaBT"))
             lsvBG3.Items(index).SubItems.Add(read("GiaCD"))
@@ -49,7 +62,7 @@ Public Class frmCapNhatBG
         While (read.Read)
             index = lsvBG6.Items.Count
             lsvBG6.Items.Add(read("MaLoaiDV"))
-            lsvBG6.Items(index).SubItems.Add(read("MaBangGia"))
+            lsvBG6.Items(index).SubItems.Add(read("MaDT"))
             lsvBG6.Items(index).SubItems.Add(read("DinhMuc"))
             lsvBG6.Items(index).SubItems.Add(read("Gia"))
             lsvBG6.Items(index).SubItems.Add(read("MoTa"))
@@ -193,7 +206,7 @@ Public Class frmCapNhatBG
 
     Private Sub ClearError()
         errLoi.SetError(txtMaDV, "")
-        errLoi.SetError(cboMaBG, "")
+        errLoi.SetError(cboMaDT, "")
         errLoi.SetError(txtTenLoai, "")
         errLoi.SetError(txtGiaBT, "")
         errLoi.SetError(txtGiaCD, "")
@@ -234,7 +247,7 @@ Public Class frmCapNhatBG
                     Dim strFind As String = "MaLoaiDV='" & txtMaDV.Text & "'"
                     Dim dr As DataRow
                     For Each dr In dtBG3.Select(strFind)
-                        dr("MaBangGia") = cboMaBG.Text
+                        dr("MaDT") = cboMaDT.Text
                         dr("TenLoai") = txtTenLoai.Text
                         dr("GiaBT") = txtGiaBT.Text
                         dr("GiaCD") = txtGiaCD.Text
@@ -251,7 +264,7 @@ Public Class frmCapNhatBG
                     Dim strFind As String = "MaLoaiDV='" & txtMaDV.Text & "'"
                     Dim dr As DataRow
                     For Each dr In dtBG6.Select(strFind)
-                        dr("MaBangGia") = cboMaBG.Text
+                        dr("MaDT") = cboMaDT.Text
                         dr("DinhMuc") = txtDinhMuc.Text
                         dr("Gia") = txtGia.Text
                         dr("MoTa") = txtMoTa.Text
@@ -273,7 +286,7 @@ Public Class frmCapNhatBG
                 If dtBG3.Select(strFind).Length <= 0 Then
                     Dim dr As DataRow = dtBG3.NewRow
                     dr("MaLoaiDV") = txtMaDV.Text
-                    dr("MaBangGia") = cboMaBG.Text
+                    dr("MaDT") = cboMaDT.Text
                     dr("TenLoai") = txtTenLoai.Text
                     dr("GiaBT") = txtGiaBT.Text
                     dr("GiaCD") = txtGiaCD.Text
@@ -289,7 +302,7 @@ Public Class frmCapNhatBG
                 If dtBG6.Select(strFind).Length <= 0 Then
                     Dim dr As DataRow = dtBG6.NewRow
                     dr("MaLoaiDV") = txtMaDV.Text
-                    dr("MaBangGia") = cboMaBG.Text
+                    dr("MaDT") = cboMaDT.Text
                     dr("DinhMuc") = txtDinhMuc.Text
                     dr("Gia") = txtGia.Text
                     dr("MoTa") = txtMoTa.Text
@@ -344,6 +357,7 @@ Public Class frmCapNhatBG
     Private Sub cboLoai_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboLoai.SelectedIndexChanged
         btnReset.PerformClick()
         ClearError()
+        LoadData_cboMaDT()
         If cboLoai.SelectedIndex = 0 Then
             txtTenLoai.Enabled = True
             txtGiaBT.Enabled = True
@@ -370,7 +384,7 @@ Public Class frmCapNhatBG
     Private Sub lsvBG3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lsvBG3.SelectedIndexChanged
         If lsvBG3.SelectedItems.Count > 0 Then
             txtMaDV.Text = lsvBG3.SelectedItems(0).SubItems(0).Text
-            cboMaBG.Text = lsvBG3.SelectedItems(0).SubItems(1).Text
+            cboMaDT.Text = lsvBG3.SelectedItems(0).SubItems(1).Text
             txtTenLoai.Text = lsvBG3.SelectedItems(0).SubItems(2).Text
             txtGiaBT.Text = lsvBG3.SelectedItems(0).SubItems(3).Text
             txtGiaCD.Text = lsvBG3.SelectedItems(0).SubItems(4).Text
@@ -381,7 +395,7 @@ Public Class frmCapNhatBG
     Private Sub lsvBG6_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lsvBG6.SelectedIndexChanged
         If lsvBG6.SelectedItems.Count > 0 Then
             txtMaDV.Text = lsvBG6.SelectedItems(0).SubItems(0).Text
-            cboMaBG.Text = lsvBG6.SelectedItems(0).SubItems(1).Text
+            cboMaDT.Text = lsvBG6.SelectedItems(0).SubItems(1).Text
             txtDinhMuc.Text = lsvBG6.SelectedItems(0).SubItems(2).Text
             txtGia.Text = lsvBG6.SelectedItems(0).SubItems(3).Text
             txtMoTa.Text = lsvBG6.SelectedItems(0).SubItems(4).Text

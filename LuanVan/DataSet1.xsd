@@ -1,0 +1,440 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="QLHDTDConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="QLHDTDConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.LuanVan.My.MySettings.GlobalReference.Default.QLHDTDConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TKeLDTT_QuyTableAdapter" GeneratorDataComponentClassName="TKeLDTT_QuyTableAdapter" Name="TKeLDTT_Quy" UserDataComponentName="TKeLDTT_QuyTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QLHDTDConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT DATEPART(QUARTER, Ky) [Quy], SUM(DienNangTieuThu) [DienNangTieuThu]
+FROM HoaDon
+GROUP BY DATEPART(QUARTER, Ky)
+ORDER BY 1</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="DienNangTieuThu" DataSetColumn="DienNangTieuThu" />
+              <Mapping SourceColumn="Quy" DataSetColumn="Quy" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TKeDNTT_ThangTableAdapter" GeneratorDataComponentClassName="TKeDNTT_ThangTableAdapter" Name="TKeDNTT_Thang" UserDataComponentName="TKeDNTT_ThangTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QLHDTDConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT DATEPART(MONTH, Ky) [Thang], SUM(DienNangTieuThu) [DienNangTieuThu]
+FROM HoaDon
+GROUP BY DATEPART(MONTH, Ky)
+ORDER BY 1</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Thang" DataSetColumn="Thang" />
+              <Mapping SourceColumn="DienNangTieuThu" DataSetColumn="DienNangTieuThu" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TKeDNTT_NamTableAdapter" GeneratorDataComponentClassName="TKeDNTT_NamTableAdapter" Name="TKeDNTT_Nam" UserDataComponentName="TKeDNTT_NamTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QLHDTDConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT DATEPART(YEAR, Ky) [Nam], SUM(DienNangTieuThu) [DienNangTieuThu]
+FROM HoaDon
+GROUP BY DATEPART(YEAR, Ky)
+ORDER BY 1</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Nam" DataSetColumn="Nam" />
+              <Mapping SourceColumn="DienNangTieuThu" DataSetColumn="DienNangTieuThu" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TKeDT_ThangTableAdapter" GeneratorDataComponentClassName="TKeDT_ThangTableAdapter" Name="TKeDT_Thang" UserDataComponentName="TKeDT_ThangTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QLHDTDConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT DATEPART(MONTH, Ky) [Thang], SUM(ThanhTien) [DoanhThu]
+FROM HoaDon
+GROUP BY DATEPART(MONTH, Ky)
+ORDER BY 1</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Thang" DataSetColumn="Thang" />
+              <Mapping SourceColumn="DoanhThu" DataSetColumn="DoanhThu" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TKeDT_QuyTableAdapter" GeneratorDataComponentClassName="TKeDT_QuyTableAdapter" Name="TKeDT_Quy" UserDataComponentName="TKeDT_QuyTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QLHDTDConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT DATEPART(QUARTER, Ky) [Quy], SUM(ThanhTien) [DoanhThu]
+FROM HoaDon
+GROUP BY DATEPART(QUARTER, Ky)
+ORDER BY 1</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Quy" DataSetColumn="Quy" />
+              <Mapping SourceColumn="DoanhThu" DataSetColumn="DoanhThu" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TKeDT_NamTableAdapter" GeneratorDataComponentClassName="TKeDT_NamTableAdapter" Name="TKeDT_Nam" UserDataComponentName="TKeDT_NamTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QLHDTDConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT DATEPART(YEAR, Ky) [Nam], SUM(ThanhTien) [DoanhThu]
+FROM HoaDon
+GROUP BY DATEPART(YEAR, Ky)
+ORDER BY 1</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Nam" DataSetColumn="Nam" />
+              <Mapping SourceColumn="DoanhThu" DataSetColumn="DoanhThu" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DonViTableAdapter" GeneratorDataComponentClassName="DonViTableAdapter" Name="DonVi" UserDataComponentName="DonViTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QLHDTDConnectionString (MySettings)" DbObjectName="QLHDTD.dbo.DonVi" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [DonVi] WHERE (([TenDV] = @Original_TenDV) AND ([DiaChi] = @Original_DiaChi) AND ([DienThoai] = @Original_DienThoai) AND ([DTSuaChua] = @Original_DTSuaChua) AND ([MaSoThue] = @Original_MaSoThue))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_TenDV" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenDV" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_DiaChi" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="DiaChi" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_DienThoai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DienThoai" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_DTSuaChua" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DTSuaChua" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaSoThue" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaSoThue" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [DonVi] ([TenDV], [DiaChi], [DienThoai], [DTSuaChua], [MaSoThue]) VALUES (@TenDV, @DiaChi, @DienThoai, @DTSuaChua, @MaSoThue);
+SELECT TenDV, DiaChi, DienThoai, DTSuaChua, MaSoThue FROM DonVi WHERE (TenDV = @TenDV)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@TenDV" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenDV" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@DiaChi" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="DiaChi" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@DienThoai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DienThoai" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@DTSuaChua" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DTSuaChua" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaSoThue" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaSoThue" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        TenDV, DiaChi, DienThoai, DTSuaChua, MaSoThue
+FROM            DonVi</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [DonVi] SET [TenDV] = @TenDV, [DiaChi] = @DiaChi, [DienThoai] = @DienThoai, [DTSuaChua] = @DTSuaChua, [MaSoThue] = @MaSoThue WHERE (([TenDV] = @Original_TenDV) AND ([DiaChi] = @Original_DiaChi) AND ([DienThoai] = @Original_DienThoai) AND ([DTSuaChua] = @Original_DTSuaChua) AND ([MaSoThue] = @Original_MaSoThue));
+SELECT TenDV, DiaChi, DienThoai, DTSuaChua, MaSoThue FROM DonVi WHERE (TenDV = @TenDV)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@TenDV" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenDV" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@DiaChi" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="DiaChi" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@DienThoai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DienThoai" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@DTSuaChua" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DTSuaChua" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@MaSoThue" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaSoThue" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_TenDV" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="TenDV" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@Original_DiaChi" Precision="0" ProviderType="NVarChar" Scale="0" Size="0" SourceColumn="DiaChi" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_DienThoai" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DienThoai" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_DTSuaChua" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="DTSuaChua" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_MaSoThue" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="MaSoThue" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="TenDV" DataSetColumn="TenDV" />
+              <Mapping SourceColumn="DiaChi" DataSetColumn="DiaChi" />
+              <Mapping SourceColumn="DienThoai" DataSetColumn="DienThoai" />
+              <Mapping SourceColumn="DTSuaChua" DataSetColumn="DTSuaChua" />
+              <Mapping SourceColumn="MaSoThue" DataSetColumn="MaSoThue" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CTHoaDonTableAdapter" GeneratorDataComponentClassName="CTHoaDonTableAdapter" Name="CTHoaDon" UserDataComponentName="CTHoaDonTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QLHDTDConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        KhachHang.MaKH, KhachHang.MaCT, KhachHang.MaDT, HoaDon.MaHD, HoaDon.DienNangTieuThu, HoaDon.ThanhTien, HoaDon.Ky, ChiSoCongTo.NgayDauKy, ChiSoCongTo.NgayCuoiKy, KhachHang.TenKH, 
+                         KhachHang.DiaChi, KhachHang.SDT, KhachHang.MaSoThue, Tram.MaTram, ChiSoCongTo.ChiSo
+FROM            KhachHang INNER JOIN
+                         HoaDon ON KhachHang.MaKH = HoaDon.MaKH INNER JOIN
+                         DoiTuongKH ON KhachHang.MaDT = DoiTuongKH.MaDT INNER JOIN
+                         ChiSoCongTo ON KhachHang.MaCT = ChiSoCongTo.MaCT INNER JOIN
+                         CongTo ON KhachHang.MaCT = CongTo.MaCT AND ChiSoCongTo.MaCT = CongTo.MaCT INNER JOIN
+                         Tram ON CongTo.MaTram = Tram.MaTram</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaKH" DataSetColumn="MaKH" />
+              <Mapping SourceColumn="MaCT" DataSetColumn="MaCT" />
+              <Mapping SourceColumn="MaDT" DataSetColumn="MaDT" />
+              <Mapping SourceColumn="MaHD" DataSetColumn="MaHD" />
+              <Mapping SourceColumn="DienNangTieuThu" DataSetColumn="DienNangTieuThu" />
+              <Mapping SourceColumn="ThanhTien" DataSetColumn="ThanhTien" />
+              <Mapping SourceColumn="Ky" DataSetColumn="Ky" />
+              <Mapping SourceColumn="NgayDauKy" DataSetColumn="NgayDauKy" />
+              <Mapping SourceColumn="NgayCuoiKy" DataSetColumn="NgayCuoiKy" />
+              <Mapping SourceColumn="TenKH" DataSetColumn="TenKH" />
+              <Mapping SourceColumn="DiaChi" DataSetColumn="DiaChi" />
+              <Mapping SourceColumn="SDT" DataSetColumn="SDT" />
+              <Mapping SourceColumn="MaSoThue" DataSetColumn="MaSoThue" />
+              <Mapping SourceColumn="MaTram" DataSetColumn="MaTram" />
+              <Mapping SourceColumn="ChiSo" DataSetColumn="ChiSo" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CTThanhTienTableAdapter" GeneratorDataComponentClassName="CTThanhTienTableAdapter" Name="CTThanhTien" UserDataComponentName="CTThanhTienTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QLHDTDConnectionString (MySettings)" DbObjectName="QLHDTD.dbo.ChiTietThanhTien" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT ChiTietThanhTien.MaHD, ChiTietThanhTien.ChiSo, ChiTietThanhTien.Gia, ChiTietThanhTien.ThanhTien AS CTThanhTien
+FROM KhachHang INNER JOIN
+HoaDon ON KhachHang.MaKH = HoaDon.MaKH INNER JOIN
+ChiTietThanhTien ON HoaDon.MaHD = ChiTietThanhTien.MaHD</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaHD" DataSetColumn="MaHD" />
+              <Mapping SourceColumn="ChiSo" DataSetColumn="ChiSo" />
+              <Mapping SourceColumn="Gia" DataSetColumn="Gia" />
+              <Mapping SourceColumn="CTThanhTien" DataSetColumn="CTThanhTien" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="TKeLDTT_Quy" msprop:Generator_TableClassName="TKeLDTT_QuyDataTable" msprop:Generator_TableVarName="tableTKeLDTT_Quy" msprop:Generator_TablePropName="TKeLDTT_Quy" msprop:Generator_RowDeletingName="TKeLDTT_QuyRowDeleting" msprop:Generator_RowChangingName="TKeLDTT_QuyRowChanging" msprop:Generator_RowEvHandlerName="TKeLDTT_QuyRowChangeEventHandler" msprop:Generator_RowDeletedName="TKeLDTT_QuyRowDeleted" msprop:Generator_UserTableName="TKeLDTT_Quy" msprop:Generator_RowChangedName="TKeLDTT_QuyRowChanged" msprop:Generator_RowEvArgName="TKeLDTT_QuyRowChangeEvent" msprop:Generator_RowClassName="TKeLDTT_QuyRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DienNangTieuThu" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDienNangTieuThu" msprop:Generator_ColumnPropNameInRow="DienNangTieuThu" msprop:Generator_ColumnPropNameInTable="DienNangTieuThuColumn" msprop:Generator_UserColumnName="DienNangTieuThu" type="xs:int" minOccurs="0" />
+              <xs:element name="Quy" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnQuy" msprop:Generator_ColumnPropNameInRow="Quy" msprop:Generator_ColumnPropNameInTable="QuyColumn" msprop:Generator_UserColumnName="Quy" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TKeDNTT_Thang" msprop:Generator_TableClassName="TKeDNTT_ThangDataTable" msprop:Generator_TableVarName="tableTKeDNTT_Thang" msprop:Generator_RowChangedName="TKeDNTT_ThangRowChanged" msprop:Generator_TablePropName="TKeDNTT_Thang" msprop:Generator_RowDeletingName="TKeDNTT_ThangRowDeleting" msprop:Generator_RowChangingName="TKeDNTT_ThangRowChanging" msprop:Generator_RowEvHandlerName="TKeDNTT_ThangRowChangeEventHandler" msprop:Generator_RowDeletedName="TKeDNTT_ThangRowDeleted" msprop:Generator_RowClassName="TKeDNTT_ThangRow" msprop:Generator_UserTableName="TKeDNTT_Thang" msprop:Generator_RowEvArgName="TKeDNTT_ThangRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Thang" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnThang" msprop:Generator_ColumnPropNameInRow="Thang" msprop:Generator_ColumnPropNameInTable="ThangColumn" msprop:Generator_UserColumnName="Thang" type="xs:int" minOccurs="0" />
+              <xs:element name="DienNangTieuThu" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDienNangTieuThu" msprop:Generator_ColumnPropNameInRow="DienNangTieuThu" msprop:Generator_ColumnPropNameInTable="DienNangTieuThuColumn" msprop:Generator_UserColumnName="DienNangTieuThu" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TKeDNTT_Nam" msprop:Generator_TableClassName="TKeDNTT_NamDataTable" msprop:Generator_TableVarName="tableTKeDNTT_Nam" msprop:Generator_RowChangedName="TKeDNTT_NamRowChanged" msprop:Generator_TablePropName="TKeDNTT_Nam" msprop:Generator_RowDeletingName="TKeDNTT_NamRowDeleting" msprop:Generator_RowChangingName="TKeDNTT_NamRowChanging" msprop:Generator_RowEvHandlerName="TKeDNTT_NamRowChangeEventHandler" msprop:Generator_RowDeletedName="TKeDNTT_NamRowDeleted" msprop:Generator_RowClassName="TKeDNTT_NamRow" msprop:Generator_UserTableName="TKeDNTT_Nam" msprop:Generator_RowEvArgName="TKeDNTT_NamRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Nam" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNam" msprop:Generator_ColumnPropNameInRow="Nam" msprop:Generator_ColumnPropNameInTable="NamColumn" msprop:Generator_UserColumnName="Nam" type="xs:int" minOccurs="0" />
+              <xs:element name="DienNangTieuThu" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDienNangTieuThu" msprop:Generator_ColumnPropNameInRow="DienNangTieuThu" msprop:Generator_ColumnPropNameInTable="DienNangTieuThuColumn" msprop:Generator_UserColumnName="DienNangTieuThu" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TKeDT_Thang" msprop:Generator_TableClassName="TKeDT_ThangDataTable" msprop:Generator_TableVarName="tableTKeDT_Thang" msprop:Generator_TablePropName="TKeDT_Thang" msprop:Generator_RowDeletingName="TKeDT_ThangRowDeleting" msprop:Generator_RowChangingName="TKeDT_ThangRowChanging" msprop:Generator_RowEvHandlerName="TKeDT_ThangRowChangeEventHandler" msprop:Generator_RowDeletedName="TKeDT_ThangRowDeleted" msprop:Generator_UserTableName="TKeDT_Thang" msprop:Generator_RowChangedName="TKeDT_ThangRowChanged" msprop:Generator_RowEvArgName="TKeDT_ThangRowChangeEvent" msprop:Generator_RowClassName="TKeDT_ThangRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Thang" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnThang" msprop:Generator_ColumnPropNameInRow="Thang" msprop:Generator_ColumnPropNameInTable="ThangColumn" msprop:Generator_UserColumnName="Thang" type="xs:int" minOccurs="0" />
+              <xs:element name="DoanhThu" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDoanhThu" msprop:Generator_ColumnPropNameInRow="DoanhThu" msprop:Generator_ColumnPropNameInTable="DoanhThuColumn" msprop:Generator_UserColumnName="DoanhThu" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TKeDT_Quy" msprop:Generator_TableClassName="TKeDT_QuyDataTable" msprop:Generator_TableVarName="tableTKeDT_Quy" msprop:Generator_TablePropName="TKeDT_Quy" msprop:Generator_RowDeletingName="TKeDT_QuyRowDeleting" msprop:Generator_RowChangingName="TKeDT_QuyRowChanging" msprop:Generator_RowEvHandlerName="TKeDT_QuyRowChangeEventHandler" msprop:Generator_RowDeletedName="TKeDT_QuyRowDeleted" msprop:Generator_UserTableName="TKeDT_Quy" msprop:Generator_RowChangedName="TKeDT_QuyRowChanged" msprop:Generator_RowEvArgName="TKeDT_QuyRowChangeEvent" msprop:Generator_RowClassName="TKeDT_QuyRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Quy" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnQuy" msprop:Generator_ColumnPropNameInRow="Quy" msprop:Generator_ColumnPropNameInTable="QuyColumn" msprop:Generator_UserColumnName="Quy" type="xs:int" minOccurs="0" />
+              <xs:element name="DoanhThu" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDoanhThu" msprop:Generator_ColumnPropNameInRow="DoanhThu" msprop:Generator_ColumnPropNameInTable="DoanhThuColumn" msprop:Generator_UserColumnName="DoanhThu" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TKeDT_Nam" msprop:Generator_TableClassName="TKeDT_NamDataTable" msprop:Generator_TableVarName="tableTKeDT_Nam" msprop:Generator_TablePropName="TKeDT_Nam" msprop:Generator_RowDeletingName="TKeDT_NamRowDeleting" msprop:Generator_RowChangingName="TKeDT_NamRowChanging" msprop:Generator_RowEvHandlerName="TKeDT_NamRowChangeEventHandler" msprop:Generator_RowDeletedName="TKeDT_NamRowDeleted" msprop:Generator_UserTableName="TKeDT_Nam" msprop:Generator_RowChangedName="TKeDT_NamRowChanged" msprop:Generator_RowEvArgName="TKeDT_NamRowChangeEvent" msprop:Generator_RowClassName="TKeDT_NamRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Nam" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNam" msprop:Generator_ColumnPropNameInRow="Nam" msprop:Generator_ColumnPropNameInTable="NamColumn" msprop:Generator_UserColumnName="Nam" type="xs:int" minOccurs="0" />
+              <xs:element name="DoanhThu" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDoanhThu" msprop:Generator_ColumnPropNameInRow="DoanhThu" msprop:Generator_ColumnPropNameInTable="DoanhThuColumn" msprop:Generator_UserColumnName="DoanhThu" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DonVi" msprop:Generator_TableClassName="DonViDataTable" msprop:Generator_TableVarName="tableDonVi" msprop:Generator_RowChangedName="DonViRowChanged" msprop:Generator_TablePropName="DonVi" msprop:Generator_RowDeletingName="DonViRowDeleting" msprop:Generator_RowChangingName="DonViRowChanging" msprop:Generator_RowEvHandlerName="DonViRowChangeEventHandler" msprop:Generator_RowDeletedName="DonViRowDeleted" msprop:Generator_RowClassName="DonViRow" msprop:Generator_UserTableName="DonVi" msprop:Generator_RowEvArgName="DonViRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TenDV" msprop:Generator_ColumnVarNameInTable="columnTenDV" msprop:Generator_ColumnPropNameInRow="TenDV" msprop:Generator_ColumnPropNameInTable="TenDVColumn" msprop:Generator_UserColumnName="TenDV">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DiaChi" msprop:Generator_ColumnVarNameInTable="columnDiaChi" msprop:Generator_ColumnPropNameInRow="DiaChi" msprop:Generator_ColumnPropNameInTable="DiaChiColumn" msprop:Generator_UserColumnName="DiaChi">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DienThoai" msprop:Generator_ColumnVarNameInTable="columnDienThoai" msprop:Generator_ColumnPropNameInRow="DienThoai" msprop:Generator_ColumnPropNameInTable="DienThoaiColumn" msprop:Generator_UserColumnName="DienThoai">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="11" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DTSuaChua" msprop:Generator_ColumnVarNameInTable="columnDTSuaChua" msprop:Generator_ColumnPropNameInRow="DTSuaChua" msprop:Generator_ColumnPropNameInTable="DTSuaChuaColumn" msprop:Generator_UserColumnName="DTSuaChua">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="11" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaSoThue" msprop:Generator_ColumnVarNameInTable="columnMaSoThue" msprop:Generator_ColumnPropNameInRow="MaSoThue" msprop:Generator_ColumnPropNameInTable="MaSoThueColumn" msprop:Generator_UserColumnName="MaSoThue">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CTHoaDon" msprop:Generator_TableClassName="CTHoaDonDataTable" msprop:Generator_TableVarName="tableCTHoaDon" msprop:Generator_RowChangedName="CTHoaDonRowChanged" msprop:Generator_TablePropName="CTHoaDon" msprop:Generator_RowDeletingName="CTHoaDonRowDeleting" msprop:Generator_RowChangingName="CTHoaDonRowChanging" msprop:Generator_RowEvHandlerName="CTHoaDonRowChangeEventHandler" msprop:Generator_RowDeletedName="CTHoaDonRowDeleted" msprop:Generator_RowClassName="CTHoaDonRow" msprop:Generator_UserTableName="CTHoaDon" msprop:Generator_RowEvArgName="CTHoaDonRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaKH" msprop:Generator_ColumnVarNameInTable="columnMaKH" msprop:Generator_ColumnPropNameInRow="MaKH" msprop:Generator_ColumnPropNameInTable="MaKHColumn" msprop:Generator_UserColumnName="MaKH">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="13" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaCT" msprop:Generator_ColumnVarNameInTable="columnMaCT" msprop:Generator_ColumnPropNameInRow="MaCT" msprop:Generator_ColumnPropNameInTable="MaCTColumn" msprop:Generator_UserColumnName="MaCT">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaDT" msprop:Generator_ColumnVarNameInTable="columnMaDT" msprop:Generator_ColumnPropNameInRow="MaDT" msprop:Generator_ColumnPropNameInTable="MaDTColumn" msprop:Generator_UserColumnName="MaDT">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaHD" msprop:Generator_ColumnVarNameInTable="columnMaHD" msprop:Generator_ColumnPropNameInRow="MaHD" msprop:Generator_ColumnPropNameInTable="MaHDColumn" msprop:Generator_UserColumnName="MaHD" type="xs:int" />
+              <xs:element name="DienNangTieuThu" msprop:Generator_ColumnVarNameInTable="columnDienNangTieuThu" msprop:Generator_ColumnPropNameInRow="DienNangTieuThu" msprop:Generator_ColumnPropNameInTable="DienNangTieuThuColumn" msprop:Generator_UserColumnName="DienNangTieuThu" type="xs:int" />
+              <xs:element name="ThanhTien" msprop:Generator_ColumnVarNameInTable="columnThanhTien" msprop:Generator_ColumnPropNameInRow="ThanhTien" msprop:Generator_ColumnPropNameInTable="ThanhTienColumn" msprop:Generator_UserColumnName="ThanhTien" type="xs:double" />
+              <xs:element name="Ky" msprop:Generator_ColumnVarNameInTable="columnKy" msprop:Generator_ColumnPropNameInRow="Ky" msprop:Generator_ColumnPropNameInTable="KyColumn" msprop:Generator_UserColumnName="Ky" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="NgayDauKy" msprop:Generator_ColumnVarNameInTable="columnNgayDauKy" msprop:Generator_ColumnPropNameInRow="NgayDauKy" msprop:Generator_ColumnPropNameInTable="NgayDauKyColumn" msprop:Generator_UserColumnName="NgayDauKy" type="xs:dateTime" />
+              <xs:element name="NgayCuoiKy" msprop:Generator_ColumnVarNameInTable="columnNgayCuoiKy" msprop:Generator_ColumnPropNameInRow="NgayCuoiKy" msprop:Generator_ColumnPropNameInTable="NgayCuoiKyColumn" msprop:Generator_UserColumnName="NgayCuoiKy" type="xs:dateTime" />
+              <xs:element name="TenKH" msprop:Generator_ColumnVarNameInTable="columnTenKH" msprop:Generator_ColumnPropNameInRow="TenKH" msprop:Generator_ColumnPropNameInTable="TenKHColumn" msprop:Generator_UserColumnName="TenKH">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DiaChi" msprop:Generator_ColumnVarNameInTable="columnDiaChi" msprop:Generator_ColumnPropNameInRow="DiaChi" msprop:Generator_ColumnPropNameInTable="DiaChiColumn" msprop:Generator_UserColumnName="DiaChi">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SDT" msprop:Generator_ColumnVarNameInTable="columnSDT" msprop:Generator_ColumnPropNameInRow="SDT" msprop:Generator_ColumnPropNameInTable="SDTColumn" msprop:Generator_UserColumnName="SDT" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="11" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaSoThue" msprop:Generator_ColumnVarNameInTable="columnMaSoThue" msprop:Generator_ColumnPropNameInRow="MaSoThue" msprop:Generator_ColumnPropNameInTable="MaSoThueColumn" msprop:Generator_UserColumnName="MaSoThue" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaTram" msprop:Generator_ColumnVarNameInTable="columnMaTram" msprop:Generator_ColumnPropNameInRow="MaTram" msprop:Generator_ColumnPropNameInTable="MaTramColumn" msprop:Generator_UserColumnName="MaTram">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ChiSo" msprop:Generator_ColumnVarNameInTable="columnChiSo" msprop:Generator_ColumnPropNameInRow="ChiSo" msprop:Generator_ColumnPropNameInTable="ChiSoColumn" msprop:Generator_UserColumnName="ChiSo" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CTThanhTien" msprop:Generator_TableClassName="CTThanhTienDataTable" msprop:Generator_TableVarName="tableCTThanhTien" msprop:Generator_RowChangedName="CTThanhTienRowChanged" msprop:Generator_TablePropName="CTThanhTien" msprop:Generator_RowDeletingName="CTThanhTienRowDeleting" msprop:Generator_RowChangingName="CTThanhTienRowChanging" msprop:Generator_RowEvHandlerName="CTThanhTienRowChangeEventHandler" msprop:Generator_RowDeletedName="CTThanhTienRowDeleted" msprop:Generator_RowClassName="CTThanhTienRow" msprop:Generator_UserTableName="CTThanhTien" msprop:Generator_RowEvArgName="CTThanhTienRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaHD" msprop:Generator_ColumnVarNameInTable="columnMaHD" msprop:Generator_ColumnPropNameInRow="MaHD" msprop:Generator_ColumnPropNameInTable="MaHDColumn" msprop:Generator_UserColumnName="MaHD" type="xs:int" />
+              <xs:element name="ChiSo" msprop:Generator_ColumnVarNameInTable="columnChiSo" msprop:Generator_ColumnPropNameInRow="ChiSo" msprop:Generator_ColumnPropNameInTable="ChiSoColumn" msprop:Generator_UserColumnName="ChiSo" type="xs:int" />
+              <xs:element name="Gia" msprop:Generator_ColumnVarNameInTable="columnGia" msprop:Generator_ColumnPropNameInRow="Gia" msprop:Generator_ColumnPropNameInTable="GiaColumn" msprop:Generator_UserColumnName="Gia" type="xs:int" />
+              <xs:element name="CTThanhTien" msprop:Generator_ColumnVarNameInTable="columnCTThanhTien" msprop:Generator_ColumnPropNameInRow="CTThanhTien" msprop:Generator_ColumnPropNameInTable="CTThanhTienColumn" msprop:Generator_UserColumnName="CTThanhTien" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DonVi" />
+      <xs:field xpath="mstns:TenDV" />
+    </xs:unique>
+    <xs:unique name="CTThanhTien_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:CTThanhTien" />
+      <xs:field xpath="mstns:MaHD" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

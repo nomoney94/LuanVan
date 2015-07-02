@@ -5,13 +5,15 @@ Public Class frmMain
     Private frmTKHD As frmTKHoaDon
     Private frmTKKH As frmTKKhachHang
     Private frmTKT As frmTKTram
-    'Private frmTKDT As frmTKeDoanhThu
-    Private frmTKLDTT As frmTKeLDTT
+    Private frmTKDT As frmTKeDT
+    Private frmTKDNTT As frmTKeDNTT
     Private frmTTDV As frmTTDonVi
     Private frmTTD As frmTinhTien
     Private frmCNBG As frmCapNhatBG
+    'Private frmTest As frmReport
+    Private frmTest As frmTest
+    Private frmTest2 As frmTest2
 
-    Public daBangGia As SqlDataAdapter
     Public daChiSoCongTo As SqlDataAdapter
     Public daCongTo As SqlDataAdapter
     Public daDoiTuongKH As SqlDataAdapter
@@ -28,6 +30,7 @@ Public Class frmMain
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ConnectSQLServer_InitializeDataSet()
+        InitializeDataAdapter_FillItIntoDataSet()
     End Sub
 
     Private Sub ConnectSQLServer_InitializeDataSet()
@@ -39,7 +42,6 @@ Public Class frmMain
             con.Open()
             con.Close()
             ds = New DataSet("QLHDTD")
-            InitializeDataAdapter_FillItIntoDataSet()
         Catch ex As Exception
             MsgBox("Không thể kết nối đến SQL Server!")
         End Try
@@ -47,10 +49,6 @@ Public Class frmMain
 
     Private Sub InitializeDataAdapter_FillItIntoDataSet()
         Dim com As SqlCommand
-
-        com = New SqlCommand("Select * From BangGia", con)
-        daBangGia = New SqlDataAdapter(com)
-        daBangGia.Fill(ds, "BangGia")
 
         com = New SqlCommand("Select * From ChiSoCongTo", con)
         daChiSoCongTo = New SqlDataAdapter(com)
@@ -93,7 +91,7 @@ Public Class frmMain
         daChiTietThanhTien.Fill(ds, "ChiTietThanhTien")
     End Sub
 
-        Private Sub tsmiTTDonVi_Click(sender As Object, e As EventArgs) Handles tsmiTTDonVi.Click
+    Private Sub tsmiTTDonVi_Click(sender As Object, e As EventArgs) Handles tsmiTTDonVi.Click
         If frmTTDV Is Nothing OrElse frmTTDV.IsDisposed Then
             frmTTDV = New frmTTDonVi
             frmTTDV.MdiParent = Me
@@ -125,27 +123,35 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub tsmiTKeLDTT_Click(sender As Object, e As EventArgs) Handles tsmiTKeLDTT.Click
-        If frmTKLDTT Is Nothing OrElse frmTKLDTT.IsDisposed Then
-            frmTKLDTT = New frmTKeLDTT
-            frmTKLDTT.MdiParent = Me
-            frmTKLDTT.Show()
-        End If
-    End Sub
-
-    Private Sub tsmiTKeDoanhThu_Click(sender As Object, e As EventArgs) Handles tsmiTKeDoanhThu.Click
-        'If frmTKDT Is Nothing OrElse frmTKDT.IsDisposed Then
-        '    frmTKDT = New frmTKeDoanhThu
-        '    frmTKDT.MdiParent = Me
-        '    frmTKDT.Show()
-        'End If
-    End Sub
-
-    Private Sub tsmiHoaDon_Click(ByVal sender As Object, ByVal e As EventArgs) Handles tsmiHoaDon.Click
+    Private Sub tsmiTKHoaDon_Click(sender As Object, e As EventArgs) Handles tsmiTKHoaDon.Click
         If frmTKHD Is Nothing OrElse frmTKHD.IsDisposed Then
             frmTKHD = New frmTKHoaDon
             frmTKHD.MdiParent = Me
             frmTKHD.Show()
+        End If
+    End Sub
+
+    Private Sub tsmiTKeDNTT_Click(sender As Object, e As EventArgs) Handles tsmiTKeDNTT.Click
+        If frmTKDNTT Is Nothing OrElse frmTKDNTT.IsDisposed Then
+            frmTKDNTT = New frmTKeDNTT
+            frmTKDNTT.MdiParent = Me
+            frmTKDNTT.Show()
+        End If
+    End Sub
+
+    Private Sub tsmiTKeDoanhThu_Click(sender As Object, e As EventArgs) Handles tsmiTKeDoanhThu.Click
+        If frmTKDT Is Nothing OrElse frmTKDT.IsDisposed Then
+            frmTKDT = New frmTKeDT
+            frmTKDT.MdiParent = Me
+            frmTKDT.Show()
+        End If
+    End Sub
+
+    Private Sub tsmiTinhTien_Click(sender As Object, e As EventArgs) Handles tsmiTinhTien.Click
+        If frmTTD Is Nothing OrElse frmTTD.IsDisposed Then
+            frmTTD = New frmTinhTien
+            frmTTD.MdiParent = Me
+            frmTTD.Show()
         End If
     End Sub
 
@@ -169,11 +175,21 @@ Public Class frmMain
         Close()
     End Sub
 
-    Private Sub tsmiTinhTien_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsmiTinhTien.Click
-        If frmTTD Is Nothing OrElse frmTTD.IsDisposed Then
-            frmTTD = New frmTinhTien
-            frmTTD.MdiParent = Me
-            frmTTD.Show()
+    Private Sub tsmiTest_Click(sender As Object, e As EventArgs) Handles tsmiTest.Click
+        If frmTest Is Nothing OrElse frmTest.IsDisposed Then
+            'frmTest = New frmReport
+            frmTest = New frmTest
+            frmTest.MdiParent = Me
+            frmTest.Show()
+        End If
+    End Sub
+
+    Private Sub tsmiTest2_Click(sender As Object, e As EventArgs) Handles tsmiTest2.Click
+        If frmTest2 Is Nothing OrElse frmTest2.IsDisposed Then
+            'frmTest = New frmReport
+            frmTest2 = New frmTest2
+            frmTest2.MdiParent = Me
+            frmTest2.Show()
         End If
     End Sub
 End Class

@@ -25,7 +25,18 @@ Partial Class frmCapNhatBG
         Me.components = New System.ComponentModel.Container()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.lsvBG3 = New System.Windows.Forms.ListView()
+        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.lsvBG6 = New System.Windows.Forms.ListView()
+        Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader8 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader10 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader11 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Label3 = New System.Windows.Forms.Label()
         Me.cboLoai = New System.Windows.Forms.ComboBox()
         Me.btnLuu = New System.Windows.Forms.Button()
@@ -36,7 +47,7 @@ Partial Class frmCapNhatBG
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtMaDV = New System.Windows.Forms.TextBox()
-        Me.cboMaBG = New System.Windows.Forms.ComboBox()
+        Me.cboMaDT = New System.Windows.Forms.ComboBox()
         Me.txtTenLoai = New System.Windows.Forms.TextBox()
         Me.txtGiaBT = New System.Windows.Forms.TextBox()
         Me.txtGiaCD = New System.Windows.Forms.TextBox()
@@ -52,17 +63,6 @@ Partial Class frmCapNhatBG
         Me.btnXoa = New System.Windows.Forms.Button()
         Me.btnSua = New System.Windows.Forms.Button()
         Me.errLoi = New System.Windows.Forms.ErrorProvider(Me.components)
-        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader8 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader10 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader11 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.errLoi, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -76,8 +76,8 @@ Partial Class frmCapNhatBG
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(12, 217)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 2
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(538, 241)
         Me.TableLayoutPanel1.TabIndex = 0
         '
@@ -91,10 +91,40 @@ Partial Class frmCapNhatBG
         Me.lsvBG3.GridLines = True
         Me.lsvBG3.Location = New System.Drawing.Point(3, 3)
         Me.lsvBG3.Name = "lsvBG3"
-        Me.lsvBG3.Size = New System.Drawing.Size(532, 114)
+        Me.lsvBG3.Size = New System.Drawing.Size(532, 234)
         Me.lsvBG3.TabIndex = 5
         Me.lsvBG3.UseCompatibleStateImageBehavior = False
         Me.lsvBG3.View = System.Windows.Forms.View.Details
+        '
+        'ColumnHeader1
+        '
+        Me.ColumnHeader1.Text = "Mã loại dịch vụ"
+        Me.ColumnHeader1.Width = 89
+        '
+        'ColumnHeader2
+        '
+        Me.ColumnHeader2.Text = "Mã đối tượng"
+        Me.ColumnHeader2.Width = 75
+        '
+        'ColumnHeader3
+        '
+        Me.ColumnHeader3.Text = "Tên loại"
+        Me.ColumnHeader3.Width = 87
+        '
+        'ColumnHeader4
+        '
+        Me.ColumnHeader4.Text = "Giá bình thường"
+        Me.ColumnHeader4.Width = 88
+        '
+        'ColumnHeader5
+        '
+        Me.ColumnHeader5.Text = "Giá cao điểm"
+        Me.ColumnHeader5.Width = 80
+        '
+        'ColumnHeader6
+        '
+        Me.ColumnHeader6.Text = "Giá thấp điểm"
+        Me.ColumnHeader6.Width = 88
         '
         'lsvBG6
         '
@@ -104,12 +134,37 @@ Partial Class frmCapNhatBG
         Me.lsvBG6.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader7, Me.ColumnHeader8, Me.ColumnHeader9, Me.ColumnHeader10, Me.ColumnHeader11})
         Me.lsvBG6.FullRowSelect = True
         Me.lsvBG6.GridLines = True
-        Me.lsvBG6.Location = New System.Drawing.Point(3, 123)
+        Me.lsvBG6.Location = New System.Drawing.Point(3, 243)
         Me.lsvBG6.Name = "lsvBG6"
         Me.lsvBG6.Size = New System.Drawing.Size(532, 115)
         Me.lsvBG6.TabIndex = 6
         Me.lsvBG6.UseCompatibleStateImageBehavior = False
         Me.lsvBG6.View = System.Windows.Forms.View.Details
+        '
+        'ColumnHeader7
+        '
+        Me.ColumnHeader7.Text = "Mã loại dịch vụ"
+        Me.ColumnHeader7.Width = 89
+        '
+        'ColumnHeader8
+        '
+        Me.ColumnHeader8.Text = "Mã đối tượng"
+        Me.ColumnHeader8.Width = 78
+        '
+        'ColumnHeader9
+        '
+        Me.ColumnHeader9.Text = "Định mức"
+        Me.ColumnHeader9.Width = 80
+        '
+        'ColumnHeader10
+        '
+        Me.ColumnHeader10.Text = "Giá"
+        Me.ColumnHeader10.Width = 70
+        '
+        'ColumnHeader11
+        '
+        Me.ColumnHeader11.Text = "Mô tả"
+        Me.ColumnHeader11.Width = 190
         '
         'Label3
         '
@@ -152,9 +207,9 @@ Partial Class frmCapNhatBG
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(74, 77)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(66, 13)
+        Me.Label2.Size = New System.Drawing.Size(70, 13)
         Me.Label2.TabIndex = 4
-        Me.Label2.Text = "Mã bảng giá"
+        Me.Label2.Text = "Mã đối tượng"
         '
         'Label4
         '
@@ -199,14 +254,14 @@ Partial Class frmCapNhatBG
         Me.txtMaDV.Size = New System.Drawing.Size(106, 20)
         Me.txtMaDV.TabIndex = 9
         '
-        'cboMaBG
+        'cboMaDT
         '
-        Me.cboMaBG.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboMaBG.FormattingEnabled = True
-        Me.cboMaBG.Location = New System.Drawing.Point(177, 74)
-        Me.cboMaBG.Name = "cboMaBG"
-        Me.cboMaBG.Size = New System.Drawing.Size(106, 21)
-        Me.cboMaBG.TabIndex = 10
+        Me.cboMaDT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboMaDT.FormattingEnabled = True
+        Me.cboMaDT.Location = New System.Drawing.Point(177, 74)
+        Me.cboMaDT.Name = "cboMaDT"
+        Me.cboMaDT.Size = New System.Drawing.Size(106, 21)
+        Me.cboMaDT.TabIndex = 10
         '
         'txtTenLoai
         '
@@ -324,67 +379,12 @@ Partial Class frmCapNhatBG
         '
         Me.errLoi.ContainerControl = Me
         '
-        'ColumnHeader1
-        '
-        Me.ColumnHeader1.Text = "Mã loại dịch vụ"
-        Me.ColumnHeader1.Width = 89
-        '
-        'ColumnHeader2
-        '
-        Me.ColumnHeader2.Text = "Mã bảng giá"
-        Me.ColumnHeader2.Width = 75
-        '
-        'ColumnHeader3
-        '
-        Me.ColumnHeader3.Text = "Tên loại"
-        Me.ColumnHeader3.Width = 87
-        '
-        'ColumnHeader4
-        '
-        Me.ColumnHeader4.Text = "Giá bình thường"
-        Me.ColumnHeader4.Width = 88
-        '
-        'ColumnHeader5
-        '
-        Me.ColumnHeader5.Text = "Giá cao điểm"
-        Me.ColumnHeader5.Width = 80
-        '
-        'ColumnHeader6
-        '
-        Me.ColumnHeader6.Text = "Giá thấp điểm"
-        Me.ColumnHeader6.Width = 88
-        '
-        'ColumnHeader7
-        '
-        Me.ColumnHeader7.Text = "Mã loại dịch vụ"
-        Me.ColumnHeader7.Width = 89
-        '
-        'ColumnHeader8
-        '
-        Me.ColumnHeader8.Text = "Mã bảng giá"
-        Me.ColumnHeader8.Width = 78
-        '
-        'ColumnHeader9
-        '
-        Me.ColumnHeader9.Text = "Định mức"
-        Me.ColumnHeader9.Width = 80
-        '
-        'ColumnHeader10
-        '
-        Me.ColumnHeader10.Text = "Giá"
-        Me.ColumnHeader10.Width = 70
-        '
-        'ColumnHeader11
-        '
-        Me.ColumnHeader11.Text = "Mô tả"
-        Me.ColumnHeader11.Width = 190
-        '
         'frmCapNhatBG
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(578, 497)
+        Me.ClientSize = New System.Drawing.Size(568, 466)
         Me.Controls.Add(Me.btnSua)
         Me.Controls.Add(Me.btnXoa)
         Me.Controls.Add(Me.btnThem)
@@ -399,7 +399,7 @@ Partial Class frmCapNhatBG
         Me.Controls.Add(Me.txtGiaCD)
         Me.Controls.Add(Me.txtGiaBT)
         Me.Controls.Add(Me.txtTenLoai)
-        Me.Controls.Add(Me.cboMaBG)
+        Me.Controls.Add(Me.cboMaDT)
         Me.Controls.Add(Me.txtMaDV)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
@@ -432,7 +432,7 @@ Partial Class frmCapNhatBG
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents txtMaDV As System.Windows.Forms.TextBox
-    Friend WithEvents cboMaBG As System.Windows.Forms.ComboBox
+    Friend WithEvents cboMaDT As System.Windows.Forms.ComboBox
     Friend WithEvents txtTenLoai As System.Windows.Forms.TextBox
     Friend WithEvents txtGiaBT As System.Windows.Forms.TextBox
     Friend WithEvents txtGiaCD As System.Windows.Forms.TextBox
