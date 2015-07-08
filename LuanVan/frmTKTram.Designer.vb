@@ -128,6 +128,7 @@ Partial Class frmTKTram
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(438, 324)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.MaximizeBox = False
         Me.Name = "frmTKTram"
         Me.Text = "frmTKTram"
         Me.TableLayoutPanel1.ResumeLayout(False)

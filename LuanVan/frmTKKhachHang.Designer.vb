@@ -32,12 +32,14 @@ Partial Class frmTKKhachHang
         Me.txtMaKH = New System.Windows.Forms.TextBox()
         Me.btnTim = New System.Windows.Forms.Button()
         Me.btnXemhoadon = New System.Windows.Forms.Button()
+        Me.btnXuatExcel = New System.Windows.Forms.Button()
         Me.lvwKH = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.SaveFileDialog = New System.Windows.Forms.SaveFileDialog()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.SuspendLayout()
@@ -63,11 +65,12 @@ Partial Class frmTKKhachHang
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel2.AutoSize = True
-        Me.TableLayoutPanel2.ColumnCount = 4
+        Me.TableLayoutPanel2.ColumnCount = 5
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 284.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel2.Controls.Add(Me.txtTenKH, 1, 2)
         Me.TableLayoutPanel2.Controls.Add(Me.Label3, 0, 2)
         Me.TableLayoutPanel2.Controls.Add(Me.cboTimKiem, 1, 0)
@@ -76,6 +79,7 @@ Partial Class frmTKKhachHang
         Me.TableLayoutPanel2.Controls.Add(Me.txtMaKH, 1, 1)
         Me.TableLayoutPanel2.Controls.Add(Me.btnTim, 2, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.btnXemhoadon, 3, 0)
+        Me.TableLayoutPanel2.Controls.Add(Me.btnXuatExcel, 4, 0)
         Me.TableLayoutPanel2.Location = New System.Drawing.Point(3, 3)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 3
@@ -164,6 +168,15 @@ Partial Class frmTKKhachHang
         Me.btnXemhoadon.Text = "Xem hóa đơn"
         Me.btnXemhoadon.UseVisualStyleBackColor = True
         '
+        'btnXuatExcel
+        '
+        Me.btnXuatExcel.Location = New System.Drawing.Point(412, 3)
+        Me.btnXuatExcel.Name = "btnXuatExcel"
+        Me.btnXuatExcel.Size = New System.Drawing.Size(71, 23)
+        Me.btnXuatExcel.TabIndex = 8
+        Me.btnXuatExcel.Text = "Xuất Excel"
+        Me.btnXuatExcel.UseVisualStyleBackColor = True
+        '
         'lvwKH
         '
         Me.lvwKH.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -211,6 +224,7 @@ Partial Class frmTKKhachHang
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(628, 375)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.MaximizeBox = False
         Me.Name = "frmTKKhachHang"
         Me.Text = "frmTKKhachHang"
         Me.TableLayoutPanel1.ResumeLayout(False)
@@ -237,4 +251,6 @@ Partial Class frmTKKhachHang
     Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader5 As System.Windows.Forms.ColumnHeader
     Friend WithEvents btnXemhoadon As System.Windows.Forms.Button
+    Friend WithEvents btnXuatExcel As System.Windows.Forms.Button
+    Friend WithEvents SaveFileDialog As System.Windows.Forms.SaveFileDialog
 End Class

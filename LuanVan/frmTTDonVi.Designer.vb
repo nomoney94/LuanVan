@@ -151,6 +151,7 @@ Partial Class frmTTDonVi
         Me.Controls.Add(Me.txtDiaChi)
         Me.Controls.Add(Me.txtTenDV)
         Me.Controls.Add(Me.Label2)
+        Me.MaximizeBox = False
         Me.Name = "frmTTDonVi"
         Me.Text = "Thông tin đơn vị"
         Me.ResumeLayout(False)

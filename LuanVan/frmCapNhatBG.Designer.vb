@@ -411,6 +411,7 @@ Partial Class frmCapNhatBG
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.cboLoai)
         Me.Controls.Add(Me.btnLuu)
+        Me.MaximizeBox = False
         Me.Name = "frmCapNhatBG"
         Me.Text = "frmCapNhatBG"
         Me.TableLayoutPanel1.ResumeLayout(False)

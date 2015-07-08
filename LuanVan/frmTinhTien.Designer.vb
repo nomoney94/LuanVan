@@ -36,9 +36,6 @@ Partial Class frmTinhTien
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.lvwHoadon = New System.Windows.Forms.ListView()
-        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.SuspendLayout()
@@ -48,7 +45,6 @@ Partial Class frmTinhTien
         Me.TableLayoutPanel1.ColumnCount = 1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel2, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.lvwHoadon, 0, 1)
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(12, 12)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 2
@@ -60,8 +56,8 @@ Partial Class frmTinhTien
         'TableLayoutPanel2
         '
         Me.TableLayoutPanel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel2.ColumnCount = 6
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125.0!))
@@ -202,38 +198,14 @@ Partial Class frmTinhTien
         Me.Label4.TabIndex = 12
         Me.Label4.Text = "Bình thường"
         '
-        'lvwHoadon
-        '
-        Me.lvwHoadon.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lvwHoadon.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2})
-        Me.lvwHoadon.FullRowSelect = True
-        Me.lvwHoadon.GridLines = True
-        Me.lvwHoadon.Location = New System.Drawing.Point(3, 69)
-        Me.lvwHoadon.Name = "lvwHoadon"
-        Me.lvwHoadon.Size = New System.Drawing.Size(498, 288)
-        Me.lvwHoadon.TabIndex = 1
-        Me.lvwHoadon.UseCompatibleStateImageBehavior = False
-        Me.lvwHoadon.View = System.Windows.Forms.View.Details
-        '
-        'ColumnHeader1
-        '
-        Me.ColumnHeader1.Text = "Danh mục"
-        Me.ColumnHeader1.Width = 164
-        '
-        'ColumnHeader2
-        '
-        Me.ColumnHeader2.Text = "Thông tin"
-        Me.ColumnHeader2.Width = 231
-        '
         'frmTinhTien
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(528, 384)
+        Me.ClientSize = New System.Drawing.Size(528, 88)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.MaximizeBox = False
         Me.Name = "frmTinhTien"
         Me.Text = "frmTinhTien"
         Me.TableLayoutPanel1.ResumeLayout(False)
@@ -251,9 +223,6 @@ Partial Class frmTinhTien
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents txtMaCT As System.Windows.Forms.TextBox
     Friend WithEvents txtChiso As System.Windows.Forms.TextBox
-    Friend WithEvents lvwHoadon As System.Windows.Forms.ListView
-    Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
     Friend WithEvents txtChisoCD As System.Windows.Forms.TextBox
     Friend WithEvents txtChisoTD As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label

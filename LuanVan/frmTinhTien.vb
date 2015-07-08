@@ -3,19 +3,19 @@ Public Class frmTinhTien
     Private dtCT As DataTable
     Private dtKH As DataTable
     Private dtDT As DataTable
-    'Private dtBG As DataTable
     Private dtG6 As DataTable
     Private dtCSCT As DataTable
     Private dtHD As DataTable
     Private dtG3 As DataTable
     Private dtCTTT As DataTable
     Private gia As String
+    Private sqlStr As String
+    Private frmInGB As frmInGiayBao
 
     Private Sub frmTinhTien_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         dtCT = frmMain.ds.Tables("CongTo")
         dtKH = frmMain.ds.Tables("KhachHang")
         dtDT = frmMain.ds.Tables("DoiTuongKH")
-        'dtBG = frmMain.ds.Tables("BangGia")
         dtG6 = frmMain.ds.Tables("Gia6")
         dtG3 = frmMain.ds.Tables("Gia3")
         dtCSCT = frmMain.ds.Tables("ChiSoCongTo")
@@ -29,10 +29,10 @@ Public Class frmTinhTien
             Exit Sub
         End If
         Dim dr, dr1, dr2, row, row1, row2 As DataRow
-        Dim strfind As String
-        Dim chiso, chisoCD, chisoTD, chisoHD, chisoCT1, chisoCT2, chisoCT3, chisocu, chisoCDcu, chisoTDcu, thanhtien, thanhtientam, flagCT, ma, i As Integer
+        Dim strfind, makh As String
+        Dim chiso, chisoCD, chisoTD, chisoHD, chisoCT1, chisoCT2, chisoCT3, chisocu, chisoCDcu, chisoTDcu, thanhtien, thanhtientam, flagCT, ma As Integer
         Dim flag As Integer = 1
-        lvwHoadon.Items.Clear()
+        'lvwHoadon.Items.Clear()
         If txtChiso.Text = "" Then
             txtChiso.Text = 0
         End If
@@ -73,55 +73,56 @@ Public Class frmTinhTien
             Exit Sub
         End If
         For Each dr In dtKH.Select("MaCT='" + txtMaCT.Text + "'")
-            lvwHoadon.Items.Add("Tên KH")
-            lvwHoadon.Items(i).SubItems.Add(dr("TenKH"))
-            i += 1
-            lvwHoadon.Items.Add("Địa chỉ")
-            lvwHoadon.Items(i).SubItems.Add(dr("DiaChi"))
-            i += 1
-            lvwHoadon.Items.Add("Mã KH")
-            lvwHoadon.Items(i).SubItems.Add(dr("MaKH"))
-            i += 1
-            lvwHoadon.Items.Add("Tháng/Năm")
-            lvwHoadon.Items(i).SubItems.Add(dtpThang.Text)
-            i += 1
-            lvwHoadon.Items.Add("Chỉ số bình thường cũ")
-            lvwHoadon.Items(i).SubItems.Add(chisocu)
-            i += 1
-            lvwHoadon.Items.Add("Chỉ số bình thường mới")
-            lvwHoadon.Items(i).SubItems.Add(chisoCT1)
-            i += 1
-            lvwHoadon.Items.Add("Chỉ số tiêu thụ bình thường")
-            lvwHoadon.Items(i).SubItems.Add(chiso)
-            i += 1
-            lvwHoadon.Items.Add("Chỉ số cao điểm cũ")
-            lvwHoadon.Items(i).SubItems.Add(chisoCDcu)
-            i += 1
-            lvwHoadon.Items.Add("Chỉ số cao điểm mới")
-            lvwHoadon.Items(i).SubItems.Add(chisoCT2)
-            i += 1
-            lvwHoadon.Items.Add("Chỉ số tiêu thụ giờ cao điểm")
-            lvwHoadon.Items(i).SubItems.Add(chisoCD)
-            i += 1
-            lvwHoadon.Items.Add("Chỉ số thấp điểm cũ")
-            lvwHoadon.Items(i).SubItems.Add(chisoTDcu)
-            i += 1
-            lvwHoadon.Items.Add("Chỉ số thấp điểm mới")
-            lvwHoadon.Items(i).SubItems.Add(chisoCT3)
-            i += 1
-            lvwHoadon.Items.Add("Chỉ số tiêu thụ giờ thấp điểm")
-            lvwHoadon.Items(i).SubItems.Add(chisoTD)
-            i += 1
+            'lvwHoadon.Items.Add("Tên KH")
+            'lvwHoadon.Items(i).SubItems.Add(dr("TenKH"))
+            'i += 1
+            'lvwHoadon.Items.Add("Địa chỉ")
+            'lvwHoadon.Items(i).SubItems.Add(dr("DiaChi"))
+            'i += 1
+            'lvwHoadon.Items.Add("Mã KH")
+            'lvwHoadon.Items(i).SubItems.Add(dr("MaKH"))
+            'i += 1
+            makh = dr("MaKH")
+            'lvwHoadon.Items.Add("Tháng/Năm")
+            'lvwHoadon.Items(i).SubItems.Add(dtpThang.Text)
+            'i += 1
+            'lvwHoadon.Items.Add("Chỉ số bình thường cũ")
+            'lvwHoadon.Items(i).SubItems.Add(chisocu)
+            'i += 1
+            'lvwHoadon.Items.Add("Chỉ số bình thường mới")
+            'lvwHoadon.Items(i).SubItems.Add(chisoCT1)
+            'i += 1
+            'lvwHoadon.Items.Add("Chỉ số tiêu thụ bình thường")
+            'lvwHoadon.Items(i).SubItems.Add(chiso)
+            'i += 1
+            'lvwHoadon.Items.Add("Chỉ số cao điểm cũ")
+            'lvwHoadon.Items(i).SubItems.Add(chisoCDcu)
+            'i += 1
+            'lvwHoadon.Items.Add("Chỉ số cao điểm mới")
+            'lvwHoadon.Items(i).SubItems.Add(chisoCT2)
+            'i += 1
+            'lvwHoadon.Items.Add("Chỉ số tiêu thụ giờ cao điểm")
+            'lvwHoadon.Items(i).SubItems.Add(chisoCD)
+            'i += 1
+            'lvwHoadon.Items.Add("Chỉ số thấp điểm cũ")
+            'lvwHoadon.Items(i).SubItems.Add(chisoTDcu)
+            'i += 1
+            'lvwHoadon.Items.Add("Chỉ số thấp điểm mới")
+            'lvwHoadon.Items(i).SubItems.Add(chisoCT3)
+            'i += 1
+            'lvwHoadon.Items.Add("Chỉ số tiêu thụ giờ thấp điểm")
+            'lvwHoadon.Items(i).SubItems.Add(chisoTD)
+            'i += 1
             strfind = "MaDT='" + dr("MaDT") + "'"
-            If dr("MaDT") = "CDCTPK" Or dr("MaDT") = "CDCTPB" Or dr("MaDT") = "CDCTPM" Or dr("MaDT") = "CDCTTK" Or dr("MaDT") = "CDCTTB" Or dr("MaDT") = "CDCTTM" Or dr("MaDT") = "NTK" Or dr("MaDT") = "SHNT" Or dr("MaDT") = "SHBTTT" Or dr("MaDT") = "SHBT" Or dr("MaDT") = "TMSH" Or dr("MaDT") = "BVT_T6" Or dr("MaDT") = "BVT_D6" Or dr("MaDT") = "CSHC_T6" Or dr("MaDT") = "CSHC_D6" Then
-                lvwHoadon.Items.RemoveAt(i - 1)
-                lvwHoadon.Items.RemoveAt(i - 2)
-                lvwHoadon.Items.RemoveAt(i - 3)
-                lvwHoadon.Items.RemoveAt(i - 4)
-                lvwHoadon.Items.RemoveAt(i - 5)
-                lvwHoadon.Items.RemoveAt(i - 6)
-                i -= 6
-            End If
+            'If dr("MaDT") = "CDCTPK" Or dr("MaDT") = "CDCTPB" Or dr("MaDT") = "CDCTPM" Or dr("MaDT") = "CDCTTK" Or dr("MaDT") = "CDCTTB" Or dr("MaDT") = "CDCTTM" Or dr("MaDT") = "NTK" Or dr("MaDT") = "SHNT" Or dr("MaDT") = "SHBTTT" Or dr("MaDT") = "SHBT" Or dr("MaDT") = "TMSH" Or dr("MaDT") = "BVT_T6" Or dr("MaDT") = "BVT_D6" Or dr("MaDT") = "CSHC_T6" Or dr("MaDT") = "CSHC_D6" Then
+            '    lvwHoadon.Items.RemoveAt(i - 1)
+            '    lvwHoadon.Items.RemoveAt(i - 2)
+            '    lvwHoadon.Items.RemoveAt(i - 3)
+            '    lvwHoadon.Items.RemoveAt(i - 4)
+            '    lvwHoadon.Items.RemoveAt(i - 5)
+            '    lvwHoadon.Items.RemoveAt(i - 6)
+            '    i -= 6
+            'End If
             If dr("MaDT") = "CDCTPK" Or dr("MaDT") = "CDCTPB" Or dr("MaDT") = "CDCTPM" Or dr("MaDT") = "CDCTTK" Or dr("MaDT") = "CDCTTB" Or dr("MaDT") = "CDCTTM" Or dr("MaDT") = "NTK" Or dr("MaDT") = "SHNT" Or dr("MaDT") = "SHBTTT" Or dr("MaDT") = "SHBT" Or dr("MaDT") = "TMSH" Then
                 For Each dr2 In dtG6.Select(strfind)
                     row2 = dtCTTT.NewRow
@@ -132,8 +133,8 @@ Public Class frmTinhTien
                         row2("Gia") = dr2("Gia")
                         row2("ThanhTien") = thanhtien
                         dtCTTT.Rows.Add(row2)
-                        lvwHoadon.Items.Add("Thành tiền")
-                        lvwHoadon.Items(i).SubItems.Add(thanhtien)
+                        'lvwHoadon.Items.Add("Thành tiền")
+                        'lvwHoadon.Items(i).SubItems.Add(thanhtien)
                         Exit For
                     End If
                     If chiso - dr2("DinhMuc") > 0 Then
@@ -154,8 +155,8 @@ Public Class frmTinhTien
                             row2("Gia") = dr2("Gia")
                             row2("ThanhTien") = thanhtientam
                             dtCTTT.Rows.Add(row2)
-                            lvwHoadon.Items.Add("Thành tiền")
-                            lvwHoadon.Items(i).SubItems.Add(thanhtien)
+                            'lvwHoadon.Items.Add("Thành tiền")
+                            'lvwHoadon.Items(i).SubItems.Add(thanhtien)
                         End If
                     Else
                         thanhtien += chiso * dr2("Gia")
@@ -165,8 +166,8 @@ Public Class frmTinhTien
                         row2("Gia") = dr2("Gia")
                         row2("ThanhTien") = thanhtientam
                         dtCTTT.Rows.Add(row2)
-                        lvwHoadon.Items.Add("Thành tiền")
-                        lvwHoadon.Items(i).SubItems.Add(thanhtien)
+                        'lvwHoadon.Items.Add("Thành tiền")
+                        'lvwHoadon.Items(i).SubItems.Add(thanhtien)
                         Exit For
                     End If
                 Next
@@ -200,8 +201,8 @@ Public Class frmTinhTien
                         row2("ThanhTien") = chisoTD * dr3("GiaTD")
                         dtCTTT.Rows.Add(row2)
                     End If
-                    lvwHoadon.Items.Add("Thành tiền")
-                    lvwHoadon.Items(i).SubItems.Add(thanhtien)
+                    'lvwHoadon.Items.Add("Thành tiền")
+                    'lvwHoadon.Items(i).SubItems.Add(thanhtien)
                 Next
             End If
         Next
@@ -216,12 +217,13 @@ Public Class frmTinhTien
         dtCSCT.Rows.Add(row)
         row1 = dtHD.NewRow
         row1("MaHD") = ma + 1
-        row1("MaKH") = lvwHoadon.Items(2).SubItems(1).Text
+        row1("MaKH") = makh
         row1("DienNangTieuThu") = chisoHD
         row1("ThanhTien") = thanhtien
         row1("TinhTrangThanhToan") = "Chưa"
         row1("Ky") = dtpThang.Text
         dtHD.Rows.Add(row1)
+
         Try
             Dim comCSCT As New SqlCommandBuilder(frmMain.daChiSoCongTo)
             Dim comHD As New SqlCommandBuilder(frmMain.daHoaDon)
@@ -234,6 +236,26 @@ Public Class frmTinhTien
         Catch ex As Exception
             MessageBox.Show("Không thể cập nhật CSDL", "Thông báo")
         End Try
+
+        If gia = "Gia6" Then
+            sqlStr = "SELECT KhachHang.MaKH, KhachHang.MaCT, KhachHang.MaDT, HoaDon.MaHD, HoaDon.DienNangTieuThu, HoaDon.ThanhTien, HoaDon.Ky, ChiSoCongTo.NgayDauKy, ChiSoCongTo.NgayCuoiKy, KhachHang.TenKH, KhachHang.DiaChi, KhachHang.SDT, KhachHang.MaSoThue, Tram.MaTram, ChiSoCongTo.ChiSo, ChiSoCongTo.ChisoCD, ChiSoCongTo.ChisoTD " & _
+                    "FROM KhachHang INNER JOIN " & _
+                    "HoaDon ON KhachHang.MaKH = HoaDon.MaKH INNER JOIN " & _
+                    "DoiTuongKH ON KhachHang.MaDT = DoiTuongKH.MaDT INNER JOIN " & _
+                    "ChiSoCongTo ON KhachHang.MaCT = ChiSoCongTo.MaCT  INNER JOIN " & _
+                    "CongTo ON KhachHang.MaCT = CongTo.MaCT INNER JOIN " & _
+                    "Tram ON CongTo.MaTram = Tram.MaTram " & _
+                    "WHERE HoaDon.MaHD = " & ma + 1 & " AND MONTH(ChiSoCongTo.Ky) = " & dtpThang.Value.Month
+
+            If frmInGB Is Nothing OrElse frmInGB.IsDisposed Then
+                frmInGB = New frmInGiayBao
+                frmInGB.MdiParent = frmMain
+                frmInGB.sqlStr = Me.sqlStr
+                frmInGB.Show()
+            End If
+        ElseIf gia = "Gia3" Then
+
+        End If
     End Sub
 
     Private Sub txtMaCT_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtMaCT.Leave

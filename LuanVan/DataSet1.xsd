@@ -197,12 +197,12 @@ SELECT TenDV, DiaChi, DienThoai, DTSuaChua, MaSoThue FROM DonVi WHERE (TenDV = @
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        KhachHang.MaKH, KhachHang.MaCT, KhachHang.MaDT, HoaDon.MaHD, HoaDon.DienNangTieuThu, HoaDon.ThanhTien, HoaDon.Ky, ChiSoCongTo.NgayDauKy, ChiSoCongTo.NgayCuoiKy, KhachHang.TenKH, 
-                         KhachHang.DiaChi, KhachHang.SDT, KhachHang.MaSoThue, Tram.MaTram, ChiSoCongTo.ChiSo
+                         KhachHang.DiaChi, KhachHang.SDT, KhachHang.MaSoThue, Tram.MaTram, ChiSoCongTo.ChiSo, ChiSoCongTo.ChisoCD, ChiSoCongTo.ChisoTD
 FROM            KhachHang INNER JOIN
                          HoaDon ON KhachHang.MaKH = HoaDon.MaKH INNER JOIN
                          DoiTuongKH ON KhachHang.MaDT = DoiTuongKH.MaDT INNER JOIN
                          ChiSoCongTo ON KhachHang.MaCT = ChiSoCongTo.MaCT INNER JOIN
-                         CongTo ON KhachHang.MaCT = CongTo.MaCT AND ChiSoCongTo.MaCT = CongTo.MaCT INNER JOIN
+                         CongTo ON KhachHang.MaCT = CongTo.MaCT INNER JOIN
                          Tram ON CongTo.MaTram = Tram.MaTram</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -225,6 +225,8 @@ FROM            KhachHang INNER JOIN
               <Mapping SourceColumn="MaSoThue" DataSetColumn="MaSoThue" />
               <Mapping SourceColumn="MaTram" DataSetColumn="MaTram" />
               <Mapping SourceColumn="ChiSo" DataSetColumn="ChiSo" />
+              <Mapping SourceColumn="ChisoCD" DataSetColumn="ChisoCD" />
+              <Mapping SourceColumn="ChisoTD" DataSetColumn="ChisoTD" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -247,6 +249,43 @@ ChiTietThanhTien ON HoaDon.MaHD = ChiTietThanhTien.MaHD</CommandText>
               <Mapping SourceColumn="ChiSo" DataSetColumn="ChiSo" />
               <Mapping SourceColumn="Gia" DataSetColumn="Gia" />
               <Mapping SourceColumn="CTThanhTien" DataSetColumn="CTThanhTien" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="GiayBaoTableAdapter" GeneratorDataComponentClassName="GiayBaoTableAdapter" Name="GiayBao" UserDataComponentName="GiayBaoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QLHDTDConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        KhachHang.MaKH, KhachHang.MaCT, KhachHang.MaDT, HoaDon.MaHD, HoaDon.DienNangTieuThu, HoaDon.ThanhTien, HoaDon.Ky, ChiSoCongTo.NgayDauKy, ChiSoCongTo.NgayCuoiKy, KhachHang.TenKH, 
+                         KhachHang.DiaChi, KhachHang.SDT, KhachHang.MaSoThue, ChiSoCongTo.ChiSo, ChiSoCongTo.ChisoCD, ChiSoCongTo.ChisoTD
+FROM            KhachHang INNER JOIN
+                         HoaDon ON KhachHang.MaKH = HoaDon.MaKH INNER JOIN
+                         DoiTuongKH ON KhachHang.MaDT = DoiTuongKH.MaDT INNER JOIN
+                         ChiSoCongTo ON KhachHang.MaCT = ChiSoCongTo.MaCT INNER JOIN
+                         CongTo ON KhachHang.MaCT = CongTo.MaCT</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaKH" DataSetColumn="MaKH" />
+              <Mapping SourceColumn="MaCT" DataSetColumn="MaCT" />
+              <Mapping SourceColumn="MaDT" DataSetColumn="MaDT" />
+              <Mapping SourceColumn="MaHD" DataSetColumn="MaHD" />
+              <Mapping SourceColumn="DienNangTieuThu" DataSetColumn="DienNangTieuThu" />
+              <Mapping SourceColumn="ThanhTien" DataSetColumn="ThanhTien" />
+              <Mapping SourceColumn="Ky" DataSetColumn="Ky" />
+              <Mapping SourceColumn="NgayDauKy" DataSetColumn="NgayDauKy" />
+              <Mapping SourceColumn="NgayCuoiKy" DataSetColumn="NgayCuoiKy" />
+              <Mapping SourceColumn="TenKH" DataSetColumn="TenKH" />
+              <Mapping SourceColumn="DiaChi" DataSetColumn="DiaChi" />
+              <Mapping SourceColumn="SDT" DataSetColumn="SDT" />
+              <Mapping SourceColumn="MaSoThue" DataSetColumn="MaSoThue" />
+              <Mapping SourceColumn="ChiSo" DataSetColumn="ChiSo" />
+              <Mapping SourceColumn="ChisoCD" DataSetColumn="ChisoCD" />
+              <Mapping SourceColumn="ChisoTD" DataSetColumn="ChisoTD" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -413,6 +452,8 @@ ChiTietThanhTien ON HoaDon.MaHD = ChiTietThanhTien.MaHD</CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="ChiSo" msprop:Generator_ColumnVarNameInTable="columnChiSo" msprop:Generator_ColumnPropNameInRow="ChiSo" msprop:Generator_ColumnPropNameInTable="ChiSoColumn" msprop:Generator_UserColumnName="ChiSo" type="xs:int" />
+              <xs:element name="ChisoCD" msprop:Generator_ColumnVarNameInTable="columnChisoCD" msprop:Generator_ColumnPropNameInRow="ChisoCD" msprop:Generator_ColumnPropNameInTable="ChisoCDColumn" msprop:Generator_UserColumnName="ChisoCD" type="xs:int" minOccurs="0" />
+              <xs:element name="ChisoTD" msprop:Generator_ColumnVarNameInTable="columnChisoTD" msprop:Generator_ColumnPropNameInRow="ChisoTD" msprop:Generator_ColumnPropNameInTable="ChisoTDColumn" msprop:Generator_UserColumnName="ChisoTD" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -423,6 +464,70 @@ ChiTietThanhTien ON HoaDon.MaHD = ChiTietThanhTien.MaHD</CommandText>
               <xs:element name="ChiSo" msprop:Generator_ColumnVarNameInTable="columnChiSo" msprop:Generator_ColumnPropNameInRow="ChiSo" msprop:Generator_ColumnPropNameInTable="ChiSoColumn" msprop:Generator_UserColumnName="ChiSo" type="xs:int" />
               <xs:element name="Gia" msprop:Generator_ColumnVarNameInTable="columnGia" msprop:Generator_ColumnPropNameInRow="Gia" msprop:Generator_ColumnPropNameInTable="GiaColumn" msprop:Generator_UserColumnName="Gia" type="xs:int" />
               <xs:element name="CTThanhTien" msprop:Generator_ColumnVarNameInTable="columnCTThanhTien" msprop:Generator_ColumnPropNameInRow="CTThanhTien" msprop:Generator_ColumnPropNameInTable="CTThanhTienColumn" msprop:Generator_UserColumnName="CTThanhTien" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="GiayBao" msprop:Generator_TableClassName="GiayBaoDataTable" msprop:Generator_TableVarName="tableGiayBao" msprop:Generator_TablePropName="GiayBao" msprop:Generator_RowDeletingName="GiayBaoRowDeleting" msprop:Generator_RowChangingName="GiayBaoRowChanging" msprop:Generator_RowEvHandlerName="GiayBaoRowChangeEventHandler" msprop:Generator_RowDeletedName="GiayBaoRowDeleted" msprop:Generator_UserTableName="GiayBao" msprop:Generator_RowChangedName="GiayBaoRowChanged" msprop:Generator_RowEvArgName="GiayBaoRowChangeEvent" msprop:Generator_RowClassName="GiayBaoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaKH" msprop:Generator_ColumnVarNameInTable="columnMaKH" msprop:Generator_ColumnPropNameInRow="MaKH" msprop:Generator_ColumnPropNameInTable="MaKHColumn" msprop:Generator_UserColumnName="MaKH">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="13" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaCT" msprop:Generator_ColumnVarNameInTable="columnMaCT" msprop:Generator_ColumnPropNameInRow="MaCT" msprop:Generator_ColumnPropNameInTable="MaCTColumn" msprop:Generator_UserColumnName="MaCT">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaDT" msprop:Generator_ColumnVarNameInTable="columnMaDT" msprop:Generator_ColumnPropNameInRow="MaDT" msprop:Generator_ColumnPropNameInTable="MaDTColumn" msprop:Generator_UserColumnName="MaDT">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaHD" msprop:Generator_ColumnVarNameInTable="columnMaHD" msprop:Generator_ColumnPropNameInRow="MaHD" msprop:Generator_ColumnPropNameInTable="MaHDColumn" msprop:Generator_UserColumnName="MaHD" type="xs:int" />
+              <xs:element name="DienNangTieuThu" msprop:Generator_ColumnVarNameInTable="columnDienNangTieuThu" msprop:Generator_ColumnPropNameInRow="DienNangTieuThu" msprop:Generator_ColumnPropNameInTable="DienNangTieuThuColumn" msprop:Generator_UserColumnName="DienNangTieuThu" type="xs:int" />
+              <xs:element name="ThanhTien" msprop:Generator_ColumnVarNameInTable="columnThanhTien" msprop:Generator_ColumnPropNameInRow="ThanhTien" msprop:Generator_ColumnPropNameInTable="ThanhTienColumn" msprop:Generator_UserColumnName="ThanhTien" type="xs:double" />
+              <xs:element name="Ky" msprop:Generator_ColumnVarNameInTable="columnKy" msprop:Generator_ColumnPropNameInRow="Ky" msprop:Generator_ColumnPropNameInTable="KyColumn" msprop:Generator_UserColumnName="Ky" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="NgayDauKy" msprop:Generator_ColumnVarNameInTable="columnNgayDauKy" msprop:Generator_ColumnPropNameInRow="NgayDauKy" msprop:Generator_ColumnPropNameInTable="NgayDauKyColumn" msprop:Generator_UserColumnName="NgayDauKy" type="xs:dateTime" />
+              <xs:element name="NgayCuoiKy" msprop:Generator_ColumnVarNameInTable="columnNgayCuoiKy" msprop:Generator_ColumnPropNameInRow="NgayCuoiKy" msprop:Generator_ColumnPropNameInTable="NgayCuoiKyColumn" msprop:Generator_UserColumnName="NgayCuoiKy" type="xs:dateTime" />
+              <xs:element name="TenKH" msprop:Generator_ColumnVarNameInTable="columnTenKH" msprop:Generator_ColumnPropNameInRow="TenKH" msprop:Generator_ColumnPropNameInTable="TenKHColumn" msprop:Generator_UserColumnName="TenKH">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DiaChi" msprop:Generator_ColumnVarNameInTable="columnDiaChi" msprop:Generator_ColumnPropNameInRow="DiaChi" msprop:Generator_ColumnPropNameInTable="DiaChiColumn" msprop:Generator_UserColumnName="DiaChi">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SDT" msprop:Generator_ColumnVarNameInTable="columnSDT" msprop:Generator_ColumnPropNameInRow="SDT" msprop:Generator_ColumnPropNameInTable="SDTColumn" msprop:Generator_UserColumnName="SDT" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="11" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MaSoThue" msprop:Generator_ColumnVarNameInTable="columnMaSoThue" msprop:Generator_ColumnPropNameInRow="MaSoThue" msprop:Generator_ColumnPropNameInTable="MaSoThueColumn" msprop:Generator_UserColumnName="MaSoThue" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ChiSo" msprop:Generator_ColumnVarNameInTable="columnChiSo" msprop:Generator_ColumnPropNameInRow="ChiSo" msprop:Generator_ColumnPropNameInTable="ChiSoColumn" msprop:Generator_UserColumnName="ChiSo" type="xs:int" />
+              <xs:element name="ChisoCD" msprop:Generator_ColumnVarNameInTable="columnChisoCD" msprop:Generator_ColumnPropNameInRow="ChisoCD" msprop:Generator_ColumnPropNameInTable="ChisoCDColumn" msprop:Generator_UserColumnName="ChisoCD" type="xs:int" minOccurs="0" />
+              <xs:element name="ChisoTD" msprop:Generator_ColumnVarNameInTable="columnChisoTD" msprop:Generator_ColumnPropNameInRow="ChisoTD" msprop:Generator_ColumnPropNameInTable="ChisoTDColumn" msprop:Generator_UserColumnName="ChisoTD" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

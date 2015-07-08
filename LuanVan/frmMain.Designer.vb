@@ -23,9 +23,6 @@ Partial Class frmMain
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.MenuStrip = New System.Windows.Forms.MenuStrip()
-        Me.NạpDữLiệuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tsmiSQLServer = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tsmiExcel = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiTTDonVi = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiCapNhatBG = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiTinhTien = New System.Windows.Forms.ToolStripMenuItem()
@@ -38,41 +35,17 @@ Partial Class frmMain
         Me.tsmiTKeDNTT = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiTKeDoanhThu = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiThoat = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tsmiTest = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tsmiTest2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip
         '
-        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NạpDữLiệuToolStripMenuItem, Me.tsmiTTDonVi, Me.tsmiCapNhatBG, Me.tsmiTinhTien, Me.tsmiTKHoaDon, Me.TìmKiếmToolStripMenuItem, Me.ThốngKêToolStripMenuItem, Me.tsmiThoat, Me.tsmiTest, Me.tsmiTest2})
+        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmiTTDonVi, Me.tsmiCapNhatBG, Me.tsmiTinhTien, Me.tsmiTKHoaDon, Me.TìmKiếmToolStripMenuItem, Me.ThốngKêToolStripMenuItem, Me.tsmiThoat})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
         Me.MenuStrip.Size = New System.Drawing.Size(866, 71)
         Me.MenuStrip.TabIndex = 2
         Me.MenuStrip.Text = "MenuStrip1"
-        '
-        'NạpDữLiệuToolStripMenuItem
-        '
-        Me.NạpDữLiệuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmiSQLServer, Me.tsmiExcel})
-        Me.NạpDữLiệuToolStripMenuItem.Image = Global.LuanVan.My.Resources.Resources.Load_icon
-        Me.NạpDữLiệuToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.NạpDữLiệuToolStripMenuItem.Name = "NạpDữLiệuToolStripMenuItem"
-        Me.NạpDữLiệuToolStripMenuItem.Size = New System.Drawing.Size(80, 67)
-        Me.NạpDữLiệuToolStripMenuItem.Text = "Nạp dữ liệu"
-        Me.NạpDữLiệuToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        '
-        'tsmiSQLServer
-        '
-        Me.tsmiSQLServer.Name = "tsmiSQLServer"
-        Me.tsmiSQLServer.Size = New System.Drawing.Size(127, 22)
-        Me.tsmiSQLServer.Text = "SQLServer"
-        '
-        'tsmiExcel
-        '
-        Me.tsmiExcel.Name = "tsmiExcel"
-        Me.tsmiExcel.Size = New System.Drawing.Size(127, 22)
-        Me.tsmiExcel.Text = "Excel"
         '
         'tsmiTTDonVi
         '
@@ -169,18 +142,6 @@ Partial Class frmMain
         Me.tsmiThoat.Text = "Thoát"
         Me.tsmiThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
-        'tsmiTest
-        '
-        Me.tsmiTest.Name = "tsmiTest"
-        Me.tsmiTest.Size = New System.Drawing.Size(87, 67)
-        Me.tsmiTest.Text = "test Hóa đơn"
-        '
-        'tsmiTest2
-        '
-        Me.tsmiTest2.Name = "tsmiTest2"
-        Me.tsmiTest2.Size = New System.Drawing.Size(86, 67)
-        Me.tsmiTest2.Text = "test giấy báo"
-        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -202,9 +163,6 @@ Partial Class frmMain
 
     End Sub
     Friend WithEvents MenuStrip As System.Windows.Forms.MenuStrip
-    Friend WithEvents NạpDữLiệuToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents tsmiSQLServer As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents tsmiExcel As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmiTTDonVi As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmiCapNhatBG As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmiTinhTien As System.Windows.Forms.ToolStripMenuItem
@@ -216,8 +174,6 @@ Partial Class frmMain
     Friend WithEvents tsmiTKeDNTT As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmiTKeDoanhThu As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmiThoat As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents tsmiTest As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmiTKHoaDon As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents tsmiTest2 As System.Windows.Forms.ToolStripMenuItem
 
 End Class

@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmTest
+Partial Class frmInGiayBao
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -33,17 +33,17 @@ Partial Class frmTest
         Me.CrystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.CrystalReportViewer1.Location = New System.Drawing.Point(0, 0)
         Me.CrystalReportViewer1.Name = "CrystalReportViewer1"
-        Me.CrystalReportViewer1.Size = New System.Drawing.Size(659, 362)
+        Me.CrystalReportViewer1.Size = New System.Drawing.Size(946, 494)
         Me.CrystalReportViewer1.TabIndex = 0
         '
-        'frmTest
+        'frmInGiayBao
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(659, 362)
+        Me.ClientSize = New System.Drawing.Size(946, 494)
         Me.Controls.Add(Me.CrystalReportViewer1)
-        Me.Name = "frmTest"
-        Me.Text = "frmTest"
+        Me.Name = "frmInGiayBao"
+        Me.Text = "frmInGiayBao"
         Me.ResumeLayout(False)
 
     End Sub

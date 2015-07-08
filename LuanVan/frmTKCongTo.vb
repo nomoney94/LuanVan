@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class frmTKCongTo
-    Private aTimKiem() As String = {"Mã công tơ"}
+    Private aTimKiem() As String = {"Mã công tơ", "Cấp điện áp"}
     Private dtCSCT As DataTable
 
     Private Sub frmTKCongTo_Load(sender As Object, e As EventArgs) Handles MyBase.Load

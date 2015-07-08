@@ -193,6 +193,7 @@ Partial Class frmTKCongTo
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(559, 376)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.MaximizeBox = False
         Me.Name = "frmTKCongTo"
         Me.Text = "frmTKCongTo"
         Me.TableLayoutPanel1.ResumeLayout(False)

@@ -38,10 +38,12 @@ Partial Public Class DataSet1
     Private tableTKeDT_Nam As TKeDT_NamDataTable
     
     Private tableDonVi As DonViDataTable
-
+    
     Private tableCTHoaDon As CTHoaDonDataTable
-
+    
     Private tableCTThanhTien As CTThanhTienDataTable
+    
+    Private tableGiayBao As GiayBaoDataTable
 
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
 
@@ -98,6 +100,9 @@ Partial Public Class DataSet1
             End If
             If (Not (ds.Tables("CTThanhTien")) Is Nothing) Then
                 MyBase.Tables.Add(New CTThanhTienDataTable(ds.Tables("CTThanhTien")))
+            End If
+            If (Not (ds.Tables("GiayBao")) Is Nothing) Then
+                MyBase.Tables.Add(New GiayBaoDataTable(ds.Tables("GiayBao")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -208,6 +213,16 @@ Partial Public Class DataSet1
 
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
+     Global.System.ComponentModel.Browsable(False), _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)> _
+    Public ReadOnly Property GiayBao() As GiayBaoDataTable
+        Get
+            Return Me.tableGiayBao
+        End Get
+    End Property
+
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
      Global.System.ComponentModel.BrowsableAttribute(True), _
      Global.System.ComponentModel.DesignerSerializationVisibilityAttribute(Global.System.ComponentModel.DesignerSerializationVisibility.Visible)> _
     Public Overrides Property SchemaSerializationMode() As Global.System.Data.SchemaSerializationMode
@@ -300,6 +315,9 @@ Partial Public Class DataSet1
             If (Not (ds.Tables("CTThanhTien")) Is Nothing) Then
                 MyBase.Tables.Add(New CTThanhTienDataTable(ds.Tables("CTThanhTien")))
             End If
+            If (Not (ds.Tables("GiayBao")) Is Nothing) Then
+                MyBase.Tables.Add(New GiayBaoDataTable(ds.Tables("GiayBao")))
+            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -386,6 +404,12 @@ Partial Public Class DataSet1
                 Me.tableCTThanhTien.InitVars()
             End If
         End If
+        Me.tableGiayBao = CType(MyBase.Tables("GiayBao"), GiayBaoDataTable)
+        If (initTable = True) Then
+            If (Not (Me.tableGiayBao) Is Nothing) Then
+                Me.tableGiayBao.InitVars()
+            End If
+        End If
     End Sub
 
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
@@ -414,6 +438,8 @@ Partial Public Class DataSet1
         MyBase.Tables.Add(Me.tableCTHoaDon)
         Me.tableCTThanhTien = New CTThanhTienDataTable()
         MyBase.Tables.Add(Me.tableCTThanhTien)
+        Me.tableGiayBao = New GiayBaoDataTable()
+        MyBase.Tables.Add(Me.tableGiayBao)
     End Sub
 
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
@@ -467,6 +493,12 @@ Partial Public Class DataSet1
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
     Private Function ShouldSerializeCTThanhTien() As Boolean
+        Return False
+    End Function
+
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+    Private Function ShouldSerializeGiayBao() As Boolean
         Return False
     End Function
 
@@ -554,6 +586,9 @@ Partial Public Class DataSet1
 
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
     Public Delegate Sub CTThanhTienRowChangeEventHandler(ByVal sender As Object, ByVal e As CTThanhTienRowChangeEvent)
+
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+    Public Delegate Sub GiayBaoRowChangeEventHandler(ByVal sender As Object, ByVal e As GiayBaoRowChangeEvent)
 
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -2517,6 +2552,10 @@ Partial Public Class DataSet1
 
         Private columnChiSo As Global.System.Data.DataColumn
 
+        Private columnChisoCD As Global.System.Data.DataColumn
+
+        Private columnChisoTD As Global.System.Data.DataColumn
+
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Public Sub New()
@@ -2673,6 +2712,22 @@ Partial Public Class DataSet1
         End Property
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property ChisoCDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnChisoCD
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property ChisoTDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnChisoTD
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
          Global.System.ComponentModel.Browsable(False)> _
         Public ReadOnly Property Count() As Integer
@@ -2709,9 +2764,26 @@ Partial Public Class DataSet1
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
-        Public Overloads Function AddCTHoaDonRow(ByVal MaKH As String, ByVal MaCT As String, ByVal MaDT As String, ByVal MaHD As Integer, ByVal DienNangTieuThu As Integer, ByVal ThanhTien As Double, ByVal Ky As Date, ByVal NgayDauKy As Date, ByVal NgayCuoiKy As Date, ByVal TenKH As String, ByVal DiaChi As String, ByVal SDT As String, ByVal MaSoThue As String, ByVal MaTram As String, ByVal ChiSo As Integer) As CTHoaDonRow
+        Public Overloads Function AddCTHoaDonRow( _
+                    ByVal MaKH As String, _
+                    ByVal MaCT As String, _
+                    ByVal MaDT As String, _
+                    ByVal MaHD As Integer, _
+                    ByVal DienNangTieuThu As Integer, _
+                    ByVal ThanhTien As Double, _
+                    ByVal Ky As Date, _
+                    ByVal NgayDauKy As Date, _
+                    ByVal NgayCuoiKy As Date, _
+                    ByVal TenKH As String, _
+                    ByVal DiaChi As String, _
+                    ByVal SDT As String, _
+                    ByVal MaSoThue As String, _
+                    ByVal MaTram As String, _
+                    ByVal ChiSo As Integer, _
+                    ByVal ChisoCD As Integer, _
+                    ByVal ChisoTD As Integer) As CTHoaDonRow
             Dim rowCTHoaDonRow As CTHoaDonRow = CType(Me.NewRow, CTHoaDonRow)
-            Dim columnValuesArray() As Object = New Object() {MaKH, MaCT, MaDT, MaHD, DienNangTieuThu, ThanhTien, Ky, NgayDauKy, NgayCuoiKy, TenKH, DiaChi, SDT, MaSoThue, MaTram, ChiSo}
+            Dim columnValuesArray() As Object = New Object() {MaKH, MaCT, MaDT, MaHD, DienNangTieuThu, ThanhTien, Ky, NgayDauKy, NgayCuoiKy, TenKH, DiaChi, SDT, MaSoThue, MaTram, ChiSo, ChisoCD, ChisoTD}
             rowCTHoaDonRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowCTHoaDonRow)
             Return rowCTHoaDonRow
@@ -2749,6 +2821,8 @@ Partial Public Class DataSet1
             Me.columnMaSoThue = MyBase.Columns("MaSoThue")
             Me.columnMaTram = MyBase.Columns("MaTram")
             Me.columnChiSo = MyBase.Columns("ChiSo")
+            Me.columnChisoCD = MyBase.Columns("ChisoCD")
+            Me.columnChisoTD = MyBase.Columns("ChisoTD")
         End Sub
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
@@ -2784,6 +2858,10 @@ Partial Public Class DataSet1
             MyBase.Columns.Add(Me.columnMaTram)
             Me.columnChiSo = New Global.System.Data.DataColumn("ChiSo", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnChiSo)
+            Me.columnChisoCD = New Global.System.Data.DataColumn("ChisoCD", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnChisoCD)
+            Me.columnChisoTD = New Global.System.Data.DataColumn("ChisoTD", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnChisoTD)
             Me.columnMaKH.AllowDBNull = False
             Me.columnMaKH.MaxLength = 13
             Me.columnMaCT.AllowDBNull = False
@@ -3193,6 +3271,487 @@ Partial Public Class DataSet1
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "CTThanhTienDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current, Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+
+                            Do While ((s1.Position <> s1.Length) _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+
+
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close()
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close()
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(), _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")> _
+    Partial Public Class GiayBaoDataTable
+        Inherits Global.System.Data.TypedTableBase(Of GiayBaoRow)
+
+        Private columnMaKH As Global.System.Data.DataColumn
+
+        Private columnMaCT As Global.System.Data.DataColumn
+
+        Private columnMaDT As Global.System.Data.DataColumn
+
+        Private columnMaHD As Global.System.Data.DataColumn
+
+        Private columnDienNangTieuThu As Global.System.Data.DataColumn
+
+        Private columnThanhTien As Global.System.Data.DataColumn
+
+        Private columnKy As Global.System.Data.DataColumn
+
+        Private columnNgayDauKy As Global.System.Data.DataColumn
+
+        Private columnNgayCuoiKy As Global.System.Data.DataColumn
+
+        Private columnTenKH As Global.System.Data.DataColumn
+
+        Private columnDiaChi As Global.System.Data.DataColumn
+
+        Private columnSDT As Global.System.Data.DataColumn
+
+        Private columnMaSoThue As Global.System.Data.DataColumn
+
+        Private columnChiSo As Global.System.Data.DataColumn
+
+        Private columnChisoCD As Global.System.Data.DataColumn
+
+        Private columnChisoTD As Global.System.Data.DataColumn
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub New()
+            MyBase.New()
+            Me.TableName = "GiayBao"
+            Me.BeginInit()
+            Me.InitClass()
+            Me.EndInit()
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New()
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars()
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property MaKHColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMaKH
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property MaCTColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMaCT
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property MaDTColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMaDT
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property MaHDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMaHD
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property DienNangTieuThuColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDienNangTieuThu
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property ThanhTienColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnThanhTien
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property KyColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnKy
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property NgayDauKyColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNgayDauKy
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property NgayCuoiKyColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnNgayCuoiKy
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property TenKHColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnTenKH
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property DiaChiColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnDiaChi
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property SDTColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnSDT
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property MaSoThueColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnMaSoThue
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property ChiSoColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnChiSo
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property ChisoCDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnChisoCD
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property ChisoTDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnChisoTD
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
+         Global.System.ComponentModel.Browsable(False)> _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Default Public ReadOnly Property Item(ByVal index As Integer) As GiayBaoRow
+            Get
+                Return CType(Me.Rows(index), GiayBaoRow)
+            End Get
+        End Property
+
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Event GiayBaoRowChanging As GiayBaoRowChangeEventHandler
+
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Event GiayBaoRowChanged As GiayBaoRowChangeEventHandler
+
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Event GiayBaoRowDeleting As GiayBaoRowChangeEventHandler
+
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Event GiayBaoRowDeleted As GiayBaoRowChangeEventHandler
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Overloads Sub AddGiayBaoRow(ByVal row As GiayBaoRow)
+            Me.Rows.Add(row)
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Overloads Function AddGiayBaoRow( _
+                    ByVal MaKH As String, _
+                    ByVal MaCT As String, _
+                    ByVal MaDT As String, _
+                    ByVal MaHD As Integer, _
+                    ByVal DienNangTieuThu As Integer, _
+                    ByVal ThanhTien As Double, _
+                    ByVal Ky As Date, _
+                    ByVal NgayDauKy As Date, _
+                    ByVal NgayCuoiKy As Date, _
+                    ByVal TenKH As String, _
+                    ByVal DiaChi As String, _
+                    ByVal SDT As String, _
+                    ByVal MaSoThue As String, _
+                    ByVal ChiSo As Integer, _
+                    ByVal ChisoCD As Integer, _
+                    ByVal ChisoTD As Integer) As GiayBaoRow
+            Dim rowGiayBaoRow As GiayBaoRow = CType(Me.NewRow, GiayBaoRow)
+            Dim columnValuesArray() As Object = New Object() {MaKH, MaCT, MaDT, MaHD, DienNangTieuThu, ThanhTien, Ky, NgayDauKy, NgayCuoiKy, TenKH, DiaChi, SDT, MaSoThue, ChiSo, ChisoCD, ChisoTD}
+            rowGiayBaoRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowGiayBaoRow)
+            Return rowGiayBaoRow
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As GiayBaoDataTable = CType(MyBase.Clone, GiayBaoDataTable)
+            cln.InitVars()
+            Return cln
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New GiayBaoDataTable()
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Friend Sub InitVars()
+            Me.columnMaKH = MyBase.Columns("MaKH")
+            Me.columnMaCT = MyBase.Columns("MaCT")
+            Me.columnMaDT = MyBase.Columns("MaDT")
+            Me.columnMaHD = MyBase.Columns("MaHD")
+            Me.columnDienNangTieuThu = MyBase.Columns("DienNangTieuThu")
+            Me.columnThanhTien = MyBase.Columns("ThanhTien")
+            Me.columnKy = MyBase.Columns("Ky")
+            Me.columnNgayDauKy = MyBase.Columns("NgayDauKy")
+            Me.columnNgayCuoiKy = MyBase.Columns("NgayCuoiKy")
+            Me.columnTenKH = MyBase.Columns("TenKH")
+            Me.columnDiaChi = MyBase.Columns("DiaChi")
+            Me.columnSDT = MyBase.Columns("SDT")
+            Me.columnMaSoThue = MyBase.Columns("MaSoThue")
+            Me.columnChiSo = MyBase.Columns("ChiSo")
+            Me.columnChisoCD = MyBase.Columns("ChisoCD")
+            Me.columnChisoTD = MyBase.Columns("ChisoTD")
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Private Sub InitClass()
+            Me.columnMaKH = New Global.System.Data.DataColumn("MaKH", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMaKH)
+            Me.columnMaCT = New Global.System.Data.DataColumn("MaCT", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMaCT)
+            Me.columnMaDT = New Global.System.Data.DataColumn("MaDT", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMaDT)
+            Me.columnMaHD = New Global.System.Data.DataColumn("MaHD", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMaHD)
+            Me.columnDienNangTieuThu = New Global.System.Data.DataColumn("DienNangTieuThu", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDienNangTieuThu)
+            Me.columnThanhTien = New Global.System.Data.DataColumn("ThanhTien", GetType(Double), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnThanhTien)
+            Me.columnKy = New Global.System.Data.DataColumn("Ky", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnKy)
+            Me.columnNgayDauKy = New Global.System.Data.DataColumn("NgayDauKy", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNgayDauKy)
+            Me.columnNgayCuoiKy = New Global.System.Data.DataColumn("NgayCuoiKy", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnNgayCuoiKy)
+            Me.columnTenKH = New Global.System.Data.DataColumn("TenKH", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnTenKH)
+            Me.columnDiaChi = New Global.System.Data.DataColumn("DiaChi", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnDiaChi)
+            Me.columnSDT = New Global.System.Data.DataColumn("SDT", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnSDT)
+            Me.columnMaSoThue = New Global.System.Data.DataColumn("MaSoThue", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnMaSoThue)
+            Me.columnChiSo = New Global.System.Data.DataColumn("ChiSo", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnChiSo)
+            Me.columnChisoCD = New Global.System.Data.DataColumn("ChisoCD", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnChisoCD)
+            Me.columnChisoTD = New Global.System.Data.DataColumn("ChisoTD", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnChisoTD)
+            Me.columnMaKH.AllowDBNull = False
+            Me.columnMaKH.MaxLength = 13
+            Me.columnMaCT.AllowDBNull = False
+            Me.columnMaCT.MaxLength = 10
+            Me.columnMaDT.AllowDBNull = False
+            Me.columnMaDT.MaxLength = 10
+            Me.columnMaHD.AllowDBNull = False
+            Me.columnDienNangTieuThu.AllowDBNull = False
+            Me.columnThanhTien.AllowDBNull = False
+            Me.columnNgayDauKy.AllowDBNull = False
+            Me.columnNgayCuoiKy.AllowDBNull = False
+            Me.columnTenKH.AllowDBNull = False
+            Me.columnTenKH.MaxLength = 30
+            Me.columnDiaChi.AllowDBNull = False
+            Me.columnDiaChi.MaxLength = 50
+            Me.columnSDT.MaxLength = 11
+            Me.columnMaSoThue.MaxLength = 10
+            Me.columnChiSo.AllowDBNull = False
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function NewGiayBaoRow() As GiayBaoRow
+            Return CType(Me.NewRow, GiayBaoRow)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New GiayBaoRow(builder)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(GiayBaoRow)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.GiayBaoRowChangedEvent) Is Nothing) Then
+                RaiseEvent GiayBaoRowChanged(Me, New GiayBaoRowChangeEvent(CType(e.Row, GiayBaoRow), e.Action))
+            End If
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.GiayBaoRowChangingEvent) Is Nothing) Then
+                RaiseEvent GiayBaoRowChanging(Me, New GiayBaoRowChangeEvent(CType(e.Row, GiayBaoRow), e.Action))
+            End If
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.GiayBaoRowDeletedEvent) Is Nothing) Then
+                RaiseEvent GiayBaoRowDeleted(Me, New GiayBaoRowChangeEvent(CType(e.Row, GiayBaoRow), e.Action))
+            End If
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.GiayBaoRowDeletingEvent) Is Nothing) Then
+                RaiseEvent GiayBaoRowDeleting(Me, New GiayBaoRowChangeEvent(CType(e.Row, GiayBaoRow), e.Action))
+            End If
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub RemoveGiayBaoRow(ByVal row As GiayBaoRow)
+            Me.Rows.Remove(row)
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As DataSet1 = New DataSet1()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "GiayBaoDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -3921,6 +4480,36 @@ Partial Public Class DataSet1
 
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property ChisoCD() As Integer
+            Get
+                Try
+                    Return CType(Me(Me.tableCTHoaDon.ChisoCDColumn), Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ChisoCD' in table 'CTHoaDon' is DBNull.", e)
+                End Try
+            End Get
+            Set(value As Integer)
+                Me(Me.tableCTHoaDon.ChisoCDColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property ChisoTD() As Integer
+            Get
+                Try
+                    Return CType(Me(Me.tableCTHoaDon.ChisoTDColumn), Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ChisoTD' in table 'CTHoaDon' is DBNull.", e)
+                End Try
+            End Get
+            Set(value As Integer)
+                Me(Me.tableCTHoaDon.ChisoTDColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Public Function IsKyNull() As Boolean
             Return Me.IsNull(Me.tableCTHoaDon.KyColumn)
         End Function
@@ -3953,6 +4542,30 @@ Partial Public Class DataSet1
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Public Sub SetMaSoThueNull()
             Me(Me.tableCTHoaDon.MaSoThueColumn) = Global.System.Convert.DBNull
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function IsChisoCDNull() As Boolean
+            Return Me.IsNull(Me.tableCTHoaDon.ChisoCDColumn)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub SetChisoCDNull()
+            Me(Me.tableCTHoaDon.ChisoCDColumn) = Global.System.Convert.DBNull
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function IsChisoTDNull() As Boolean
+            Return Me.IsNull(Me.tableCTHoaDon.ChisoTDColumn)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub SetChisoTDNull()
+            Me(Me.tableCTHoaDon.ChisoTDColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
 
@@ -4014,6 +4627,278 @@ Partial Public Class DataSet1
                 Me(Me.tableCTThanhTien.CTThanhTienColumn) = value
             End Set
         End Property
+    End Class
+
+    '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class GiayBaoRow
+        Inherits Global.System.Data.DataRow
+
+        Private tableGiayBao As GiayBaoDataTable
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableGiayBao = CType(Me.Table, GiayBaoDataTable)
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property MaKH() As String
+            Get
+                Return CType(Me(Me.tableGiayBao.MaKHColumn), String)
+            End Get
+            Set(value As String)
+                Me(Me.tableGiayBao.MaKHColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property MaCT() As String
+            Get
+                Return CType(Me(Me.tableGiayBao.MaCTColumn), String)
+            End Get
+            Set(value As String)
+                Me(Me.tableGiayBao.MaCTColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property MaDT() As String
+            Get
+                Return CType(Me(Me.tableGiayBao.MaDTColumn), String)
+            End Get
+            Set(value As String)
+                Me(Me.tableGiayBao.MaDTColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property MaHD() As Integer
+            Get
+                Return CType(Me(Me.tableGiayBao.MaHDColumn), Integer)
+            End Get
+            Set(value As Integer)
+                Me(Me.tableGiayBao.MaHDColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property DienNangTieuThu() As Integer
+            Get
+                Return CType(Me(Me.tableGiayBao.DienNangTieuThuColumn), Integer)
+            End Get
+            Set(value As Integer)
+                Me(Me.tableGiayBao.DienNangTieuThuColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property ThanhTien() As Double
+            Get
+                Return CType(Me(Me.tableGiayBao.ThanhTienColumn), Double)
+            End Get
+            Set(value As Double)
+                Me(Me.tableGiayBao.ThanhTienColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property Ky() As Date
+            Get
+                Try
+                    Return CType(Me(Me.tableGiayBao.KyColumn), Date)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Ky' in table 'GiayBao' is DBNull.", e)
+                End Try
+            End Get
+            Set(value As Date)
+                Me(Me.tableGiayBao.KyColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property NgayDauKy() As Date
+            Get
+                Return CType(Me(Me.tableGiayBao.NgayDauKyColumn), Date)
+            End Get
+            Set(value As Date)
+                Me(Me.tableGiayBao.NgayDauKyColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property NgayCuoiKy() As Date
+            Get
+                Return CType(Me(Me.tableGiayBao.NgayCuoiKyColumn), Date)
+            End Get
+            Set(value As Date)
+                Me(Me.tableGiayBao.NgayCuoiKyColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property TenKH() As String
+            Get
+                Return CType(Me(Me.tableGiayBao.TenKHColumn), String)
+            End Get
+            Set(value As String)
+                Me(Me.tableGiayBao.TenKHColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property DiaChi() As String
+            Get
+                Return CType(Me(Me.tableGiayBao.DiaChiColumn), String)
+            End Get
+            Set(value As String)
+                Me(Me.tableGiayBao.DiaChiColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property SDT() As String
+            Get
+                Try
+                    Return CType(Me(Me.tableGiayBao.SDTColumn), String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'SDT' in table 'GiayBao' is DBNull.", e)
+                End Try
+            End Get
+            Set(value As String)
+                Me(Me.tableGiayBao.SDTColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property MaSoThue() As String
+            Get
+                Try
+                    Return CType(Me(Me.tableGiayBao.MaSoThueColumn), String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'MaSoThue' in table 'GiayBao' is DBNull.", e)
+                End Try
+            End Get
+            Set(value As String)
+                Me(Me.tableGiayBao.MaSoThueColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property ChiSo() As Integer
+            Get
+                Return CType(Me(Me.tableGiayBao.ChiSoColumn), Integer)
+            End Get
+            Set(value As Integer)
+                Me(Me.tableGiayBao.ChiSoColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property ChisoCD() As Integer
+            Get
+                Try
+                    Return CType(Me(Me.tableGiayBao.ChisoCDColumn), Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ChisoCD' in table 'GiayBao' is DBNull.", e)
+                End Try
+            End Get
+            Set(value As Integer)
+                Me(Me.tableGiayBao.ChisoCDColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property ChisoTD() As Integer
+            Get
+                Try
+                    Return CType(Me(Me.tableGiayBao.ChisoTDColumn), Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ChisoTD' in table 'GiayBao' is DBNull.", e)
+                End Try
+            End Get
+            Set(value As Integer)
+                Me(Me.tableGiayBao.ChisoTDColumn) = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function IsKyNull() As Boolean
+            Return Me.IsNull(Me.tableGiayBao.KyColumn)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub SetKyNull()
+            Me(Me.tableGiayBao.KyColumn) = Global.System.Convert.DBNull
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function IsSDTNull() As Boolean
+            Return Me.IsNull(Me.tableGiayBao.SDTColumn)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub SetSDTNull()
+            Me(Me.tableGiayBao.SDTColumn) = Global.System.Convert.DBNull
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function IsMaSoThueNull() As Boolean
+            Return Me.IsNull(Me.tableGiayBao.MaSoThueColumn)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub SetMaSoThueNull()
+            Me(Me.tableGiayBao.MaSoThueColumn) = Global.System.Convert.DBNull
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function IsChisoCDNull() As Boolean
+            Return Me.IsNull(Me.tableGiayBao.ChisoCDColumn)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub SetChisoCDNull()
+            Me(Me.tableGiayBao.ChisoCDColumn) = Global.System.Convert.DBNull
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Function IsChisoTDNull() As Boolean
+            Return Me.IsNull(Me.tableGiayBao.ChisoTDColumn)
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub SetChisoTDNull()
+            Me(Me.tableGiayBao.ChisoTDColumn) = Global.System.Convert.DBNull
+        End Sub
     End Class
 
     '''<summary>
@@ -4326,6 +5211,42 @@ Partial Public Class DataSet1
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
         Public ReadOnly Property Row() As CTThanhTienRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+    Public Class GiayBaoRowChangeEvent
+        Inherits Global.System.EventArgs
+
+        Private eventRow As GiayBaoRow
+
+        Private eventAction As Global.System.Data.DataRowAction
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub New(ByVal row As GiayBaoRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New()
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public ReadOnly Property Row() As GiayBaoRow
             Get
                 Return Me.eventRow
             End Get
@@ -5949,6 +6870,8 @@ Namespace DataSet1TableAdapters
             tableMapping.ColumnMappings.Add("MaSoThue", "MaSoThue")
             tableMapping.ColumnMappings.Add("MaTram", "MaTram")
             tableMapping.ColumnMappings.Add("ChiSo", "ChiSo")
+            tableMapping.ColumnMappings.Add("ChisoCD", "ChisoCD")
+            tableMapping.ColumnMappings.Add("ChisoTD", "ChisoTD")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
 
@@ -5968,13 +6891,13 @@ Namespace DataSet1TableAdapters
             Me._commandCollection(0).CommandText = "SELECT        KhachHang.MaKH, KhachHang.MaCT, KhachHang.MaDT, HoaDon.MaHD, HoaDon" & _
                 ".DienNangTieuThu, HoaDon.ThanhTien, HoaDon.Ky, ChiSoCongTo.NgayDauKy, ChiSoCongT" & _
                 "o.NgayCuoiKy, KhachHang.TenKH, " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                         KhachHang.DiaChi, Khac" & _
-                "hHang.SDT, KhachHang.MaSoThue, Tram.MaTram, ChiSoCongTo.ChiSo" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "FROM            K" & _
-                "hachHang INNER JOIN" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                         HoaDon ON KhachHang.MaKH = HoaDon." & _
-                "MaKH INNER JOIN" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                         DoiTuongKH ON KhachHang.MaDT = DoiTuon" & _
-                "gKH.MaDT INNER JOIN" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                         ChiSoCongTo ON KhachHang.MaCT = Ch" & _
-                "iSoCongTo.MaCT INNER JOIN" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                         CongTo ON KhachHang.MaCT = C" & _
-                "ongTo.MaCT AND ChiSoCongTo.MaCT = CongTo.MaCT INNER JOIN" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                      " & _
-                "   Tram ON CongTo.MaTram = Tram.MaTram"
+                "hHang.SDT, KhachHang.MaSoThue, Tram.MaTram, ChiSoCongTo.ChiSo, ChiSoCongTo.Chiso" & _
+                "CD, ChiSoCongTo.ChisoTD" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "FROM            KhachHang INNER JOIN" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                 " & _
+                "        HoaDon ON KhachHang.MaKH = HoaDon.MaKH INNER JOIN" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                     " & _
+                "    DoiTuongKH ON KhachHang.MaDT = DoiTuongKH.MaDT INNER JOIN" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                 " & _
+                "        ChiSoCongTo ON KhachHang.MaCT = ChiSoCongTo.MaCT INNER JOIN" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "           " & _
+                "              CongTo ON KhachHang.MaCT = CongTo.MaCT INNER JOIN" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "               " & _
+                "          Tram ON CongTo.MaTram = Tram.MaTram"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
 
@@ -6177,6 +7100,202 @@ Namespace DataSet1TableAdapters
         Public Overridable Overloads Function GetData() As DataSet1.CTThanhTienDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             Dim dataTable As DataSet1.CTThanhTienDataTable = New DataSet1.CTThanhTienDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+    End Class
+
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"), _
+     Global.System.ComponentModel.ToolboxItem(True), _
+     Global.System.ComponentModel.DataObjectAttribute(True), _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" & _
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"), _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")> _
+    Partial Public Class GiayBaoTableAdapter
+        Inherits Global.System.ComponentModel.Component
+
+        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
+
+        Private _connection As Global.System.Data.SqlClient.SqlConnection
+
+        Private _transaction As Global.System.Data.SqlClient.SqlTransaction
+
+        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
+
+        Private _clearBeforeFill As Boolean
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Sub New()
+            MyBase.New()
+            Me.ClearBeforeFill = True
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Protected Friend ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter()
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection()
+                End If
+                Return Me._connection
+            End Get
+            Set(value As Global.System.Data.SqlClient.SqlConnection)
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i), Global.System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Friend Property Transaction() As Global.System.Data.SqlClient.SqlTransaction
+            Get
+                Return Me._transaction
+            End Get
+            Set(value As Global.System.Data.SqlClient.SqlTransaction)
+                Me._transaction = value
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    Me.CommandCollection(i).Transaction = Me._transaction
+                    i = (i + 1)
+                Loop
+                If ((Not (Me.Adapter) Is Nothing) _
+                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
+                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing) _
+                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
+                    Me.Adapter.InsertCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing) _
+                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
+                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
+                End If
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection()
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set(value As Boolean)
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "GiayBao"
+            tableMapping.ColumnMappings.Add("MaKH", "MaKH")
+            tableMapping.ColumnMappings.Add("MaCT", "MaCT")
+            tableMapping.ColumnMappings.Add("MaDT", "MaDT")
+            tableMapping.ColumnMappings.Add("MaHD", "MaHD")
+            tableMapping.ColumnMappings.Add("DienNangTieuThu", "DienNangTieuThu")
+            tableMapping.ColumnMappings.Add("ThanhTien", "ThanhTien")
+            tableMapping.ColumnMappings.Add("Ky", "Ky")
+            tableMapping.ColumnMappings.Add("NgayDauKy", "NgayDauKy")
+            tableMapping.ColumnMappings.Add("NgayCuoiKy", "NgayCuoiKy")
+            tableMapping.ColumnMappings.Add("TenKH", "TenKH")
+            tableMapping.ColumnMappings.Add("DiaChi", "DiaChi")
+            tableMapping.ColumnMappings.Add("SDT", "SDT")
+            tableMapping.ColumnMappings.Add("MaSoThue", "MaSoThue")
+            tableMapping.ColumnMappings.Add("ChiSo", "ChiSo")
+            tableMapping.ColumnMappings.Add("ChisoCD", "ChisoCD")
+            tableMapping.ColumnMappings.Add("ChisoTD", "ChisoTD")
+            Me._adapter.TableMappings.Add(tableMapping)
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
+            Me._connection.ConnectionString = Global.LuanVan.My.MySettings.Default.QLHDTDConnectionString
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")> _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT        KhachHang.MaKH, KhachHang.MaCT, KhachHang.MaDT, HoaDon.MaHD, HoaDon" & _
+                ".DienNangTieuThu, HoaDon.ThanhTien, HoaDon.Ky, ChiSoCongTo.NgayDauKy, ChiSoCongT" & _
+                "o.NgayCuoiKy, KhachHang.TenKH, " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                         KhachHang.DiaChi, Khac" & _
+                "hHang.SDT, KhachHang.MaSoThue, ChiSoCongTo.ChiSo, ChiSoCongTo.ChisoCD, ChiSoCong" & _
+                "To.ChisoTD" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "FROM            KhachHang INNER JOIN" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                         HoaDo" & _
+                "n ON KhachHang.MaKH = HoaDon.MaKH INNER JOIN" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                         DoiTuongK" & _
+                "H ON KhachHang.MaDT = DoiTuongKH.MaDT INNER JOIN" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                         ChiSo" & _
+                "CongTo ON KhachHang.MaCT = ChiSoCongTo.MaCT INNER JOIN" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "                        " & _
+                " CongTo ON KhachHang.MaCT = CongTo.MaCT"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+        End Sub
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"), _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, True)> _
+        Public Overridable Overloads Function Fill(ByVal dataTable As DataSet1.GiayBaoDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Me.ClearBeforeFill = True) Then
+                dataTable.Clear()
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"), _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"), _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], True)> _
+        Public Overridable Overloads Function GetData() As DataSet1.GiayBaoDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As DataSet1.GiayBaoDataTable = New DataSet1.GiayBaoDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function

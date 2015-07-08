@@ -10,9 +10,7 @@ Public Class frmMain
     Private frmTTDV As frmTTDonVi
     Private frmTTD As frmTinhTien
     Private frmCNBG As frmCapNhatBG
-    'Private frmTest As frmReport
-    Private frmTest As frmTest
-    Private frmTest2 As frmTest2
+    Private frmInHD As frmInHoaDon
 
     Public daChiSoCongTo As SqlDataAdapter
     Public daCongTo As SqlDataAdapter
@@ -36,8 +34,8 @@ Public Class frmMain
     Private Sub ConnectSQLServer_InitializeDataSet()
         Try
             Dim strCon As String
-            strCon = "Data Source=3P1MT9VVKDZGJZR\SQLEXPRESS;Initial Catalog=QLHDTD;Integrated Security=True"
-            'strCon = "Data Source=(local)\SQLEXPRESS;Initial Catalog=QLHDTD;Integrated Security=True"
+            'strCon = "Data Source=3P1MT9VVKDZGJZR\SQLEXPRESS;Initial Catalog=QLHDTD;Integrated Security=True"
+            strCon = "Data Source=(local)\SQLEXPRESS;Initial Catalog=QLHDTD;Integrated Security=True"
             con = New SqlConnection(strCon)
             con.Open()
             con.Close()
@@ -163,33 +161,8 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub tsmiSQLServer_Click(sender As Object, e As EventArgs) Handles tsmiSQLServer.Click
-
-    End Sub
-
-    Private Sub tsmiExcel_Click(sender As Object, e As EventArgs) Handles tsmiExcel.Click
-
-    End Sub
-
     Private Sub tsmiThoat_Click(sender As Object, e As EventArgs) Handles tsmiThoat.Click
         Close()
     End Sub
 
-    Private Sub tsmiTest_Click(sender As Object, e As EventArgs) Handles tsmiTest.Click
-        If frmTest Is Nothing OrElse frmTest.IsDisposed Then
-            'frmTest = New frmReport
-            frmTest = New frmTest
-            frmTest.MdiParent = Me
-            frmTest.Show()
-        End If
-    End Sub
-
-    Private Sub tsmiTest2_Click(sender As Object, e As EventArgs) Handles tsmiTest2.Click
-        If frmTest2 Is Nothing OrElse frmTest2.IsDisposed Then
-            'frmTest = New frmReport
-            frmTest2 = New frmTest2
-            frmTest2.MdiParent = Me
-            frmTest2.Show()
-        End If
-    End Sub
 End Class
