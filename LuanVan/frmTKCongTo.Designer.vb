@@ -30,13 +30,11 @@ Partial Class frmTKCongTo
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtMaCT = New System.Windows.Forms.TextBox()
         Me.btnTim = New System.Windows.Forms.Button()
-        Me.cboCapDA = New System.Windows.Forms.ComboBox()
         Me.lvwCongto = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.dtpNgaylapdat = New System.Windows.Forms.DateTimePicker()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.SuspendLayout()
@@ -60,8 +58,8 @@ Partial Class frmTKCongTo
         'TableLayoutPanel2
         '
         Me.TableLayoutPanel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel2.AutoSize = True
         Me.TableLayoutPanel2.ColumnCount = 3
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102.0!))
@@ -73,21 +71,21 @@ Partial Class frmTKCongTo
         Me.TableLayoutPanel2.Controls.Add(Me.Label2, 0, 1)
         Me.TableLayoutPanel2.Controls.Add(Me.txtMaCT, 1, 1)
         Me.TableLayoutPanel2.Controls.Add(Me.btnTim, 2, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.cboCapDA, 1, 2)
+        Me.TableLayoutPanel2.Controls.Add(Me.dtpNgaylapdat, 1, 2)
         Me.TableLayoutPanel2.Location = New System.Drawing.Point(3, 3)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 3
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(528, 82)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(528, 81)
         Me.TableLayoutPanel2.TabIndex = 0
         '
         'Label3
         '
         Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(3, 62)
+        Me.Label3.Location = New System.Drawing.Point(3, 61)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(68, 13)
         Me.Label3.TabIndex = 4
@@ -140,23 +138,14 @@ Partial Class frmTKCongTo
         Me.btnTim.Text = "Tìm"
         Me.btnTim.UseVisualStyleBackColor = True
         '
-        'cboCapDA
-        '
-        Me.cboCapDA.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboCapDA.FormattingEnabled = True
-        Me.cboCapDA.Location = New System.Drawing.Point(105, 58)
-        Me.cboCapDA.Name = "cboCapDA"
-        Me.cboCapDA.Size = New System.Drawing.Size(121, 21)
-        Me.cboCapDA.TabIndex = 7
-        '
         'lvwCongto
         '
-        Me.lvwCongto.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5})
+        Me.lvwCongto.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3})
         Me.lvwCongto.FullRowSelect = True
         Me.lvwCongto.GridLines = True
-        Me.lvwCongto.Location = New System.Drawing.Point(3, 91)
+        Me.lvwCongto.Location = New System.Drawing.Point(3, 90)
         Me.lvwCongto.Name = "lvwCongto"
-        Me.lvwCongto.Size = New System.Drawing.Size(527, 261)
+        Me.lvwCongto.Size = New System.Drawing.Size(448, 261)
         Me.lvwCongto.TabIndex = 1
         Me.lvwCongto.UseCompatibleStateImageBehavior = False
         Me.lvwCongto.View = System.Windows.Forms.View.Details
@@ -168,30 +157,29 @@ Partial Class frmTKCongTo
         '
         'ColumnHeader2
         '
-        Me.ColumnHeader2.Text = "Kỳ"
+        Me.ColumnHeader2.Text = "Trạm"
         Me.ColumnHeader2.Width = 81
         '
         'ColumnHeader3
         '
-        Me.ColumnHeader3.Text = "Chỉ số bình thường"
+        Me.ColumnHeader3.Text = "Ngày lắp đặt"
         Me.ColumnHeader3.Width = 115
         '
-        'ColumnHeader4
+        'dtpNgaylapdat
         '
-        Me.ColumnHeader4.Text = "Chỉ số cao điểm"
-        Me.ColumnHeader4.Width = 112
-        '
-        'ColumnHeader5
-        '
-        Me.ColumnHeader5.Text = "Chỉ số thấp điểm"
-        Me.ColumnHeader5.Width = 116
+        Me.dtpNgaylapdat.CustomFormat = "MM/yyyy"
+        Me.dtpNgaylapdat.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dtpNgaylapdat.Location = New System.Drawing.Point(105, 58)
+        Me.dtpNgaylapdat.Name = "dtpNgaylapdat"
+        Me.dtpNgaylapdat.Size = New System.Drawing.Size(121, 20)
+        Me.dtpNgaylapdat.TabIndex = 7
         '
         'frmTKCongTo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(559, 376)
+        Me.ClientSize = New System.Drawing.Size(474, 372)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.MaximizeBox = False
         Me.Name = "frmTKCongTo"
@@ -212,11 +200,9 @@ Partial Class frmTKCongTo
     Friend WithEvents txtMaCT As System.Windows.Forms.TextBox
     Friend WithEvents btnTim As System.Windows.Forms.Button
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents cboCapDA As System.Windows.Forms.ComboBox
     Friend WithEvents lvwCongto As System.Windows.Forms.ListView
     Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader5 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents dtpNgaylapdat As System.Windows.Forms.DateTimePicker
 End Class

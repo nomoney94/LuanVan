@@ -4,17 +4,15 @@ Public Class frmTKHoaDon
     Private aTimKiem() As String = {"Kỳ", "Hóa đơn chưa thanh toán", "Hóa đơn nhắc nhở lần 1", "Hóa đơn nhắc nhở lần 2", "Mã hóa đơn", "Mã khách hàng"}
     Private dtHD As DataTable
     Private dtKH As DataTable
-    'Private MaKH As String
+    Public MaKH As String
     Private TimKiem As String
     Private DuLieu As String
     Private frmInHD As frmInHoaDon
 
-    Private Sub frmTKHoaDon_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'Dim dr As DataRow
+    Private Sub frmTKHoaDon_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         Dim ky As Date
         Dim flag As Integer
         cboTimKiem.Items.AddRange(aTimKiem)
-        cboTimKiem.SelectedIndex = 0
         dtHD = frmMain.ds.Tables("HoaDon")
         dtKH = frmMain.ds.Tables("KhachHang")
         For Each dr In dtHD.Select("Ky=Max(Ky)")
@@ -27,19 +25,16 @@ Public Class frmTKHoaDon
         If flag = 1 Then
             MessageBox.Show("Kỳ ghi điện mới nhất là: " & Month(ky) & "/" & Year(ky) & " (Đã in hóa đơn)", "Thông báo")
         Else
-            MessageBox.Show("Kỳ ghi điện mới nhất là: " & Month(ky) & "/" & Year(ky) & " (Chưa in hóa đơn)", "Thong báo")
+            MessageBox.Show("Kỳ ghi điện mới nhất là: " & Month(ky) & "/" & Year(ky) & " (Chưa in hóa đơn)", "Thông báo")
             dtpKy.Text = ky
         End If
-        'For Each dr In dtHD.Select()
-        '    If dr("TinhTrangThanhToan") = "Chưa" Then
-        '        countCTT += 1
-        '    ElseIf dr("TinhTrangThanhToan") = "Lần 1" Then
-        '        countL1 += 1
-        '    ElseIf dr("TinhTrangThanhToan") = "Lần 2" Then
-        '        countL2 += 1
-        '    End If
-        'Next
-        'MessageBox.Show("Hóa đơn chưa thanh toán: " & countCTT & " | Hóa đơn nhắc nhở lần 1: " & countL1 & " | Hóa đơn nhắc nhở lần 2: " & countL2, "Thông báo")
+        If MaKH <> "" Then
+            cboTimKiem.SelectedIndex = 5
+            txtMaKH.Text = MaKH
+            btnTim.PerformClick()
+        Else
+            cboTimKiem.SelectedIndex = 0
+        End If
     End Sub
 
     Private Sub btnTim_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnTim.Click
@@ -241,18 +236,18 @@ Public Class frmTKHoaDon
             frmInHD.TimKiem = Me.TimKiem
             frmInHD.DuLieu = Me.DuLieu
         End If
-        'Dim dr As DataRow
-        'For Each dr In dtHD.Select("Ky='" + dtpKy.Text + "'")
-        '    dr("TinhTrangThanhToan") = "Rồi"
-        'Next
-        'Try
-        '    Dim comHD As New SqlCommandBuilder(frmMain.daHoaDon)
-        '    frmMain.con.Open()
-        '    comHD.DataAdapter.Update(dtHD)
-        '    frmMain.con.Close()
-        'Catch ex As Exception
-        '    MessageBox.Show("Không thể cập nhật CSDL", "Thông báo")
-        'End Try
+        Dim dr As DataRow
+        For Each dr In dtHD.Select("Ky='" + dtpKy.Text + "'")
+            dr("TinhTrangThanhToan") = "Rồi"
+        Next
+        Try
+            Dim comHD As New SqlCommandBuilder(frmMain.daHoaDon)
+            frmMain.con.Open()
+            comHD.DataAdapter.Update(dtHD)
+            frmMain.con.Close()
+        Catch ex As Exception
+            MessageBox.Show("Không thể cập nhật CSDL", "Thông báo")
+        End Try
     End Sub
 
     Private Sub btnDathanhtoan_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDathanhtoan.Click

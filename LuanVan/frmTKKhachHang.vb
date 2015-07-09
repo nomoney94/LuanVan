@@ -20,6 +20,7 @@ Public Class frmTKKhachHang
         dt = New DataTable
         dt = dtKH.Clone
         Dim newRow As DataRow
+        lvwKH.Items.Clear()
         If cboTimKiem.Text = "Mã khách hàng" Or cboTimKiem.Text = "Tên khách hàng" Then
             If txtMaKH.Text = "" And txtTenKH.Text = "" Then
                 MessageBox.Show("Nhập thông tin cần tìm")
@@ -28,7 +29,6 @@ Public Class frmTKKhachHang
             Dim strfind As String = "TenKH like '%" + txtTenKH.Text + "%' and MaKH like '%" + txtMaKH.Text + "%'"
             Dim dr As DataRow
             Dim i As Integer
-            lvwKH.Items.Clear()
             For Each dr In dtKH.Select(strfind)
                 newRow = dt.NewRow
                 newRow = dr
@@ -39,48 +39,79 @@ Public Class frmTKKhachHang
                 lvwKH.Items(i).SubItems.Add(dr("MaDT"))
                 lvwKH.Items(i).SubItems.Add(dr("TenKH"))
                 lvwKH.Items(i).SubItems.Add(dr("DiaChi"))
+                lvwKH.Items(i).SubItems.Add(dr("TinhTrangSuDung"))
             Next
         ElseIf cboTimKiem.Text = "Khách hàng chưa thanh toán" Then
-            Dim strfind As String = "TinhTrangThanhToan ='Chưa' or TinhTrangThanhToan ='Lần 1' or TinhTrangThanhToan ='Lần 2'"
+            Dim strfind As String = "TinhTrangThanhToan = 'Chưa' or TinhTrangThanhToan = 'Lần 1' or TinhTrangThanhToan = 'Lần 2'"
             Dim strfind1 As String
             Dim dr, dr1 As DataRow
             Dim i As Integer
-            lvwKH.Items.Clear()
-            For Each dr In dtHD.Select(strfind)
+            For Each dr In dtHD.Select(strfind, "Ky ASC")
                 strfind1 = "MaKH='" + dr("MaKH") + "'"
                 For Each dr1 In dtKH.Select(strfind1)
                     newRow = dt.NewRow
-                    newRow = dr1
+                    newRow = dr
                     dt.Rows.Add(newRow.ItemArray)
                     i = lvwKH.Items.Count
-                    lvwKH.Items.Add(dr1("MaKH"))
-                    lvwKH.Items(i).SubItems.Add(dr1("MaCT"))
-                    lvwKH.Items(i).SubItems.Add(dr1("MaDT"))
-                    lvwKH.Items(i).SubItems.Add(dr1("TenKH"))
-                    lvwKH.Items(i).SubItems.Add(dr1("DiaChi"))
+                    If i > 0 Then
+                        If dr1("MaKH") <> lvwKH.Items(i - 1).SubItems(0).Text Then
+                            lvwKH.Items.Add(dr1("MaKH"))
+                            lvwKH.Items(i).SubItems.Add(dr1("MaCT"))
+                            lvwKH.Items(i).SubItems.Add(dr1("MaDT"))
+                            lvwKH.Items(i).SubItems.Add(dr1("TenKH"))
+                            lvwKH.Items(i).SubItems.Add(dr1("DiaChi"))
+                            lvwKH.Items(i).SubItems.Add(dr1("TinhTrangSuDung"))
+                            lvwKH.Items(i).SubItems.Add(dr("Ky"))
+                        End If
+                    Else
+                        lvwKH.Items.Add(dr1("MaKH"))
+                        lvwKH.Items(i).SubItems.Add(dr1("MaCT"))
+                        lvwKH.Items(i).SubItems.Add(dr1("MaDT"))
+                        lvwKH.Items(i).SubItems.Add(dr1("TenKH"))
+                        lvwKH.Items(i).SubItems.Add(dr1("DiaChi"))
+                        lvwKH.Items(i).SubItems.Add(dr1("TinhTrangSuDung"))
+                        lvwKH.Items(i).SubItems.Add(dr("Ky"))
+                    End If
                 Next
             Next
         ElseIf cboTimKiem.Text = "Khách hàng bị cắt điện" Then
             Dim strfind As String = "TinhTrangSuDung='Cắt điện'"
-            Dim dr As DataRow
+            Dim dr, dr1 As DataRow
             Dim i As Integer
             For Each dr In dtKH.Select(strfind)
-                newRow = dt.NewRow
-                newRow = dr
-                dt.Rows.Add(newRow.ItemArray)
-                i = lvwKH.Items.Count
-                lvwKH.Items.Add(dr("MaKH"))
-                lvwKH.Items(i).SubItems.Add(dr("MaCT"))
-                lvwKH.Items(i).SubItems.Add(dr("MaDT"))
-                lvwKH.Items(i).SubItems.Add(dr("TenKH"))
-                lvwKH.Items(i).SubItems.Add(dr("DiaChi"))
+                For Each dr1 In dtHD.Select("MaKH='" + dr("MaKH") + "' and TinhTrangThanhToan <> 'rồi'", "Ky ASC")
+                    newRow = dt.NewRow
+                    newRow = dr
+                    dt.Rows.Add(newRow.ItemArray)
+                    i = lvwKH.Items.Count
+                    If i > 0 Then
+                        If dr("MaKH") <> lvwKH.Items(i - 1).SubItems(0).Text Then
+                            lvwKH.Items.Add(dr("MaKH"))
+                            lvwKH.Items(i).SubItems.Add(dr("MaCT"))
+                            lvwKH.Items(i).SubItems.Add(dr("MaDT"))
+                            lvwKH.Items(i).SubItems.Add(dr("TenKH"))
+                            lvwKH.Items(i).SubItems.Add(dr("DiaChi"))
+                            lvwKH.Items(i).SubItems.Add(dr("TinhTrangSuDung"))
+                            lvwKH.Items(i).SubItems.Add(dr1("Ky"))
+                        End If
+                    Else
+                        lvwKH.Items.Add(dr("MaKH"))
+                        lvwKH.Items(i).SubItems.Add(dr("MaCT"))
+                        lvwKH.Items(i).SubItems.Add(dr("MaDT"))
+                        lvwKH.Items(i).SubItems.Add(dr("TenKH"))
+                        lvwKH.Items(i).SubItems.Add(dr("DiaChi"))
+                        lvwKH.Items(i).SubItems.Add(dr("TinhTrangSuDung"))
+                        lvwKH.Items(i).SubItems.Add(dr1("Ky"))
+                    End If
+                Next
             Next
         End If
     End Sub
 
     Private Sub cboTimKiem_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboTimKiem.SelectedIndexChanged
-        txtMaKH.Clear()
-        txtTenKH.Clear()
+        If lvwKH.Columns.Count - 1 = 6 Then
+            lvwKH.Columns.RemoveAt(6)
+        End If
         If cboTimKiem.SelectedIndex = 0 Then
             Label2.Visible = True
             Label3.Visible = False
@@ -96,12 +127,18 @@ Public Class frmTKKhachHang
             Label3.Visible = False
             txtMaKH.Visible = False
             txtTenKH.Visible = False
+            lvwKH.Columns.Add("Kỳ nợ")
         End If
     End Sub
 
     Private Sub btnXemhoadon_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnXemhoadon.Click
+        If lvwKH.SelectedItems.Count <= 0 Then
+            MsgBox("Chọn khách hàng muốn xem hóa đơn")
+            Exit Sub
+        End If
         frmTKHD = New frmTKHoaDon
         frmTKHD.MdiParent = frmMain
+        frmTKHD.MaKH = lvwKH.SelectedItems(0).SubItems(0).Text
         frmTKHD.Show()
     End Sub
 
