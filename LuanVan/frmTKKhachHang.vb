@@ -21,12 +21,32 @@ Public Class frmTKKhachHang
         dt = dtKH.Clone
         Dim newRow As DataRow
         lvwKH.Items.Clear()
-        If cboTimKiem.Text = "Mã khách hàng" Or cboTimKiem.Text = "Tên khách hàng" Then
-            If txtMaKH.Text = "" And txtTenKH.Text = "" Then
-                MessageBox.Show("Nhập thông tin cần tìm")
+        If cboTimKiem.Text = "Mã khách hàng" Then
+            If txtMaKH.Text = "" Then
+                MessageBox.Show("Nhập mã khách hàng")
                 Exit Sub
             End If
-            Dim strfind As String = "TenKH like '%" + txtTenKH.Text + "%' and MaKH like '%" + txtMaKH.Text + "%'"
+            Dim strfind As String = "MaKH like '%" + txtMaKH.Text + "%'"
+            Dim dr As DataRow
+            Dim i As Integer
+            For Each dr In dtKH.Select(strfind)
+                newRow = dt.NewRow
+                newRow = dr
+                dt.Rows.Add(newRow.ItemArray)
+                i = lvwKH.Items.Count
+                lvwKH.Items.Add(dr("MaKH"))
+                lvwKH.Items(i).SubItems.Add(dr("MaCT"))
+                lvwKH.Items(i).SubItems.Add(dr("MaDT"))
+                lvwKH.Items(i).SubItems.Add(dr("TenKH"))
+                lvwKH.Items(i).SubItems.Add(dr("DiaChi"))
+                lvwKH.Items(i).SubItems.Add(dr("TinhTrangSuDung"))
+            Next
+        ElseIf cboTimKiem.Text = "Tên khách hàng" Then
+            If txtTenKH.Text = "" Then
+                MessageBox.Show("Nhập tên khách hàng")
+                Exit Sub
+            End If
+            Dim strfind As String = "TenKH like '%" + txtTenKH.Text + "%'"
             Dim dr As DataRow
             Dim i As Integer
             For Each dr In dtKH.Select(strfind)
