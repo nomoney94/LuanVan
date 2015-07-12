@@ -24,10 +24,6 @@ Public Class frmTinhTien
     End Sub
 
     Private Sub btnTinhTien_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnTinhTien.Click
-        If txtMaCT.Text = "" Then
-            MessageBox.Show("Nhập mã công tơ")
-            Exit Sub
-        End If
         Dim dr, dr1, dr2, row, row1, row2 As DataRow
         Dim strfind, makh As String
         Dim chiso, chisoCD, chisoTD, chisoHD, chisoCT1, chisoCT2, chisoCT3, chisocu, chisoCDcu, chisoTDcu, thanhtien, thanhtientam, flagCT, ma As Integer
@@ -73,56 +69,8 @@ Public Class frmTinhTien
             Exit Sub
         End If
         For Each dr In dtKH.Select("MaCT='" + txtMaCT.Text + "'")
-            'lvwHoadon.Items.Add("Tên KH")
-            'lvwHoadon.Items(i).SubItems.Add(dr("TenKH"))
-            'i += 1
-            'lvwHoadon.Items.Add("Địa chỉ")
-            'lvwHoadon.Items(i).SubItems.Add(dr("DiaChi"))
-            'i += 1
-            'lvwHoadon.Items.Add("Mã KH")
-            'lvwHoadon.Items(i).SubItems.Add(dr("MaKH"))
-            'i += 1
             makh = dr("MaKH")
-            'lvwHoadon.Items.Add("Tháng/Năm")
-            'lvwHoadon.Items(i).SubItems.Add(dtpThang.Text)
-            'i += 1
-            'lvwHoadon.Items.Add("Chỉ số bình thường cũ")
-            'lvwHoadon.Items(i).SubItems.Add(chisocu)
-            'i += 1
-            'lvwHoadon.Items.Add("Chỉ số bình thường mới")
-            'lvwHoadon.Items(i).SubItems.Add(chisoCT1)
-            'i += 1
-            'lvwHoadon.Items.Add("Chỉ số tiêu thụ bình thường")
-            'lvwHoadon.Items(i).SubItems.Add(chiso)
-            'i += 1
-            'lvwHoadon.Items.Add("Chỉ số cao điểm cũ")
-            'lvwHoadon.Items(i).SubItems.Add(chisoCDcu)
-            'i += 1
-            'lvwHoadon.Items.Add("Chỉ số cao điểm mới")
-            'lvwHoadon.Items(i).SubItems.Add(chisoCT2)
-            'i += 1
-            'lvwHoadon.Items.Add("Chỉ số tiêu thụ giờ cao điểm")
-            'lvwHoadon.Items(i).SubItems.Add(chisoCD)
-            'i += 1
-            'lvwHoadon.Items.Add("Chỉ số thấp điểm cũ")
-            'lvwHoadon.Items(i).SubItems.Add(chisoTDcu)
-            'i += 1
-            'lvwHoadon.Items.Add("Chỉ số thấp điểm mới")
-            'lvwHoadon.Items(i).SubItems.Add(chisoCT3)
-            'i += 1
-            'lvwHoadon.Items.Add("Chỉ số tiêu thụ giờ thấp điểm")
-            'lvwHoadon.Items(i).SubItems.Add(chisoTD)
-            'i += 1
             strfind = "MaDT='" + dr("MaDT") + "'"
-            'If dr("MaDT") = "CDCTPK" Or dr("MaDT") = "CDCTPB" Or dr("MaDT") = "CDCTPM" Or dr("MaDT") = "CDCTTK" Or dr("MaDT") = "CDCTTB" Or dr("MaDT") = "CDCTTM" Or dr("MaDT") = "NTK" Or dr("MaDT") = "SHNT" Or dr("MaDT") = "SHBTTT" Or dr("MaDT") = "SHBT" Or dr("MaDT") = "TMSH" Or dr("MaDT") = "BVT_T6" Or dr("MaDT") = "BVT_D6" Or dr("MaDT") = "CSHC_T6" Or dr("MaDT") = "CSHC_D6" Then
-            '    lvwHoadon.Items.RemoveAt(i - 1)
-            '    lvwHoadon.Items.RemoveAt(i - 2)
-            '    lvwHoadon.Items.RemoveAt(i - 3)
-            '    lvwHoadon.Items.RemoveAt(i - 4)
-            '    lvwHoadon.Items.RemoveAt(i - 5)
-            '    lvwHoadon.Items.RemoveAt(i - 6)
-            '    i -= 6
-            'End If
             If dr("MaDT") = "CDCTPK" Or dr("MaDT") = "CDCTPB" Or dr("MaDT") = "CDCTPM" Or dr("MaDT") = "CDCTTK" Or dr("MaDT") = "CDCTTB" Or dr("MaDT") = "CDCTTM" Or dr("MaDT") = "NTK" Or dr("MaDT") = "SHNT" Or dr("MaDT") = "SHBTTT" Or dr("MaDT") = "SHBT" Or dr("MaDT") = "TMSH" Then
                 For Each dr2 In dtG6.Select(strfind)
                     row2 = dtCTTT.NewRow
@@ -133,8 +81,6 @@ Public Class frmTinhTien
                         row2("Gia") = dr2("Gia")
                         row2("ThanhTien") = thanhtien
                         dtCTTT.Rows.Add(row2)
-                        'lvwHoadon.Items.Add("Thành tiền")
-                        'lvwHoadon.Items(i).SubItems.Add(thanhtien)
                         Exit For
                     End If
                     If chiso - dr2("DinhMuc") > 0 Then
@@ -155,8 +101,6 @@ Public Class frmTinhTien
                             row2("Gia") = dr2("Gia")
                             row2("ThanhTien") = thanhtientam
                             dtCTTT.Rows.Add(row2)
-                            'lvwHoadon.Items.Add("Thành tiền")
-                            'lvwHoadon.Items(i).SubItems.Add(thanhtien)
                         End If
                     Else
                         thanhtien += chiso * dr2("Gia")
@@ -166,8 +110,6 @@ Public Class frmTinhTien
                         row2("Gia") = dr2("Gia")
                         row2("ThanhTien") = thanhtientam
                         dtCTTT.Rows.Add(row2)
-                        'lvwHoadon.Items.Add("Thành tiền")
-                        'lvwHoadon.Items(i).SubItems.Add(thanhtien)
                         Exit For
                     End If
                 Next
@@ -201,8 +143,6 @@ Public Class frmTinhTien
                         row2("ThanhTien") = chisoTD * dr3("GiaTD")
                         dtCTTT.Rows.Add(row2)
                     End If
-                    'lvwHoadon.Items.Add("Thành tiền")
-                    'lvwHoadon.Items(i).SubItems.Add(thanhtien)
                 Next
             End If
         Next
@@ -259,9 +199,19 @@ Public Class frmTinhTien
     End Sub
 
     Private Sub txtMaCT_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtMaCT.Leave
+        If txtMaCT.Text = "" Then
+            MessageBox.Show("Nhập mã công tơ")
+            Exit Sub
+        End If
+        Dim flag As Integer
         Dim dr, dr1 As DataRow
         For Each dr In dtKH.Select("MaCT='" + txtMaCT.Text + "'")
+            flag = 1
             For Each dr1 In dtDT.Select("MaDT='" + dr("MaDT") + "'")
+                lvwKH.Items(0).SubItems(0).Text = (txtMaCT.Text)
+                lvwKH.Items(0).SubItems(1).Text = dr("TenKH")
+                lvwKH.Items(0).SubItems(2).Text = dr("SDT")
+                lvwKH.Items(0).SubItems(3).Text = dr1("MaDT")
                 If dr("MaDT") = "CDCTPK" Or dr("MaDT") = "CDCTPB" Or dr("MaDT") = "CDCTPM" Or dr("MaDT") = "CDCTTK" Or dr("MaDT") = "CDCTTB" Or dr("MaDT") = "CDCTTM" Or dr("MaDT") = "NTK" Or dr("MaDT") = "SHNT" Or dr("MaDT") = "SHBTTT" Or dr("MaDT") = "SHBT" Or dr("MaDT") = "TMSH" Then
                     gia = "Gia6"
                     txtChisoCD.Text = 0
@@ -282,5 +232,8 @@ Public Class frmTinhTien
                 End If
             Next
         Next
+        If flag = 0 Then
+            MsgBox("Mã công tơ sai")
+        End If
     End Sub
 End Class

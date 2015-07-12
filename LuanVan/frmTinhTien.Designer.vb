@@ -22,6 +22,7 @@ Partial Class frmTinhTien
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim ListViewItem1 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem(New String() {"", "", "", ""}, -1)
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -36,6 +37,11 @@ Partial Class frmTinhTien
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.lvwKH = New System.Windows.Forms.ListView()
+        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.SuspendLayout()
@@ -45,19 +51,20 @@ Partial Class frmTinhTien
         Me.TableLayoutPanel1.ColumnCount = 1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel2, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.lvwKH, 0, 1)
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(12, 12)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 2
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.61111!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.38889!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(504, 360)
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.11628!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 59.88372!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(504, 161)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'TableLayoutPanel2
         '
         Me.TableLayoutPanel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel2.ColumnCount = 6
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125.0!))
@@ -83,7 +90,7 @@ Partial Class frmTinhTien
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(498, 60)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(498, 58)
         Me.TableLayoutPanel2.TabIndex = 0
         '
         'Label1
@@ -100,7 +107,7 @@ Partial Class frmTinhTien
         '
         Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(3, 38)
+        Me.Label2.Location = New System.Drawing.Point(3, 37)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(61, 13)
         Me.Label2.TabIndex = 1
@@ -129,7 +136,7 @@ Partial Class frmTinhTien
         'txtMaCT
         '
         Me.txtMaCT.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.txtMaCT.Location = New System.Drawing.Point(78, 34)
+        Me.txtMaCT.Location = New System.Drawing.Point(78, 33)
         Me.txtMaCT.Name = "txtMaCT"
         Me.txtMaCT.Size = New System.Drawing.Size(100, 20)
         Me.txtMaCT.TabIndex = 8
@@ -137,7 +144,7 @@ Partial Class frmTinhTien
         'txtChiso
         '
         Me.txtChiso.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.txtChiso.Location = New System.Drawing.Point(278, 34)
+        Me.txtChiso.Location = New System.Drawing.Point(278, 33)
         Me.txtChiso.Name = "txtChiso"
         Me.txtChiso.Size = New System.Drawing.Size(68, 20)
         Me.txtChiso.TabIndex = 9
@@ -145,7 +152,7 @@ Partial Class frmTinhTien
         'txtChisoCD
         '
         Me.txtChisoCD.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.txtChisoCD.Location = New System.Drawing.Point(352, 34)
+        Me.txtChisoCD.Location = New System.Drawing.Point(352, 33)
         Me.txtChisoCD.Name = "txtChisoCD"
         Me.txtChisoCD.Size = New System.Drawing.Size(68, 20)
         Me.txtChisoCD.TabIndex = 10
@@ -153,7 +160,7 @@ Partial Class frmTinhTien
         'txtChisoTD
         '
         Me.txtChisoTD.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.txtChisoTD.Location = New System.Drawing.Point(426, 34)
+        Me.txtChisoTD.Location = New System.Drawing.Point(426, 33)
         Me.txtChisoTD.Name = "txtChisoTD"
         Me.txtChisoTD.Size = New System.Drawing.Size(72, 20)
         Me.txtChisoTD.TabIndex = 11
@@ -182,7 +189,7 @@ Partial Class frmTinhTien
         '
         Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(203, 38)
+        Me.Label3.Location = New System.Drawing.Point(203, 37)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(36, 13)
         Me.Label3.TabIndex = 2
@@ -198,12 +205,45 @@ Partial Class frmTinhTien
         Me.Label4.TabIndex = 12
         Me.Label4.Text = "Bình thường"
         '
+        'lvwKH
+        '
+        Me.lvwKH.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4})
+        Me.lvwKH.FullRowSelect = True
+        Me.lvwKH.GridLines = True
+        Me.lvwKH.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem1})
+        Me.lvwKH.Location = New System.Drawing.Point(3, 67)
+        Me.lvwKH.Name = "lvwKH"
+        Me.lvwKH.Size = New System.Drawing.Size(498, 91)
+        Me.lvwKH.TabIndex = 1
+        Me.lvwKH.UseCompatibleStateImageBehavior = False
+        Me.lvwKH.View = System.Windows.Forms.View.Details
+        '
+        'ColumnHeader1
+        '
+        Me.ColumnHeader1.Text = "Mã CT"
+        Me.ColumnHeader1.Width = 64
+        '
+        'ColumnHeader2
+        '
+        Me.ColumnHeader2.Text = "Tên khách hàng"
+        Me.ColumnHeader2.Width = 231
+        '
+        'ColumnHeader3
+        '
+        Me.ColumnHeader3.Text = "Số điện thoại"
+        Me.ColumnHeader3.Width = 113
+        '
+        'ColumnHeader4
+        '
+        Me.ColumnHeader4.Text = "Mã ĐT"
+        Me.ColumnHeader4.Width = 85
+        '
         'frmTinhTien
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(528, 88)
+        Me.ClientSize = New System.Drawing.Size(528, 183)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.MaximizeBox = False
         Me.Name = "frmTinhTien"
@@ -228,4 +268,9 @@ Partial Class frmTinhTien
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents lvwKH As System.Windows.Forms.ListView
+    Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
 End Class
