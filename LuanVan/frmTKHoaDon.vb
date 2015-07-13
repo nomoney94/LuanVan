@@ -7,11 +7,11 @@ Public Class frmTKHoaDon
     Public MaKH As String
     Private TimKiem As String
     Private DuLieu As String
+    Private flag As Integer
     Private frmInHD As frmInHoaDon
 
     Private Sub frmTKHoaDon_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         Dim ky As Date
-        Dim flag As Integer
         cboTimKiem.Items.AddRange(aTimKiem)
         dtHD = frmMain.ds.Tables("HoaDon")
         dtKH = frmMain.ds.Tables("KhachHang")
@@ -47,7 +47,8 @@ Public Class frmTKHoaDon
             For Each dr In dtHD.Select("Ky='" + dtpKy.Text + "'")
                 For Each dr1 In dtKH.Select("MaKH='" + dr("MaKH") + "'")
                     i = lvwHoadon.Items.Count
-                    lvwHoadon.Items.Add(dr1("TenKH"))
+                    lvwHoadon.Items.Add(dr("MaHD"))
+                    lvwHoadon.Items(i).SubItems.Add(dr1("TenKH"))
                     lvwHoadon.Items(i).SubItems.Add(dr1("DiaChi"))
                     lvwHoadon.Items(i).SubItems.Add(dr1("MaKH"))
                     lvwHoadon.Items(i).SubItems.Add(dr("Ky"))
@@ -61,7 +62,8 @@ Public Class frmTKHoaDon
             For Each dr In dtHD.Select("TinhTrangThanhToan='Chưa' OR TinhTrangThanhToan='Lần 1' OR TinhTrangThanhToan='Lần 2'")
                 For Each dr1 In dtKH.Select("MaKH='" + dr("MaKH") + "'")
                     i = lvwHoadon.Items.Count
-                    lvwHoadon.Items.Add(dr1("TenKH"))
+                    lvwHoadon.Items.Add(dr("MaHD"))
+                    lvwHoadon.Items(i).SubItems.Add(dr1("TenKH"))
                     lvwHoadon.Items(i).SubItems.Add(dr1("DiaChi"))
                     lvwHoadon.Items(i).SubItems.Add(dr1("MaKH"))
                     lvwHoadon.Items(i).SubItems.Add(dr("Ky"))
@@ -75,7 +77,8 @@ Public Class frmTKHoaDon
             For Each dr In dtHD.Select("TinhTrangThanhToan='Lần 1'")
                 For Each dr1 In dtKH.Select("MaKH='" + dr("MaKH") + "'")
                     i = lvwHoadon.Items.Count
-                    lvwHoadon.Items.Add(dr1("TenKH"))
+                    lvwHoadon.Items.Add(dr("MaHD"))
+                    lvwHoadon.Items(i).SubItems.Add(dr1("TenKH"))
                     lvwHoadon.Items(i).SubItems.Add(dr1("DiaChi"))
                     lvwHoadon.Items(i).SubItems.Add(dr1("MaKH"))
                     lvwHoadon.Items(i).SubItems.Add(dr("Ky"))
@@ -89,7 +92,8 @@ Public Class frmTKHoaDon
             For Each dr In dtHD.Select("TinhTrangThanhToan='Lần 2'")
                 For Each dr1 In dtKH.Select("MaKH='" + dr("MaKH") + "'")
                     i = lvwHoadon.Items.Count
-                    lvwHoadon.Items.Add(dr1("TenKH"))
+                    lvwHoadon.Items.Add(dr("MaHD"))
+                    lvwHoadon.Items(i).SubItems.Add(dr1("TenKH"))
                     lvwHoadon.Items(i).SubItems.Add(dr1("DiaChi"))
                     lvwHoadon.Items(i).SubItems.Add(dr1("MaKH"))
                     lvwHoadon.Items(i).SubItems.Add(dr("Ky"))
@@ -108,7 +112,8 @@ Public Class frmTKHoaDon
             For Each dr In dtHD.Select("MaHD='" + txtMaHD.Text + "'")
                 For Each dr1 In dtKH.Select("MaKH='" + dr("MaKH") + "'")
                     i = lvwHoadon.Items.Count
-                    lvwHoadon.Items.Add(dr1("TenKH"))
+                    lvwHoadon.Items.Add(dr("MaHD"))
+                    lvwHoadon.Items(i).SubItems.Add(dr1("TenKH"))
                     lvwHoadon.Items(i).SubItems.Add(dr1("DiaChi"))
                     lvwHoadon.Items(i).SubItems.Add(dr1("MaKH"))
                     lvwHoadon.Items(i).SubItems.Add(dr("Ky"))
@@ -127,7 +132,8 @@ Public Class frmTKHoaDon
             For Each dr In dtHD.Select("MaKH='" + txtMaKH.Text + "'")
                 For Each dr1 In dtKH.Select("MaKH='" + dr("MaKH") + "'")
                     i = lvwHoadon.Items.Count
-                    lvwHoadon.Items.Add(dr1("TenKH"))
+                    lvwHoadon.Items.Add(dr("MaHD"))
+                    lvwHoadon.Items(i).SubItems.Add(dr1("TenKH"))
                     lvwHoadon.Items(i).SubItems.Add(dr1("DiaChi"))
                     lvwHoadon.Items(i).SubItems.Add(dr1("MaKH"))
                     lvwHoadon.Items(i).SubItems.Add(dr("Ky"))
@@ -237,9 +243,11 @@ Public Class frmTKHoaDon
             frmInHD.DuLieu = Me.DuLieu
         End If
         Dim dr As DataRow
-        For Each dr In dtHD.Select("Ky='" + dtpKy.Text + "'")
-            dr("TinhTrangThanhToan") = "Rồi"
-        Next
+        If flag = 0 Then
+            For Each dr In dtHD.Select("Ky='" + dtpKy.Text + "'")
+                dr("TinhTrangThanhToan") = "Rồi"
+            Next
+        End If
         Try
             Dim comHD As New SqlCommandBuilder(frmMain.daHoaDon)
             frmMain.con.Open()

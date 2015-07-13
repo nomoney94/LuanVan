@@ -45,6 +45,7 @@ Partial Class frmTKHoaDon
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader8 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.SuspendLayout()
@@ -80,8 +81,8 @@ Partial Class frmTKHoaDon
         'TableLayoutPanel2
         '
         Me.TableLayoutPanel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel2.AutoSize = True
         Me.TableLayoutPanel2.ColumnCount = 6
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102.0!))
@@ -227,9 +228,9 @@ Partial Class frmTKHoaDon
         'lvwHoadon
         '
         Me.lvwHoadon.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lvwHoadon.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7})
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lvwHoadon.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7, Me.ColumnHeader8})
         Me.lvwHoadon.FullRowSelect = True
         Me.lvwHoadon.GridLines = True
         Me.lvwHoadon.Location = New System.Drawing.Point(3, 136)
@@ -241,38 +242,43 @@ Partial Class frmTKHoaDon
         '
         'ColumnHeader1
         '
-        Me.ColumnHeader1.Text = "Tên Khách Hàng"
-        Me.ColumnHeader1.Width = 134
+        Me.ColumnHeader1.Text = "Mã HD"
+        Me.ColumnHeader1.Width = 47
         '
         'ColumnHeader2
         '
-        Me.ColumnHeader2.Text = "Địa chỉ"
-        Me.ColumnHeader2.Width = 79
+        Me.ColumnHeader2.Text = "Tên khách hàng"
+        Me.ColumnHeader2.Width = 125
         '
         'ColumnHeader3
         '
-        Me.ColumnHeader3.Text = "Mã KH"
-        Me.ColumnHeader3.Width = 52
+        Me.ColumnHeader3.Text = "Địa chỉ"
+        Me.ColumnHeader3.Width = 90
         '
         'ColumnHeader4
         '
-        Me.ColumnHeader4.Text = "Kỳ"
-        Me.ColumnHeader4.Width = 72
+        Me.ColumnHeader4.Text = "Mã KH"
+        Me.ColumnHeader4.Width = 78
         '
         'ColumnHeader5
         '
-        Me.ColumnHeader5.Text = "ĐNTT"
-        Me.ColumnHeader5.Width = 46
+        Me.ColumnHeader5.Text = "Kỳ"
+        Me.ColumnHeader5.Width = 62
         '
         'ColumnHeader6
         '
-        Me.ColumnHeader6.Text = "Thành Tiền"
-        Me.ColumnHeader6.Width = 68
+        Me.ColumnHeader6.Text = "ĐNTT"
+        Me.ColumnHeader6.Width = 50
         '
         'ColumnHeader7
         '
-        Me.ColumnHeader7.Text = "Tình Trạng TT"
+        Me.ColumnHeader7.Text = "Thành tiền"
         Me.ColumnHeader7.Width = 73
+        '
+        'ColumnHeader8
+        '
+        Me.ColumnHeader8.Text = "Tình trạng TT"
+        Me.ColumnHeader8.Width = 71
         '
         'frmTKHoaDon
         '
@@ -315,4 +321,5 @@ Partial Class frmTKHoaDon
     Friend WithEvents lblTieuDe As System.Windows.Forms.Label
     Friend WithEvents btnDathanhtoan As System.Windows.Forms.Button
     Friend WithEvents btnXemHD As System.Windows.Forms.Button
+    Friend WithEvents ColumnHeader8 As System.Windows.Forms.ColumnHeader
 End Class

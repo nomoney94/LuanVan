@@ -65,7 +65,7 @@ Public Class frmTinhTien
             chisoCT3 = txtChisoTD.Text
         Next
         If flagCT = 0 Then
-            MessageBox.Show("Mã công tơ sai")
+            MessageBox.Show("Chọn sai kỳ")
             Exit Sub
         End If
         For Each dr In dtKH.Select("MaCT='" + txtMaCT.Text + "'")
@@ -205,10 +205,10 @@ Public Class frmTinhTien
         End If
         Dim flag As Integer
         Dim dr, dr1 As DataRow
-        For Each dr In dtKH.Select("MaCT='" + txtMaCT.Text + "'")
+        For Each dr In dtKH.Select("MaCT='" + txtMaCT.Text.Trim + "'")
             flag = 1
             For Each dr1 In dtDT.Select("MaDT='" + dr("MaDT") + "'")
-                lvwKH.Items(0).SubItems(0).Text = (txtMaCT.Text)
+                lvwKH.Items(0).SubItems(0).Text = (txtMaCT.Text.Trim)
                 lvwKH.Items(0).SubItems(1).Text = dr("TenKH")
                 lvwKH.Items(0).SubItems(2).Text = dr("SDT")
                 lvwKH.Items(0).SubItems(3).Text = dr1("MaDT")
