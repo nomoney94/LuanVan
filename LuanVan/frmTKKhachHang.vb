@@ -2,7 +2,7 @@
 Imports Microsoft.Office.Interop
 
 Public Class frmTKKhachHang
-    Private aTimKiem() As String = {"Mã khách hàng", "Tên khách hàng", "Khách hàng chưa thanh toán", "Khách hàng bị cắt điện"}
+    Private aTimKiem() As String = {"Mã khách hàng", "Tên khách hàng", "Khách hàng chưa thanh toán", "Khách hàng bị cắt điện", "Tất cả khách hàng"}
     Private dtKH As DataTable
     Private dtHD As DataTable
     Private frmTKHD As frmTKHoaDon
@@ -125,6 +125,21 @@ Public Class frmTKKhachHang
                     End If
                 Next
             Next
+        Else
+            Dim dr As DataRow
+            Dim i As Integer
+            For Each dr In dtKH.Select()
+                newRow = dt.NewRow
+                newRow = dr
+                dt.Rows.Add(newRow.ItemArray)
+                i = lvwKH.Items.Count
+                lvwKH.Items.Add(dr("MaKH"))
+                lvwKH.Items(i).SubItems.Add(dr("MaCT"))
+                lvwKH.Items(i).SubItems.Add(dr("MaDT"))
+                lvwKH.Items(i).SubItems.Add(dr("TenKH"))
+                lvwKH.Items(i).SubItems.Add(dr("DiaChi"))
+                lvwKH.Items(i).SubItems.Add(dr("TinhTrangSuDung"))
+            Next
         End If
     End Sub
 
@@ -142,6 +157,11 @@ Public Class frmTKKhachHang
             Label3.Visible = True
             txtMaKH.Visible = False
             txtTenKH.Visible = True
+        ElseIf cboTimKiem.SelectedIndex = 4 Then
+            Label2.Visible = False
+            Label3.Visible = False
+            txtMaKH.Visible = False
+            txtTenKH.Visible = False
         Else
             Label2.Visible = False
             Label3.Visible = False
