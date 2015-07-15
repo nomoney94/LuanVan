@@ -7,8 +7,9 @@ Public Class frmTKHoaDon
     Public MaKH As String
     Private TimKiem As String
     Private DuLieu As String
-    Private flag As Integer
     Private frmInHD As frmInHoaDon
+    Private frmInGB As frmInGiayBao
+    Private flag As Integer
 
     Private Sub frmTKHoaDon_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         Dim ky As Date
@@ -231,7 +232,7 @@ Public Class frmTKHoaDon
         btnTim.PerformClick()
     End Sub
 
-    Private Sub InHoaDon()
+    Private Sub XemHoaDon()
         If frmInHD Is Nothing OrElse frmInHD.IsDisposed Then
             frmInHD = New frmInHoaDon
             frmInHD.MdiParent = frmMain
@@ -241,21 +242,9 @@ Public Class frmTKHoaDon
         Else
             frmInHD.TimKiem = Me.TimKiem
             frmInHD.DuLieu = Me.DuLieu
+            frmInHD.CreateReport()
+            frmInHD.Focus()
         End If
-        Dim dr As DataRow
-        If flag = 0 Then
-            For Each dr In dtHD.Select("Ky='" + dtpKy.Text + "'")
-                dr("TinhTrangThanhToan") = "Rồi"
-            Next
-        End If
-        Try
-            Dim comHD As New SqlCommandBuilder(frmMain.daHoaDon)
-            frmMain.con.Open()
-            comHD.DataAdapter.Update(dtHD)
-            frmMain.con.Close()
-        Catch ex As Exception
-            MessageBox.Show("Không thể cập nhật CSDL", "Thông báo")
-        End Try
     End Sub
 
     Private Sub btnDathanhtoan_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDathanhtoan.Click
@@ -287,7 +276,7 @@ Public Class frmTKHoaDon
 
     Private Sub btnXemHD_Click(sender As Object, e As EventArgs) Handles btnXemHD.Click
         If IsItemsListViewExit() Then
-            InHoaDon()
+            XemHoaDon()
         Else
             MsgBox("Không có dữ liệu để xem!")
         End If
@@ -300,4 +289,33 @@ Public Class frmTKHoaDon
             Return False
         End If
     End Function
+
+    Private Sub lvwHoadon_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lvwHoadon.SelectedIndexChanged
+        If lvwHoadon.SelectedItems.Count > 0 Then
+
+        End If
+    End Sub
+
+    Private Sub btnXemGB_Click(sender As Object, e As EventArgs) Handles btnXemGB.Click
+        If IsItemsListViewExit() Then
+            XemGiayBao()
+        Else
+            MsgBox("Không có dữ liệu để xem!")
+        End If
+    End Sub
+
+    Private Sub XemGiayBao()
+        If frmInGB Is Nothing OrElse frmInGB.IsDisposed Then
+            frmInGB = New frmInGiayBao
+            frmInGB.MdiParent = frmMain
+            frmInGB.TimKiem = Me.TimKiem
+            frmInGB.DuLieu = Me.DuLieu
+            frmInGB.Show()
+        Else
+            frmInGB.TimKiem = Me.TimKiem
+            frmInGB.DuLieu = Me.DuLieu
+            frmInGB.CreateReport()
+            frmInGB.Focus()
+        End If
+    End Sub
 End Class

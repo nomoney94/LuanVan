@@ -377,6 +377,7 @@ Partial Class frmCapNhatBG
         '
         'errLoi
         '
+        Me.errLoi.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink
         Me.errLoi.ContainerControl = Me
         '
         'frmCapNhatBG
@@ -413,7 +414,7 @@ Partial Class frmCapNhatBG
         Me.Controls.Add(Me.btnLuu)
         Me.MaximizeBox = False
         Me.Name = "frmCapNhatBG"
-        Me.Text = "frmCapNhatBG"
+        Me.Text = "Cập nhật bảng giá"
         Me.TableLayoutPanel1.ResumeLayout(False)
         CType(Me.errLoi, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

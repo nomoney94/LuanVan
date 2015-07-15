@@ -252,18 +252,15 @@ ChiTietThanhTien ON HoaDon.MaHD = ChiTietThanhTien.MaHD</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="GiayBaoTableAdapter" GeneratorDataComponentClassName="GiayBaoTableAdapter" Name="GiayBao" UserDataComponentName="GiayBaoTableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CTGiayBaoTableAdapter" GeneratorDataComponentClassName="CTGiayBaoTableAdapter" Name="CTGiayBao" UserDataComponentName="CTGiayBaoTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="QLHDTDConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="QLHDTDConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        KhachHang.MaKH, KhachHang.MaCT, KhachHang.MaDT, HoaDon.MaHD, HoaDon.DienNangTieuThu, HoaDon.ThanhTien, HoaDon.Ky, ChiSoCongTo.NgayDauKy, ChiSoCongTo.NgayCuoiKy, KhachHang.TenKH, 
-                         KhachHang.DiaChi, KhachHang.SDT, KhachHang.MaSoThue, ChiSoCongTo.ChiSo, ChiSoCongTo.ChisoCD, ChiSoCongTo.ChisoTD
+                    <CommandText>SELECT        KhachHang.MaKH, KhachHang.MaCT, HoaDon.MaHD, HoaDon.DienNangTieuThu, HoaDon.ThanhTien, HoaDon.Ky, ChiSoCongTo.NgayDauKy, ChiSoCongTo.NgayCuoiKy, KhachHang.TenKH, KhachHang.DiaChi
 FROM            KhachHang INNER JOIN
                          HoaDon ON KhachHang.MaKH = HoaDon.MaKH INNER JOIN
-                         DoiTuongKH ON KhachHang.MaDT = DoiTuongKH.MaDT INNER JOIN
-                         ChiSoCongTo ON KhachHang.MaCT = ChiSoCongTo.MaCT INNER JOIN
-                         CongTo ON KhachHang.MaCT = CongTo.MaCT</CommandText>
+                         ChiSoCongTo ON KhachHang.MaCT = ChiSoCongTo.MaCT</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -272,7 +269,6 @@ FROM            KhachHang INNER JOIN
             <Mappings>
               <Mapping SourceColumn="MaKH" DataSetColumn="MaKH" />
               <Mapping SourceColumn="MaCT" DataSetColumn="MaCT" />
-              <Mapping SourceColumn="MaDT" DataSetColumn="MaDT" />
               <Mapping SourceColumn="MaHD" DataSetColumn="MaHD" />
               <Mapping SourceColumn="DienNangTieuThu" DataSetColumn="DienNangTieuThu" />
               <Mapping SourceColumn="ThanhTien" DataSetColumn="ThanhTien" />
@@ -281,11 +277,54 @@ FROM            KhachHang INNER JOIN
               <Mapping SourceColumn="NgayCuoiKy" DataSetColumn="NgayCuoiKy" />
               <Mapping SourceColumn="TenKH" DataSetColumn="TenKH" />
               <Mapping SourceColumn="DiaChi" DataSetColumn="DiaChi" />
-              <Mapping SourceColumn="SDT" DataSetColumn="SDT" />
-              <Mapping SourceColumn="MaSoThue" DataSetColumn="MaSoThue" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ChiSoHDTableAdapter" GeneratorDataComponentClassName="ChiSoHDTableAdapter" Name="ChiSoHD" UserDataComponentName="ChiSoHDTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QLHDTDConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT HoaDon.MaHD, ChiSoCongTo.ChiSo, ChiSoCongTo.ChisoCD, ChiSoCongTo.ChisoTD, ChiSoCongTo.Ky
+FROM KhachHang INNER JOIN
+HoaDon ON KhachHang.MaKH = HoaDon.MaKH INNER JOIN
+ChiSoCongTo ON KhachHang.MaCT = ChiSoCongTo.MaCT</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaHD" DataSetColumn="MaHD" />
               <Mapping SourceColumn="ChiSo" DataSetColumn="ChiSo" />
               <Mapping SourceColumn="ChisoCD" DataSetColumn="ChisoCD" />
               <Mapping SourceColumn="ChisoTD" DataSetColumn="ChisoTD" />
+              <Mapping SourceColumn="Ky" DataSetColumn="Ky" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ChiSoGBTableAdapter" GeneratorDataComponentClassName="ChiSoGBTableAdapter" Name="ChiSoGB" UserDataComponentName="ChiSoGBTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="QLHDTDConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        HoaDon.MaHD, HoaDon.DienNangTieuThu, HoaDon.ThanhTien, ChiSoCongTo.ChiSo, ChiSoCongTo.ChisoCD, ChiSoCongTo.ChisoTD, ChiSoCongTo.Ky
+FROM            KhachHang INNER JOIN
+                         HoaDon ON KhachHang.MaKH = HoaDon.MaKH INNER JOIN
+                         ChiSoCongTo ON KhachHang.MaCT = ChiSoCongTo.MaCT</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaHD" DataSetColumn="MaHD" />
+              <Mapping SourceColumn="DienNangTieuThu" DataSetColumn="DienNangTieuThu" />
+              <Mapping SourceColumn="ThanhTien" DataSetColumn="ThanhTien" />
+              <Mapping SourceColumn="ChiSo" DataSetColumn="ChiSo" />
+              <Mapping SourceColumn="ChisoCD" DataSetColumn="ChisoCD" />
+              <Mapping SourceColumn="ChisoTD" DataSetColumn="ChisoTD" />
+              <Mapping SourceColumn="Ky" DataSetColumn="Ky" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -297,7 +336,7 @@ FROM            KhachHang INNER JOIN
   <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="TKeLDTT_Quy" msprop:Generator_TableClassName="TKeLDTT_QuyDataTable" msprop:Generator_TableVarName="tableTKeLDTT_Quy" msprop:Generator_TablePropName="TKeLDTT_Quy" msprop:Generator_RowDeletingName="TKeLDTT_QuyRowDeleting" msprop:Generator_RowChangingName="TKeLDTT_QuyRowChanging" msprop:Generator_RowEvHandlerName="TKeLDTT_QuyRowChangeEventHandler" msprop:Generator_RowDeletedName="TKeLDTT_QuyRowDeleted" msprop:Generator_UserTableName="TKeLDTT_Quy" msprop:Generator_RowChangedName="TKeLDTT_QuyRowChanged" msprop:Generator_RowEvArgName="TKeLDTT_QuyRowChangeEvent" msprop:Generator_RowClassName="TKeLDTT_QuyRow">
+        <xs:element name="TKeLDTT_Quy" msprop:Generator_TableClassName="TKeLDTT_QuyDataTable" msprop:Generator_TableVarName="tableTKeLDTT_Quy" msprop:Generator_RowChangedName="TKeLDTT_QuyRowChanged" msprop:Generator_TablePropName="TKeLDTT_Quy" msprop:Generator_RowDeletingName="TKeLDTT_QuyRowDeleting" msprop:Generator_RowChangingName="TKeLDTT_QuyRowChanging" msprop:Generator_RowEvHandlerName="TKeLDTT_QuyRowChangeEventHandler" msprop:Generator_RowDeletedName="TKeLDTT_QuyRowDeleted" msprop:Generator_RowClassName="TKeLDTT_QuyRow" msprop:Generator_UserTableName="TKeLDTT_Quy" msprop:Generator_RowEvArgName="TKeLDTT_QuyRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="DienNangTieuThu" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDienNangTieuThu" msprop:Generator_ColumnPropNameInRow="DienNangTieuThu" msprop:Generator_ColumnPropNameInTable="DienNangTieuThuColumn" msprop:Generator_UserColumnName="DienNangTieuThu" type="xs:int" minOccurs="0" />
@@ -305,7 +344,7 @@ FROM            KhachHang INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="TKeDNTT_Thang" msprop:Generator_TableClassName="TKeDNTT_ThangDataTable" msprop:Generator_TableVarName="tableTKeDNTT_Thang" msprop:Generator_RowChangedName="TKeDNTT_ThangRowChanged" msprop:Generator_TablePropName="TKeDNTT_Thang" msprop:Generator_RowDeletingName="TKeDNTT_ThangRowDeleting" msprop:Generator_RowChangingName="TKeDNTT_ThangRowChanging" msprop:Generator_RowEvHandlerName="TKeDNTT_ThangRowChangeEventHandler" msprop:Generator_RowDeletedName="TKeDNTT_ThangRowDeleted" msprop:Generator_RowClassName="TKeDNTT_ThangRow" msprop:Generator_UserTableName="TKeDNTT_Thang" msprop:Generator_RowEvArgName="TKeDNTT_ThangRowChangeEvent">
+        <xs:element name="TKeDNTT_Thang" msprop:Generator_TableClassName="TKeDNTT_ThangDataTable" msprop:Generator_TableVarName="tableTKeDNTT_Thang" msprop:Generator_TablePropName="TKeDNTT_Thang" msprop:Generator_RowDeletingName="TKeDNTT_ThangRowDeleting" msprop:Generator_RowChangingName="TKeDNTT_ThangRowChanging" msprop:Generator_RowEvHandlerName="TKeDNTT_ThangRowChangeEventHandler" msprop:Generator_RowDeletedName="TKeDNTT_ThangRowDeleted" msprop:Generator_UserTableName="TKeDNTT_Thang" msprop:Generator_RowChangedName="TKeDNTT_ThangRowChanged" msprop:Generator_RowEvArgName="TKeDNTT_ThangRowChangeEvent" msprop:Generator_RowClassName="TKeDNTT_ThangRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Thang" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnThang" msprop:Generator_ColumnPropNameInRow="Thang" msprop:Generator_ColumnPropNameInTable="ThangColumn" msprop:Generator_UserColumnName="Thang" type="xs:int" minOccurs="0" />
@@ -313,7 +352,7 @@ FROM            KhachHang INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="TKeDNTT_Nam" msprop:Generator_TableClassName="TKeDNTT_NamDataTable" msprop:Generator_TableVarName="tableTKeDNTT_Nam" msprop:Generator_RowChangedName="TKeDNTT_NamRowChanged" msprop:Generator_TablePropName="TKeDNTT_Nam" msprop:Generator_RowDeletingName="TKeDNTT_NamRowDeleting" msprop:Generator_RowChangingName="TKeDNTT_NamRowChanging" msprop:Generator_RowEvHandlerName="TKeDNTT_NamRowChangeEventHandler" msprop:Generator_RowDeletedName="TKeDNTT_NamRowDeleted" msprop:Generator_RowClassName="TKeDNTT_NamRow" msprop:Generator_UserTableName="TKeDNTT_Nam" msprop:Generator_RowEvArgName="TKeDNTT_NamRowChangeEvent">
+        <xs:element name="TKeDNTT_Nam" msprop:Generator_TableClassName="TKeDNTT_NamDataTable" msprop:Generator_TableVarName="tableTKeDNTT_Nam" msprop:Generator_TablePropName="TKeDNTT_Nam" msprop:Generator_RowDeletingName="TKeDNTT_NamRowDeleting" msprop:Generator_RowChangingName="TKeDNTT_NamRowChanging" msprop:Generator_RowEvHandlerName="TKeDNTT_NamRowChangeEventHandler" msprop:Generator_RowDeletedName="TKeDNTT_NamRowDeleted" msprop:Generator_UserTableName="TKeDNTT_Nam" msprop:Generator_RowChangedName="TKeDNTT_NamRowChanged" msprop:Generator_RowEvArgName="TKeDNTT_NamRowChangeEvent" msprop:Generator_RowClassName="TKeDNTT_NamRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Nam" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNam" msprop:Generator_ColumnPropNameInRow="Nam" msprop:Generator_ColumnPropNameInTable="NamColumn" msprop:Generator_UserColumnName="Nam" type="xs:int" minOccurs="0" />
@@ -321,7 +360,7 @@ FROM            KhachHang INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="TKeDT_Thang" msprop:Generator_TableClassName="TKeDT_ThangDataTable" msprop:Generator_TableVarName="tableTKeDT_Thang" msprop:Generator_TablePropName="TKeDT_Thang" msprop:Generator_RowDeletingName="TKeDT_ThangRowDeleting" msprop:Generator_RowChangingName="TKeDT_ThangRowChanging" msprop:Generator_RowEvHandlerName="TKeDT_ThangRowChangeEventHandler" msprop:Generator_RowDeletedName="TKeDT_ThangRowDeleted" msprop:Generator_UserTableName="TKeDT_Thang" msprop:Generator_RowChangedName="TKeDT_ThangRowChanged" msprop:Generator_RowEvArgName="TKeDT_ThangRowChangeEvent" msprop:Generator_RowClassName="TKeDT_ThangRow">
+        <xs:element name="TKeDT_Thang" msprop:Generator_TableClassName="TKeDT_ThangDataTable" msprop:Generator_TableVarName="tableTKeDT_Thang" msprop:Generator_RowChangedName="TKeDT_ThangRowChanged" msprop:Generator_TablePropName="TKeDT_Thang" msprop:Generator_RowDeletingName="TKeDT_ThangRowDeleting" msprop:Generator_RowChangingName="TKeDT_ThangRowChanging" msprop:Generator_RowEvHandlerName="TKeDT_ThangRowChangeEventHandler" msprop:Generator_RowDeletedName="TKeDT_ThangRowDeleted" msprop:Generator_RowClassName="TKeDT_ThangRow" msprop:Generator_UserTableName="TKeDT_Thang" msprop:Generator_RowEvArgName="TKeDT_ThangRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Thang" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnThang" msprop:Generator_ColumnPropNameInRow="Thang" msprop:Generator_ColumnPropNameInTable="ThangColumn" msprop:Generator_UserColumnName="Thang" type="xs:int" minOccurs="0" />
@@ -329,7 +368,7 @@ FROM            KhachHang INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="TKeDT_Quy" msprop:Generator_TableClassName="TKeDT_QuyDataTable" msprop:Generator_TableVarName="tableTKeDT_Quy" msprop:Generator_TablePropName="TKeDT_Quy" msprop:Generator_RowDeletingName="TKeDT_QuyRowDeleting" msprop:Generator_RowChangingName="TKeDT_QuyRowChanging" msprop:Generator_RowEvHandlerName="TKeDT_QuyRowChangeEventHandler" msprop:Generator_RowDeletedName="TKeDT_QuyRowDeleted" msprop:Generator_UserTableName="TKeDT_Quy" msprop:Generator_RowChangedName="TKeDT_QuyRowChanged" msprop:Generator_RowEvArgName="TKeDT_QuyRowChangeEvent" msprop:Generator_RowClassName="TKeDT_QuyRow">
+        <xs:element name="TKeDT_Quy" msprop:Generator_TableClassName="TKeDT_QuyDataTable" msprop:Generator_TableVarName="tableTKeDT_Quy" msprop:Generator_RowChangedName="TKeDT_QuyRowChanged" msprop:Generator_TablePropName="TKeDT_Quy" msprop:Generator_RowDeletingName="TKeDT_QuyRowDeleting" msprop:Generator_RowChangingName="TKeDT_QuyRowChanging" msprop:Generator_RowEvHandlerName="TKeDT_QuyRowChangeEventHandler" msprop:Generator_RowDeletedName="TKeDT_QuyRowDeleted" msprop:Generator_RowClassName="TKeDT_QuyRow" msprop:Generator_UserTableName="TKeDT_Quy" msprop:Generator_RowEvArgName="TKeDT_QuyRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Quy" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnQuy" msprop:Generator_ColumnPropNameInRow="Quy" msprop:Generator_ColumnPropNameInTable="QuyColumn" msprop:Generator_UserColumnName="Quy" type="xs:int" minOccurs="0" />
@@ -337,7 +376,7 @@ FROM            KhachHang INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="TKeDT_Nam" msprop:Generator_TableClassName="TKeDT_NamDataTable" msprop:Generator_TableVarName="tableTKeDT_Nam" msprop:Generator_TablePropName="TKeDT_Nam" msprop:Generator_RowDeletingName="TKeDT_NamRowDeleting" msprop:Generator_RowChangingName="TKeDT_NamRowChanging" msprop:Generator_RowEvHandlerName="TKeDT_NamRowChangeEventHandler" msprop:Generator_RowDeletedName="TKeDT_NamRowDeleted" msprop:Generator_UserTableName="TKeDT_Nam" msprop:Generator_RowChangedName="TKeDT_NamRowChanged" msprop:Generator_RowEvArgName="TKeDT_NamRowChangeEvent" msprop:Generator_RowClassName="TKeDT_NamRow">
+        <xs:element name="TKeDT_Nam" msprop:Generator_TableClassName="TKeDT_NamDataTable" msprop:Generator_TableVarName="tableTKeDT_Nam" msprop:Generator_RowChangedName="TKeDT_NamRowChanged" msprop:Generator_TablePropName="TKeDT_Nam" msprop:Generator_RowDeletingName="TKeDT_NamRowDeleting" msprop:Generator_RowChangingName="TKeDT_NamRowChanging" msprop:Generator_RowEvHandlerName="TKeDT_NamRowChangeEventHandler" msprop:Generator_RowDeletedName="TKeDT_NamRowDeleted" msprop:Generator_RowClassName="TKeDT_NamRow" msprop:Generator_UserTableName="TKeDT_Nam" msprop:Generator_RowEvArgName="TKeDT_NamRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Nam" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNam" msprop:Generator_ColumnPropNameInRow="Nam" msprop:Generator_ColumnPropNameInTable="NamColumn" msprop:Generator_UserColumnName="Nam" type="xs:int" minOccurs="0" />
@@ -345,7 +384,7 @@ FROM            KhachHang INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DonVi" msprop:Generator_TableClassName="DonViDataTable" msprop:Generator_TableVarName="tableDonVi" msprop:Generator_RowChangedName="DonViRowChanged" msprop:Generator_TablePropName="DonVi" msprop:Generator_RowDeletingName="DonViRowDeleting" msprop:Generator_RowChangingName="DonViRowChanging" msprop:Generator_RowEvHandlerName="DonViRowChangeEventHandler" msprop:Generator_RowDeletedName="DonViRowDeleted" msprop:Generator_RowClassName="DonViRow" msprop:Generator_UserTableName="DonVi" msprop:Generator_RowEvArgName="DonViRowChangeEvent">
+        <xs:element name="DonVi" msprop:Generator_TableClassName="DonViDataTable" msprop:Generator_TableVarName="tableDonVi" msprop:Generator_TablePropName="DonVi" msprop:Generator_RowDeletingName="DonViRowDeleting" msprop:Generator_RowChangingName="DonViRowChanging" msprop:Generator_RowEvHandlerName="DonViRowChangeEventHandler" msprop:Generator_RowDeletedName="DonViRowDeleted" msprop:Generator_UserTableName="DonVi" msprop:Generator_RowChangedName="DonViRowChanged" msprop:Generator_RowEvArgName="DonViRowChangeEvent" msprop:Generator_RowClassName="DonViRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="TenDV" msprop:Generator_ColumnVarNameInTable="columnTenDV" msprop:Generator_ColumnPropNameInRow="TenDV" msprop:Generator_ColumnPropNameInTable="TenDVColumn" msprop:Generator_UserColumnName="TenDV">
@@ -386,7 +425,7 @@ FROM            KhachHang INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CTHoaDon" msprop:Generator_TableClassName="CTHoaDonDataTable" msprop:Generator_TableVarName="tableCTHoaDon" msprop:Generator_RowChangedName="CTHoaDonRowChanged" msprop:Generator_TablePropName="CTHoaDon" msprop:Generator_RowDeletingName="CTHoaDonRowDeleting" msprop:Generator_RowChangingName="CTHoaDonRowChanging" msprop:Generator_RowEvHandlerName="CTHoaDonRowChangeEventHandler" msprop:Generator_RowDeletedName="CTHoaDonRowDeleted" msprop:Generator_RowClassName="CTHoaDonRow" msprop:Generator_UserTableName="CTHoaDon" msprop:Generator_RowEvArgName="CTHoaDonRowChangeEvent">
+        <xs:element name="CTHoaDon" msprop:Generator_TableClassName="CTHoaDonDataTable" msprop:Generator_TableVarName="tableCTHoaDon" msprop:Generator_TablePropName="CTHoaDon" msprop:Generator_RowDeletingName="CTHoaDonRowDeleting" msprop:Generator_RowChangingName="CTHoaDonRowChanging" msprop:Generator_RowEvHandlerName="CTHoaDonRowChangeEventHandler" msprop:Generator_RowDeletedName="CTHoaDonRowDeleted" msprop:Generator_UserTableName="CTHoaDon" msprop:Generator_RowChangedName="CTHoaDonRowChanged" msprop:Generator_RowEvArgName="CTHoaDonRowChangeEvent" msprop:Generator_RowClassName="CTHoaDonRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="MaKH" msprop:Generator_ColumnVarNameInTable="columnMaKH" msprop:Generator_ColumnPropNameInRow="MaKH" msprop:Generator_ColumnPropNameInTable="MaKHColumn" msprop:Generator_UserColumnName="MaKH">
@@ -457,7 +496,7 @@ FROM            KhachHang INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CTThanhTien" msprop:Generator_TableClassName="CTThanhTienDataTable" msprop:Generator_TableVarName="tableCTThanhTien" msprop:Generator_RowChangedName="CTThanhTienRowChanged" msprop:Generator_TablePropName="CTThanhTien" msprop:Generator_RowDeletingName="CTThanhTienRowDeleting" msprop:Generator_RowChangingName="CTThanhTienRowChanging" msprop:Generator_RowEvHandlerName="CTThanhTienRowChangeEventHandler" msprop:Generator_RowDeletedName="CTThanhTienRowDeleted" msprop:Generator_RowClassName="CTThanhTienRow" msprop:Generator_UserTableName="CTThanhTien" msprop:Generator_RowEvArgName="CTThanhTienRowChangeEvent">
+        <xs:element name="CTThanhTien" msprop:Generator_TableClassName="CTThanhTienDataTable" msprop:Generator_TableVarName="tableCTThanhTien" msprop:Generator_TablePropName="CTThanhTien" msprop:Generator_RowDeletingName="CTThanhTienRowDeleting" msprop:Generator_RowChangingName="CTThanhTienRowChanging" msprop:Generator_RowEvHandlerName="CTThanhTienRowChangeEventHandler" msprop:Generator_RowDeletedName="CTThanhTienRowDeleted" msprop:Generator_UserTableName="CTThanhTien" msprop:Generator_RowChangedName="CTThanhTienRowChanged" msprop:Generator_RowEvArgName="CTThanhTienRowChangeEvent" msprop:Generator_RowClassName="CTThanhTienRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="MaHD" msprop:Generator_ColumnVarNameInTable="columnMaHD" msprop:Generator_ColumnPropNameInRow="MaHD" msprop:Generator_ColumnPropNameInTable="MaHDColumn" msprop:Generator_UserColumnName="MaHD" type="xs:int" />
@@ -467,7 +506,7 @@ FROM            KhachHang INNER JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GiayBao" msprop:Generator_TableClassName="GiayBaoDataTable" msprop:Generator_TableVarName="tableGiayBao" msprop:Generator_TablePropName="GiayBao" msprop:Generator_RowDeletingName="GiayBaoRowDeleting" msprop:Generator_RowChangingName="GiayBaoRowChanging" msprop:Generator_RowEvHandlerName="GiayBaoRowChangeEventHandler" msprop:Generator_RowDeletedName="GiayBaoRowDeleted" msprop:Generator_UserTableName="GiayBao" msprop:Generator_RowChangedName="GiayBaoRowChanged" msprop:Generator_RowEvArgName="GiayBaoRowChangeEvent" msprop:Generator_RowClassName="GiayBaoRow">
+        <xs:element name="CTGiayBao" msprop:Generator_TableClassName="CTGiayBaoDataTable" msprop:Generator_TableVarName="tableCTGiayBao" msprop:Generator_RowChangedName="CTGiayBaoRowChanged" msprop:Generator_TablePropName="CTGiayBao" msprop:Generator_RowDeletingName="CTGiayBaoRowDeleting" msprop:Generator_RowChangingName="CTGiayBaoRowChanging" msprop:Generator_RowEvHandlerName="CTGiayBaoRowChangeEventHandler" msprop:Generator_RowDeletedName="CTGiayBaoRowDeleted" msprop:Generator_RowClassName="CTGiayBaoRow" msprop:Generator_UserTableName="CTGiayBao" msprop:Generator_RowEvArgName="CTGiayBaoRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="MaKH" msprop:Generator_ColumnVarNameInTable="columnMaKH" msprop:Generator_ColumnPropNameInRow="MaKH" msprop:Generator_ColumnPropNameInTable="MaKHColumn" msprop:Generator_UserColumnName="MaKH">
@@ -478,13 +517,6 @@ FROM            KhachHang INNER JOIN
                 </xs:simpleType>
               </xs:element>
               <xs:element name="MaCT" msprop:Generator_ColumnVarNameInTable="columnMaCT" msprop:Generator_ColumnPropNameInRow="MaCT" msprop:Generator_ColumnPropNameInTable="MaCTColumn" msprop:Generator_UserColumnName="MaCT">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="10" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="MaDT" msprop:Generator_ColumnVarNameInTable="columnMaDT" msprop:Generator_ColumnPropNameInRow="MaDT" msprop:Generator_ColumnPropNameInTable="MaDTColumn" msprop:Generator_UserColumnName="MaDT">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
@@ -511,23 +543,30 @@ FROM            KhachHang INNER JOIN
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="SDT" msprop:Generator_ColumnVarNameInTable="columnSDT" msprop:Generator_ColumnPropNameInRow="SDT" msprop:Generator_ColumnPropNameInTable="SDTColumn" msprop:Generator_UserColumnName="SDT" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="11" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="MaSoThue" msprop:Generator_ColumnVarNameInTable="columnMaSoThue" msprop:Generator_ColumnPropNameInRow="MaSoThue" msprop:Generator_ColumnPropNameInTable="MaSoThueColumn" msprop:Generator_UserColumnName="MaSoThue" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="10" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ChiSoHD" msprop:Generator_TableClassName="ChiSoHDDataTable" msprop:Generator_TableVarName="tableChiSoHD" msprop:Generator_TablePropName="ChiSoHD" msprop:Generator_RowDeletingName="ChiSoHDRowDeleting" msprop:Generator_RowChangingName="ChiSoHDRowChanging" msprop:Generator_RowEvHandlerName="ChiSoHDRowChangeEventHandler" msprop:Generator_RowDeletedName="ChiSoHDRowDeleted" msprop:Generator_UserTableName="ChiSoHD" msprop:Generator_RowChangedName="ChiSoHDRowChanged" msprop:Generator_RowEvArgName="ChiSoHDRowChangeEvent" msprop:Generator_RowClassName="ChiSoHDRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaHD" msprop:Generator_ColumnVarNameInTable="columnMaHD" msprop:Generator_ColumnPropNameInRow="MaHD" msprop:Generator_ColumnPropNameInTable="MaHDColumn" msprop:Generator_UserColumnName="MaHD" type="xs:int" />
               <xs:element name="ChiSo" msprop:Generator_ColumnVarNameInTable="columnChiSo" msprop:Generator_ColumnPropNameInRow="ChiSo" msprop:Generator_ColumnPropNameInTable="ChiSoColumn" msprop:Generator_UserColumnName="ChiSo" type="xs:int" />
               <xs:element name="ChisoCD" msprop:Generator_ColumnVarNameInTable="columnChisoCD" msprop:Generator_ColumnPropNameInRow="ChisoCD" msprop:Generator_ColumnPropNameInTable="ChisoCDColumn" msprop:Generator_UserColumnName="ChisoCD" type="xs:int" minOccurs="0" />
               <xs:element name="ChisoTD" msprop:Generator_ColumnVarNameInTable="columnChisoTD" msprop:Generator_ColumnPropNameInRow="ChisoTD" msprop:Generator_ColumnPropNameInTable="ChisoTDColumn" msprop:Generator_UserColumnName="ChisoTD" type="xs:int" minOccurs="0" />
+              <xs:element name="Ky" msprop:Generator_ColumnVarNameInTable="columnKy" msprop:Generator_ColumnPropNameInRow="Ky" msprop:Generator_ColumnPropNameInTable="KyColumn" msprop:Generator_UserColumnName="Ky" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ChiSoGB" msprop:Generator_TableClassName="ChiSoGBDataTable" msprop:Generator_TableVarName="tableChiSoGB" msprop:Generator_TablePropName="ChiSoGB" msprop:Generator_RowDeletingName="ChiSoGBRowDeleting" msprop:Generator_RowChangingName="ChiSoGBRowChanging" msprop:Generator_RowEvHandlerName="ChiSoGBRowChangeEventHandler" msprop:Generator_RowDeletedName="ChiSoGBRowDeleted" msprop:Generator_UserTableName="ChiSoGB" msprop:Generator_RowChangedName="ChiSoGBRowChanged" msprop:Generator_RowEvArgName="ChiSoGBRowChangeEvent" msprop:Generator_RowClassName="ChiSoGBRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaHD" msprop:Generator_ColumnVarNameInTable="columnMaHD" msprop:Generator_ColumnPropNameInRow="MaHD" msprop:Generator_ColumnPropNameInTable="MaHDColumn" msprop:Generator_UserColumnName="MaHD" type="xs:int" />
+              <xs:element name="DienNangTieuThu" msprop:Generator_ColumnVarNameInTable="columnDienNangTieuThu" msprop:Generator_ColumnPropNameInRow="DienNangTieuThu" msprop:Generator_ColumnPropNameInTable="DienNangTieuThuColumn" msprop:Generator_UserColumnName="DienNangTieuThu" type="xs:int" />
+              <xs:element name="ThanhTien" msprop:Generator_ColumnVarNameInTable="columnThanhTien" msprop:Generator_ColumnPropNameInRow="ThanhTien" msprop:Generator_ColumnPropNameInTable="ThanhTienColumn" msprop:Generator_UserColumnName="ThanhTien" type="xs:double" />
+              <xs:element name="ChiSo" msprop:Generator_ColumnVarNameInTable="columnChiSo" msprop:Generator_ColumnPropNameInRow="ChiSo" msprop:Generator_ColumnPropNameInTable="ChiSoColumn" msprop:Generator_UserColumnName="ChiSo" type="xs:int" />
+              <xs:element name="ChisoCD" msprop:Generator_ColumnVarNameInTable="columnChisoCD" msprop:Generator_ColumnPropNameInRow="ChisoCD" msprop:Generator_ColumnPropNameInTable="ChisoCDColumn" msprop:Generator_UserColumnName="ChisoCD" type="xs:int" minOccurs="0" />
+              <xs:element name="ChisoTD" msprop:Generator_ColumnVarNameInTable="columnChisoTD" msprop:Generator_ColumnPropNameInRow="ChisoTD" msprop:Generator_ColumnPropNameInTable="ChisoTDColumn" msprop:Generator_UserColumnName="ChisoTD" type="xs:int" minOccurs="0" />
+              <xs:element name="Ky" msprop:Generator_ColumnVarNameInTable="columnKy" msprop:Generator_ColumnPropNameInRow="Ky" msprop:Generator_ColumnPropNameInTable="KyColumn" msprop:Generator_UserColumnName="Ky" type="xs:dateTime" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -9,8 +9,6 @@ Public Class frmTinhTien
     Private dtG3 As DataTable
     Private dtCTTT As DataTable
     Private gia As String
-    Private sqlStr As String
-    Private frmInGB As frmInGiayBao
 
     Private Sub frmTinhTien_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         dtCT = frmMain.ds.Tables("CongTo")
@@ -176,26 +174,6 @@ Public Class frmTinhTien
         Catch ex As Exception
             MessageBox.Show("Không thể cập nhật CSDL", "Thông báo")
         End Try
-
-        If gia = "Gia6" Then
-            sqlStr = "SELECT KhachHang.MaKH, KhachHang.MaCT, KhachHang.MaDT, HoaDon.MaHD, HoaDon.DienNangTieuThu, HoaDon.ThanhTien, HoaDon.Ky, ChiSoCongTo.NgayDauKy, ChiSoCongTo.NgayCuoiKy, KhachHang.TenKH, KhachHang.DiaChi, KhachHang.SDT, KhachHang.MaSoThue, Tram.MaTram, ChiSoCongTo.ChiSo, ChiSoCongTo.ChisoCD, ChiSoCongTo.ChisoTD " & _
-                    "FROM KhachHang INNER JOIN " & _
-                    "HoaDon ON KhachHang.MaKH = HoaDon.MaKH INNER JOIN " & _
-                    "DoiTuongKH ON KhachHang.MaDT = DoiTuongKH.MaDT INNER JOIN " & _
-                    "ChiSoCongTo ON KhachHang.MaCT = ChiSoCongTo.MaCT  INNER JOIN " & _
-                    "CongTo ON KhachHang.MaCT = CongTo.MaCT INNER JOIN " & _
-                    "Tram ON CongTo.MaTram = Tram.MaTram " & _
-                    "WHERE HoaDon.MaHD = " & ma + 1 & " AND MONTH(ChiSoCongTo.Ky) = " & dtpThang.Value.Month
-
-            If frmInGB Is Nothing OrElse frmInGB.IsDisposed Then
-                frmInGB = New frmInGiayBao
-                frmInGB.MdiParent = frmMain
-                frmInGB.sqlStr = Me.sqlStr
-                frmInGB.Show()
-            End If
-        ElseIf gia = "Gia3" Then
-
-        End If
     End Sub
 
     Private Sub txtMaCT_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtMaCT.Leave
@@ -203,6 +181,7 @@ Public Class frmTinhTien
             MessageBox.Show("Nhập mã công tơ")
             Exit Sub
         End If
+        txtMaCT.Text = txtMaCT.Text.ToUpper
         Dim flag As Integer
         Dim dr, dr1 As DataRow
         For Each dr In dtKH.Select("MaCT='" + txtMaCT.Text.Trim + "'")
@@ -210,7 +189,7 @@ Public Class frmTinhTien
             For Each dr1 In dtDT.Select("MaDT='" + dr("MaDT") + "'")
                 lvwKH.Items(0).SubItems(0).Text = (txtMaCT.Text.Trim)
                 lvwKH.Items(0).SubItems(1).Text = dr("TenKH")
-                lvwKH.Items(0).SubItems(2).Text = dr("SDT")
+                lvwKH.Items(0).SubItems(2).Text = If(IsDBNull(dr("SDT")), "", dr("SDT"))
                 lvwKH.Items(0).SubItems(3).Text = dr1("MaDT")
                 If dr("MaDT") = "CDCTPK" Or dr("MaDT") = "CDCTPB" Or dr("MaDT") = "CDCTPM" Or dr("MaDT") = "CDCTTK" Or dr("MaDT") = "CDCTTB" Or dr("MaDT") = "CDCTTM" Or dr("MaDT") = "NTK" Or dr("MaDT") = "SHNT" Or dr("MaDT") = "SHBTTT" Or dr("MaDT") = "SHBT" Or dr("MaDT") = "TMSH" Then
                     gia = "Gia6"

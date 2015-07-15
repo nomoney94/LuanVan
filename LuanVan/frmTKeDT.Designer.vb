@@ -112,7 +112,7 @@ Partial Class frmTKeDT
         Me.Controls.Add(Me.btnThongKe)
         Me.Controls.Add(Me.crvTKe)
         Me.Name = "frmTKeDT"
-        Me.Text = "frmTKeDT"
+        Me.Text = "Thống kê doanh thu"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

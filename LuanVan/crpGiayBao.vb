@@ -18,7 +18,7 @@ Imports System
 Imports System.ComponentModel
 
 
-Public Class crpGiayBao6
+Public Class crpGiayBao
     Inherits ReportClass
     
     Public Sub New()
@@ -27,7 +27,7 @@ Public Class crpGiayBao6
     
     Public Overrides Property ResourceName() As String
         Get
-            Return "crpGiayBao6.rpt"
+            Return "crpGiayBao.rpt"
         End Get
         Set
             'Do nothing
@@ -45,7 +45,7 @@ Public Class crpGiayBao6
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "LuanVan.crpGiayBao6.rpt"
+            Return "LuanVan.crpGiayBao.rpt"
         End Get
         Set
             'Do nothing
@@ -94,7 +94,7 @@ Public Class crpGiayBao6
 End Class
 
 <System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>  _
-Public Class CachedcrpGiayBao6
+Public Class CachedcrpGiayBao
     Inherits Component
     Implements ICachedReport
     
@@ -136,7 +136,7 @@ Public Class CachedcrpGiayBao6
     End Property
     
     Public Overridable Function CreateReport() As CrystalDecisions.CrystalReports.Engine.ReportDocument Implements CrystalDecisions.ReportSource.ICachedReport.CreateReport
-        Dim rpt As crpGiayBao6 = New crpGiayBao6()
+        Dim rpt As crpGiayBao = New crpGiayBao()
         rpt.Site = Me.Site
         Return rpt
     End Function

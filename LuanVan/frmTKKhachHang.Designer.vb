@@ -226,7 +226,7 @@ Partial Class frmTKKhachHang
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.MaximizeBox = False
         Me.Name = "frmTKKhachHang"
-        Me.Text = "frmTKKhachHang"
+        Me.Text = "Tìm kiếm khách hàng"
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel1.PerformLayout()
         Me.TableLayoutPanel2.ResumeLayout(False)

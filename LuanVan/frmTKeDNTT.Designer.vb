@@ -112,7 +112,7 @@ Partial Class frmTKeDNTT
         Me.Controls.Add(Me.btnThongKe)
         Me.Controls.Add(Me.crvTKe)
         Me.Name = "frmTKeDNTT"
-        Me.Text = "frmTKeDNTT"
+        Me.Text = "Thống kê điện năng tiêu thụ"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

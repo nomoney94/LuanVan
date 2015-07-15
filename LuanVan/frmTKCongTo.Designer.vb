@@ -30,11 +30,11 @@ Partial Class frmTKCongTo
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtMaCT = New System.Windows.Forms.TextBox()
         Me.btnTim = New System.Windows.Forms.Button()
+        Me.dtpNgaylapdat = New System.Windows.Forms.DateTimePicker()
         Me.lvwCongto = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.dtpNgaylapdat = New System.Windows.Forms.DateTimePicker()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.SuspendLayout()
@@ -52,19 +52,19 @@ Partial Class frmTKCongTo
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(534, 358)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(334, 358)
         Me.TableLayoutPanel1.TabIndex = 1
         '
         'TableLayoutPanel2
         '
         Me.TableLayoutPanel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel2.AutoSize = True
         Me.TableLayoutPanel2.ColumnCount = 3
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102.0!))
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142.0!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 284.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel2.Controls.Add(Me.Label3, 0, 2)
         Me.TableLayoutPanel2.Controls.Add(Me.cboTimKiem, 1, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.Label1, 0, 0)
@@ -78,7 +78,7 @@ Partial Class frmTKCongTo
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(528, 81)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(328, 81)
         Me.TableLayoutPanel2.TabIndex = 0
         '
         'Label3
@@ -138,14 +138,26 @@ Partial Class frmTKCongTo
         Me.btnTim.Text = "Tìm"
         Me.btnTim.UseVisualStyleBackColor = True
         '
+        'dtpNgaylapdat
+        '
+        Me.dtpNgaylapdat.CustomFormat = "MM/yyyy"
+        Me.dtpNgaylapdat.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dtpNgaylapdat.Location = New System.Drawing.Point(105, 58)
+        Me.dtpNgaylapdat.Name = "dtpNgaylapdat"
+        Me.dtpNgaylapdat.Size = New System.Drawing.Size(121, 20)
+        Me.dtpNgaylapdat.TabIndex = 7
+        '
         'lvwCongto
         '
+        Me.lvwCongto.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lvwCongto.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3})
         Me.lvwCongto.FullRowSelect = True
         Me.lvwCongto.GridLines = True
         Me.lvwCongto.Location = New System.Drawing.Point(3, 90)
         Me.lvwCongto.Name = "lvwCongto"
-        Me.lvwCongto.Size = New System.Drawing.Size(448, 261)
+        Me.lvwCongto.Size = New System.Drawing.Size(328, 265)
         Me.lvwCongto.TabIndex = 1
         Me.lvwCongto.UseCompatibleStateImageBehavior = False
         Me.lvwCongto.View = System.Windows.Forms.View.Details
@@ -165,25 +177,16 @@ Partial Class frmTKCongTo
         Me.ColumnHeader3.Text = "Ngày lắp đặt"
         Me.ColumnHeader3.Width = 115
         '
-        'dtpNgaylapdat
-        '
-        Me.dtpNgaylapdat.CustomFormat = "MM/yyyy"
-        Me.dtpNgaylapdat.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpNgaylapdat.Location = New System.Drawing.Point(105, 58)
-        Me.dtpNgaylapdat.Name = "dtpNgaylapdat"
-        Me.dtpNgaylapdat.Size = New System.Drawing.Size(121, 20)
-        Me.dtpNgaylapdat.TabIndex = 7
-        '
         'frmTKCongTo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(474, 372)
+        Me.ClientSize = New System.Drawing.Size(357, 377)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.MaximizeBox = False
         Me.Name = "frmTKCongTo"
-        Me.Text = "frmTKCongTo"
+        Me.Text = "Tìm kiếm công tơ"
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel1.PerformLayout()
         Me.TableLayoutPanel2.ResumeLayout(False)

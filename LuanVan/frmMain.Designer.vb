@@ -30,7 +30,6 @@ Partial Class frmMain
         Me.TìmKiếmToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiTKKhachHang = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiTKCongTo = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tsmiTKTram = New System.Windows.Forms.ToolStripMenuItem()
         Me.ThốngKêToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiTKeDNTT = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmiTKeDoanhThu = New System.Windows.Forms.ToolStripMenuItem()
@@ -85,7 +84,7 @@ Partial Class frmMain
         '
         'TìmKiếmToolStripMenuItem
         '
-        Me.TìmKiếmToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmiTKKhachHang, Me.tsmiTKCongTo, Me.tsmiTKTram})
+        Me.TìmKiếmToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmiTKKhachHang, Me.tsmiTKCongTo})
         Me.TìmKiếmToolStripMenuItem.Image = Global.LuanVan.My.Resources.Resources.Zoom_icon
         Me.TìmKiếmToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.TìmKiếmToolStripMenuItem.Name = "TìmKiếmToolStripMenuItem"
@@ -96,20 +95,14 @@ Partial Class frmMain
         'tsmiTKKhachHang
         '
         Me.tsmiTKKhachHang.Name = "tsmiTKKhachHang"
-        Me.tsmiTKKhachHang.Size = New System.Drawing.Size(137, 22)
+        Me.tsmiTKKhachHang.Size = New System.Drawing.Size(152, 22)
         Me.tsmiTKKhachHang.Text = "Khách hàng"
         '
         'tsmiTKCongTo
         '
         Me.tsmiTKCongTo.Name = "tsmiTKCongTo"
-        Me.tsmiTKCongTo.Size = New System.Drawing.Size(137, 22)
+        Me.tsmiTKCongTo.Size = New System.Drawing.Size(152, 22)
         Me.tsmiTKCongTo.Text = "Công tơ"
-        '
-        'tsmiTKTram
-        '
-        Me.tsmiTKTram.Name = "tsmiTKTram"
-        Me.tsmiTKTram.Size = New System.Drawing.Size(137, 22)
-        Me.tsmiTKTram.Text = "Trạm"
         '
         'ThốngKêToolStripMenuItem
         '
@@ -169,7 +162,6 @@ Partial Class frmMain
     Friend WithEvents TìmKiếmToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmiTKKhachHang As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmiTKCongTo As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents tsmiTKTram As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ThốngKêToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmiTKeDNTT As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsmiTKeDoanhThu As System.Windows.Forms.ToolStripMenuItem

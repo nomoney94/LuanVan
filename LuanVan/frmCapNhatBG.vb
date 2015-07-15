@@ -1,14 +1,17 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class frmCapNhatBG
+
+#Region "Declares"
     Private aLoai() As String = {"SX-KD-HC", "SH-NT-CDC-TM"}
-    Private aDTG3() As String = {"CDCTPK", "CDCTPB", "CDCTPM", "CDCTTK", "CDCTTB", "CDCTTM", "NTK", "SHNT", "SHBTTT", "SHBT", "TMSH"}
-    Private aDTG6() As String = {"BVT_T6", "BVT_D6", "CSHC_T6", "CSHC_D6", "KD_T22", "KD_T6", "KD_D6", "SX_T110", "SX_T22", "SX_T6", "SX_D6"}
+    Private aDTG6() As String = {"CDCTPK", "CDCTPB", "CDCTPM", "CDCTTK", "CDCTTB", "CDCTTM", "NTK", "SHNT", "SHBTTT", "SHBT", "TMSH"}
+    Private aDTG3() As String = {"BVT_T6", "BVT_D6", "CSHC_T6", "CSHC_D6", "KD_T22", "KD_T6", "KD_D6", "SX_T110", "SX_T22", "SX_T6", "SX_D6"}
     Private dtBG3 As DataTable
     Private dtBG6 As DataTable
-    'Private dtDT As DataTable
     Private change As Boolean = False
+#End Region
 
+#Region "Events"
     Private Sub frmCapNhatBG_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cboLoai.Items.AddRange(aLoai)
         cboLoai.SelectedIndex = 0
@@ -28,192 +31,6 @@ Public Class frmCapNhatBG
                 e.Cancel = True
             End If
         End If
-    End Sub
-
-    Private Sub LoadData_cboMaDT()
-        If cboLoai.SelectedIndex = 0 Then
-            cboMaDT.Items.Clear()
-            cboMaDT.Items.AddRange(aDTG6)
-        Else
-            cboMaDT.Items.Clear()
-            cboMaDT.Items.AddRange(aDTG3)
-        End If
-    End Sub
-
-    Private Sub LoadData_lsvBG3()
-        Dim read As DataTableReader = dtBG3.CreateDataReader
-        Dim index As Integer
-        lsvBG3.Items.Clear()
-        While (read.Read)
-            index = lsvBG3.Items.Count
-            lsvBG3.Items.Add(read("MaLoaiDV"))
-            lsvBG3.Items(index).SubItems.Add(read("MaDT"))
-            lsvBG3.Items(index).SubItems.Add(read("TenLoai"))
-            lsvBG3.Items(index).SubItems.Add(read("GiaBT"))
-            lsvBG3.Items(index).SubItems.Add(read("GiaCD"))
-            lsvBG3.Items(index).SubItems.Add(read("GiaTD"))
-        End While
-    End Sub
-
-    Private Sub LoadData_lsvBG6()
-        Dim read As DataTableReader = dtBG6.CreateDataReader
-        Dim index As Integer
-        lsvBG6.Items.Clear()
-        While (read.Read)
-            index = lsvBG6.Items.Count
-            lsvBG6.Items.Add(read("MaLoaiDV"))
-            lsvBG6.Items(index).SubItems.Add(read("MaDT"))
-            lsvBG6.Items(index).SubItems.Add(read("DinhMuc"))
-            lsvBG6.Items(index).SubItems.Add(read("Gia"))
-            lsvBG6.Items(index).SubItems.Add(read("MoTa"))
-        End While
-    End Sub
-
-#Region "Kiểm tra dữ liệu"
-    Private Sub txtMaDV_Validating()
-        If txtMaDV.Text = "" Then
-            errLoi.SetError(txtMaDV, "Không được để trống")
-        Else
-            errLoi.SetError(txtMaDV, "")
-        End If
-    End Sub
-
-    Private Sub txtGiaCD_Validating()
-        If txtGiaCD.Text = "" Then
-            errLoi.SetError(txtGiaCD, "Không được để trống")
-        Else
-            If IsNumeric(txtGiaCD.Text) Then
-                If CInt(txtGiaCD.Text) >= 0 Then
-                    errLoi.SetError(txtGiaCD, "")
-                Else
-                    errLoi.SetError(txtGiaCD, "Xin nhập số dương")
-                End If
-            Else
-                errLoi.SetError(txtGiaCD, "Chỉ được nhập số")
-            End If
-        End If
-    End Sub
-
-    Private Sub txtGiaTD_Validating()
-        If txtGiaTD.Text = "" Then
-            errLoi.SetError(txtGiaTD, "Không được để trống")
-        Else
-            If IsNumeric(txtGiaTD.Text) Then
-                If CInt(txtGiaTD.Text) >= 0 Then
-                    errLoi.SetError(txtGiaTD, "")
-                Else
-                    errLoi.SetError(txtGiaTD, "Xin nhập số dương")
-                End If
-            Else
-                errLoi.SetError(txtGiaTD, "Chỉ được nhập số")
-            End If
-        End If
-    End Sub
-
-    Private Sub txtGiaBT_Validating()
-        If txtGiaBT.Text = "" Then
-            errLoi.SetError(txtGiaBT, "Không được để trống")
-        Else
-            If IsNumeric(txtGiaBT.Text) Then
-                If CInt(txtGiaBT.Text) >= 0 Then
-                    errLoi.SetError(txtGiaBT, "")
-                Else
-                    errLoi.SetError(txtGiaBT, "Xin nhập số dương")
-                End If
-            Else
-                errLoi.SetError(txtGiaBT, "Chỉ được nhập số")
-            End If
-        End If
-    End Sub
-
-    Private Sub txtTenLoai_Validating()
-        If txtTenLoai.Text = "" Then
-            errLoi.SetError(txtTenLoai, "Không được để trống")
-        Else
-            errLoi.SetError(txtTenLoai, "")
-        End If
-    End Sub
-
-    Private Sub txtDinhMuc_Validating()
-        If txtDinhMuc.Text = "" Then
-            errLoi.SetError(txtDinhMuc, "Không được để trống")
-        Else
-            If IsNumeric(txtDinhMuc.Text) Then
-                If CInt(txtDinhMuc.Text) >= 0 Then
-                    errLoi.SetError(txtDinhMuc, "")
-                Else
-                    errLoi.SetError(txtDinhMuc, "Xin nhập số dương")
-                End If
-            Else
-                errLoi.SetError(txtDinhMuc, "Chỉ được nhập số")
-            End If
-        End If
-    End Sub
-
-    Private Sub txtGia_Validating()
-        If txtGia.Text = "" Then
-            errLoi.SetError(txtGia, "Không được để trống")
-        Else
-            If IsNumeric(txtGia.Text) Then
-                If CInt(txtGia.Text) >= 0 Then
-                    errLoi.SetError(txtGia, "")
-                Else
-                    errLoi.SetError(txtGia, "Xin nhập số dương")
-                End If
-            Else
-                errLoi.SetError(txtGia, "Chỉ được nhập số")
-            End If
-        End If
-    End Sub
-
-    Private Sub txtMoTa_Validating()
-        If txtMoTa.Text = "" Then
-            errLoi.SetError(txtMoTa, "Không được để trống")
-        Else
-            errLoi.SetError(txtMoTa, "")
-        End If
-    End Sub
-
-    Private Function InputValidating() As Boolean
-        Dim flag As Boolean = False
-
-        txtMaDV_Validating()
-
-        If cboLoai.SelectedIndex = 0 Then
-            txtGiaCD_Validating()
-            txtGiaTD_Validating()
-            txtGiaBT_Validating()
-            txtTenLoai_Validating()
-            If errLoi.GetError(txtGiaCD) = "" AndAlso errLoi.GetError(txtGiaTD) = "" AndAlso errLoi.GetError(txtTenLoai) = "" AndAlso errLoi.GetError(txtGiaBT) = "" AndAlso errLoi.GetError(txtMaDV) = "" Then
-                flag = True
-            Else
-                flag = False
-            End If
-        Else
-            txtDinhMuc_Validating()
-            txtGia_Validating()
-            txtMoTa_Validating()
-            If errLoi.GetError(txtDinhMuc) = "" AndAlso errLoi.GetError(txtGia) = "" AndAlso errLoi.GetError(txtMoTa) = "" AndAlso errLoi.GetError(txtMaDV) = "" Then
-                flag = True
-            Else
-                flag = False
-            End If
-        End If
-
-        Return flag
-    End Function
-#End Region
-
-    Private Sub ClearError()
-        errLoi.SetError(txtMaDV, "")
-        errLoi.SetError(cboMaDT, "")
-        errLoi.SetError(txtTenLoai, "")
-        errLoi.SetError(txtGiaBT, "")
-        errLoi.SetError(txtGiaCD, "")
-        errLoi.SetError(txtGiaTD, "")
-        errLoi.SetError(txtDinhMuc, "")
-        errLoi.SetError(txtGia, "")
-        errLoi.SetError(txtMoTa, "")
     End Sub
 
     Private Sub btnLuu_Click(sender As Object, e As EventArgs) Handles btnLuu.Click
@@ -381,6 +198,16 @@ Public Class frmCapNhatBG
         End If
     End Sub
 
+    Private Sub cboMaDT_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboMaDT.SelectedIndexChanged
+        If cboMaDT.SelectedItem = aDTG3(0) Or cboMaDT.SelectedItem = aDTG3(1) Or cboMaDT.SelectedItem = aDTG3(2) Or cboMaDT.SelectedItem = aDTG3(3) Then
+            txtGiaCD.Enabled = False
+            txtGiaTD.Enabled = False
+        ElseIf cboMaDT.SelectedItem = aDTG3(4) Or cboMaDT.SelectedItem = aDTG3(5) Or cboMaDT.SelectedItem = aDTG3(6) Or cboMaDT.SelectedItem = aDTG3(7) Or cboMaDT.SelectedItem = aDTG3(8) Or cboMaDT.SelectedItem = aDTG3(9) Or cboMaDT.SelectedItem = aDTG3(10) Then
+            txtGiaCD.Enabled = True
+            txtGiaTD.Enabled = True
+        End If
+    End Sub
+
     Private Sub lsvBG3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lsvBG3.SelectedIndexChanged
         If lsvBG3.SelectedItems.Count > 0 Then
             txtMaDV.Text = lsvBG3.SelectedItems(0).SubItems(0).Text
@@ -401,4 +228,196 @@ Public Class frmCapNhatBG
             txtMoTa.Text = lsvBG6.SelectedItems(0).SubItems(4).Text
         End If
     End Sub
+#End Region
+
+#Region "Functions/Subs"
+    Private Sub LoadData_cboMaDT()
+        If cboLoai.SelectedIndex = 0 Then
+            cboMaDT.Items.Clear()
+            cboMaDT.Items.AddRange(aDTG3)
+        Else
+            cboMaDT.Items.Clear()
+            cboMaDT.Items.AddRange(aDTG6)
+        End If
+    End Sub
+
+    Private Sub LoadData_lsvBG3()
+        Dim read As DataTableReader = dtBG3.CreateDataReader
+        Dim index As Integer
+        lsvBG3.Items.Clear()
+        While (read.Read)
+            index = lsvBG3.Items.Count
+            lsvBG3.Items.Add(read("MaLoaiDV"))
+            lsvBG3.Items(index).SubItems.Add(read("MaDT"))
+            lsvBG3.Items(index).SubItems.Add(read("TenLoai"))
+            lsvBG3.Items(index).SubItems.Add(read("GiaBT"))
+            lsvBG3.Items(index).SubItems.Add(read("GiaCD"))
+            lsvBG3.Items(index).SubItems.Add(read("GiaTD"))
+        End While
+    End Sub
+
+    Private Sub LoadData_lsvBG6()
+        Dim read As DataTableReader = dtBG6.CreateDataReader
+        Dim index As Integer
+        lsvBG6.Items.Clear()
+        While (read.Read)
+            index = lsvBG6.Items.Count
+            lsvBG6.Items.Add(read("MaLoaiDV"))
+            lsvBG6.Items(index).SubItems.Add(read("MaDT"))
+            lsvBG6.Items(index).SubItems.Add(read("DinhMuc"))
+            lsvBG6.Items(index).SubItems.Add(read("Gia"))
+            lsvBG6.Items(index).SubItems.Add(read("MoTa"))
+        End While
+    End Sub
+
+    Private Sub ClearError()
+        errLoi.SetError(txtMaDV, "")
+        errLoi.SetError(cboMaDT, "")
+        errLoi.SetError(txtTenLoai, "")
+        errLoi.SetError(txtGiaBT, "")
+        errLoi.SetError(txtGiaCD, "")
+        errLoi.SetError(txtGiaTD, "")
+        errLoi.SetError(txtDinhMuc, "")
+        errLoi.SetError(txtGia, "")
+        errLoi.SetError(txtMoTa, "")
+    End Sub
+
+#Region "Kiểm tra dữ liệu"
+    Private Sub txtMaDV_Validating()
+        If txtMaDV.Text = "" Then
+            errLoi.SetError(txtMaDV, "Không được để trống")
+        Else
+            errLoi.SetError(txtMaDV, "")
+        End If
+    End Sub
+
+    Private Sub txtGiaCD_Validating()
+        If txtGiaCD.Text = "" Then
+            errLoi.SetError(txtGiaCD, "Không được để trống")
+        Else
+            If IsNumeric(txtGiaCD.Text) Then
+                If CInt(txtGiaCD.Text) >= 0 Then
+                    errLoi.SetError(txtGiaCD, "")
+                Else
+                    errLoi.SetError(txtGiaCD, "Xin nhập số dương")
+                End If
+            Else
+                errLoi.SetError(txtGiaCD, "Chỉ được nhập số")
+            End If
+        End If
+    End Sub
+
+    Private Sub txtGiaTD_Validating()
+        If txtGiaTD.Text = "" Then
+            errLoi.SetError(txtGiaTD, "Không được để trống")
+        Else
+            If IsNumeric(txtGiaTD.Text) Then
+                If CInt(txtGiaTD.Text) >= 0 Then
+                    errLoi.SetError(txtGiaTD, "")
+                Else
+                    errLoi.SetError(txtGiaTD, "Xin nhập số dương")
+                End If
+            Else
+                errLoi.SetError(txtGiaTD, "Chỉ được nhập số")
+            End If
+        End If
+    End Sub
+
+    Private Sub txtGiaBT_Validating()
+        If txtGiaBT.Text = "" Then
+            errLoi.SetError(txtGiaBT, "Không được để trống")
+        Else
+            If IsNumeric(txtGiaBT.Text) Then
+                If CInt(txtGiaBT.Text) >= 0 Then
+                    errLoi.SetError(txtGiaBT, "")
+                Else
+                    errLoi.SetError(txtGiaBT, "Xin nhập số dương")
+                End If
+            Else
+                errLoi.SetError(txtGiaBT, "Chỉ được nhập số")
+            End If
+        End If
+    End Sub
+
+    Private Sub txtTenLoai_Validating()
+        If txtTenLoai.Text = "" Then
+            errLoi.SetError(txtTenLoai, "Không được để trống")
+        Else
+            errLoi.SetError(txtTenLoai, "")
+        End If
+    End Sub
+
+    Private Sub txtDinhMuc_Validating()
+        If txtDinhMuc.Text = "" Then
+            errLoi.SetError(txtDinhMuc, "Không được để trống")
+        Else
+            If IsNumeric(txtDinhMuc.Text) Then
+                If CInt(txtDinhMuc.Text) >= 0 Then
+                    errLoi.SetError(txtDinhMuc, "")
+                Else
+                    errLoi.SetError(txtDinhMuc, "Xin nhập số dương")
+                End If
+            Else
+                errLoi.SetError(txtDinhMuc, "Chỉ được nhập số")
+            End If
+        End If
+    End Sub
+
+    Private Sub txtGia_Validating()
+        If txtGia.Text = "" Then
+            errLoi.SetError(txtGia, "Không được để trống")
+        Else
+            If IsNumeric(txtGia.Text) Then
+                If CInt(txtGia.Text) >= 0 Then
+                    errLoi.SetError(txtGia, "")
+                Else
+                    errLoi.SetError(txtGia, "Xin nhập số dương")
+                End If
+            Else
+                errLoi.SetError(txtGia, "Chỉ được nhập số")
+            End If
+        End If
+    End Sub
+
+    Private Sub txtMoTa_Validating()
+        If txtMoTa.Text = "" Then
+            errLoi.SetError(txtMoTa, "Không được để trống")
+        Else
+            errLoi.SetError(txtMoTa, "")
+        End If
+    End Sub
+
+    Private Function InputValidating() As Boolean
+        Dim flag As Boolean = False
+
+        txtMaDV_Validating()
+
+        If cboLoai.SelectedIndex = 0 Then
+            txtTenLoai_Validating()
+            txtGiaBT_Validating()
+            If cboMaDT.SelectedItem = aDTG3(4) Or cboMaDT.SelectedItem = aDTG3(5) Or cboMaDT.SelectedItem = aDTG3(6) Or cboMaDT.SelectedItem = aDTG3(7) Or cboMaDT.SelectedItem = aDTG3(8) Or cboMaDT.SelectedItem = aDTG3(9) Or cboMaDT.SelectedItem = aDTG3(10) Then
+                txtGiaCD_Validating()
+                txtGiaTD_Validating()
+            End If
+            If errLoi.GetError(txtGiaCD) = "" AndAlso errLoi.GetError(txtGiaTD) = "" AndAlso errLoi.GetError(txtTenLoai) = "" AndAlso errLoi.GetError(txtGiaBT) = "" AndAlso errLoi.GetError(txtMaDV) = "" Then
+                flag = True
+            Else
+                flag = False
+            End If
+        Else
+            txtDinhMuc_Validating()
+            txtGia_Validating()
+            txtMoTa_Validating()
+            If errLoi.GetError(txtDinhMuc) = "" AndAlso errLoi.GetError(txtGia) = "" AndAlso errLoi.GetError(txtMoTa) = "" AndAlso errLoi.GetError(txtMaDV) = "" Then
+                flag = True
+            Else
+                flag = False
+            End If
+        End If
+
+        Return flag
+    End Function
+#End Region
+#End Region
+
 End Class

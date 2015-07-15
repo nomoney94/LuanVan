@@ -43,7 +43,7 @@ Partial Class frmInGiayBao
         Me.ClientSize = New System.Drawing.Size(946, 494)
         Me.Controls.Add(Me.CrystalReportViewer1)
         Me.Name = "frmInGiayBao"
-        Me.Text = "frmInGiayBao"
+        Me.Text = "In giấy báo"
         Me.ResumeLayout(False)
 
     End Sub

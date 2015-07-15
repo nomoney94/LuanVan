@@ -1,7 +1,9 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class frmInHoaDon
-    Private sqlStr As String = "SELECT KhachHang.MaKH, KhachHang.MaCT, KhachHang.MaDT, HoaDon.MaHD, HoaDon.DienNangTieuThu, HoaDon.ThanhTien, HoaDon.Ky, ChiSoCongTo.NgayDauKy, ChiSoCongTo.NgayCuoiKy, KhachHang.TenKH, KhachHang.DiaChi, KhachHang.SDT, KhachHang.MaSoThue, Tram.MaTram, ChiSoCongTo.ChiSo, ChiSoCongTo.ChisoCD, ChiSoCongTo.ChisoTD " & _
+
+#Region "Declares"
+    Private sqlCTHD As String = "SELECT KhachHang.MaKH, KhachHang.MaCT, KhachHang.MaDT, HoaDon.MaHD, HoaDon.DienNangTieuThu, HoaDon.ThanhTien, HoaDon.Ky, ChiSoCongTo.NgayDauKy, ChiSoCongTo.NgayCuoiKy, KhachHang.TenKH, KhachHang.DiaChi, KhachHang.SDT, KhachHang.MaSoThue, Tram.MaTram, ChiSoCongTo.ChiSo, ChiSoCongTo.ChisoCD, ChiSoCongTo.ChisoTD " & _
                         "FROM KhachHang INNER JOIN " & _
                         "HoaDon ON KhachHang.MaKH = HoaDon.MaKH INNER JOIN " & _
                         "DoiTuongKH ON KhachHang.MaDT = DoiTuongKH.MaDT INNER JOIN " & _
@@ -9,88 +11,98 @@ Public Class frmInHoaDon
                         "CongTo ON KhachHang.MaCT = CongTo.MaCT INNER JOIN " & _
                         "Tram ON CongTo.MaTram = Tram.MaTram " & _
                         "WHERE HoaDon.Ky = ChiSoCongTo.Ky "
-    Private sqlStr2 As String = "SELECT ChiTietThanhTien.MaHD, ChiTietThanhTien.ChiSo, ChiTietThanhTien.Gia, ChiTietThanhTien.ThanhTien AS CTThanhTien " & _
+    Private sqlCTTT As String = "SELECT ChiTietThanhTien.MaHD, ChiTietThanhTien.ChiSo, ChiTietThanhTien.Gia, ChiTietThanhTien.ThanhTien AS CTThanhTien " & _
                         "FROM KhachHang INNER JOIN " & _
                         "HoaDon ON KhachHang.MaKH = HoaDon.MaKH INNER JOIN " & _
                         "ChiTietThanhTien ON HoaDon.MaHD = ChiTietThanhTien.MaHD "
-    Private sqlStr3 As String = "SELECT * FROM DonVi"
-    Private sqlStr4 As String
-    Private sqlStr5 As String
+    Private sqlCSHD As String = "SELECT HoaDon.MaHD, ChiSoCongTo.ChiSo, ChiSoCongTo.ChisoCD, ChiSoCongTo.ChisoTD, ChiSoCongTo.Ky " & _
+                        "FROM KhachHang INNER JOIN " & _
+                        "HoaDon ON KhachHang.MaKH = HoaDon.MaKH INNER JOIN " & _
+                        "ChiSoCongTo ON KhachHang.MaCT = ChiSoCongTo.MaCT INNER JOIN " & _
+                        "WHERE MONTH(ChiSoCongTo.Ky) = MONTH(HoaDon.Ky) OR MONTH(ChiSoCongTo.Ky) = MONTH(HoaDon.Ky) - 1 " & _
+                        "ORDER BY HoaDon.MaHD ASC, ChiSoCongTo.Ky DESC"
+    Private sqlDV As String = "SELECT * FROM DonVi"
+    Private sqlTemp As String
+
     Private ds As New DataSet
     Private da As SqlDataAdapter
     Private com As SqlCommand
     Private con As SqlConnection = frmMain.con
     Public TimKiem As String
     Public DuLieu As String
-    Private rpt3 As New crpHoaDon3
-    Private rpt6 As New crpHoaDon6
+    Private rptHoaDon As New crpHoaDon
+    Private dtHD As DataTable
+    Private isChuaTT As Boolean = False
+#End Region
 
-    Private Sub btnXem_Click(sender As Object, e As EventArgs) Handles btnXem.Click
-        sqlStr4 = ""
-        sqlStr5 = ""
+#Region "Events"
+    Private Sub frmInHoaDon_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        dtHD = frmMain.ds.Tables("HoaDon")
+        CreateReport()
+    End Sub
+#End Region
+
+#Region "Functions/Subs"
+    Public Sub CreateReport()
+        sqlTemp = ""
         If TimKiem = "Ky" Then
-            sqlStr4 &= sqlStr & "AND MONTH(ChiSoCongTo.Ky) = " & DuLieu & " "
+            sqlTemp &= sqlCTHD & "AND MONTH(ChiSoCongTo.Ky) = " & DuLieu & " "
         ElseIf TimKiem = "ChuaTT" Then
-            sqlStr4 &= sqlStr & "AND HoaDon.TinhTrangThanhToan = N'Chưa' "
+            sqlTemp &= sqlCTHD & "AND HoaDon.TinhTrangThanhToan = N'Chưa' "
+            isChuaTT = True
         ElseIf TimKiem = "NhacNho1" Then
-            sqlStr4 &= sqlStr & "AND HoaDon.TinhTrangThanhToan = N'Lần 1' "
+            sqlTemp &= sqlCTHD & "AND HoaDon.TinhTrangThanhToan = N'Lần 1' "
         ElseIf TimKiem = "NhacNho2" Then
-            sqlStr4 &= sqlStr & "AND HoaDon.TinhTrangThanhToan = N'Lần 2' "
+            sqlTemp &= sqlCTHD & "AND HoaDon.TinhTrangThanhToan = N'Lần 2' "
         ElseIf TimKiem = "MaKH" Then
-            sqlStr4 &= sqlStr & "AND KhachHang.MaKH = '" & DuLieu & "' "
+            sqlTemp &= sqlCTHD & "AND KhachHang.MaKH = '" & DuLieu & "' "
         ElseIf TimKiem = "MaHD" Then
-            sqlStr4 &= sqlStr & "AND HoaDon.MaHD = " & DuLieu & " "
+            sqlTemp &= sqlCTHD & "AND HoaDon.MaHD = " & DuLieu & " "
         End If
-        If radKoCapDA.Checked Then
-            sqlStr5 = sqlStr4 & "AND (DoiTuongKH.MaDT = 'CDCTPK' OR DoiTuongKH.MaDT = 'CDCTPB' OR DoiTuongKH.MaDT = 'CDCTPM' OR DoiTuongKH.MaDT = 'CDCTTK' OR DoiTuongKH.MaDT = 'CDCTTB' OR DoiTuongKH.MaDT = 'CDCTTM' OR DoiTuongKH.MaDT = 'NTK' OR DoiTuongKH.MaDT = 'SHNT' OR DoiTuongKH.MaDT = 'SHBTTT' OR DoiTuongKH.MaDT = 'SHBT' OR DoiTuongKH.MaDT = 'TMSH')"
-            CreateReportKoCapDA()
-        Else
-            sqlStr5 = sqlStr4 & "AND (DoiTuongKH.MaDT = 'BVT_T6' OR DoiTuongKH.MaDT = 'BVT_D6' OR DoiTuongKH.MaDT = 'CSHC_T6' OR DoiTuongKH.MaDT = 'CSHC_D6' OR DoiTuongKH.MaDT = 'KD_T22' OR DoiTuongKH.MaDT = 'KD_T6' OR DoiTuongKH.MaDT = 'KD_D6' OR DoiTuongKH.MaDT = 'SX_T110' OR DoiTuongKH.MaDT = 'SX_T22' OR DoiTuongKH.MaDT = 'SX_T6' OR DoiTuongKH.MaDT = 'SX_D6')"
-            CreateReportCoCapDA()
-        End If
-    End Sub
 
-    Private Sub CreateReportKoCapDA()
         con.Open()
         ds.Clear()
-        com = New SqlCommand(sqlStr5, frmMain.con)
+        com = New SqlCommand(sqlTemp, frmMain.con)
         da = New SqlDataAdapter(com)
         da.Fill(ds, "CTHoaDon")
 
-        com = New SqlCommand(sqlStr3, frmMain.con)
+        com = New SqlCommand(sqlDV, frmMain.con)
         da = New SqlDataAdapter(com)
         da.Fill(ds, "DonVi")
 
-        com = New SqlCommand(sqlStr2, frmMain.con)
+        com = New SqlCommand(sqlCTTT, frmMain.con)
         da = New SqlDataAdapter(com)
         da.Fill(ds, "CTThanhTien")
 
-        con.Close()
-
-        rpt6.SetDataSource(ds)
-        CrystalReportViewer1.ReportSource = rpt6
-        CrystalReportViewer1.Refresh()
-    End Sub
-
-    Private Sub CreateReportCoCapDA()
-        con.Open()
-        ds.Clear()
-        com = New SqlCommand(sqlStr5, frmMain.con)
+        com = New SqlCommand(sqlCSHD, frmMain.con)
         da = New SqlDataAdapter(com)
-        da.Fill(ds, "CTHoaDon")
-
-        com = New SqlCommand(sqlStr3, frmMain.con)
-        da = New SqlDataAdapter(com)
-        da.Fill(ds, "DonVi")
-
-        com = New SqlCommand(sqlStr2, frmMain.con)
-        da = New SqlDataAdapter(com)
-        da.Fill(ds, "CTThanhTien")
+        da.Fill(ds, "ChiSoHD")
 
         con.Close()
 
-        rpt3.SetDataSource(ds)
-        CrystalReportViewer1.ReportSource = rpt3
+        rptHoaDon.SetDataSource(ds)
+        CrystalReportViewer1.ReportSource = rptHoaDon
         CrystalReportViewer1.Refresh()
+
+        If isChuaTT Then
+            UpdateTinhTrangThanhToan()
+        End If
     End Sub
+
+    Private Sub UpdateTinhTrangThanhToan()
+        Dim dr As DataRow
+        For Each dr In dtHD.Select("TinhTrangThanhToan='Chưa'")
+            dr("TinhTrangThanhToan") = "Rồi"
+        Next
+        Try
+            Dim comHD As New SqlCommandBuilder(frmMain.daHoaDon)
+            frmMain.con.Open()
+            comHD.DataAdapter.Update(dtHD)
+            frmMain.con.Close()
+        Catch ex As Exception
+            MessageBox.Show("Không thể cập nhật CSDL", "Thông báo")
+        End Try
+    End Sub
+#End Region
+
 End Class
