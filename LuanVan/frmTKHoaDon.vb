@@ -157,6 +157,7 @@ Public Class frmTKHoaDon
             dtpKy.Visible = True
             btnNhacnho.Visible = False
             btnDathanhtoan.Visible = False
+            btnXemGB.Visible = False
         ElseIf cboTimKiem.SelectedIndex = 1 Then
             lblTieuDe.Text = "Tìm hóa đơn chưa thanh toán/Nhắc nhở"
             Label2.Visible = False
@@ -167,6 +168,7 @@ Public Class frmTKHoaDon
             dtpKy.Visible = False
             btnNhacnho.Visible = True
             btnDathanhtoan.Visible = True
+            btnXemGB.Visible = True
         ElseIf cboTimKiem.SelectedIndex = 2 Or cboTimKiem.SelectedIndex = 3 Then
             lblTieuDe.Text = "Tìm hóa đơn đã nhắc nhở/Nhắc nhở hoặc cắt điện"
             Label2.Visible = False
@@ -177,6 +179,7 @@ Public Class frmTKHoaDon
             dtpKy.Visible = False
             btnNhacnho.Visible = True
             btnDathanhtoan.Visible = True
+            btnXemGB.Visible = True
         ElseIf cboTimKiem.SelectedIndex = 4 Then
             lblTieuDe.Text = "Tìm theo mã hóa đơn/Đánh dấu chưa thanh toán"
             Label2.Visible = False
@@ -187,6 +190,7 @@ Public Class frmTKHoaDon
             dtpKy.Visible = False
             btnNhacnho.Visible = True
             btnDathanhtoan.Visible = False
+            btnXemGB.Visible = False
         ElseIf cboTimKiem.SelectedIndex = 5 Then
             lblTieuDe.Text = "Tìm theo mã khách hàng"
             Label2.Visible = True
@@ -197,6 +201,7 @@ Public Class frmTKHoaDon
             dtpKy.Visible = False
             btnNhacnho.Visible = False
             btnDathanhtoan.Visible = False
+            btnXemGB.Visible = False
         End If
     End Sub
 
