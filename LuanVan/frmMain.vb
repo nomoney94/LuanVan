@@ -11,7 +11,6 @@ Public Class frmMain
     Private frmTTDV As frmTTDonVi
     Private frmTTD As frmTinhTien
     Private frmCNBG As frmCapNhatBG
-    Private frmInHD As frmInHoaDon
 
     Public daChiSoCongTo As SqlDataAdapter
     Public daCongTo As SqlDataAdapter
@@ -114,7 +113,10 @@ Public Class frmMain
     End Sub
 
     Private Sub tsmiThoat_Click(sender As Object, e As EventArgs) Handles tsmiThoat.Click
-        Close()
+        Dim a As Integer = MsgBox("Bạn có chắc muốn thoát không?", MsgBoxStyle.OkCancel)
+        If a = 1 Then
+            Close()
+        End If
     End Sub
 #End Region
 

@@ -17,7 +17,6 @@ Public Class frmCapNhatBG
         cboLoai.SelectedIndex = 0
         dtBG3 = frmMain.ds.Tables("Gia3")
         dtBG6 = frmMain.ds.Tables("Gia6")
-        'dtDT = frmMain.ds.Tables("DoiTuongKH")
         LoadData_lsvBG3()
         LoadData_lsvBG6()
     End Sub
@@ -72,7 +71,6 @@ Public Class frmCapNhatBG
                         change = True
                     Next
                     LoadData_lsvBG3()
-                    btnReset.PerformClick()
                 Else
                     MsgBox("Mã loại dịch vụ không được thay đổi", MsgBoxStyle.OkOnly, "Thông báo!")
                 End If
@@ -88,11 +86,11 @@ Public Class frmCapNhatBG
                         change = True
                     Next
                     LoadData_lsvBG6()
-                    btnReset.PerformClick()
                 Else
                     MsgBox("Mã loại dịch vụ không được thay đổi", MsgBoxStyle.OkOnly, "Thông báo!")
                 End If
             End If
+            btnReset.PerformClick()
         End If
     End Sub
 
@@ -106,8 +104,8 @@ Public Class frmCapNhatBG
                     dr("MaDT") = cboMaDT.Text
                     dr("TenLoai") = txtTenLoai.Text
                     dr("GiaBT") = txtGiaBT.Text
-                    dr("GiaCD") = txtGiaCD.Text
-                    dr("GiaTD") = txtGiaTD.Text
+                    dr("GiaCD") = If(txtGiaCD.Enabled, txtGiaCD.Text, 0)
+                    dr("GiaTD") = If(txtGiaTD.Enabled, txtGiaTD.Text, 0)
                     dtBG3.Rows.Add(dr)
                     change = True
                     LoadData_lsvBG3()
@@ -130,6 +128,7 @@ Public Class frmCapNhatBG
                     MsgBox("Mã loại dịch vụ đã có trong CSDL", MsgBoxStyle.OkOnly, "Thông báo!")
                 End If
             End If
+            btnReset.PerformClick()
         End If
     End Sub
 
@@ -139,42 +138,46 @@ Public Class frmCapNhatBG
                 MessageBox.Show("Bạn chưa chọn mẫu tin cần xóa!")
                 Exit Sub
             End If
-            Dim i As Integer
-            For i = 0 To lsvBG3.SelectedItems.Count - 1
-                Dim s As String = lsvBG3.SelectedItems(i).Text
-                Dim strFind As String = "MaLoaiDV='" + s + "'"
-                Dim dr As DataRow
-                For Each dr In dtBG3.Select(strFind)
-                    dr.Delete()
-                    change = True
+            Dim a As Integer = MsgBox("Bạn có chắc muốn xóa không?", MsgBoxStyle.OkCancel)
+            If a = 1 Then
+                Dim i As Integer
+                For i = 0 To lsvBG3.SelectedItems.Count - 1
+                    Dim s As String = lsvBG3.SelectedItems(i).Text
+                    Dim strFind As String = "MaLoaiDV='" + s + "'"
+                    Dim dr As DataRow
+                    For Each dr In dtBG3.Select(strFind)
+                        dr.Delete()
+                        change = True
+                    Next
                 Next
                 LoadData_lsvBG3()
-                btnReset.PerformClick()
-            Next
+            End If
         Else
             If (lsvBG6.SelectedItems.Count <= 0) Then
                 MessageBox.Show("Bạn chưa chọn mẫu tin cần xóa!")
                 Exit Sub
             End If
-            Dim i As Integer
-            For i = 0 To lsvBG6.SelectedItems.Count - 1
-                Dim s As String = lsvBG6.SelectedItems(i).Text
-                Dim strFind As String = "MaLoaiDV='" + s + "'"
-                Dim dr As DataRow
-                For Each dr In dtBG6.Select(strFind)
-                    dr.Delete()
-                    change = True
+            Dim a As Integer = MsgBox("Bạn có chắc muốn xóa không?", MsgBoxStyle.OkCancel)
+            If a = 1 Then
+                Dim i As Integer
+                For i = 0 To lsvBG6.SelectedItems.Count - 1
+                    Dim s As String = lsvBG6.SelectedItems(i).Text
+                    Dim strFind As String = "MaLoaiDV='" + s + "'"
+                    Dim dr As DataRow
+                    For Each dr In dtBG6.Select(strFind)
+                        dr.Delete()
+                        change = True
+                    Next
                 Next
                 LoadData_lsvBG6()
-                btnReset.PerformClick()
-            Next
+            End If
         End If
+        btnReset.PerformClick()
     End Sub
 
     Private Sub cboLoai_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboLoai.SelectedIndexChanged
         btnReset.PerformClick()
         ClearError()
-        LoadData_cboMaDT()
         If cboLoai.SelectedIndex = 0 Then
             txtTenLoai.Enabled = True
             txtGiaBT.Enabled = True
@@ -196,6 +199,7 @@ Public Class frmCapNhatBG
             lsvBG3.Visible = False
             lsvBG6.Visible = True
         End If
+        LoadData_cboMaDT()
     End Sub
 
     Private Sub cboMaDT_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboMaDT.SelectedIndexChanged
@@ -228,6 +232,110 @@ Public Class frmCapNhatBG
             txtMoTa.Text = lsvBG6.SelectedItems(0).SubItems(4).Text
         End If
     End Sub
+
+    Private Sub txtMaDV_Validating(sender As Object, e As EventArgs) Handles txtMaDV.Validating
+        If txtMaDV.Text = "" Then
+            errLoi.SetError(txtMaDV, "Không được để trống")
+        Else
+            errLoi.SetError(txtMaDV, "")
+        End If
+    End Sub
+
+    Private Sub txtTenLoai_Validating(sender As Object, e As EventArgs) Handles txtTenLoai.Validating
+        If txtTenLoai.Text = "" Then
+            errLoi.SetError(txtTenLoai, "Không được để trống")
+        Else
+            errLoi.SetError(txtTenLoai, "")
+        End If
+    End Sub
+
+    Private Sub txtGiaBT_Validating(sender As Object, e As EventArgs) Handles txtGiaBT.Validating
+        If txtGiaBT.Text = "" Then
+            errLoi.SetError(txtGiaBT, "Không được để trống")
+        Else
+            If IsNumeric(txtGiaBT.Text) Then
+                If CInt(txtGiaBT.Text) >= 0 Then
+                    errLoi.SetError(txtGiaBT, "")
+                Else
+                    errLoi.SetError(txtGiaBT, "Xin nhập số dương")
+                End If
+            Else
+                errLoi.SetError(txtGiaBT, "Chỉ được nhập số")
+            End If
+        End If
+    End Sub
+
+    Private Sub txtGiaCD_Validating(sender As Object, e As EventArgs) Handles txtGiaCD.Validating
+        If txtGiaCD.Text = "" Then
+            errLoi.SetError(txtGiaCD, "Không được để trống")
+        Else
+            If IsNumeric(txtGiaCD.Text) Then
+                If CInt(txtGiaCD.Text) >= 0 Then
+                    errLoi.SetError(txtGiaCD, "")
+                Else
+                    errLoi.SetError(txtGiaCD, "Xin nhập số dương")
+                End If
+            Else
+                errLoi.SetError(txtGiaCD, "Chỉ được nhập số")
+            End If
+        End If
+    End Sub
+
+    Private Sub txtGiaTD_Validating(sender As Object, e As EventArgs) Handles txtGiaTD.Validating
+        If txtGiaTD.Text = "" Then
+            errLoi.SetError(txtGiaTD, "Không được để trống")
+        Else
+            If IsNumeric(txtGiaTD.Text) Then
+                If CInt(txtGiaTD.Text) >= 0 Then
+                    errLoi.SetError(txtGiaTD, "")
+                Else
+                    errLoi.SetError(txtGiaTD, "Xin nhập số dương")
+                End If
+            Else
+                errLoi.SetError(txtGiaTD, "Chỉ được nhập số")
+            End If
+        End If
+    End Sub
+
+    Private Sub txtDinhMuc_Validating(sender As Object, e As EventArgs) Handles txtDinhMuc.Validating
+        If txtDinhMuc.Text = "" Then
+            errLoi.SetError(txtDinhMuc, "Không được để trống")
+        Else
+            If IsNumeric(txtDinhMuc.Text) Then
+                If CInt(txtDinhMuc.Text) >= 0 Then
+                    errLoi.SetError(txtDinhMuc, "")
+                Else
+                    errLoi.SetError(txtDinhMuc, "Xin nhập số dương")
+                End If
+            Else
+                errLoi.SetError(txtDinhMuc, "Chỉ được nhập số")
+            End If
+        End If
+    End Sub
+
+    Private Sub txtGia_Validating(sender As Object, e As EventArgs) Handles txtGia.Validating
+        If txtGia.Text = "" Then
+            errLoi.SetError(txtGia, "Không được để trống")
+        Else
+            If IsNumeric(txtGia.Text) Then
+                If CInt(txtGia.Text) >= 0 Then
+                    errLoi.SetError(txtGia, "")
+                Else
+                    errLoi.SetError(txtGia, "Xin nhập số dương")
+                End If
+            Else
+                errLoi.SetError(txtGia, "Chỉ được nhập số")
+            End If
+        End If
+    End Sub
+
+    Private Sub txtMoTa_Validating(sender As Object, e As EventArgs) Handles txtMoTa.Validating
+        If txtMoTa.Text = "" Then
+            errLoi.SetError(txtMoTa, "Không được để trống")
+        Else
+            errLoi.SetError(txtMoTa, "")
+        End If
+    End Sub
 #End Region
 
 #Region "Functions/Subs"
@@ -239,6 +347,7 @@ Public Class frmCapNhatBG
             cboMaDT.Items.Clear()
             cboMaDT.Items.AddRange(aDTG6)
         End If
+        cboMaDT.SelectedIndex = 0
     End Sub
 
     Private Sub LoadData_lsvBG3()

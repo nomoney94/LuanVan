@@ -7,7 +7,7 @@ Public Class frmTKKhachHang
     Private dtHD As DataTable
     Private frmTKHD As frmTKHoaDon
     Public MaKH As String
-    Private dt As DataTable
+    Private dtExcel As DataTable
 
     Private Sub frmTKKhachHang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cboTimKiem.Items.AddRange(aTimKiem)
@@ -17,8 +17,8 @@ Public Class frmTKKhachHang
     End Sub
 
     Private Sub btnTim_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnTim.Click
-        dt = New DataTable
-        dt = dtKH.Clone
+        dtExcel = New DataTable
+        dtExcel = dtKH.Clone
         Dim newRow As DataRow
         lvwKH.Items.Clear()
         If cboTimKiem.Text = "Mã khách hàng" Then
@@ -30,9 +30,9 @@ Public Class frmTKKhachHang
             Dim dr As DataRow
             Dim i As Integer
             For Each dr In dtKH.Select(strfind)
-                newRow = dt.NewRow
+                newRow = dtExcel.NewRow
                 newRow = dr
-                dt.Rows.Add(newRow.ItemArray)
+                dtExcel.Rows.Add(newRow.ItemArray)
                 i = lvwKH.Items.Count
                 lvwKH.Items.Add(dr("MaKH"))
                 lvwKH.Items(i).SubItems.Add(dr("MaCT"))
@@ -50,9 +50,9 @@ Public Class frmTKKhachHang
             Dim dr As DataRow
             Dim i As Integer
             For Each dr In dtKH.Select(strfind)
-                newRow = dt.NewRow
+                newRow = dtExcel.NewRow
                 newRow = dr
-                dt.Rows.Add(newRow.ItemArray)
+                dtExcel.Rows.Add(newRow.ItemArray)
                 i = lvwKH.Items.Count
                 lvwKH.Items.Add(dr("MaKH"))
                 lvwKH.Items(i).SubItems.Add(dr("MaCT"))
@@ -69,9 +69,9 @@ Public Class frmTKKhachHang
             For Each dr In dtHD.Select(strfind, "Ky ASC")
                 strfind1 = "MaKH='" + dr("MaKH") + "'"
                 For Each dr1 In dtKH.Select(strfind1)
-                    newRow = dt.NewRow
+                    newRow = dtExcel.NewRow
                     newRow = dr
-                    dt.Rows.Add(newRow.ItemArray)
+                    dtExcel.Rows.Add(newRow.ItemArray)
                     i = lvwKH.Items.Count
                     If i > 0 Then
                         If dr1("MaKH") <> lvwKH.Items(i - 1).SubItems(0).Text Then
@@ -100,9 +100,9 @@ Public Class frmTKKhachHang
             Dim i As Integer
             For Each dr In dtKH.Select(strfind)
                 For Each dr1 In dtHD.Select("MaKH='" + dr("MaKH") + "' and TinhTrangThanhToan <> 'rồi'", "Ky ASC")
-                    newRow = dt.NewRow
+                    newRow = dtExcel.NewRow
                     newRow = dr
-                    dt.Rows.Add(newRow.ItemArray)
+                    dtExcel.Rows.Add(newRow.ItemArray)
                     i = lvwKH.Items.Count
                     If i > 0 Then
                         If dr("MaKH") <> lvwKH.Items(i - 1).SubItems(0).Text Then
@@ -129,9 +129,9 @@ Public Class frmTKKhachHang
             Dim dr As DataRow
             Dim i As Integer
             For Each dr In dtKH.Select()
-                newRow = dt.NewRow
+                newRow = dtExcel.NewRow
                 newRow = dr
-                dt.Rows.Add(newRow.ItemArray)
+                dtExcel.Rows.Add(newRow.ItemArray)
                 i = lvwKH.Items.Count
                 lvwKH.Items.Add(dr("MaKH"))
                 lvwKH.Items(i).SubItems.Add(dr("MaCT"))
@@ -187,7 +187,7 @@ Public Class frmTKKhachHang
             SaveFileDialog.FileName = ""
             SaveFileDialog.Filter = "Excel Workbook|*.xlsx"
             If SaveFileDialog.ShowDialog() = Windows.Forms.DialogResult.OK Then
-                If dt.Rows.Count > 0 Then
+                If dtExcel.Rows.Count > 0 Then
                     Dim oXL As Excel.Application
                     Dim oWB As Excel.Workbook
                     Dim oSheet As Excel.Worksheet
@@ -208,8 +208,9 @@ Public Class frmTKKhachHang
                     oSheet.Cells(1, 5).Value = "Địa chỉ"
                     oSheet.Cells(1, 6).Value = "Số điện thoại"
                     oSheet.Cells(1, 7).Value = "Mã số thuế"
+                    oSheet.Range("A1", "G1").Font.Bold = True
 
-                    oSheet.Range("A2", "G" & dt.Rows.Count + 1).Value = ConvertDataTableToArray(dt)
+                    oSheet.Range("A2", "G" & dtExcel.Rows.Count + 1).Value = ConvertDataTableToArray(dtExcel)
 
                     oRng = oSheet.Range("A1", "G1")
                     oRng.EntireColumn.AutoFit()

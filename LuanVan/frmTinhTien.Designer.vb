@@ -249,7 +249,7 @@ Partial Class frmTinhTien
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.MaximizeBox = False
         Me.Name = "frmTinhTien"
-        Me.Text = "frmTinhTien"
+        Me.Text = "Tính tiền"
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel2.ResumeLayout(False)
         Me.TableLayoutPanel2.PerformLayout()

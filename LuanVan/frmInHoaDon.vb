@@ -18,7 +18,7 @@ Public Class frmInHoaDon
     Private sqlCSHD As String = "SELECT HoaDon.MaHD, ChiSoCongTo.ChiSo, ChiSoCongTo.ChisoCD, ChiSoCongTo.ChisoTD, ChiSoCongTo.Ky " & _
                         "FROM KhachHang INNER JOIN " & _
                         "HoaDon ON KhachHang.MaKH = HoaDon.MaKH INNER JOIN " & _
-                        "ChiSoCongTo ON KhachHang.MaCT = ChiSoCongTo.MaCT INNER JOIN " & _
+                        "ChiSoCongTo ON KhachHang.MaCT = ChiSoCongTo.MaCT " & _
                         "WHERE MONTH(ChiSoCongTo.Ky) = MONTH(HoaDon.Ky) OR MONTH(ChiSoCongTo.Ky) = MONTH(HoaDon.Ky) - 1 " & _
                         "ORDER BY HoaDon.MaHD ASC, ChiSoCongTo.Ky DESC"
     Private sqlDV As String = "SELECT * FROM DonVi"
@@ -47,9 +47,9 @@ Public Class frmInHoaDon
         sqlTemp = ""
         If TimKiem = "Ky" Then
             sqlTemp &= sqlCTHD & "AND MONTH(ChiSoCongTo.Ky) = " & DuLieu & " "
+            isChuaTT = True
         ElseIf TimKiem = "ChuaTT" Then
             sqlTemp &= sqlCTHD & "AND HoaDon.TinhTrangThanhToan = N'Chưa' "
-            isChuaTT = True
         ElseIf TimKiem = "NhacNho1" Then
             sqlTemp &= sqlCTHD & "AND HoaDon.TinhTrangThanhToan = N'Lần 1' "
         ElseIf TimKiem = "NhacNho2" Then
@@ -83,7 +83,6 @@ Public Class frmInHoaDon
         rptHoaDon.SetDataSource(ds)
         CrystalReportViewer1.ReportSource = rptHoaDon
         CrystalReportViewer1.Refresh()
-
         If isChuaTT Then
             UpdateTinhTrangThanhToan()
         End If

@@ -330,14 +330,14 @@ Partial Class frmCapNhatBG
         Me.txtMoTa.Location = New System.Drawing.Point(403, 153)
         Me.txtMoTa.Name = "txtMoTa"
         Me.txtMoTa.Size = New System.Drawing.Size(106, 20)
-        Me.txtMoTa.TabIndex = 19
+        Me.txtMoTa.TabIndex = 20
         '
         'txtGia
         '
         Me.txtGia.Location = New System.Drawing.Point(403, 127)
         Me.txtGia.Name = "txtGia"
         Me.txtGia.Size = New System.Drawing.Size(106, 20)
-        Me.txtGia.TabIndex = 20
+        Me.txtGia.TabIndex = 19
         '
         'btnReset
         '

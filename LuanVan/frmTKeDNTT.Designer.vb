@@ -39,15 +39,15 @@ Partial Class frmTKeDNTT
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.crvTKe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.crvTKe.Cursor = System.Windows.Forms.Cursors.Default
-        Me.crvTKe.Location = New System.Drawing.Point(4, 92)
+        Me.crvTKe.Location = New System.Drawing.Point(4, 67)
         Me.crvTKe.Name = "crvTKe"
         Me.crvTKe.ShowCloseButton = False
-        Me.crvTKe.Size = New System.Drawing.Size(787, 358)
+        Me.crvTKe.Size = New System.Drawing.Size(1153, 440)
         Me.crvTKe.TabIndex = 0
         '
         'btnThongKe
         '
-        Me.btnThongKe.Location = New System.Drawing.Point(243, 10)
+        Me.btnThongKe.Location = New System.Drawing.Point(616, 12)
         Me.btnThongKe.Name = "btnThongKe"
         Me.btnThongKe.Size = New System.Drawing.Size(84, 23)
         Me.btnThongKe.TabIndex = 1
@@ -58,7 +58,7 @@ Partial Class frmTKeDNTT
         '
         Me.cboThongKe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboThongKe.FormattingEnabled = True
-        Me.cboThongKe.Location = New System.Drawing.Point(137, 12)
+        Me.cboThongKe.Location = New System.Drawing.Point(510, 14)
         Me.cboThongKe.Name = "cboThongKe"
         Me.cboThongKe.Size = New System.Drawing.Size(84, 21)
         Me.cboThongKe.TabIndex = 2
@@ -67,7 +67,7 @@ Partial Class frmTKeDNTT
         '
         Me.dtpNamBD.CustomFormat = "yyyy"
         Me.dtpNamBD.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpNamBD.Location = New System.Drawing.Point(137, 39)
+        Me.dtpNamBD.Location = New System.Drawing.Point(510, 41)
         Me.dtpNamBD.Name = "dtpNamBD"
         Me.dtpNamBD.Size = New System.Drawing.Size(84, 20)
         Me.dtpNamBD.TabIndex = 3
@@ -75,7 +75,7 @@ Partial Class frmTKeDNTT
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(21, 17)
+        Me.Label1.Location = New System.Drawing.Point(394, 19)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(80, 13)
         Me.Label1.TabIndex = 4
@@ -85,7 +85,7 @@ Partial Class frmTKeDNTT
         '
         Me.dtpNamKT.CustomFormat = "yyyy"
         Me.dtpNamKT.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtpNamKT.Location = New System.Drawing.Point(243, 39)
+        Me.dtpNamKT.Location = New System.Drawing.Point(616, 41)
         Me.dtpNamKT.Name = "dtpNamKT"
         Me.dtpNamKT.Size = New System.Drawing.Size(84, 20)
         Me.dtpNamKT.TabIndex = 5
@@ -93,7 +93,7 @@ Partial Class frmTKeDNTT
         'lblDash
         '
         Me.lblDash.AutoSize = True
-        Me.lblDash.Location = New System.Drawing.Point(227, 45)
+        Me.lblDash.Location = New System.Drawing.Point(600, 47)
         Me.lblDash.Name = "lblDash"
         Me.lblDash.Size = New System.Drawing.Size(10, 13)
         Me.lblDash.TabIndex = 6
@@ -103,7 +103,7 @@ Partial Class frmTKeDNTT
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(795, 454)
+        Me.ClientSize = New System.Drawing.Size(1161, 511)
         Me.Controls.Add(Me.lblDash)
         Me.Controls.Add(Me.dtpNamKT)
         Me.Controls.Add(Me.Label1)

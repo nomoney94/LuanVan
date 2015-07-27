@@ -37,6 +37,7 @@ Partial Class frmTKHoaDon
         Me.btnNhacnho = New System.Windows.Forms.Button()
         Me.btnDathanhtoan = New System.Windows.Forms.Button()
         Me.btnXemHD = New System.Windows.Forms.Button()
+        Me.btnXemGB = New System.Windows.Forms.Button()
         Me.lvwHoadon = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -46,7 +47,6 @@ Partial Class frmTKHoaDon
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader8 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.btnXemGB = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.SuspendLayout()
@@ -228,6 +228,15 @@ Partial Class frmTKHoaDon
         Me.btnXemHD.Text = "Xem hóa đơn"
         Me.btnXemHD.UseVisualStyleBackColor = True
         '
+        'btnXemGB
+        '
+        Me.btnXemGB.Location = New System.Drawing.Point(585, 3)
+        Me.btnXemGB.Name = "btnXemGB"
+        Me.btnXemGB.Size = New System.Drawing.Size(86, 23)
+        Me.btnXemGB.TabIndex = 14
+        Me.btnXemGB.Text = "Xem giấy báo"
+        Me.btnXemGB.UseVisualStyleBackColor = True
+        '
         'lvwHoadon
         '
         Me.lvwHoadon.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -283,15 +292,6 @@ Partial Class frmTKHoaDon
         Me.ColumnHeader8.Text = "Tình trạng TT"
         Me.ColumnHeader8.Width = 84
         '
-        'btnXemGB
-        '
-        Me.btnXemGB.Location = New System.Drawing.Point(585, 3)
-        Me.btnXemGB.Name = "btnXemGB"
-        Me.btnXemGB.Size = New System.Drawing.Size(86, 23)
-        Me.btnXemGB.TabIndex = 14
-        Me.btnXemGB.Text = "Xem giấy báo"
-        Me.btnXemGB.UseVisualStyleBackColor = True
-        '
         'frmTKHoaDon
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -301,7 +301,7 @@ Partial Class frmTKHoaDon
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.MaximizeBox = False
         Me.Name = "frmTKHoaDon"
-        Me.Text = "frmTKHoaDon"
+        Me.Text = "Tìm kiếm hóa đơn"
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel1.PerformLayout()
         Me.TableLayoutPanel2.ResumeLayout(False)

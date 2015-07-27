@@ -24,7 +24,7 @@ Public Class frmTKHoaDon
             End If
         Next
         If flag = 1 Then
-            MessageBox.Show("Kỳ ghi điện mới nhất là: " & Month(ky) & "/" & Year(ky) & " (Đã in hóa đơn)", "Thông báo")
+            'MessageBox.Show("Kỳ ghi điện mới nhất là: " & Month(ky) & "/" & Year(ky) & " (Đã in hóa đơn)", "Thông báo")
         Else
             MessageBox.Show("Kỳ ghi điện mới nhất là: " & Month(ky) & "/" & Year(ky) & " (Chưa in hóa đơn)", "Thông báo")
             dtpKy.Text = ky
@@ -147,6 +147,7 @@ Public Class frmTKHoaDon
     End Sub
 
     Private Sub cboTimKiem_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboTimKiem.SelectedIndexChanged
+        lvwHoadon.Items.Clear()
         If cboTimKiem.SelectedIndex = 0 Then
             lblTieuDe.Text = "Tìm theo kỳ"
             Label2.Visible = False
@@ -211,7 +212,7 @@ Public Class frmTKHoaDon
             Exit Sub
         End If
         Dim dr, dr1 As DataRow
-        For Each dr In dtHD.Select("MaKH='" + lvwHoadon.SelectedItems(0).SubItems(2).Text + "' AND Ky='" + lvwHoadon.SelectedItems(0).SubItems(3).Text + "'")
+        For Each dr In dtHD.Select("MaKH='" + lvwHoadon.SelectedItems(0).SubItems(3).Text + "' AND Ky='" + lvwHoadon.SelectedItems(0).SubItems(4).Text + "'")
             If dr("TinhTrangThanhToan") = "Rồi" Then
                 dr("TinhTrangThanhToan") = "Chưa"
             ElseIf dr("TinhTrangThanhToan") = "Chưa" Then
@@ -258,7 +259,7 @@ Public Class frmTKHoaDon
             Exit Sub
         End If
         Dim dr As DataRow
-        For Each dr In dtHD.Select("MaKH='" + lvwHoadon.SelectedItems(0).SubItems(2).Text + "' AND Ky='" + lvwHoadon.SelectedItems(0).SubItems(3).Text + "'")
+        For Each dr In dtHD.Select("MaKH='" + lvwHoadon.SelectedItems(0).SubItems(3).Text + "' AND Ky='" + lvwHoadon.SelectedItems(0).SubItems(4).Text + "'")
             dr("TinhTrangThanhToan") = "Rồi"
             For Each dr1 In dtKH.Select("MaKH='" + dr("MaKH") + "'")
                 If dr1("TinhTrangSuDung") = "Cắt điện" Then
