@@ -66,7 +66,7 @@ Partial Class frmTKHoaDon
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(689, 403)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(707, 403)
         Me.TableLayoutPanel1.TabIndex = 1
         '
         'lblTieuDe
@@ -74,7 +74,7 @@ Partial Class frmTKHoaDon
         Me.lblTieuDe.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.lblTieuDe.AutoSize = True
         Me.lblTieuDe.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTieuDe.Location = New System.Drawing.Point(344, 0)
+        Me.lblTieuDe.Location = New System.Drawing.Point(353, 0)
         Me.lblTieuDe.Name = "lblTieuDe"
         Me.lblTieuDe.Size = New System.Drawing.Size(0, 20)
         Me.lblTieuDe.TabIndex = 2
@@ -82,8 +82,8 @@ Partial Class frmTKHoaDon
         'TableLayoutPanel2
         '
         Me.TableLayoutPanel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel2.AutoSize = True
         Me.TableLayoutPanel2.ColumnCount = 7
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102.0!))
@@ -113,7 +113,7 @@ Partial Class frmTKHoaDon
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(683, 107)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(701, 107)
         Me.TableLayoutPanel2.TabIndex = 0
         '
         'txtMaHD
@@ -205,14 +205,14 @@ Partial Class frmTKHoaDon
         Me.btnNhacnho.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.btnNhacnho.Location = New System.Drawing.Point(333, 3)
         Me.btnNhacnho.Name = "btnNhacnho"
-        Me.btnNhacnho.Size = New System.Drawing.Size(67, 23)
+        Me.btnNhacnho.Size = New System.Drawing.Size(94, 23)
         Me.btnNhacnho.TabIndex = 10
-        Me.btnNhacnho.Text = "Nhắc nhở"
+        Me.btnNhacnho.Text = "Chưa thanh toán"
         Me.btnNhacnho.UseVisualStyleBackColor = True
         '
         'btnDathanhtoan
         '
-        Me.btnDathanhtoan.Location = New System.Drawing.Point(406, 3)
+        Me.btnDathanhtoan.Location = New System.Drawing.Point(433, 3)
         Me.btnDathanhtoan.Name = "btnDathanhtoan"
         Me.btnDathanhtoan.Size = New System.Drawing.Size(83, 23)
         Me.btnDathanhtoan.TabIndex = 12
@@ -221,7 +221,7 @@ Partial Class frmTKHoaDon
         '
         'btnXemHD
         '
-        Me.btnXemHD.Location = New System.Drawing.Point(495, 3)
+        Me.btnXemHD.Location = New System.Drawing.Point(522, 3)
         Me.btnXemHD.Name = "btnXemHD"
         Me.btnXemHD.Size = New System.Drawing.Size(84, 23)
         Me.btnXemHD.TabIndex = 13
@@ -230,7 +230,7 @@ Partial Class frmTKHoaDon
         '
         'btnXemGB
         '
-        Me.btnXemGB.Location = New System.Drawing.Point(585, 3)
+        Me.btnXemGB.Location = New System.Drawing.Point(612, 3)
         Me.btnXemGB.Name = "btnXemGB"
         Me.btnXemGB.Size = New System.Drawing.Size(86, 23)
         Me.btnXemGB.TabIndex = 14
@@ -240,14 +240,14 @@ Partial Class frmTKHoaDon
         'lvwHoadon
         '
         Me.lvwHoadon.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lvwHoadon.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7, Me.ColumnHeader8})
         Me.lvwHoadon.FullRowSelect = True
         Me.lvwHoadon.GridLines = True
         Me.lvwHoadon.Location = New System.Drawing.Point(3, 136)
         Me.lvwHoadon.Name = "lvwHoadon"
-        Me.lvwHoadon.Size = New System.Drawing.Size(683, 264)
+        Me.lvwHoadon.Size = New System.Drawing.Size(701, 264)
         Me.lvwHoadon.TabIndex = 1
         Me.lvwHoadon.UseCompatibleStateImageBehavior = False
         Me.lvwHoadon.View = System.Windows.Forms.View.Details

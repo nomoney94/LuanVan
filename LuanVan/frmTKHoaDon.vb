@@ -36,6 +36,7 @@ Public Class frmTKHoaDon
         Else
             cboTimKiem.SelectedIndex = 0
         End If
+        NhacNho()
     End Sub
 
     Private Sub btnTim_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnTim.Click
@@ -160,27 +161,27 @@ Public Class frmTKHoaDon
             btnDathanhtoan.Visible = False
             btnXemGB.Visible = False
         ElseIf cboTimKiem.SelectedIndex = 1 Then
-            lblTieuDe.Text = "Tìm hóa đơn chưa thanh toán/Nhắc nhở"
+            lblTieuDe.Text = "Tìm hóa đơn chưa thanh toán"
             Label2.Visible = False
             Label3.Visible = False
             Label4.Visible = False
             txtMaHD.Visible = False
             txtMaKH.Visible = False
             dtpKy.Visible = False
-            btnNhacnho.Visible = True
+            btnNhacnho.Visible = False
             btnDathanhtoan.Visible = True
             btnXemGB.Visible = True
         ElseIf cboTimKiem.SelectedIndex = 2 Or cboTimKiem.SelectedIndex = 3 Then
-            lblTieuDe.Text = "Tìm hóa đơn đã nhắc nhở/Nhắc nhở hoặc cắt điện"
+            lblTieuDe.Text = "Tìm hóa đơn đã nhắc nhở"
             Label2.Visible = False
             Label3.Visible = False
             Label4.Visible = False
             txtMaHD.Visible = False
             txtMaKH.Visible = False
             dtpKy.Visible = False
-            btnNhacnho.Visible = True
+            btnNhacnho.Visible = False
             btnDathanhtoan.Visible = True
-            btnXemGB.Visible = True
+            btnXemGB.Visible = False
         ElseIf cboTimKiem.SelectedIndex = 4 Then
             lblTieuDe.Text = "Tìm theo mã hóa đơn/Đánh dấu chưa thanh toán"
             Label2.Visible = False
@@ -211,18 +212,10 @@ Public Class frmTKHoaDon
             MessageBox.Show("Chọn hóa đơn")
             Exit Sub
         End If
-        Dim dr, dr1 As DataRow
+        Dim dr As DataRow
         For Each dr In dtHD.Select("MaKH='" + lvwHoadon.SelectedItems(0).SubItems(3).Text + "' AND Ky='" + lvwHoadon.SelectedItems(0).SubItems(4).Text + "'")
             If dr("TinhTrangThanhToan") = "Rồi" Then
                 dr("TinhTrangThanhToan") = "Chưa"
-            ElseIf dr("TinhTrangThanhToan") = "Chưa" Then
-                dr("TinhTrangThanhToan") = "Lần 1"
-            ElseIf dr("TinhTrangThanhToan") = "Lần 1" Then
-                dr("TinhTrangThanhToan") = "Lần 2"
-            ElseIf dr("TinhTrangThanhToan") = "Lần 2" Then
-                For Each dr1 In dtKH.Select("MaKH='" + dr("MaKH") + "'")
-                    dr1("TinhTrangSuDung") = "Cắt điện"
-                Next
             End If
         Next
         Try
@@ -323,5 +316,32 @@ Public Class frmTKHoaDon
             frmInGB.CreateReport()
             frmInGB.Focus()
         End If
+    End Sub
+
+    Private Sub NhacNho()
+        Dim dr, dr1 As DataRow
+        For Each dr In dtHD.Select()
+            If dr("TinhTrangThanhToan") = "Chưa" And dr("Ky").Day <= Now.Day - 7 And dr("Ky").month = Now.Month Then
+                dr("TinhTrangThanhToan") = "Lần 1"
+            End If
+            If dr("TinhTrangThanhToan") = "Lần 1" And dr("Ky").Day <= Now.Day - 14 And dr("Ky").month = Now.Month Then
+                dr("TinhTrangThanhToan") = "Lần 2"
+            End If
+            If dr("TinhTrangThanhToan") = "Lần 2" And dr("Ky").Day <= Now.Day - 21 And dr("Ky").month = Now.Month Then
+                For Each dr1 In dtKH.Select("MaKH='" + dr("MaKH") + "'")
+                    dr1("TinhTrangSuDung") = "Cắt điện"
+                Next
+            End If
+        Next
+        Try
+            Dim comHD As New SqlCommandBuilder(frmMain.daHoaDon)
+            Dim comKH As New SqlCommandBuilder(frmMain.daKhachHang)
+            frmMain.con.Open()
+            comKH.DataAdapter.Update(dtKH)
+            comHD.DataAdapter.Update(dtHD)
+            frmMain.con.Close()
+        Catch ex As Exception
+            MessageBox.Show("Không thể cập nhật CSDL", "Thông báo")
+        End Try
     End Sub
 End Class
