@@ -1,8 +1,11 @@
 ﻿Imports System.Data.SqlClient
 Public Class frmTTDonVi
-    Private dtDV As DataTable
-    ' Private change As Boolean = False
 
+#Region "Declares"
+    Private dtDV As DataTable
+#End Region
+
+#Region "Events"
     Private Sub btnLuu_Click(sender As Object, e As EventArgs) Handles btnLuu.Click
         Dim dr As DataRow
         Dim strfind As String = "MaSoThue='" + txtMSThue.Text.Trim + "'"
@@ -11,14 +14,12 @@ Public Class frmTTDonVi
             dr("DiaChi") = txtDiaChi.Text
             dr("DienThoai") = txtDT.Text
             dr("DTSuaChua") = txtDTSC.Text
-            'change = True
         Next
         Try
             Dim comDV As New SqlCommandBuilder(frmMain.daDonVi)
             frmMain.con.Open()
             comDV.DataAdapter.Update(dtDV)
             frmMain.con.Close()
-            'change = False
         Catch ex As Exception
             MessageBox.Show("Không thể cập nhật CSDL", "Thông báo")
         End Try
@@ -29,7 +30,9 @@ Public Class frmTTDonVi
         dtDV = frmMain.ds.Tables("DonVi")
         show_Donvi()
     End Sub
+#End Region
 
+#Region "Functions/Subs"
     Private Sub show_Donvi()
         Dim read As DataTableReader = dtDV.CreateDataReader()
         While (read.Read())
@@ -40,4 +43,6 @@ Public Class frmTTDonVi
             txtMSThue.Text = read("MaSoThue").ToString()
         End While
     End Sub
+#End Region
+
 End Class

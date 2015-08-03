@@ -1,9 +1,13 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class frmTKeDT
+
+#Region "Declares"
     Private aThongKe() As String = {"Tháng", "Quý", "Năm"}
     Private dt As DataTable
+#End Region
 
+#Region "Events"
     Private Sub frmTKeDT_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cboThongKe.Items.AddRange(aThongKe)
         cboThongKe.SelectedIndex = 0
@@ -68,4 +72,10 @@ Public Class frmTKeDT
             dtpNamKT.Visible = True
         End If
     End Sub
+#End Region
+
+#Region "Functions/Subs"
+
+#End Region
+
 End Class

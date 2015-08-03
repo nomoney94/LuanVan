@@ -34,12 +34,18 @@ Public Class frmInGiayBao
 #Region "Functions/Subs"
     Public Sub CreateReport()
         sqlTemp = ""
-        If TimKiem = "ChuaTT" Then
+        If TimKiem = "Ky" Then
+            sqlTemp &= sqlGB & "AND MONTH(ChiSoCongTo.Ky) = " & DuLieu & " "
+        ElseIf TimKiem = "ChuaTT" Then
             sqlTemp &= sqlGB & "AND HoaDon.TinhTrangThanhToan = N'Chưa' "
         ElseIf TimKiem = "NhacNho1" Then
             sqlTemp &= sqlGB & "AND HoaDon.TinhTrangThanhToan = N'Lần 1' "
         ElseIf TimKiem = "NhacNho2" Then
             sqlTemp &= sqlGB & "AND HoaDon.TinhTrangThanhToan = N'Lần 2' "
+        ElseIf TimKiem = "MaKH" Then
+            sqlTemp &= sqlGB & "AND KhachHang.MaKH = " & DuLieu & " "
+        ElseIf TimKiem = "MaHD" Then
+            sqlTemp &= sqlGB & "AND HoaDon.MaHD = " & DuLieu & " "
         End If
 
         con.Open()

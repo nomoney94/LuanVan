@@ -1,16 +1,20 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class frmTKHoaDon
+
+#Region "Declares"
     Private aTimKiem() As String = {"Kỳ", "Hóa đơn chưa thanh toán", "Hóa đơn nhắc nhở lần 1", "Hóa đơn nhắc nhở lần 2", "Mã hóa đơn", "Mã khách hàng"}
     Private dtHD As DataTable
     Private dtKH As DataTable
     Public MaKH As String
     Private TimKiem As String
-    Private DuLieu As String
+    Private DuLieu As String = ""
     Private frmInHD As frmInHoaDon
     Private frmInGB As frmInGiayBao
     Private flag As Integer
+#End Region
 
+#Region "Events"
     Private Sub frmTKHoaDon_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         Dim ky As Date
         cboTimKiem.Items.AddRange(aTimKiem)
@@ -159,7 +163,7 @@ Public Class frmTKHoaDon
             dtpKy.Visible = True
             btnNhacnho.Visible = False
             btnDathanhtoan.Visible = False
-            btnXemGB.Visible = False
+            'btnXemGB.Visible = False
         ElseIf cboTimKiem.SelectedIndex = 1 Then
             lblTieuDe.Text = "Tìm hóa đơn chưa thanh toán"
             Label2.Visible = False
@@ -170,7 +174,7 @@ Public Class frmTKHoaDon
             dtpKy.Visible = False
             btnNhacnho.Visible = False
             btnDathanhtoan.Visible = True
-            btnXemGB.Visible = True
+            'btnXemGB.Visible = True
         ElseIf cboTimKiem.SelectedIndex = 2 Or cboTimKiem.SelectedIndex = 3 Then
             lblTieuDe.Text = "Tìm hóa đơn đã nhắc nhở"
             Label2.Visible = False
@@ -181,7 +185,7 @@ Public Class frmTKHoaDon
             dtpKy.Visible = False
             btnNhacnho.Visible = False
             btnDathanhtoan.Visible = True
-            btnXemGB.Visible = False
+            'btnXemGB.Visible = False
         ElseIf cboTimKiem.SelectedIndex = 4 Then
             lblTieuDe.Text = "Tìm theo mã hóa đơn/Đánh dấu chưa thanh toán"
             Label2.Visible = False
@@ -192,7 +196,7 @@ Public Class frmTKHoaDon
             dtpKy.Visible = False
             btnNhacnho.Visible = True
             btnDathanhtoan.Visible = False
-            btnXemGB.Visible = False
+            'btnXemGB.Visible = False
         ElseIf cboTimKiem.SelectedIndex = 5 Then
             lblTieuDe.Text = "Tìm theo mã khách hàng"
             Label2.Visible = True
@@ -203,7 +207,7 @@ Public Class frmTKHoaDon
             dtpKy.Visible = False
             btnNhacnho.Visible = False
             btnDathanhtoan.Visible = False
-            btnXemGB.Visible = False
+            'btnXemGB.Visible = False
         End If
     End Sub
 
@@ -229,21 +233,6 @@ Public Class frmTKHoaDon
             MessageBox.Show("Không thể cập nhật CSDL", "Thông báo")
         End Try
         btnTim.PerformClick()
-    End Sub
-
-    Private Sub XemHoaDon()
-        If frmInHD Is Nothing OrElse frmInHD.IsDisposed Then
-            frmInHD = New frmInHoaDon
-            frmInHD.MdiParent = frmMain
-            frmInHD.TimKiem = Me.TimKiem
-            frmInHD.DuLieu = Me.DuLieu
-            frmInHD.Show()
-        Else
-            frmInHD.TimKiem = Me.TimKiem
-            frmInHD.DuLieu = Me.DuLieu
-            frmInHD.CreateReport()
-            frmInHD.Focus()
-        End If
     End Sub
 
     Private Sub btnDathanhtoan_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDathanhtoan.Click
@@ -281,14 +270,6 @@ Public Class frmTKHoaDon
         End If
     End Sub
 
-    Private Function IsItemsListViewExit() As Boolean
-        If lvwHoadon.Items.Count > 0 Then
-            Return True
-        Else
-            Return False
-        End If
-    End Function
-
     Private Sub lvwHoadon_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lvwHoadon.SelectedIndexChanged
         If lvwHoadon.SelectedItems.Count > 0 Then
 
@@ -302,8 +283,46 @@ Public Class frmTKHoaDon
             MsgBox("Không có dữ liệu để xem!")
         End If
     End Sub
+#End Region
+
+#Region "Functions/Subs"
+    Private Sub XemHoaDon()
+        Dim DuLieuTemp As String = ""
+        Dim TimKiemTemp As String = ""
+        If lvwHoadon.SelectedItems().Count > 0 Then
+            DuLieuTemp = DuLieu
+            TimKiemTemp = TimKiem
+            DuLieu = GetMaHD()
+            TimKiem = "MaHD"
+        End If
+        If frmInHD Is Nothing OrElse frmInHD.IsDisposed Then
+            frmInHD = New frmInHoaDon
+            frmInHD.MdiParent = frmMain
+            frmInHD.TimKiem = Me.TimKiem
+            frmInHD.DuLieu = Me.DuLieu
+            frmInHD.Show()
+        Else
+            frmInHD.TimKiem = Me.TimKiem
+            frmInHD.DuLieu = Me.DuLieu
+            frmInHD.CreateReport()
+            frmInHD.Focus()
+        End If
+        If DuLieuTemp <> "" Then
+            DuLieu = DuLieuTemp
+            TimKiem = TimKiemTemp
+            DeselectedItemListView()
+        End If
+    End Sub
 
     Private Sub XemGiayBao()
+        Dim DuLieuTemp As String = ""
+        Dim TimKiemTemp As String = ""
+        If lvwHoadon.SelectedItems().Count > 0 Then
+            DuLieuTemp = DuLieu
+            TimKiemTemp = TimKiem
+            DuLieu = GetMaHD()
+            TimKiem = "MaHD"
+        End If
         If frmInGB Is Nothing OrElse frmInGB.IsDisposed Then
             frmInGB = New frmInGiayBao
             frmInGB.MdiParent = frmMain
@@ -316,7 +335,20 @@ Public Class frmTKHoaDon
             frmInGB.CreateReport()
             frmInGB.Focus()
         End If
+        If DuLieuTemp <> "" Then
+            DuLieu = DuLieuTemp
+            TimKiem = TimKiemTemp
+            DeselectedItemListView()
+        End If
     End Sub
+
+    Private Function IsItemsListViewExit() As Boolean
+        If lvwHoadon.Items.Count > 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
 
     Private Sub NhacNho()
         Dim dr, dr1 As DataRow
@@ -344,4 +376,20 @@ Public Class frmTKHoaDon
             MessageBox.Show("Không thể cập nhật CSDL", "Thông báo")
         End Try
     End Sub
+
+    Private Function GetMaHD() As String
+        Dim result As String = ""
+        If lvwHoadon.SelectedItems.Count > 0 Then
+            result = lvwHoadon.SelectedItems(0).Text
+        End If
+        Return result
+    End Function
+
+    Private Sub DeselectedItemListView()
+        For Each item As ListViewItem In lvwHoadon.SelectedItems
+            item.Selected = False
+        Next
+    End Sub
+#End Region
+   
 End Class

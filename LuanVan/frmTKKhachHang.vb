@@ -2,13 +2,16 @@
 Imports Microsoft.Office.Interop
 
 Public Class frmTKKhachHang
+#Region "Declares"
     Private aTimKiem() As String = {"Mã khách hàng", "Tên khách hàng", "Khách hàng chưa thanh toán", "Khách hàng bị cắt điện", "Tất cả khách hàng"}
     Private dtKH As DataTable
     Private dtHD As DataTable
     Private frmTKHD As frmTKHoaDon
     Public MaKH As String
     Private dtExcel As DataTable
+#End Region
 
+#Region "Events"
     Private Sub frmTKKhachHang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cboTimKiem.Items.AddRange(aTimKiem)
         cboTimKiem.SelectedIndex = 0
@@ -227,7 +230,9 @@ Public Class frmTKKhachHang
             MsgBox(Err.Description, vbCritical, "Error: " & Err.Number)
         End Try
     End Sub
+#End Region
 
+#Region "Functions/Subs"
     Private Function ConvertDataTableToArray(dt As DataTable) As Array
         Dim aResult(dt.Rows.Count - 1, 6) As String
         Dim dr As DataRow
@@ -244,5 +249,6 @@ Public Class frmTKKhachHang
         Next
         Return aResult
     End Function
+#End Region
 
 End Class

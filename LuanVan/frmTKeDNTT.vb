@@ -1,9 +1,13 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class frmTKeDNTT
+
+#Region "Declares"
     Private aThongKe() As String = {"Tháng", "Quý", "Năm"}
     Private dt As DataTable
+#End Region
 
+#Region "Events"
     Private Sub frmTKeDNTT_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cboThongKe.Items.AddRange(aThongKe)
         cboThongKe.SelectedIndex = 0
@@ -53,7 +57,6 @@ Public Class frmTKeDNTT
             rptThongKe.SetDataSource(dt)
             crvTKe.ReportSource = rptThongKe
             crvTKe.Refresh()
-            'MsgBox(sqlString)
         End If
     End Sub
 
@@ -69,4 +72,10 @@ Public Class frmTKeDNTT
             dtpNamKT.Visible = True
         End If
     End Sub
+#End Region
+
+#Region "Functions/Subs"
+
+#End Region
+
 End Class

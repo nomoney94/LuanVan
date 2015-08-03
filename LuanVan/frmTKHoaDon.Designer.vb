@@ -82,8 +82,8 @@ Partial Class frmTKHoaDon
         'TableLayoutPanel2
         '
         Me.TableLayoutPanel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TableLayoutPanel2.AutoSize = True
         Me.TableLayoutPanel2.ColumnCount = 7
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102.0!))
@@ -240,12 +240,13 @@ Partial Class frmTKHoaDon
         'lvwHoadon
         '
         Me.lvwHoadon.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lvwHoadon.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7, Me.ColumnHeader8})
         Me.lvwHoadon.FullRowSelect = True
         Me.lvwHoadon.GridLines = True
         Me.lvwHoadon.Location = New System.Drawing.Point(3, 136)
+        Me.lvwHoadon.MultiSelect = False
         Me.lvwHoadon.Name = "lvwHoadon"
         Me.lvwHoadon.Size = New System.Drawing.Size(701, 264)
         Me.lvwHoadon.TabIndex = 1
@@ -275,17 +276,17 @@ Partial Class frmTKHoaDon
         'ColumnHeader5
         '
         Me.ColumnHeader5.Text = "Kỳ"
-        Me.ColumnHeader5.Width = 63
+        Me.ColumnHeader5.Width = 67
         '
         'ColumnHeader6
         '
         Me.ColumnHeader6.Text = "ĐNTT"
-        Me.ColumnHeader6.Width = 58
+        Me.ColumnHeader6.Width = 66
         '
         'ColumnHeader7
         '
         Me.ColumnHeader7.Text = "Thành tiền"
-        Me.ColumnHeader7.Width = 74
+        Me.ColumnHeader7.Width = 81
         '
         'ColumnHeader8
         '
@@ -297,7 +298,7 @@ Partial Class frmTKHoaDon
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.ClientSize = New System.Drawing.Size(714, 425)
+        Me.ClientSize = New System.Drawing.Size(728, 425)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.MaximizeBox = False
         Me.Name = "frmTKHoaDon"

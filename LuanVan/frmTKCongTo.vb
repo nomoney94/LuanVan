@@ -1,9 +1,13 @@
 ﻿Imports System.Data.SqlClient
 
 Public Class frmTKCongTo
+
+#Region "Declares"
     Private aTimKiem() As String = {"Mã công tơ", "Ngày lắp đặt"}
     Private dtCT As DataTable
+#End Region
 
+#Region "Events"
     Private Sub frmTKCongTo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         cboTimKiem.Items.AddRange(aTimKiem)
         cboTimKiem.SelectedIndex = 0
@@ -53,4 +57,10 @@ Public Class frmTKCongTo
             dtpNgaylapdat.Visible = True
         End If
     End Sub
+#End Region
+
+#Region "Functions/Subs"
+
+#End Region
+
 End Class

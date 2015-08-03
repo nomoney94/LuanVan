@@ -1,5 +1,8 @@
 ﻿Imports System.Data.SqlClient
+
 Public Class frmTinhTien
+
+#Region "Declares"
     Private dtCT As DataTable
     Private dtKH As DataTable
     Private dtDT As DataTable
@@ -9,7 +12,9 @@ Public Class frmTinhTien
     Private dtG3 As DataTable
     Private dtCTTT As DataTable
     Private gia As String
+#End Region
 
+#Region "Events"
     Private Sub frmTinhTien_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         dtCT = frmMain.ds.Tables("CongTo")
         dtKH = frmMain.ds.Tables("KhachHang")
@@ -215,4 +220,10 @@ Public Class frmTinhTien
             MsgBox("Mã công tơ sai")
         End If
     End Sub
+#End Region
+
+#Region "Functions/Subs"
+
+#End Region
+
 End Class
