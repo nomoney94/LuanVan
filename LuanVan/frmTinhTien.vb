@@ -153,8 +153,8 @@ Public Class frmTinhTien
         row("MaCT") = txtMaCT.Text
         row("Ky") = dtpThang.Text
         row("ChiSo") = chisoCT1
-        row("ChisoCD") = chisoCD
-        row("ChisoTD") = chisoTD
+        row("ChisoCD") = chisoCT2
+        row("ChisoTD") = chisoCT3
         row("NgayDauKy") = Convert.ToString(CInt(Month(dtpThang.Text)) - 1) + "-" + Convert.ToString(Year(dtpThang.Text))
         row("NgayCuoiKy") = dtpThang.Text
         dtCSCT.Rows.Add(row)

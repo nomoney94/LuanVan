@@ -6,7 +6,235 @@ LuanVan
 </name>
 </assembly>
 <members>
-<member name="P:LuanVan.My.Resources.Resources.ResourceManager">
+<member name="T:LuanVan.DataSet1.TKeLDTT_QuyDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:LuanVan.DataSet1.TKeDNTT_ThangDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:LuanVan.DataSet1.TKeDNTT_NamDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:LuanVan.DataSet1.TKeDT_ThangDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:LuanVan.DataSet1.TKeDT_QuyDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:LuanVan.DataSet1.TKeDT_NamDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:LuanVan.DataSet1.DonViDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:LuanVan.DataSet1.CTHoaDonDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:LuanVan.DataSet1.CTThanhTienDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:LuanVan.DataSet1.CTGiayBaoDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:LuanVan.DataSet1.ChiSoHDDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:LuanVan.DataSet1.ChiSoGBDataTable">
+	<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member><member name="T:LuanVan.DataSet1.TKeLDTT_QuyRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:LuanVan.DataSet1.TKeDNTT_ThangRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:LuanVan.DataSet1.TKeDNTT_NamRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:LuanVan.DataSet1.TKeDT_ThangRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:LuanVan.DataSet1.TKeDT_QuyRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:LuanVan.DataSet1.TKeDT_NamRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:LuanVan.DataSet1.DonViRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:LuanVan.DataSet1.CTHoaDonRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:LuanVan.DataSet1.CTThanhTienRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:LuanVan.DataSet1.CTGiayBaoRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:LuanVan.DataSet1.ChiSoHDRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:LuanVan.DataSet1.ChiSoGBRow">
+	<summary>
+Represents strongly named DataRow class.
+</summary>
+</member><member name="T:LuanVan.DataSet1.TKeLDTT_QuyRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:LuanVan.DataSet1.TKeDNTT_ThangRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:LuanVan.DataSet1.TKeDNTT_NamRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:LuanVan.DataSet1.TKeDT_ThangRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:LuanVan.DataSet1.TKeDT_QuyRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:LuanVan.DataSet1.TKeDT_NamRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:LuanVan.DataSet1.DonViRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:LuanVan.DataSet1.CTHoaDonRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:LuanVan.DataSet1.CTThanhTienRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:LuanVan.DataSet1.CTGiayBaoRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:LuanVan.DataSet1.ChiSoHDRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:LuanVan.DataSet1.ChiSoGBRowChangeEvent">
+	<summary>
+Row event argument class
+</summary>
+</member><member name="T:LuanVan.DataSet1">
+	<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member><member name="T:LuanVan.DataSet1TableAdapters.TKeLDTT_QuyTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:LuanVan.DataSet1TableAdapters.TKeDNTT_ThangTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:LuanVan.DataSet1TableAdapters.TKeDNTT_NamTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:LuanVan.DataSet1TableAdapters.TKeDT_ThangTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:LuanVan.DataSet1TableAdapters.TKeDT_QuyTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:LuanVan.DataSet1TableAdapters.TKeDT_NamTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:LuanVan.DataSet1TableAdapters.DonViTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:LuanVan.DataSet1TableAdapters.CTHoaDonTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:LuanVan.DataSet1TableAdapters.CTThanhTienTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:LuanVan.DataSet1TableAdapters.CTGiayBaoTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:LuanVan.DataSet1TableAdapters.ChiSoHDTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="T:LuanVan.DataSet1TableAdapters.ChiSoGBTableAdapter">
+	<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member><member name="M:LuanVan.DataSet1TableAdapters.TableAdapterManager.UpdateUpdatedRows(LuanVan.DataSet1,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Update rows in top-down order.
+</summary>
+</member><member name="M:LuanVan.DataSet1TableAdapters.TableAdapterManager.UpdateInsertedRows(LuanVan.DataSet1,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Insert rows in top-down order.
+</summary>
+</member><member name="M:LuanVan.DataSet1TableAdapters.TableAdapterManager.UpdateDeletedRows(LuanVan.DataSet1,System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Delete rows in bottom-up order.
+</summary>
+</member><member name="M:LuanVan.DataSet1TableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+	<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member><member name="M:LuanVan.DataSet1TableAdapters.TableAdapterManager.UpdateAll(LuanVan.DataSet1)">
+	<summary>
+Update all changes to the dataset.
+</summary>
+</member><member name="T:LuanVan.DataSet1TableAdapters.TableAdapterManager.UpdateOrderOption">
+	<summary>
+Update Order Option
+</summary>
+</member><member name="T:LuanVan.DataSet1TableAdapters.TableAdapterManager.SelfReferenceComparer">
+	<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member><member name="T:LuanVan.DataSet1TableAdapters.TableAdapterManager">
+	<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member><member name="P:LuanVan.My.Resources.Resources.ResourceManager">
 	<summary>
   Returns the cached ResourceManager instance used by this class.
 </summary>
@@ -24,6 +252,10 @@ LuanVan
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member><member name="P:LuanVan.My.Resources.Resources.Information_icon">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:LuanVan.My.Resources.Resources.Invoice_icon">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
